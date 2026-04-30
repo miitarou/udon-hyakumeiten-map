@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Other projects in this directory
+nissei-report-intelligence/
+watch-antigravity.sh
+package.json
+
+# Raw data (keep only final restaurants.json)
+data/restaurants_raw.json
+
+# Python cache
+__pycache__/
+*.pyc

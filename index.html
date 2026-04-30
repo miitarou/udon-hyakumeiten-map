@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>うどん百名店 2024 MAP | EAST × WEST 完全版</title>
+    <meta name="description" content="食べログ「うどん百名店 2024」EAST・WEST全店舗を地図上にプロット。エリア別フィルタ、検索、閉店情報付き。">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Leaflet MarkerCluster CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header id="app-header">
+        <div class="header-inner">
+            <div class="logo-area">
+                <span class="logo-icon">🍜</span>
+                <h1>うどん百名店 <span class="year-badge">2024</span></h1>
+                <span class="subtitle">EAST × WEST MAP</span>
+            </div>
+            <div class="header-stats" id="header-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="stat-total">0</span>
+                    <span class="stat-label">全店舗</span>
+                </div>
+                <div class="stat-item stat-east">
+                    <span class="stat-number" id="stat-east">0</span>
+                    <span class="stat-label">EAST</span>
+                </div>
+                <div class="stat-item stat-west">
+                    <span class="stat-number" id="stat-west">0</span>
+                    <span class="stat-label">WEST</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- コントロールパネル -->
+    <aside id="control-panel" class="panel-closed">
+        <button id="panel-toggle" class="panel-toggle-btn" aria-label="パネル開閉">
+            <span class="toggle-icon">◀</span>
+        </button>
+        
+        <div class="panel-content">
+            <!-- 検索 -->
+            <div class="control-section">
+                <label class="control-label" for="search-input">🔍 店名検索</label>
+                <input type="text" id="search-input" class="search-input" placeholder="店名・エリアで検索..." autocomplete="off">
+            </div>
+
+            <!-- リージョンフィルタ -->
+            <div class="control-section">
+                <label class="control-label">📍 エリア</label>
+                <div class="filter-group region-filters">
+                    <button class="filter-btn active" data-filter="all">ALL</button>
+                    <button class="filter-btn east-btn" data-filter="EAST">EAST</button>
+                    <button class="filter-btn west-btn" data-filter="WEST">WEST</button>
+                </div>
+            </div>
+
+            <!-- 都道府県フィルタ -->
+            <div class="control-section">
+                <label class="control-label" for="pref-select">🗾 都道府県</label>
+                <select id="pref-select" class="pref-select">
+                    <option value="all">すべて</option>
+                </select>
+            </div>
+
+            <!-- 初選出フィルタ -->
+            <div class="control-section">
+                <label class="control-label">⭐ 特殊フィルタ</label>
+                <div class="filter-group">
+                    <button class="filter-btn" data-special="firstSelected" id="first-selected-btn">初選出のみ</button>
+                </div>
+            </div>
+
+            <!-- 表示件数 -->
+            <div class="control-section results-info">
+                <div class="results-count">
+                    表示中: <strong id="visible-count">0</strong> 件
+                </div>
+            </div>
+            
+            <!-- 店舗リスト -->
+            <div class="control-section restaurant-list-section">
+                <label class="control-label">📋 店舗リスト</label>
+                <div id="restaurant-list" class="restaurant-list"></div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- 地図 -->
+    <main id="map"></main>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Leaflet MarkerCluster JS -->
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    
+    <script src="app.js"></script>
+</body>
+</html>
