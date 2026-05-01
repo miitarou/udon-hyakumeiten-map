@@ -995,7 +995,7 @@ html, body {
 
     .panel-open .toggle-icon {
         display: inline-block;
-        transform: rotate(90deg);
+        transform: rotate(-90deg);
     }
 
     /* モバイル専用の開くボタンを表示 */
