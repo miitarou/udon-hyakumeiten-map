@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>うどん百名店 2024 MAP | EAST × WEST 完全版</title>
-    <meta name="description" content="食べログ「うどん百名店 2024」EAST・WEST全店舗を地図上にプロット。エリア別フィルタ、検索、閉店情報付き。">
+    <title>うどん百名店 MAP 2017-2024 | EAST × WEST 全年度統合版</title>
+    <meta name="description" content="食べログ「うどん百名店」2017〜2024年 EAST・WEST全店舗を地図上にプロット。年度別選出履歴、エリア別フィルタ、検索、閉店情報付き。">
     
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -24,7 +24,7 @@
         <div class="header-inner">
             <div class="logo-area">
                 <span class="logo-icon">🍜</span>
-                <h1>うどん百名店 <span class="year-badge">2024</span></h1>
+                <h1>うどん百名店 <span class="year-badge">2017-2024</span></h1>
                 <span class="subtitle">EAST × WEST MAP</span>
             </div>
             <div class="header-stats" id="header-stats">
@@ -75,18 +75,56 @@
                 </select>
             </div>
 
-            <!-- 初選出フィルタ -->
+            <!-- 選出年フィルタ -->
             <div class="control-section">
-                <label class="control-label">⭐ 特殊フィルタ</label>
-                <div class="filter-group">
-                    <button class="filter-btn" data-special="firstSelected" id="first-selected-btn">初選出のみ</button>
+                <label class="control-label">📅 選出年</label>
+                <div class="filter-group year-filters">
+                    <button class="filter-btn active" data-year="all">全年度</button>
+                    <button class="filter-btn year-filter-btn" data-year="2024">2024</button>
+                    <button class="filter-btn year-filter-btn" data-year="2022">2022</button>
+                    <button class="filter-btn year-filter-btn" data-year="2020">2020</button>
+                    <button class="filter-btn year-filter-btn" data-year="2019">2019</button>
+                    <button class="filter-btn year-filter-btn" data-year="2018">2018</button>
+                    <button class="filter-btn year-filter-btn" data-year="2017">2017</button>
                 </div>
             </div>
 
-            <!-- 表示件数 -->
+            <!-- 選出回数フィルタ -->
+            <div class="control-section">
+                <label class="control-label">🏆 選出回数</label>
+                <div class="filter-group count-filters">
+                    <button class="filter-btn active" data-min-count="0">指定なし</button>
+                    <button class="filter-btn" data-min-count="2">2回以上</button>
+                    <button class="filter-btn" data-min-count="3">3回以上</button>
+                    <button class="filter-btn" data-min-count="4">4回以上</button>
+                    <button class="filter-btn" data-min-count="5">5回以上</button>
+                    <button class="filter-btn" data-min-count="6">6回以上</button>
+                </div>
+            </div>
+
+            <!-- 特殊フィルタ -->
+            <div class="control-section">
+                <label class="control-label">⭐ 特殊フィルタ</label>
+                <div class="filter-group special-filters">
+                    <button class="filter-btn" id="first-selected-btn">初選出のみ</button>
+                    <button class="filter-btn" id="hide-closed-btn">閉店を除外</button>
+                </div>
+            </div>
+
+            <!-- 表示件数 & ソート -->
             <div class="control-section results-info">
-                <div class="results-count">
-                    表示中: <strong id="visible-count">0</strong> 件
+                <div class="results-header">
+                    <div class="results-count">
+                        表示中: <strong id="visible-count">0</strong> 件
+                    </div>
+                    <div class="sort-control">
+                        <select id="sort-select" class="sort-select">
+                            <option value="name">名前順</option>
+                            <option value="count-desc">選出回数 ↓</option>
+                            <option value="count-asc">選出回数 ↑</option>
+                            <option value="pref">都道府県順</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             

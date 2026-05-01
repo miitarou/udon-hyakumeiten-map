@@ -1,6 +1,7 @@
 /**
- * うどん百名店 2024 MAP - メインアプリケーション
+ * うどん百名店 MAP - メインアプリケーション
  * Leaflet.js + MarkerCluster による地図ビジュアライゼーション
+ * 2017〜2024 全年度統合版
  */
 
 (function () {
@@ -14,12 +15,16 @@
     let markers = new Map(); // url -> marker
     let activeRegion = 'all';
     let activePrefecture = 'all';
+    let activeYear = 'all';       // 年度フィルタ
+    let minSelectCount = 0;       // 選出回数フィルタ
     let firstSelectedOnly = false;
+    let hideClosedShops = false;   // 閉店除外フィルタ
     let searchQuery = '';
+    let sortMode = 'name';        // ソートモード
 
-    // === Map Tiles (CartoDB Voyager - ダークUIにも合う明るめタイル) ===
-    const TILE_URL = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
-    const TILE_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>';
+    // === Map Tiles (国土地理院 淡色地図 - 全日本語表記) ===
+    const TILE_URL = 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png';
+    const TILE_ATTR = '<a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>';
 
     // === Japan Center ===
     const JAPAN_CENTER = [36.0, 137.0];
@@ -27,16 +32,22 @@
 
     // === Init ===
     async function init() {
-        initMap();
-        await loadData();
-        populateFilters();
-        applyFilters();
-        bindEvents();
-        updateStats();
-        
-        // パネルを初期表示（デスクトップ時）
-        if (window.innerWidth > 768) {
-            togglePanel(true);
+        console.log('🚀 初期化開始');
+        try {
+            initMap();
+            await loadData();
+            populateFilters();
+            applyFilters();
+            bindEvents();
+            updateStats();
+            
+            // パネルを初期表示（デスクトップ時）
+            if (window.innerWidth > 768) {
+                togglePanel(true);
+            }
+            console.log('✅ 初期化完了');
+        } catch (e) {
+            console.error('❌ 初期化エラー:', e);
         }
     }
 
@@ -54,8 +65,7 @@
 
         L.tileLayer(TILE_URL, {
             attribution: TILE_ATTR,
-            subdomains: 'abcd',
-            maxZoom: 19
+            maxZoom: 18
         }).addTo(map);
 
         markerClusterGroup = L.markerClusterGroup({
@@ -75,11 +85,51 @@
             const response = await fetch('data/restaurants.json');
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             allRestaurants = await response.json();
+            // yearsフィールドがない店舗にはデフォルト[2024]を設定
+            allRestaurants.forEach(r => {
+                if (!r.years || !Array.isArray(r.years)) {
+                    r.years = [2024];
+                }
+            });
             console.log(`📊 データ読込完了: ${allRestaurants.length} 店舗`);
         } catch (e) {
             console.error('❌ データ読込失敗:', e);
-            allRestaurants = [];
+            // file:// プロトコル対策: XMLHttpRequest で再試行
+            console.log('🔄 XMLHttpRequest で再試行...');
+            try {
+                allRestaurants = await loadDataXHR();
+                allRestaurants.forEach(r => {
+                    if (!r.years || !Array.isArray(r.years)) {
+                        r.years = [2024];
+                    }
+                });
+                console.log(`📊 XHR再試行成功: ${allRestaurants.length} 店舗`);
+            } catch (e2) {
+                console.error('❌ XHR再試行も失敗:', e2);
+                allRestaurants = [];
+            }
         }
+    }
+
+    // file:// プロトコル用のフォールバック
+    function loadDataXHR() {
+        return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'data/restaurants.json', true);
+            xhr.onload = function() {
+                if (xhr.status === 200 || xhr.status === 0) { // status 0 = file:// protocol
+                    try {
+                        resolve(JSON.parse(xhr.responseText));
+                    } catch (e) {
+                        reject(e);
+                    }
+                } else {
+                    reject(new Error(`XHR status: ${xhr.status}`));
+                }
+            };
+            xhr.onerror = function() { reject(new Error('XHR error')); };
+            xhr.send();
+        });
     }
 
     // === Create Marker ===
@@ -88,10 +138,13 @@
 
         const regionClass = restaurant.region.toLowerCase();
         const closedClass = restaurant.closed ? ' closed' : '';
+        const selectCount = restaurant.years ? restaurant.years.length : 0;
 
         const icon = L.divIcon({
             className: 'custom-marker',
-            html: `<div class="marker-pin ${regionClass}${closedClass}"></div>`,
+            html: `<div class="marker-pin ${regionClass}${closedClass}">
+                     <span class="marker-count">${selectCount}</span>
+                   </div>`,
             iconSize: [28, 36],
             iconAnchor: [14, 36],
             popupAnchor: [0, -36]
@@ -111,9 +164,19 @@
         return marker;
     }
 
+    // === Build Year Badges ===
+    function buildYearBadges(years) {
+        if (!years || years.length === 0) return '';
+        return years.map(y => {
+            const shortYear = String(y).slice(2); // 2024 -> 24
+            return `<span class="year-badge year-${y}">'${shortYear}</span>`;
+        }).join('');
+    }
+
     // === Build Popup Content ===
     function buildPopupContent(r) {
         const regionClass = r.region.toLowerCase();
+        const selectCount = r.years ? r.years.length : 0;
         
         let closedBanner = '';
         if (r.closed) {
@@ -132,12 +195,22 @@
         }
         const badgesHtml = badges ? `<div class="popup-badges">${badges}</div>` : '';
 
+        // 年度バッジ
+        const yearBadgesHtml = buildYearBadges(r.years);
+
+        // 選出回数テキスト
+        const countText = selectCount > 0 ? `<span class="popup-select-count">${selectCount}回選出</span>` : '';
+
         return `
             <div class="popup-inner">
                 <div class="popup-header">
                     <span class="popup-region-badge ${regionClass}">${r.region}</span>
-                    <span class="popup-name">${escapeHtml(r.name)}</span>
+                    <div class="popup-title-area">
+                        <span class="popup-name">${escapeHtml(r.name)}</span>
+                        ${countText}
+                    </div>
                 </div>
+                <div class="popup-year-badges">${yearBadgesHtml}</div>
                 ${closedBanner}
                 <div class="popup-details">
                     <div class="popup-detail-row">
@@ -160,7 +233,9 @@
     // === Filters ===
     function populateFilters() {
         const prefSet = new Set();
-        allRestaurants.forEach(r => prefSet.add(r.prefecture));
+        allRestaurants.forEach(r => {
+            if (r.prefecture) prefSet.add(r.prefecture);
+        });
         
         const sortedPrefs = [...prefSet].sort();
         const select = document.getElementById('pref-select');
@@ -182,22 +257,77 @@
             // Prefecture filter
             if (activePrefecture !== 'all' && r.prefecture !== activePrefecture) return false;
             
+            // Year filter（特定年度に選出されたもののみ表示）
+            if (activeYear !== 'all') {
+                const yearNum = parseInt(activeYear, 10);
+                if (!r.years || !r.years.includes(yearNum)) return false;
+            }
+
+            // Min select count filter
+            if (minSelectCount > 0) {
+                const count = r.years ? r.years.length : 0;
+                if (count < minSelectCount) return false;
+            }
+            
             // First selected filter
             if (firstSelectedOnly && !r.firstSelected) return false;
+
+            // Hide closed shops
+            if (hideClosedShops && r.closed) return false;
             
-            // Search filter
+            // Search filter（ファジー検索: 駅名↔市区町村名の揺れに対応）
             if (searchQuery) {
                 const q = searchQuery.toLowerCase();
-                const searchTarget = `${r.name} ${r.prefecture} ${r.area} ${r.holiday}`.toLowerCase();
-                if (!searchTarget.includes(q)) return false;
+                const area = (r.area || '');
+                // 駅名から「駅」を除去したトークンも検索対象に追加
+                const areaBase = area.replace(/駅$/, '').replace(/（.+?）/g, '');
+                const searchTarget = `${r.name || ''} ${r.prefecture || ''} ${area} ${areaBase} ${r.holiday || ''} ${r.address || ''}`.toLowerCase();
+                
+                // クエリからも「市」「区」「町」「村」「駅」を除去してベーストークンを作成
+                const qBase = q.replace(/[市区町村駅]$/g, '');
+                
+                // 完全一致 or ベーストークン一致
+                if (!searchTarget.includes(q) && !searchTarget.includes(qBase)) return false;
             }
             
             return true;
         });
 
+        // ソート適用
+        sortRestaurants();
+
         renderMarkers();
         renderList();
         updateVisibleCount();
+    }
+
+    // === Sort ===
+    function sortRestaurants() {
+        switch (sortMode) {
+            case 'name':
+                filteredRestaurants.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'ja'));
+                break;
+            case 'count-desc':
+                filteredRestaurants.sort((a, b) => {
+                    const ca = a.years ? a.years.length : 0;
+                    const cb = b.years ? b.years.length : 0;
+                    return cb - ca || (a.name || '').localeCompare(b.name || '', 'ja');
+                });
+                break;
+            case 'count-asc':
+                filteredRestaurants.sort((a, b) => {
+                    const ca = a.years ? a.years.length : 0;
+                    const cb = b.years ? b.years.length : 0;
+                    return ca - cb || (a.name || '').localeCompare(b.name || '', 'ja');
+                });
+                break;
+            case 'pref':
+                filteredRestaurants.sort((a, b) => 
+                    (a.prefecture || '').localeCompare(b.prefecture || '', 'ja') || 
+                    (a.name || '').localeCompare(b.name || '', 'ja')
+                );
+                break;
+        }
     }
 
     // === Render Markers ===
@@ -236,9 +366,18 @@
             card.className = 'restaurant-card';
             card.style.animationDelay = `${Math.min(i * 0.02, 0.5)}s`;
             
+            const selectCount = r.years ? r.years.length : 0;
+
             let badgesHtml = '';
             if (r.firstSelected) badgesHtml += '<span class="badge badge-new">NEW</span>';
             if (r.closed) badgesHtml += '<span class="badge badge-closed">閉店</span>';
+
+            // 年度バッジ
+            const yearBadgesHtml = buildYearBadges(r.years);
+
+            // 選出回数バッジ
+            const countBadgeClass = selectCount >= 5 ? 'count-badge-gold' : selectCount >= 3 ? 'count-badge-silver' : '';
+            const countBadge = `<span class="count-badge ${countBadgeClass}">${selectCount}回</span>`;
 
             card.innerHTML = `
                 <div class="card-region-dot ${r.region.toLowerCase()}"></div>
@@ -246,7 +385,11 @@
                     <div class="card-name">${escapeHtml(r.name)}</div>
                     <div class="card-area">${escapeHtml(r.prefecture)} ${escapeHtml(r.area)}</div>
                 </div>
-                <div class="card-badges">${badgesHtml}</div>
+                <div class="card-right">
+                    ${countBadge}
+                    <div class="card-year-badges">${yearBadgesHtml}</div>
+                    <div class="card-badges">${badgesHtml}</div>
+                </div>
             `;
 
             card.addEventListener('click', () => {
@@ -293,6 +436,7 @@
 
     function animateNumber(elementId, target) {
         const el = document.getElementById(elementId);
+        if (!el) return;
         const duration = 800;
         const start = performance.now();
         const startVal = 0;
@@ -310,12 +454,14 @@
     }
 
     function updateVisibleCount() {
-        document.getElementById('visible-count').textContent = filteredRestaurants.length;
+        const el = document.getElementById('visible-count');
+        if (el) el.textContent = filteredRestaurants.length;
     }
 
     // === Panel Toggle ===
     function togglePanel(forceOpen) {
         const panel = document.getElementById('control-panel');
+        if (!panel) return;
         const isOpen = panel.classList.contains('panel-open');
         
         if (forceOpen === true || (!isOpen && forceOpen !== false)) {
@@ -332,41 +478,107 @@
 
     // === Event Binding ===
     function bindEvents() {
+        console.log('🔗 イベントバインド開始');
+
         // Panel toggle
-        document.getElementById('panel-toggle').addEventListener('click', () => togglePanel());
+        const panelToggle = document.getElementById('panel-toggle');
+        if (panelToggle) {
+            panelToggle.addEventListener('click', () => togglePanel());
+        }
 
         // Region filter
         document.querySelectorAll('.region-filters .filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', function() {
                 document.querySelectorAll('.region-filters .filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                activeRegion = btn.dataset.filter;
+                this.classList.add('active');
+                activeRegion = this.dataset.filter;
+                console.log('🔍 Region:', activeRegion);
                 applyFilters();
             });
         });
 
         // Prefecture filter
-        document.getElementById('pref-select').addEventListener('change', (e) => {
-            activePrefecture = e.target.value;
-            applyFilters();
+        const prefSelect = document.getElementById('pref-select');
+        if (prefSelect) {
+            prefSelect.addEventListener('change', function() {
+                activePrefecture = this.value;
+                console.log('🔍 Prefecture:', activePrefecture);
+                applyFilters();
+            });
+        }
+
+        // Year filter（年度フィルタ）
+        const yearBtns = document.querySelectorAll('.year-filters .filter-btn');
+        console.log(`  年度ボタン: ${yearBtns.length} 個検出`);
+        yearBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.year-filters .filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                activeYear = this.getAttribute('data-year');
+                console.log('📅 Year filter:', activeYear);
+                applyFilters();
+            });
+        });
+
+        // Count filter（選出回数フィルタ）
+        const countBtns = document.querySelectorAll('.count-filters .filter-btn');
+        console.log(`  回数ボタン: ${countBtns.length} 個検出`);
+        countBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.count-filters .filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                minSelectCount = parseInt(this.getAttribute('data-min-count'), 10) || 0;
+                console.log('🏆 Count filter:', minSelectCount);
+                applyFilters();
+            });
         });
 
         // First selected filter
-        document.getElementById('first-selected-btn').addEventListener('click', () => {
-            firstSelectedOnly = !firstSelectedOnly;
-            document.getElementById('first-selected-btn').classList.toggle('active', firstSelectedOnly);
-            applyFilters();
-        });
+        const firstBtn = document.getElementById('first-selected-btn');
+        if (firstBtn) {
+            firstBtn.addEventListener('click', function() {
+                firstSelectedOnly = !firstSelectedOnly;
+                this.classList.toggle('active', firstSelectedOnly);
+                console.log('⭐ First selected:', firstSelectedOnly);
+                applyFilters();
+            });
+        }
+
+        // Hide closed filter
+        const closedBtn = document.getElementById('hide-closed-btn');
+        if (closedBtn) {
+            closedBtn.addEventListener('click', function() {
+                hideClosedShops = !hideClosedShops;
+                this.classList.toggle('active', hideClosedShops);
+                console.log('🚫 Hide closed:', hideClosedShops);
+                applyFilters();
+            });
+        }
+
+        // Sort
+        const sortSelect = document.getElementById('sort-select');
+        if (sortSelect) {
+            sortSelect.addEventListener('change', function() {
+                sortMode = this.value;
+                console.log('📊 Sort:', sortMode);
+                applyFilters();
+            });
+        }
 
         // Search
         let searchTimeout;
-        document.getElementById('search-input').addEventListener('input', (e) => {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(() => {
-                searchQuery = e.target.value.trim();
-                applyFilters();
-            }, 300);
-        });
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                const input = this;
+                searchTimeout = setTimeout(() => {
+                    searchQuery = input.value.trim();
+                    console.log('🔍 Search:', searchQuery);
+                    applyFilters();
+                }, 300);
+            });
+        }
 
         // キーボードショートカット
         document.addEventListener('keydown', (e) => {
@@ -378,9 +590,12 @@
             if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                 e.preventDefault();
                 togglePanel(true);
-                document.getElementById('search-input').focus();
+                const si = document.getElementById('search-input');
+                if (si) si.focus();
             }
         });
+
+        console.log('✅ イベントバインド完了');
     }
 
     // === Utility ===

@@ -392,6 +392,13 @@ html, body {
     border-top: 1px solid var(--border-color);
 }
 
+.results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
 .results-count {
     font-size: 13px;
     color: var(--text-secondary);
@@ -400,6 +407,87 @@ html, body {
 .results-count strong {
     color: var(--primary);
     font-weight: 700;
+}
+
+/* Sort Select */
+.sort-select {
+    padding: 5px 24px 5px 8px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-secondary);
+    font-family: var(--font-main);
+    font-size: 11px;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M5 7L1 3h8z' fill='%238B949E'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 6px center;
+    transition: all var(--transition-fast);
+}
+
+.sort-select:focus {
+    border-color: var(--primary);
+}
+
+.sort-select option {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+/* Year Filter Button Colors */
+.year-filter-btn[data-year="2017"].active { background: #636e72; border-color: #636e72; box-shadow: 0 2px 12px rgba(99,110,114,0.4); }
+.year-filter-btn[data-year="2018"].active { background: #6c5ce7; border-color: #6c5ce7; box-shadow: 0 2px 12px rgba(108,92,231,0.4); }
+.year-filter-btn[data-year="2019"].active { background: #00b894; border-color: #00b894; box-shadow: 0 2px 12px rgba(0,184,148,0.4); }
+.year-filter-btn[data-year="2020"].active { background: #0984e3; border-color: #0984e3; box-shadow: 0 2px 12px rgba(9,132,227,0.4); }
+.year-filter-btn[data-year="2022"].active { background: #d4a017; border-color: #d4a017; box-shadow: 0 2px 12px rgba(212,160,23,0.4); }
+.year-filter-btn[data-year="2024"].active { background: var(--primary); border-color: var(--primary); box-shadow: 0 2px 12px var(--primary-glow); }
+
+/* Count Badge (リストカード内) */
+.count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    letter-spacing: 0.3px;
+}
+
+.count-badge-silver {
+    background: rgba(192, 192, 192, 0.15);
+    color: #c0c0c0;
+    border-color: rgba(192, 192, 192, 0.3);
+}
+
+.count-badge-gold {
+    background: rgba(255, 215, 0, 0.12);
+    color: #FFD700;
+    border-color: rgba(255, 215, 0, 0.3);
+    text-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
+}
+
+/* Popup Select Count */
+.popup-title-area {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+}
+
+.popup-select-count {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--primary-light);
+    letter-spacing: 0.5px;
 }
 
 /* === Restaurant List === */
@@ -510,6 +598,85 @@ html, body {
     border: 1px solid rgba(248, 81, 73, 0.3);
 }
 
+/* === Year Badges (年度バッジ) === */
+.year-badge {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 5px;
+    border-radius: 4px;
+    letter-spacing: 0.3px;
+    line-height: 1.3;
+    white-space: nowrap;
+}
+
+/* 各年度の固有カラー */
+.year-2017 { background: rgba(99, 110, 114, 0.25); color: #b2bec3; border: 1px solid rgba(99, 110, 114, 0.4); }
+.year-2018 { background: rgba(108, 92, 231, 0.2); color: #a29bfe; border: 1px solid rgba(108, 92, 231, 0.4); }
+.year-2019 { background: rgba(0, 184, 148, 0.2); color: #55efc4; border: 1px solid rgba(0, 184, 148, 0.4); }
+.year-2020 { background: rgba(9, 132, 227, 0.2); color: #74b9ff; border: 1px solid rgba(9, 132, 227, 0.4); }
+.year-2022 { background: rgba(253, 203, 110, 0.25); color: #ffeaa7; border: 1px solid rgba(253, 203, 110, 0.4); }
+.year-2024 { background: rgba(255, 107, 0, 0.2); color: var(--primary-light); border: 1px solid rgba(255, 107, 0, 0.4); }
+
+/* Marker pin内の選出回数カウント */
+.marker-count {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    transform: rotate(45deg);
+    min-width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    color: var(--primary-light);
+    font-family: var(--font-display);
+    font-size: 9px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--primary);
+    line-height: 1;
+    padding: 0 2px;
+}
+
+/* ポップアップ内の年度バッジ配置 */
+.popup-year-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    margin-top: 6px;
+    width: 100%;
+}
+
+/* カード内の右側レイアウト */
+.card-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.card-year-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    justify-content: flex-end;
+}
+
+/* ヘッダー内の年度バッジ（既存・上書き） */
+.logo-area .year-badge {
+    font-size: 12px;
+    padding: 2px 6px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    -webkit-text-fill-color: white;
+    vertical-align: middle;
+}
+
 /* === Leaflet Popup Customization === */
 .leaflet-popup-content-wrapper {
     background: var(--bg-secondary) !important;
@@ -541,7 +708,7 @@ html, body {
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .popup-region-badge {
