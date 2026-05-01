@@ -21,3 +21,9 @@ data/restaurants_raw.json
 # Python cache
 __pycache__/
 *.pyc
+
+# 作業用キャッシュ
+data/address_progress.json
+data/all_years_raw.json
+data/restaurants_merged.json
+data/sample_2022.html
