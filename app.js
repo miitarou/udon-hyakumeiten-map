@@ -463,13 +463,16 @@
         const panel = document.getElementById('control-panel');
         if (!panel) return;
         const isOpen = panel.classList.contains('panel-open');
+        const mobileBtn = document.getElementById('mobile-panel-toggle');
         
         if (forceOpen === true || (!isOpen && forceOpen !== false)) {
             panel.classList.remove('panel-closed');
             panel.classList.add('panel-open');
+            if (mobileBtn) mobileBtn.classList.add('mobile-toggle-hidden');
         } else {
             panel.classList.remove('panel-open');
             panel.classList.add('panel-closed');
+            if (mobileBtn) mobileBtn.classList.remove('mobile-toggle-hidden');
         }
         
         // 地図のリサイズ
@@ -484,6 +487,12 @@
         const panelToggle = document.getElementById('panel-toggle');
         if (panelToggle) {
             panelToggle.addEventListener('click', () => togglePanel());
+        }
+
+        // モバイル用パネル開閉ボタン
+        const mobileToggle = document.getElementById('mobile-panel-toggle');
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => togglePanel(true));
         }
 
         // Region filter
