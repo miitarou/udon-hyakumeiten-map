@@ -1,26 +1,27 @@
 /* ======================================
-   うどん百名店 2024 MAP - スタイルシート
+   うどん百名店 MAP - スタイルシート
    Design System: Dark Mode + Glassmorphism
-   Primary: #FF6B00 (食べログオレンジ)
+   Primary: #D4A853 (麦穂ゴールド)
+   Secondary: #2B4C7E (藍色)
    ====================================== */
 
 /* === CSS Variables === */
 :root {
-    /* Colors */
-    --primary: #FF6B00;
-    --primary-light: #FF8C33;
-    --primary-dark: #CC5500;
-    --primary-glow: rgba(255, 107, 0, 0.3);
+    /* Colors — 麦穂ゴールド × 藍 */
+    --primary: #D4A853;
+    --primary-light: #E8C547;
+    --primary-dark: #B08A3A;
+    --primary-glow: rgba(212, 168, 83, 0.3);
     
-    --east-color: #4ECDC4;
-    --east-light: #6EDDD5;
-    --east-dark: #36B5AD;
-    --east-glow: rgba(78, 205, 196, 0.3);
+    --east-color: #5B8FB9;
+    --east-light: #7AACCE;
+    --east-dark: #2B4C7E;
+    --east-glow: rgba(43, 76, 126, 0.3);
     
-    --west-color: #FF6B9D;
-    --west-light: #FF8DB5;
-    --west-dark: #E0527F;
-    --west-glow: rgba(255, 107, 157, 0.3);
+    --west-color: #D4A853;
+    --west-light: #E8C547;
+    --west-dark: #B08A3A;
+    --west-glow: rgba(212, 168, 83, 0.3);
     
     --bg-primary: #0D1117;
     --bg-secondary: #161B22;
@@ -681,7 +682,7 @@ html, body {
 .year-2019 { background: rgba(0, 184, 148, 0.2); color: #55efc4; border: 1px solid rgba(0, 184, 148, 0.4); }
 .year-2020 { background: rgba(9, 132, 227, 0.2); color: #74b9ff; border: 1px solid rgba(9, 132, 227, 0.4); }
 .year-2022 { background: rgba(253, 203, 110, 0.25); color: #ffeaa7; border: 1px solid rgba(253, 203, 110, 0.4); }
-.year-2024 { background: rgba(255, 107, 0, 0.2); color: var(--primary-light); border: 1px solid rgba(255, 107, 0, 0.4); }
+.year-2024 { background: rgba(212, 168, 83, 0.2); color: var(--primary-light); border: 1px solid rgba(212, 168, 83, 0.4); }
 
 /* Marker pin内の選出回数カウント */
 .marker-count {
@@ -870,7 +871,7 @@ html, body {
 
 /* === Leaflet Cluster Styles === */
 .marker-cluster-small {
-    background-color: rgba(255, 107, 0, 0.2) !important;
+    background-color: rgba(212, 168, 83, 0.2) !important;
 }
 .marker-cluster-small div {
     background-color: var(--primary) !important;
@@ -880,7 +881,7 @@ html, body {
 }
 
 .marker-cluster-medium {
-    background-color: rgba(255, 107, 0, 0.3) !important;
+    background-color: rgba(212, 168, 83, 0.3) !important;
 }
 .marker-cluster-medium div {
     background-color: var(--primary-dark) !important;
@@ -890,7 +891,7 @@ html, body {
 }
 
 .marker-cluster-large {
-    background-color: rgba(255, 107, 0, 0.4) !important;
+    background-color: rgba(212, 168, 83, 0.4) !important;
 }
 .marker-cluster-large div {
     background-color: var(--primary-dark) !important;
