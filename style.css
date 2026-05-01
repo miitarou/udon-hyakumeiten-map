@@ -267,12 +267,10 @@ html, body {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    border: 1px solid var(--border-color);
-    background: var(--bg-secondary);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
-    font-size: 20px;
+    border: none;
+    background: #1a1a2e;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    color: #ffffff;
     cursor: pointer;
     z-index: 500;
     display: flex;
@@ -281,8 +279,15 @@ html, body {
     transition: all var(--transition-med);
 }
 
+.locate-icon {
+    width: 22px;
+    height: 22px;
+    transform: rotate(45deg);
+    transition: transform var(--transition-med);
+}
+
 .locate-btn:hover {
-    background: var(--bg-tertiary);
+    background: #2a2a4e;
     transform: scale(1.1);
 }
 
@@ -294,9 +299,18 @@ html, body {
     animation: pulse 1s ease-in-out infinite;
 }
 
+.locate-btn.locating .locate-icon {
+    animation: spin 1.2s linear infinite;
+}
+
 @keyframes pulse {
-    0%, 100% { box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4); }
+    0%, 100% { box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5); }
     50% { box-shadow: 0 2px 20px rgba(66, 133, 244, 0.6); }
+}
+
+@keyframes spin {
+    from { transform: rotate(45deg); }
+    to { transform: rotate(405deg); }
 }
 
 .panel-content {

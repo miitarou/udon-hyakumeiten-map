@@ -471,7 +471,6 @@
 
         // ボタンにローディング状態を設定
         btn.classList.add('locating');
-        btn.textContent = '⏳';
 
         navigator.geolocation.getCurrentPosition(
             function(position) {
@@ -514,13 +513,10 @@
                 // ズームレベル14で現在地にフライ
                 map.flyTo([lat, lng], 14, { duration: 1.5 });
 
-                // ボタンを元に戻す
                 btn.classList.remove('locating');
-                btn.textContent = '📍';
             },
             function(error) {
                 btn.classList.remove('locating');
-                btn.textContent = '📍';
                 console.error('❌ 位置情報エラー:', error);
                 switch (error.code) {
                     case error.PERMISSION_DENIED:
