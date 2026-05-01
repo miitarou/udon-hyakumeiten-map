@@ -249,6 +249,11 @@ html, body {
     display: inline-block;
 }
 
+/* デスクトップではラベル非表示 */
+.toggle-label {
+    display: none;
+}
+
 .panel-content {
     width: var(--panel-width);
     height: 100%;
@@ -927,34 +932,88 @@ html, body {
         font-size: 18px;
     }
 
+    /* パネル: 下部ドロワー */
     #control-panel {
         top: auto;
         bottom: 0;
         left: 0;
         right: 0;
         width: 100%;
-        height: 60vh;
+        height: 70vh;
         border-right: none;
         border-top: 1px solid var(--border-color);
         border-radius: 20px 20px 0 0;
+        box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.5);
     }
 
     #control-panel.panel-closed {
-        transform: translateY(calc(60vh));
+        transform: translateY(100%);
     }
 
     #control-panel.panel-open {
         transform: translateY(0);
     }
 
+    .panel-content {
+        width: 100%;
+        padding: 8px 16px 16px;
+    }
+
+    /* トグルボタン: パネルの上に常時表示 */
     .panel-toggle-btn {
-        top: -40px;
-        right: 50%;
-        transform: translateX(50%);
-        width: 72px;
-        height: 36px;
-        border-radius: 12px 12px 0 0;
-        border-bottom: none;
+        position: fixed;
+        top: auto;
+        bottom: 16px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        width: auto;
+        height: auto;
+        padding: 10px 24px;
+        border-radius: 28px;
+        border: 1px solid var(--border-color);
+        background: var(--bg-secondary);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text-primary);
+        gap: 6px;
+        z-index: 600;
+        transition: all var(--transition-med);
+    }
+
+    .panel-toggle-btn:hover {
+        background: var(--bg-tertiary);
+    }
+
+    /* モバイルではラベル表示、アイコン非表示 */
+    .toggle-label {
+        display: inline;
+    }
+
+    .panel-closed .toggle-icon {
+        display: none;
+    }
+
+    /* パネルが開いている時のトグルボタン */
+    .panel-open .panel-toggle-btn {
+        position: absolute;
+        bottom: auto;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 0 0 16px 16px;
+        padding: 6px 32px;
+        background: var(--bg-glass);
+        box-shadow: none;
+    }
+
+    .panel-open .toggle-label {
+        display: none;
+    }
+
+    .panel-open .toggle-icon {
+        display: inline-block;
     }
 
     .panel-closed .toggle-icon {
@@ -965,13 +1024,56 @@ html, body {
         transform: rotate(90deg);
     }
 
+    /* ドロワーハンドル（開いた時のみ表示） */
+    .panel-open .panel-content::before {
+        content: '';
+        display: block;
+        width: 40px;
+        height: 4px;
+        background: var(--text-muted);
+        border-radius: 2px;
+        margin: 4px auto 8px;
+        flex-shrink: 0;
+    }
+
     #map {
         bottom: 0;
     }
 
+    /* オーバーレイ背景 */
+    .panel-open ~ #map::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 2;
+        pointer-events: auto;
+    }
+
     .leaflet-popup-content {
-        width: 240px !important;
-        max-width: 240px !important;
+        width: 260px !important;
+        max-width: 260px !important;
+    }
+
+    /* フィルタボタンをコンパクトに */
+    .filter-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    /* 検索入力 */
+    .search-input {
+        font-size: 16px; /* iOSでズーム防止 */
+    }
+
+    /* セレクトボックス */
+    .pref-select {
+        font-size: 16px;
+    }
+
+    /* Leafletコントロールの位置調整 */
+    .leaflet-control-zoom {
+        margin-right: 10px !important;
     }
 }
 
