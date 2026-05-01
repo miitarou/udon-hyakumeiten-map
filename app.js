@@ -458,6 +458,90 @@
         if (el) el.textContent = filteredRestaurants.length;
     }
 
+    // === 現在地機能 ===
+    let userLocationMarker = null;
+    let userLocationCircle = null;
+
+    function locateUser() {
+        const btn = document.getElementById('locate-btn');
+        if (!navigator.geolocation) {
+            alert('お使いのブラウザは位置情報に対応していません');
+            return;
+        }
+
+        // ボタンにローディング状態を設定
+        btn.classList.add('locating');
+        btn.textContent = '⏳';
+
+        navigator.geolocation.getCurrentPosition(
+            function(position) {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+                const accuracy = position.coords.accuracy;
+                console.log('📍 現在地取得:', lat, lng, '精度:', accuracy + 'm');
+
+                // 既存のマーカーを削除
+                if (userLocationMarker) map.removeLayer(userLocationMarker);
+                if (userLocationCircle) map.removeLayer(userLocationCircle);
+
+                // 現在地マーカー（青い丸）
+                userLocationMarker = L.circleMarker([lat, lng], {
+                    radius: 8,
+                    fillColor: '#4285F4',
+                    color: '#ffffff',
+                    weight: 3,
+                    fillOpacity: 1,
+                    className: 'user-location-marker'
+                }).addTo(map);
+
+                userLocationMarker.bindPopup(
+                    '<div style="text-align:center;font-family:var(--font-main);">' +
+                    '<strong>📍 現在地</strong><br>' +
+                    '<span style="font-size:12px;color:#999;">精度: 約' + Math.round(accuracy) + 'm</span>' +
+                    '</div>'
+                );
+
+                // 精度範囲の円
+                userLocationCircle = L.circle([lat, lng], {
+                    radius: accuracy,
+                    fillColor: '#4285F4',
+                    fillOpacity: 0.1,
+                    color: '#4285F4',
+                    weight: 1,
+                    opacity: 0.3
+                }).addTo(map);
+
+                // ズームレベル14で現在地にフライ
+                map.flyTo([lat, lng], 14, { duration: 1.5 });
+
+                // ボタンを元に戻す
+                btn.classList.remove('locating');
+                btn.textContent = '📍';
+            },
+            function(error) {
+                btn.classList.remove('locating');
+                btn.textContent = '📍';
+                console.error('❌ 位置情報エラー:', error);
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        alert('位置情報の使用が許可されていません。\nブラウザの設定から位置情報を許可してください。');
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        alert('現在地を取得できませんでした。');
+                        break;
+                    case error.TIMEOUT:
+                        alert('位置情報の取得がタイムアウトしました。');
+                        break;
+                }
+            },
+            {
+                enableHighAccuracy: true,
+                timeout: 10000,
+                maximumAge: 60000
+            }
+        );
+    }
+
     // === Panel Toggle ===
     function togglePanel(forceOpen) {
         const panel = document.getElementById('control-panel');
@@ -493,6 +577,12 @@
         const mobileToggle = document.getElementById('mobile-panel-toggle');
         if (mobileToggle) {
             mobileToggle.addEventListener('click', () => togglePanel(true));
+        }
+
+        // 現在地ボタン
+        const locateBtn = document.getElementById('locate-btn');
+        if (locateBtn) {
+            locateBtn.addEventListener('click', () => locateUser());
         }
 
         // Region filter

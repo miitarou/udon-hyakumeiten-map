@@ -259,6 +259,46 @@ html, body {
     display: none;
 }
 
+/* === 現在地ボタン === */
+.locate-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-med);
+}
+
+.locate-btn:hover {
+    background: var(--bg-tertiary);
+    transform: scale(1.1);
+}
+
+.locate-btn:active {
+    transform: scale(0.95);
+}
+
+.locate-btn.locating {
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4); }
+    50% { box-shadow: 0 2px 20px rgba(66, 133, 244, 0.6); }
+}
+
 .panel-content {
     width: var(--panel-width);
     height: 100%;
@@ -1077,6 +1117,12 @@ html, body {
     /* セレクトボックス */
     .pref-select {
         font-size: 16px;
+    }
+
+    /* 現在地ボタンのモバイル位置調整 */
+    .locate-btn {
+        bottom: 80px;
+        right: 12px;
     }
 
     /* Leafletコントロールの位置調整 */
