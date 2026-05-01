@@ -928,19 +928,71 @@ html, body {
     background: linear-gradient(135deg, var(--west-color), var(--west-dark));
 }
 
+/* 選出回数による強調 (3-4回) */
+.marker-pin.select-mid {
+    width: 32px;
+    height: 32px;
+    box-shadow: 0 2px 12px rgba(212, 168, 83, 0.5);
+}
+.marker-pin.select-mid.east {
+    background: linear-gradient(135deg, var(--east-light), var(--east-color));
+    box-shadow: 0 2px 12px rgba(91, 143, 185, 0.5);
+}
+.marker-pin.select-mid.west {
+    background: linear-gradient(135deg, var(--west-light), var(--west-color));
+}
+
+/* 選出回数による強調 (5回以上 = 殿堂) */
+.marker-pin.select-high {
+    width: 36px;
+    height: 36px;
+    box-shadow: 0 3px 16px rgba(232, 197, 71, 0.6);
+    border: 2px solid rgba(232, 197, 71, 0.8);
+}
+.marker-pin.select-high.east {
+    background: linear-gradient(135deg, #8BB8D9, var(--east-color));
+    box-shadow: 0 3px 16px rgba(91, 143, 185, 0.6);
+    border-color: rgba(122, 172, 206, 0.8);
+}
+.marker-pin.select-high.west {
+    background: linear-gradient(135deg, #E8C547, var(--primary));
+}
+
 .marker-pin.closed {
     background: linear-gradient(135deg, #666, #444) !important;
     opacity: 0.7;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+    border: none !important;
 }
 
+/* うどん丼アイコン（SVGインライン） */
 .marker-pin::after {
-    content: '🍜';
-    font-size: 14px;
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
     transform: rotate(45deg);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M15 45 C15 45 18 30 50 30 C82 30 85 45 85 45 L80 48 C80 48 75 36 50 36 C25 36 20 48 20 48 Z' fill='white'/%3E%3Cpath d='M20 48 C20 48 22 75 50 80 C78 75 80 48 80 48 Z' fill='white'/%3E%3Cpath d='M35 42 Q50 32 65 42' stroke='white' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M30 48 Q45 38 60 48' stroke='white' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M40 36 Q55 26 70 36' stroke='white' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M42 80 L38 95 L62 95 L58 80' fill='white'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.marker-pin.select-mid::after {
+    width: 18px;
+    height: 18px;
+}
+
+.marker-pin.select-high::after {
+    width: 20px;
+    height: 20px;
 }
 
 .marker-pin.closed::after {
     content: '✕';
+    background-image: none;
+    width: auto;
+    height: auto;
     font-size: 12px;
     color: var(--closed-color);
     font-weight: 700;

@@ -140,14 +140,28 @@
         const closedClass = restaurant.closed ? ' closed' : '';
         const selectCount = restaurant.years ? restaurant.years.length : 0;
 
+        // 選出回数による強調クラス
+        let selectClass = '';
+        let markerSize = [28, 36];
+        let anchorPos = [14, 36];
+        if (selectCount >= 5) {
+            selectClass = ' select-high';
+            markerSize = [36, 44];
+            anchorPos = [18, 44];
+        } else if (selectCount >= 3) {
+            selectClass = ' select-mid';
+            markerSize = [32, 40];
+            anchorPos = [16, 40];
+        }
+
         const icon = L.divIcon({
             className: 'custom-marker',
-            html: `<div class="marker-pin ${regionClass}${closedClass}">
+            html: `<div class="marker-pin ${regionClass}${closedClass}${selectClass}">
                      <span class="marker-count">${selectCount}</span>
                    </div>`,
-            iconSize: [28, 36],
-            iconAnchor: [14, 36],
-            popupAnchor: [0, -36]
+            iconSize: markerSize,
+            iconAnchor: anchorPos,
+            popupAnchor: [0, -anchorPos[1]]
         });
 
         const marker = L.marker([restaurant.lat, restaurant.lng], { icon });
