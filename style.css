@@ -1082,29 +1082,33 @@ html, body {
     .panel-open .panel-toggle-btn {
         display: flex;
         position: absolute;
-        top: 8px;
+        top: 16px;
         right: 16px;
         left: auto;
-        width: 32px;
+        width: auto;
         height: 32px;
-        padding: 0;
-        border-radius: 50%;
+        padding: 0 12px;
+        gap: 4px;
+        border-radius: 16px;
         background: var(--bg-tertiary);
         border: 1px solid var(--border-color);
         color: var(--text-secondary);
-        font-size: 16px;
+        font-size: 13px;
         z-index: 601;
         align-items: center;
         justify-content: center;
     }
 
     .panel-open .toggle-label {
-        display: none;
+        display: inline;
+        font-size: 12px;
+        color: var(--text-secondary);
     }
 
     .panel-open .toggle-icon {
         display: inline-block;
-        transform: rotate(-90deg);
+        transform: none;
+        font-size: 14px;
     }
 
     /* モバイル専用の開くボタンを表示 */

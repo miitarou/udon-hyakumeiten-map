@@ -558,15 +558,28 @@
         if (!panel) return;
         const isOpen = panel.classList.contains('panel-open');
         const mobileBtn = document.getElementById('mobile-panel-toggle');
+        const toggleLabel = document.querySelector('.toggle-label');
+        const toggleIcon = document.querySelector('.toggle-icon');
+        const isMobile = window.innerWidth <= 768;
         
         if (forceOpen === true || (!isOpen && forceOpen !== false)) {
             panel.classList.remove('panel-closed');
             panel.classList.add('panel-open');
             if (mobileBtn) mobileBtn.classList.add('mobile-toggle-hidden');
+            // モバイルではラベルを「閉じる」に変更
+            if (isMobile) {
+                if (toggleLabel) toggleLabel.textContent = '閉じる';
+                if (toggleIcon) toggleIcon.textContent = '🔽';
+            }
         } else {
             panel.classList.remove('panel-open');
             panel.classList.add('panel-closed');
             if (mobileBtn) mobileBtn.classList.remove('mobile-toggle-hidden');
+            // ラベルを元に戻す
+            if (isMobile) {
+                if (toggleLabel) toggleLabel.textContent = '🔍 検索・フィルタ';
+                if (toggleIcon) toggleIcon.textContent = '◀';
+            }
         }
         
         // 地図のリサイズ
