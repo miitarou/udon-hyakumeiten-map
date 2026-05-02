@@ -909,6 +909,42 @@ html, body {
     justify-content: center;
 }
 
+/* === 店名ラベル（ズーム連動） === */
+.marker-label {
+    background: rgba(13, 17, 23, 0.88) !important;
+    border: 1px solid rgba(212, 168, 83, 0.3) !important;
+    border-radius: 4px !important;
+    padding: 2px 8px !important;
+    font-family: var(--font-main) !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    color: #F0F6FC !important;
+    white-space: nowrap !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+    transition: opacity 0.3s ease !important;
+    pointer-events: none !important;
+}
+
+.marker-label::before {
+    border-right-color: rgba(13, 17, 23, 0.88) !important;
+}
+
+.marker-label-closed {
+    color: var(--text-muted) !important;
+    text-decoration: line-through !important;
+    border-color: rgba(100, 100, 100, 0.3) !important;
+}
+
+/* デフォルトではラベル非表示 */
+.leaflet-tooltip.marker-label {
+    display: none !important;
+}
+
+/* ズームレベルが十分な時のみ表示 */
+.show-labels .leaflet-tooltip.marker-label {
+    display: block !important;
+}
+
 .marker-pin {
     width: 28px;
     height: 28px;

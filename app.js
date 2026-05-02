@@ -77,6 +77,21 @@
         });
 
         map.addLayer(markerClusterGroup);
+
+        // ズーム連動で店名ラベルの表示/非表示を切替
+        const LABEL_SHOW_ZOOM = 15;
+        function updateLabelVisibility() {
+            const zoom = map.getZoom();
+            const mapContainer = document.getElementById('map');
+            if (zoom >= LABEL_SHOW_ZOOM) {
+                mapContainer.classList.add('show-labels');
+            } else {
+                mapContainer.classList.remove('show-labels');
+            }
+        }
+        map.on('zoomend', updateLabelVisibility);
+        // 初期状態ではラベル非表示
+        updateLabelVisibility();
     }
 
     // === Data Loading ===
@@ -173,6 +188,16 @@
             minWidth: 280,
             closeButton: true,
             autoPan: true
+        });
+
+        // 店名ラベル（ズーム連動で表示/非表示）
+        const labelClass = 'marker-label' + (restaurant.closed ? ' marker-label-closed' : '');
+        marker.bindTooltip(restaurant.name, {
+            permanent: true,
+            direction: 'right',
+            offset: [12, -10],
+            className: labelClass,
+            opacity: 0.95
         });
 
         return marker;
