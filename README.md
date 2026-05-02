@@ -54,16 +54,14 @@ open http://localhost:8080
 ├── style.css               # スタイルシート (ダークモード + グラスモーフィズム)
 ├── app.js                  # アプリケーションロジック
 ├── data/
-│   └── restaurants.json        # 全364店舗データ (座標・選出年付き)
+│   └── restaurants.json        # アプリ表示用の最小店舗データ
 ├── scripts/
-│   ├── parse_restaurants.py        # データ解析スクリプト
-│   ├── collect_all_years.py        # 全年度のデータ収集・統合
-│   ├── geocode_restaurants.py      # Nominatim ジオコーディング
-│   ├── check_years.py              # 年度データの検証
-│   └── analyze_area_data.py        # エリアデータの分析
+│   └── geocode_restaurants.py  # Nominatim ジオコーディング
 ├── DATA_LICENSE.md         # データ利用条件
 └── README.md
 ```
+
+> rawデータ、中間生成物、個別サイトからの取得・補完用スクリプトは公開対象外としています。
 
 ## 🛠️ 技術スタック
 

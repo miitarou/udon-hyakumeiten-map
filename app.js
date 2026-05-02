@@ -250,9 +250,9 @@
                     </div>` : ''}
                 </div>
                 ${badgesHtml}
-                <a href="${escapeHtml(r.url)}" target="_blank" rel="noopener noreferrer" class="popup-link">
+                ${isSafeUrl(r.url) ? `<a href="${escapeHtml(r.url)}" target="_blank" rel="noopener noreferrer" class="popup-link">` : `<span class="popup-link popup-link-disabled">`}
                     🔗 食べログで見る
-                </a>
+                ${isSafeUrl(r.url) ? '</a>' : '</span>'}
             </div>`;
     }
 
@@ -743,6 +743,17 @@
     }
 
     // === Utility ===
+    // URLが安全な食べログリンクかどうかを検証
+    function isSafeUrl(url) {
+        if (!url || typeof url !== 'string') return false;
+        try {
+            const parsed = new URL(url);
+            return parsed.protocol === 'https:' && parsed.hostname.endsWith('tabelog.com');
+        } catch {
+            return false;
+        }
+    }
+
     function escapeHtml(str) {
         if (!str) return '';
         const div = document.createElement('div');

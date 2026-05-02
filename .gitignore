@@ -34,3 +34,8 @@ scripts/debug_html.py
 scripts/fix_early_years.py
 scripts/fix_early_years_v2.py
 scripts/analyze_html.py
+scripts/check_early_years.py
+scripts/check_years.py
+scripts/collect_all_years.py
+scripts/parse_restaurants.py
+scripts/analyze_area_data.py
