@@ -620,6 +620,7 @@
                 const sortSelect = document.getElementById('sort-select');
                 const distOption = sortSelect ? sortSelect.querySelector('option[value="distance"]') : null;
                 if (distOption) {
+                    distOption.removeAttribute('disabled');
                     distOption.disabled = false;
                     distOption.textContent = '現在地から近い順 📍';
                 }
