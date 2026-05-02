@@ -856,6 +856,79 @@ html, body {
     box-shadow: 0 4px 16px var(--primary-glow);
 }
 
+/* === 地図アプリ連携ボタン（ポップアップ内） === */
+.popup-map-links {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.popup-map-btn {
+    flex: 1;
+    display: block;
+    padding: 8px 6px;
+    text-align: center;
+    text-decoration: none;
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+.popup-map-google {
+    background: linear-gradient(135deg, #4285F4, #3367D6);
+    color: white;
+}
+
+.popup-map-google:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 12px rgba(66, 133, 244, 0.4);
+}
+
+.popup-map-apple {
+    background: linear-gradient(135deg, #333, #1a1a1a);
+    color: white;
+}
+
+.popup-map-apple:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* === カード内距離表示 === */
+.card-distance {
+    font-size: 11px;
+    color: #4285F4;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* === カード内地図ボタン === */
+.card-map-links {
+    margin-top: 4px;
+}
+
+.card-map-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(66, 133, 244, 0.1);
+    color: #4285F4;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all var(--transition-fast);
+}
+
+.card-map-btn:hover {
+    background: rgba(66, 133, 244, 0.2);
+    transform: scale(1.1);
+}
+
 .popup-closed-banner {
     background: rgba(248, 81, 73, 0.1);
     border: 1px solid rgba(248, 81, 73, 0.3);

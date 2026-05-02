@@ -21,6 +21,8 @@
     let hideClosedShops = false;   // 閉店除外フィルタ
     let searchQuery = '';
     let sortMode = 'name';        // ソートモード
+    let userLat = null;           // 現在地 緯度
+    let userLng = null;           // 現在地 経度
 
     // === Map Tiles (国土地理院 淡色地図 - 全日本語表記) ===
     const TILE_URL = 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png';
@@ -227,6 +229,21 @@
         // 選出回数テキスト
         const countText = selectCount > 0 ? `<span class="popup-select-count">${selectCount}回選出</span>` : '';
 
+        // 距離情報
+        const distText = (userLat !== null && r.lat != null) ? 
+            `<div class="popup-detail-row"><span class="popup-detail-icon">📏</span><span class="popup-detail-text">現在地から ${formatDistance(calcDistance(userLat, userLng, r.lat, r.lng))}</span></div>` : '';
+
+        // 地図アプリリンク
+        const mapLinksHtml = (r.lat != null && r.lng != null) ? `
+            <div class="popup-map-links">
+                <a href="${getGoogleMapsDirectionsUrl(r.lat, r.lng)}" target="_blank" rel="noopener noreferrer" class="popup-map-btn popup-map-google">
+                    🗺 Google Mapsで経路
+                </a>
+                <a href="${getAppleMapsUrl(r.lat, r.lng, r.name)}" target="_blank" rel="noopener noreferrer" class="popup-map-btn popup-map-apple">
+                     Apple Maps
+                </a>
+            </div>` : '';
+
         return `
             <div class="popup-inner">
                 <div class="popup-header">
@@ -248,11 +265,13 @@
                         <span class="popup-detail-icon">🗓</span>
                         <span class="popup-detail-text">${escapeHtml(r.holiday)}</span>
                     </div>` : ''}
+                    ${distText}
                 </div>
                 ${badgesHtml}
                 ${isSafeUrl(r.url) ? `<a href="${escapeHtml(r.url)}" target="_blank" rel="noopener noreferrer" class="popup-link">` : `<span class="popup-link popup-link-disabled">`}
                     🔗 食べログで見る
                 ${isSafeUrl(r.url) ? '</a>' : '</span>'}
+                ${mapLinksHtml}
             </div>`;
     }
 
@@ -353,7 +372,51 @@
                     (a.name || '').localeCompare(b.name || '', 'ja')
                 );
                 break;
+            case 'distance':
+                if (userLat !== null && userLng !== null) {
+                    filteredRestaurants.sort((a, b) => {
+                        const da = calcDistance(userLat, userLng, a.lat, a.lng);
+                        const db = calcDistance(userLat, userLng, b.lat, b.lng);
+                        return da - db;
+                    });
+                }
+                break;
         }
+    }
+
+    // === Haversine距離計算 (km) ===
+    function calcDistance(lat1, lon1, lat2, lon2) {
+        if (lat2 == null || lon2 == null) return Infinity;
+        const R = 6371;
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                  Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                  Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
+
+    // === 距離フォーマット ===
+    function formatDistance(km) {
+        if (km === Infinity || km == null) return '';
+        if (km < 1) return Math.round(km * 1000) + 'm';
+        if (km < 10) return km.toFixed(1) + 'km';
+        return Math.round(km) + 'km';
+    }
+
+    // === 地図アプリURL生成 ===
+    function getGoogleMapsUrl(lat, lng, name) {
+        const q = encodeURIComponent(name);
+        return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}&query_place_id=${q}`;
+    }
+
+    function getGoogleMapsDirectionsUrl(lat, lng) {
+        return `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+    }
+
+    function getAppleMapsUrl(lat, lng, name) {
+        const q = encodeURIComponent(name);
+        return `https://maps.apple.com/?q=${q}&ll=${lat},${lng}`;
     }
 
     // === Render Markers ===
@@ -405,16 +468,26 @@
             const countBadgeClass = selectCount >= 5 ? 'count-badge-gold' : selectCount >= 3 ? 'count-badge-silver' : '';
             const countBadge = `<span class="count-badge ${countBadgeClass}">${selectCount}回</span>`;
 
+            // 距離表示
+            const distStr = (userLat !== null && r.lat != null) ?
+                formatDistance(calcDistance(userLat, userLng, r.lat, r.lng)) : '';
+            const distHtml = distStr ? `<span class="card-distance">📏 ${distStr}</span>` : '';
+
+            // カード内地図ボタン
+            const cardMapBtn = (r.lat != null && r.lng != null) ?
+                `<div class="card-map-links"><a href="${getGoogleMapsDirectionsUrl(r.lat, r.lng)}" target="_blank" rel="noopener noreferrer" class="card-map-btn" title="Google Mapsで経路検索" onclick="event.stopPropagation()">🗺</a></div>` : '';
+
             card.innerHTML = `
                 <div class="card-region-dot ${r.region.toLowerCase()}"></div>
                 <div class="card-info">
                     <div class="card-name">${escapeHtml(r.name)}</div>
-                    <div class="card-area">${escapeHtml(r.prefecture)} ${escapeHtml(r.area)}</div>
+                    <div class="card-area">${escapeHtml(r.prefecture)} ${escapeHtml(r.area)} ${distHtml}</div>
                 </div>
                 <div class="card-right">
                     ${countBadge}
                     <div class="card-year-badges">${yearBadgesHtml}</div>
                     <div class="card-badges">${badgesHtml}</div>
+                    ${cardMapBtn}
                 </div>
             `;
 
@@ -536,8 +609,28 @@
                     opacity: 0.3
                 }).addTo(map);
 
+                // ユーザー位置をグローバルに保存
+                userLat = lat;
+                userLng = lng;
+
                 // ズームレベル14で現在地にフライ
                 map.flyTo([lat, lng], 14, { duration: 1.5 });
+
+                // 「近い順」ソートオプションを有効化
+                const sortSelect = document.getElementById('sort-select');
+                const distOption = sortSelect ? sortSelect.querySelector('option[value="distance"]') : null;
+                if (distOption) {
+                    distOption.disabled = false;
+                    distOption.textContent = '現在地から近い順 📍';
+                }
+
+                // 現在のソートが距離順ならリスト更新
+                if (sortMode === 'distance') {
+                    applyFilters();
+                } else {
+                    // リストを再描画して距離表示を追加
+                    renderList();
+                }
 
                 btn.classList.remove('locating');
             },
