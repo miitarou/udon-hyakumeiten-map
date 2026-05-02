@@ -1244,8 +1244,14 @@ html, body {
         margin-right: 10px !important;
     }
     /* 店舗リストのモバイル表示 */
+    .restaurant-list-section {
+        flex: none;
+        min-height: auto;
+    }
+
     .restaurant-list {
-        max-height: 35vh;
+        flex: none;
+        max-height: 40vh;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
     }
