@@ -77,21 +77,8 @@
         });
 
         map.addLayer(markerClusterGroup);
-
-        // ズーム連動で店名ラベルの表示/非表示を切替
-        const LABEL_SHOW_ZOOM = 15;
-        function updateLabelVisibility() {
-            const zoom = map.getZoom();
-            const mapContainer = document.getElementById('map');
-            if (zoom >= LABEL_SHOW_ZOOM) {
-                mapContainer.classList.add('show-labels');
-            } else {
-                mapContainer.classList.remove('show-labels');
-            }
-        }
-        map.on('zoomend', updateLabelVisibility);
-        // 初期状態ではラベル非表示
-        updateLabelVisibility();
+        // 店名ラベルはpermanent tooltipとして各マーカーに設定済み
+        // MarkerClusterが個別マーカーを表示する際にラベルも自動表示される
     }
 
     // === Data Loading ===

@@ -935,15 +935,7 @@ html, body {
     border-color: rgba(100, 100, 100, 0.3) !important;
 }
 
-/* デフォルトではラベル非表示 */
-.leaflet-tooltip.marker-label {
-    display: none !important;
-}
-
-/* ズームレベルが十分な時のみ表示 */
-.show-labels .leaflet-tooltip.marker-label {
-    display: block !important;
-}
+/* ラベルはマーカーの表示状態に連動（MarkerCluster管理） */
 
 .marker-pin {
     width: 28px;
