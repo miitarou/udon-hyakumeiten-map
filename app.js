@@ -729,6 +729,16 @@
             }
         });
 
+        // フッター免責トグル
+        const footerToggle = document.getElementById('footer-toggle');
+        const appFooter = document.getElementById('app-footer');
+        if (footerToggle && appFooter) {
+            footerToggle.addEventListener('click', () => {
+                const isOpen = appFooter.classList.toggle('show');
+                footerToggle.textContent = isOpen ? '✕ 閉じる' : 'ℹ️ 免責・出典';
+            });
+        }
+
         console.log('✅ イベントバインド完了');
     }
 

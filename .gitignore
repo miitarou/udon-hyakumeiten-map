@@ -15,15 +15,22 @@ nissei-report-intelligence/
 watch-antigravity.sh
 package.json
 
-# Raw data (keep only final restaurants.json)
+# Raw / intermediate data (keep only final restaurants.json for app)
 data/restaurants_raw.json
+data/all_years_raw.json
+data/restaurants_merged.json
+data/address_progress.json
+data/sample_2022.html
 
 # Python cache
 __pycache__/
 *.pyc
 
-# 作業用キャッシュ
-data/address_progress.json
-data/all_years_raw.json
-data/restaurants_merged.json
-data/sample_2022.html
+# Scraping / geocoding scripts (non-public)
+scripts/geocode_from_tabelog.py
+scripts/geocode_missing.py
+scripts/fetch_addresses.py
+scripts/debug_html.py
+scripts/fix_early_years.py
+scripts/fix_early_years_v2.py
+scripts/analyze_html.py

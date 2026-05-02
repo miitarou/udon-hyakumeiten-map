@@ -54,20 +54,14 @@ open http://localhost:8080
 ├── style.css               # スタイルシート (ダークモード + グラスモーフィズム)
 ├── app.js                  # アプリケーションロジック
 ├── data/
-│   ├── restaurants.json        # 全364店舗データ (座標・選出年付き)
-│   ├── restaurants_merged.json # 年度統合済みデータ
-│   ├── all_years_raw.json      # 全年度の生データ
-│   └── restaurants_raw.json    # 生データ (ジオコーディング前)
+│   └── restaurants.json        # 全364店舗データ (座標・選出年付き)
 ├── scripts/
-│   ├── parse_restaurants.py        # HTMLから店舗データを解析
-│   ├── collect_all_years.py        # 全年度のデータを収集・統合
+│   ├── parse_restaurants.py        # データ解析スクリプト
+│   ├── collect_all_years.py        # 全年度のデータ収集・統合
 │   ├── geocode_restaurants.py      # Nominatim ジオコーディング
-│   ├── geocode_from_tabelog.py     # 食べログからの精密座標取得
-│   ├── geocode_missing.py          # 座標未取得店舗の補完
-│   ├── fetch_addresses.py          # 住所データ取得
-│   ├── fix_early_years.py          # 初期年度データの修正
 │   ├── check_years.py              # 年度データの検証
 │   └── analyze_area_data.py        # エリアデータの分析
+├── DATA_LICENSE.md         # データ利用条件
 └── README.md
 ```
 
@@ -77,27 +71,39 @@ open http://localhost:8080
 |---------|------|
 | 地図描画 | [Leaflet.js](https://leafletjs.com/) v1.9.4 |
 | クラスタリング | [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster) |
-| 地図タイル | [国土地理院タイル](https://maps.gsi.go.jp/) |
+| 地図タイル | [地理院タイル（淡色地図）](https://maps.gsi.go.jp/development/ichiran.html)　出典：国土地理院 |
 | フォント | [Noto Sans JP](https://fonts.google.com/noto/specimen/Noto+Sans+JP), [Outfit](https://fonts.google.com/specimen/Outfit) |
-| データソース | [食べログ 百名店](https://award.tabelog.com/hyakumeiten/) |
-| ジオコーディング | 食べログ店舗ページからの座標抽出 + Nominatim |
 | ホスティング | [GitHub Pages](https://pages.github.com/) |
 
 ## 📊 データについて
 
-- **対象**: 食べログ うどん百名店 2017〜2024（全6回分）
+本サイトは、公開情報をもとに個人が整理した**非公式の参考マップ**です。
+
+- **対象**: うどん百名店 2017〜2024（全6回分）の店舗情報
 - **店舗数**: 全364店舗（EAST 202店 / WEST 162店）
 - **選出年**: 2017, 2018, 2019, 2020, 2022, 2024
-- **座標精度**: 食べログ店舗ページから直接取得（建物レベルの精度）
 - **閉店情報**: 閉店店舗は取消線ラベル + グレー表示で区別
 
-## 📝 ライセンス
+⚠️ 掲載情報の正確性、完全性、最新性は保証しません。
+営業時間、定休日、閉店・移転状況、予約可否等は、来店前に必ず公式情報または[食べログ](https://tabelog.com/)店舗ページでご確認ください。
 
-MIT License
+## ⚖️ ライセンス
+
+**ソースコードは MIT License で提供します。**
+
+ただし、`data/` 配下の店舗データ（店舗名、選出年度、住所、座標、URL、閉店情報等）は **MIT License の対象外** です。
+詳細は [DATA_LICENSE.md](DATA_LICENSE.md) をご確認ください。
+
+## ⚠️ 免責事項
+
+本サイトは個人が作成した**非公式のファンツール**です。
+食べログ、株式会社カカクコム、食べログ 百名店とは**提携・協賛・承認関係にありません**。
+
+現在地情報はブラウザ上でのみ使用し、サーバーへの送信・保存は一切行いません。
 
 ## 🙏 謝辞
 
-- [食べログ](https://tabelog.com/) — 百名店データの提供元
-- [国土地理院](https://www.gsi.go.jp/) — 地図タイル
-- [OpenStreetMap](https://www.openstreetmap.org/) — 地図データ
+- [食べログ](https://tabelog.com/) — 百名店情報の参照元
+- [国土地理院](https://www.gsi.go.jp/) — [地理院タイル](https://maps.gsi.go.jp/development/ichiran.html)
+- [OpenStreetMap](https://www.openstreetmap.org/) — 地図データ / [Nominatim](https://nominatim.org/)（ジオコーディング）
 - [Leaflet](https://leafletjs.com/) — 地図ライブラリ

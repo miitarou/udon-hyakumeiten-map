@@ -1293,3 +1293,84 @@ html, body {
     color: var(--text-secondary);
     letter-spacing: 2px;
 }
+
+/* === Footer: 免責・出典 === */
+#app-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 800;
+    background: rgba(18, 18, 24, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(212, 168, 83, 0.15);
+    padding: 10px 16px;
+    font-size: 10px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    max-height: 40vh;
+    overflow-y: auto;
+}
+
+#app-footer.show {
+    transform: translateY(0);
+}
+
+#app-footer p {
+    margin: 2px 0;
+}
+
+#app-footer a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+#app-footer a:hover {
+    text-decoration: underline;
+}
+
+.footer-disclaimer {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.footer-privacy {
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+}
+
+.footer-source {
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 4px !important;
+}
+
+/* フッタートグルボタン */
+.footer-toggle-btn {
+    position: fixed;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 801;
+    background: rgba(18, 18, 24, 0.8);
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(212, 168, 83, 0.2);
+    border-radius: 12px;
+    padding: 3px 12px;
+    font-size: 9px;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: all 0.2s ease;
+}
+
+.footer-toggle-btn:hover {
+    color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(212, 168, 83, 0.4);
+}
+
+.footer-toggle-btn.active {
+    bottom: auto;
+}
