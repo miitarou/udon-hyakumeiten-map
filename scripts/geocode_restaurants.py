@@ -4,12 +4,21 @@
 - 不足店舗の手動追加
 - Nominatim APIで緯度経度を取得
 - レート制限: 1リクエスト/秒
+
+注意:
+  本スクリプトは一度限りの小規模な事前データ整備を想定しています。
+  Nominatimの利用ポリシー（https://operations.osmfoundation.org/policies/nominatim/）に従い、
+  連続・反復・高頻度の実行は避けてください。
+  取得結果はキャッシュし、同一住所への再問い合わせを避けてください。
+
+  入力ファイル (restaurants_raw.json) は非公開データのため、
+  リポジトリには含まれていません。
 """
 import json
 import time
 import urllib.request
 import urllib.parse
-import os
+from pathlib import Path
 
 def geocode_nominatim(query, retries=2):
     """Nominatim APIで住所→緯度経度変換"""
@@ -261,8 +270,10 @@ PREF_DEFAULT = {
 
 
 def main():
-    input_path = "/Users/miitarou/Documents/New project/data/restaurants_raw.json"
-    output_path = "/Users/miitarou/Documents/New project/data/restaurants.json"
+    # プロジェクトルートからの相対パスで入出力ファイルを指定
+    base_dir = Path(__file__).resolve().parents[1]
+    input_path = base_dir / "data" / "restaurants_raw.json"
+    output_path = base_dir / "data" / "restaurants.json"
     
     with open(input_path, 'r', encoding='utf-8') as f:
         restaurants = json.load(f)
