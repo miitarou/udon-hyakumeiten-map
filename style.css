@@ -1094,6 +1094,7 @@ html, body {
         border-top: 1px solid var(--border-color);
         border-radius: 20px 20px 0 0;
         box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.5);
+        overflow: visible;
     }
 
     #control-panel.panel-closed {
@@ -1107,7 +1108,8 @@ html, body {
     .panel-content {
         width: 100%;
         padding: 24px 16px 16px;
-        height: calc(70vh - 20px);
+        height: 100%;
+        max-height: calc(70vh - 10px);
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
     }
@@ -1240,6 +1242,16 @@ html, body {
     /* Leafletコントロールの位置調整 */
     .leaflet-control-zoom {
         margin-right: 10px !important;
+    }
+    /* 店舗リストのモバイル表示 */
+    .restaurant-list {
+        max-height: 35vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .restaurant-card {
+        padding: 8px 10px;
     }
 }
 
