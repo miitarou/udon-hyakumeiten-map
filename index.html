@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="style.css?v=2.3">
+    <link rel="stylesheet" href="style.css?v=2.4">
 </head>
 <body>
     <!-- ヘッダー -->
@@ -52,67 +52,72 @@
         </button>
         
         <div class="panel-content">
-            <!-- 検索 -->
+            <!-- 検索（常時表示） -->
             <div class="control-section">
                 <label class="control-label" for="search-input">🔍 店名検索</label>
                 <input type="text" id="search-input" class="search-input" placeholder="店名・エリアで検索..." autocomplete="off">
             </div>
 
-            <!-- リージョンフィルタ -->
-            <div class="control-section">
-                <label class="control-label">📍 エリア</label>
-                <div class="filter-group region-filters">
-                    <button class="filter-btn active" data-filter="all">ALL</button>
-                    <button class="filter-btn east-btn" data-filter="EAST">EAST</button>
-                    <button class="filter-btn west-btn" data-filter="WEST">WEST</button>
+            <!-- 絞り込みフィルタ（折りたたみ可能） -->
+            <div class="control-section collapsible-section" id="filter-section">
+                <button class="section-toggle" aria-expanded="false" aria-controls="filter-body">
+                    <span class="section-toggle-label">🎯 絞り込みフィルタ</span>
+                    <span class="section-toggle-arrow">▼</span>
+                </button>
+                <div class="section-body collapsed" id="filter-body">
+                    <!-- エリア -->
+                    <div class="filter-subsection">
+                        <label class="control-label">📍 エリア</label>
+                        <div class="filter-group region-filters">
+                            <button class="filter-btn active" data-filter="all">ALL</button>
+                            <button class="filter-btn east-btn" data-filter="EAST">EAST</button>
+                            <button class="filter-btn west-btn" data-filter="WEST">WEST</button>
+                        </div>
+                    </div>
+                    <!-- 都道府県 -->
+                    <div class="filter-subsection">
+                        <label class="control-label" for="pref-select">🗾 都道府県</label>
+                        <select id="pref-select" class="pref-select">
+                            <option value="all">すべて</option>
+                        </select>
+                    </div>
+                    <!-- 選出年 -->
+                    <div class="filter-subsection">
+                        <label class="control-label">📅 選出年</label>
+                        <div class="filter-group year-filters">
+                            <button class="filter-btn active" data-year="all">全年度</button>
+                            <button class="filter-btn year-filter-btn" data-year="2024">2024</button>
+                            <button class="filter-btn year-filter-btn" data-year="2022">2022</button>
+                            <button class="filter-btn year-filter-btn" data-year="2020">2020</button>
+                            <button class="filter-btn year-filter-btn" data-year="2019">2019</button>
+                            <button class="filter-btn year-filter-btn" data-year="2018">2018</button>
+                            <button class="filter-btn year-filter-btn" data-year="2017">2017</button>
+                        </div>
+                    </div>
+                    <!-- 選出回数 -->
+                    <div class="filter-subsection">
+                        <label class="control-label">🏆 選出回数</label>
+                        <div class="filter-group count-filters">
+                            <button class="filter-btn active" data-min-count="0">指定なし</button>
+                            <button class="filter-btn" data-min-count="2">2回以上</button>
+                            <button class="filter-btn" data-min-count="3">3回以上</button>
+                            <button class="filter-btn" data-min-count="4">4回以上</button>
+                            <button class="filter-btn" data-min-count="5">5回以上</button>
+                            <button class="filter-btn" data-min-count="6">6回以上</button>
+                        </div>
+                    </div>
+                    <!-- 特殊フィルタ -->
+                    <div class="filter-subsection">
+                        <label class="control-label">⭐ 特殊フィルタ</label>
+                        <div class="filter-group special-filters">
+                            <button class="filter-btn" id="first-selected-btn">初選出のみ</button>
+                            <button class="filter-btn" id="hide-closed-btn">閉店を除外</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- 都道府県フィルタ -->
-            <div class="control-section">
-                <label class="control-label" for="pref-select">🗾 都道府県</label>
-                <select id="pref-select" class="pref-select">
-                    <option value="all">すべて</option>
-                </select>
-            </div>
-
-            <!-- 選出年フィルタ -->
-            <div class="control-section">
-                <label class="control-label">📅 選出年</label>
-                <div class="filter-group year-filters">
-                    <button class="filter-btn active" data-year="all">全年度</button>
-                    <button class="filter-btn year-filter-btn" data-year="2024">2024</button>
-                    <button class="filter-btn year-filter-btn" data-year="2022">2022</button>
-                    <button class="filter-btn year-filter-btn" data-year="2020">2020</button>
-                    <button class="filter-btn year-filter-btn" data-year="2019">2019</button>
-                    <button class="filter-btn year-filter-btn" data-year="2018">2018</button>
-                    <button class="filter-btn year-filter-btn" data-year="2017">2017</button>
-                </div>
-            </div>
-
-            <!-- 選出回数フィルタ -->
-            <div class="control-section">
-                <label class="control-label">🏆 選出回数</label>
-                <div class="filter-group count-filters">
-                    <button class="filter-btn active" data-min-count="0">指定なし</button>
-                    <button class="filter-btn" data-min-count="2">2回以上</button>
-                    <button class="filter-btn" data-min-count="3">3回以上</button>
-                    <button class="filter-btn" data-min-count="4">4回以上</button>
-                    <button class="filter-btn" data-min-count="5">5回以上</button>
-                    <button class="filter-btn" data-min-count="6">6回以上</button>
-                </div>
-            </div>
-
-            <!-- 特殊フィルタ -->
-            <div class="control-section">
-                <label class="control-label">⭐ 特殊フィルタ</label>
-                <div class="filter-group special-filters">
-                    <button class="filter-btn" id="first-selected-btn">初選出のみ</button>
-                    <button class="filter-btn" id="hide-closed-btn">閉店を除外</button>
-                </div>
-            </div>
-
-            <!-- 表示件数 & ソート -->
+            <!-- 表示件数 & ソート（常時表示） -->
             <div class="control-section results-info">
                 <div class="results-header">
                     <div class="results-count">
@@ -136,6 +141,9 @@
                 <div id="restaurant-list" class="restaurant-list"></div>
             </div>
         </div>
+
+        <!-- パネル幅リサイズハンドル（PC用） -->
+        <div id="panel-resize-handle" class="panel-resize-handle" title="ドラッグで幅を調整"></div>
     </aside>
 
     <!-- モバイル用パネル開閉ボタン（パネルの外に配置） -->
@@ -178,6 +186,6 @@
     <!-- Leaflet MarkerCluster JS -->
     <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
     
-    <script src="app.js?v=2.3"></script>
+    <script src="app.js?v=2.4"></script>
 </body>
 </html>

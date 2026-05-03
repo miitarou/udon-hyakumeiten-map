@@ -707,6 +707,59 @@
             locateBtn.addEventListener('click', () => locateUser());
         }
 
+        // フィルタセクション折りたたみ
+        document.querySelectorAll('.section-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const targetId = this.getAttribute('aria-controls');
+                const body = document.getElementById(targetId);
+                if (!body) return;
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                body.classList.toggle('collapsed', isExpanded);
+            });
+        });
+
+        // パネル幅リサイズ（PC用ドラッグ）
+        const resizeHandle = document.getElementById('panel-resize-handle');
+        if (resizeHandle && window.innerWidth > 768) {
+            let isResizing = false;
+            let startX = 0;
+            let startWidth = 0;
+
+            resizeHandle.addEventListener('mousedown', function(e) {
+                e.preventDefault();
+                isResizing = true;
+                startX = e.clientX;
+                const panel = document.getElementById('control-panel');
+                startWidth = panel.offsetWidth;
+                document.body.classList.add('panel-resizing');
+                resizeHandle.classList.add('dragging');
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (!isResizing) return;
+                e.preventDefault();
+                const diff = e.clientX - startX;
+                let newWidth = startWidth + diff;
+                // 最小280px、最大600pxに制限
+                newWidth = Math.max(280, Math.min(600, newWidth));
+                const panel = document.getElementById('control-panel');
+                panel.style.width = newWidth + 'px';
+                // CSS変数も更新（translateXの計算に使われる）
+                document.documentElement.style.setProperty('--panel-width', newWidth + 'px');
+                // 地図をリサイズ
+                map.invalidateSize();
+            });
+
+            document.addEventListener('mouseup', function() {
+                if (!isResizing) return;
+                isResizing = false;
+                document.body.classList.remove('panel-resizing');
+                resizeHandle.classList.remove('dragging');
+                map.invalidateSize();
+            });
+        }
+
         // Region filter
         document.querySelectorAll('.region-filters .filter-btn').forEach(btn => {
             btn.addEventListener('click', function() {
