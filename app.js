@@ -479,7 +479,7 @@
                 <div class="card-right">
                     ${countBadge}
                     <div class="card-year-badges">${yearBadgesHtml}</div>
-                    <div class="card-badges">${badgesHtml}</div>
+                    ${badgesHtml}
                     ${cardMapBtn}
                 </div>
             `;

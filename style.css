@@ -847,10 +847,13 @@ body.panel-resizing * {
 /* カード内の右側レイアウト */
 .card-right {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 4px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 3px;
     flex-shrink: 0;
+    max-width: 55%;
 }
 
 .card-year-badges {
@@ -1025,20 +1028,20 @@ body.panel-resizing * {
 
 /* === カード内地図ボタン === */
 .card-map-links {
-    margin-top: 4px;
+    margin: 0;
 }
 
 .card-map-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
     background: rgba(66, 133, 244, 0.1);
     color: #4285F4;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 12px;
     transition: all var(--transition-fast);
 }
 
