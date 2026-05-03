@@ -888,16 +888,6 @@ html, body {
     color: white !important;
 }
 
-.popup-map-apple {
-    background: linear-gradient(135deg, #333, #1a1a1a);
-}
-
-.popup-map-apple:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
-    color: white !important;
-}
-
 /* === カード内距離表示 === */
 .card-distance {
     font-size: 11px;

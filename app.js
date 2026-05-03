@@ -233,14 +233,11 @@
         const distText = (userLat !== null && r.lat != null) ? 
             `<div class="popup-detail-row"><span class="popup-detail-icon">📏</span><span class="popup-detail-text">現在地から ${formatDistance(calcDistance(userLat, userLng, r.lat, r.lng))}</span></div>` : '';
 
-        // 地図アプリリンク
+        // 地図アプリリンク（Google Mapsのみ）
         const mapLinksHtml = (r.lat != null && r.lng != null) ? `
             <div class="popup-map-links">
                 <a href="${getGoogleMapsDirectionsUrl(r.lat, r.lng)}" target="_blank" rel="noopener noreferrer" class="popup-map-btn popup-map-google">
                     🗺 Google Mapsで経路
-                </a>
-                <a href="${getAppleMapsUrl(r.lat, r.lng, r.name)}" target="_blank" rel="noopener noreferrer" class="popup-map-btn popup-map-apple">
-                     Apple Maps
                 </a>
             </div>` : '';
 
@@ -414,10 +411,6 @@
         return `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
     }
 
-    function getAppleMapsUrl(lat, lng, name) {
-        const q = encodeURIComponent(name);
-        return `https://maps.apple.com/?q=${q}&ll=${lat},${lng}`;
-    }
 
     // === Render Markers ===
     function renderMarkers() {
