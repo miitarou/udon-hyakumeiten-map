@@ -102,6 +102,28 @@ html, body {
     gap: 10px;
 }
 
+/* タイトルクリックでトップに戻る */
+.logo-home {
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 2px 6px;
+    margin: -2px -6px;
+    transition: background 0.2s ease, opacity 0.15s ease;
+}
+
+.logo-home:hover {
+    background: rgba(212, 168, 83, 0.1);
+}
+
+.logo-home:active {
+    opacity: 0.7;
+}
+
+.logo-home:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
 .logo-icon {
     display: inline-block;
     vertical-align: middle;
@@ -297,12 +319,6 @@ html, body {
 .map-action-btn:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
-}
-
-/* ホームボタン（日本全体に戻る） */
-.home-btn {
-    bottom: 128px;
-    font-size: 18px;
 }
 
 /* 殿堂入りトグル */
@@ -1514,11 +1530,6 @@ body.panel-resizing * {
     /* 現在地ボタンのモバイル位置調整 */
     .locate-btn {
         bottom: calc(80px + env(safe-area-inset-bottom, 0px));
-        right: 12px;
-    }
-
-    .home-btn {
-        bottom: calc(184px + env(safe-area-inset-bottom, 0px));
         right: 12px;
     }
 

@@ -770,11 +770,18 @@
     function bindEvents() {
         console.log('🔗 イベントバインド開始');
 
-        // ホームボタン（日本全体に戻る）
-        const homeBtn = document.getElementById('home-btn');
-        if (homeBtn) {
-            homeBtn.addEventListener('click', () => {
-                map.flyTo(JAPAN_CENTER, JAPAN_ZOOM, { duration: 1.2 });
+        // タイトルクリックでトップに戻る（🏠ボタン統合）
+        const logoHome = document.getElementById('logo-home');
+        if (logoHome) {
+            const goHome = () => {
+                resetAllFilters();
+            };
+            logoHome.addEventListener('click', goHome);
+            logoHome.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    goHome();
+                }
             });
         }
 
