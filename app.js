@@ -23,6 +23,8 @@
     let sortMode = 'name';        // ソートモード
     let userLat = null;           // 現在地 緯度
     let userLng = null;           // 現在地 経度
+    let hallOfFameMode = false;   // 殿堂入りモード（5回以上）
+    let fitBoundsTimer = null;    // fitBounds debounce用
 
     // === Map Tiles (国土地理院 淡色地図 - 全日本語表記) ===
     const TILE_URL = 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png';
@@ -332,6 +334,12 @@
                 if (!searchTarget.includes(q) && !searchTarget.includes(qBase)) return false;
             }
             
+            // 殿堂入りモード（5回以上のみ）
+            if (hallOfFameMode) {
+                const count = r.years ? r.years.length : 0;
+                if (count < 5) return false;
+            }
+
             return true;
         });
 
@@ -425,15 +433,18 @@
             }
         });
 
-        // フィルタ適用時にビューをフィット
+        // フィルタ適用時にビューをフィット（debounce付き）
         if (filteredRestaurants.length > 0 && filteredRestaurants.length < allRestaurants.length) {
             const validPoints = filteredRestaurants
                 .filter(r => r.lat && r.lng)
                 .map(r => [r.lat, r.lng]);
             
             if (validPoints.length > 0) {
-                const bounds = L.latLngBounds(validPoints);
-                map.fitBounds(bounds, { padding: [50, 50], maxZoom: 12 });
+                clearTimeout(fitBoundsTimer);
+                fitBoundsTimer = setTimeout(() => {
+                    const bounds = L.latLngBounds(validPoints);
+                    map.fitBounds(bounds, { padding: [50, 50], maxZoom: 12 });
+                }, 200);
             }
         }
     }
@@ -442,6 +453,24 @@
     function renderList() {
         const container = document.getElementById('restaurant-list');
         container.innerHTML = '';
+
+        // 空状態UI: 0件時
+        if (filteredRestaurants.length === 0) {
+            container.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon">🍜</div>
+                    <div class="empty-state-title">該当する店舗が見つかりません</div>
+                    <div class="empty-state-desc">検索条件を変更するか、フィルタをリセットしてください。</div>
+                    <button class="empty-state-reset" id="empty-reset-btn">フィルタをリセット</button>
+                </div>
+            `;
+            // リセットボタンのイベント
+            const resetBtn = document.getElementById('empty-reset-btn');
+            if (resetBtn) {
+                resetBtn.addEventListener('click', resetAllFilters);
+            }
+            return;
+        }
 
         filteredRestaurants.forEach((r, i) => {
             const card = document.createElement('div');
@@ -513,6 +542,58 @@
         if (window.innerWidth <= 768) {
             togglePanel(false);
         }
+    }
+
+    // === フィルタ全リセット ===
+    function resetAllFilters() {
+        // State初期化
+        activeRegion = 'all';
+        activePrefecture = 'all';
+        activeYear = 'all';
+        minSelectCount = 0;
+        firstSelectedOnly = false;
+        hideClosedShops = false;
+        searchQuery = '';
+        hallOfFameMode = false;
+
+        // UI リセット
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) searchInput.value = '';
+
+        const prefSelect = document.getElementById('pref-select');
+        if (prefSelect) prefSelect.value = 'all';
+
+        // フィルタボタンのactive/aria-pressed リセット
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            const isDefault = btn.dataset.filter === 'all' ||
+                              btn.dataset.year === 'all' ||
+                              btn.dataset.minCount === '0' ||
+                              btn.getAttribute('data-min-count') === '0';
+            btn.classList.toggle('active', isDefault);
+            btn.setAttribute('aria-pressed', isDefault ? 'true' : 'false');
+        });
+
+        // 初選出・閉店ボタンの明示リセット
+        const firstBtn = document.getElementById('first-selected-btn');
+        if (firstBtn) {
+            firstBtn.classList.remove('active');
+            firstBtn.setAttribute('aria-pressed', 'false');
+        }
+        const closedBtn = document.getElementById('hide-closed-btn');
+        if (closedBtn) {
+            closedBtn.classList.remove('active');
+            closedBtn.setAttribute('aria-pressed', 'false');
+        }
+
+        // 殿堂入りボタンリセット
+        const hofBtn = document.getElementById('hall-of-fame-btn');
+        if (hofBtn) hofBtn.setAttribute('aria-pressed', 'false');
+
+        // 地図を日本全体に戻す
+        map.flyTo(JAPAN_CENTER, JAPAN_ZOOM, { duration: 0.8 });
+
+        applyFilters();
+        console.log('🔄 全フィルタリセット');
     }
 
     // === UI Updates ===
@@ -689,6 +770,25 @@
     function bindEvents() {
         console.log('🔗 イベントバインド開始');
 
+        // ホームボタン（日本全体に戻る）
+        const homeBtn = document.getElementById('home-btn');
+        if (homeBtn) {
+            homeBtn.addEventListener('click', () => {
+                map.flyTo(JAPAN_CENTER, JAPAN_ZOOM, { duration: 1.2 });
+            });
+        }
+
+        // 殿堂入りトグル（5回以上）
+        const hofBtn = document.getElementById('hall-of-fame-btn');
+        if (hofBtn) {
+            hofBtn.addEventListener('click', function() {
+                hallOfFameMode = !hallOfFameMode;
+                this.setAttribute('aria-pressed', hallOfFameMode);
+                console.log('👑 殿堂入り:', hallOfFameMode);
+                applyFilters();
+            });
+        }
+
         // Panel toggle
         const panelToggle = document.getElementById('panel-toggle');
         if (panelToggle) {
@@ -763,8 +863,12 @@
         // Region filter
         document.querySelectorAll('.region-filters .filter-btn').forEach(btn => {
             btn.addEventListener('click', function() {
-                document.querySelectorAll('.region-filters .filter-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.region-filters .filter-btn').forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-pressed', 'false');
+                });
                 this.classList.add('active');
+                this.setAttribute('aria-pressed', 'true');
                 activeRegion = this.dataset.filter;
                 console.log('🔍 Region:', activeRegion);
                 applyFilters();
@@ -786,8 +890,12 @@
         console.log(`  年度ボタン: ${yearBtns.length} 個検出`);
         yearBtns.forEach(btn => {
             btn.addEventListener('click', function() {
-                document.querySelectorAll('.year-filters .filter-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.year-filters .filter-btn').forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-pressed', 'false');
+                });
                 this.classList.add('active');
+                this.setAttribute('aria-pressed', 'true');
                 activeYear = this.getAttribute('data-year');
                 console.log('📅 Year filter:', activeYear);
                 applyFilters();
@@ -799,8 +907,12 @@
         console.log(`  回数ボタン: ${countBtns.length} 個検出`);
         countBtns.forEach(btn => {
             btn.addEventListener('click', function() {
-                document.querySelectorAll('.count-filters .filter-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.count-filters .filter-btn').forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-pressed', 'false');
+                });
                 this.classList.add('active');
+                this.setAttribute('aria-pressed', 'true');
                 minSelectCount = parseInt(this.getAttribute('data-min-count'), 10) || 0;
                 console.log('🏆 Count filter:', minSelectCount);
                 applyFilters();
@@ -813,6 +925,7 @@
             firstBtn.addEventListener('click', function() {
                 firstSelectedOnly = !firstSelectedOnly;
                 this.classList.toggle('active', firstSelectedOnly);
+                this.setAttribute('aria-pressed', firstSelectedOnly);
                 console.log('⭐ First selected:', firstSelectedOnly);
                 applyFilters();
             });
@@ -824,6 +937,7 @@
             closedBtn.addEventListener('click', function() {
                 hideClosedShops = !hideClosedShops;
                 this.classList.toggle('active', hideClosedShops);
+                this.setAttribute('aria-pressed', hideClosedShops);
                 console.log('🚫 Hide closed:', hideClosedShops);
                 applyFilters();
             });

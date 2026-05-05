@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="style.css?v=2.5">
+    <link rel="stylesheet" href="style.css?v=3.0">
 </head>
 <body>
     <!-- ヘッダー -->
@@ -55,7 +55,10 @@
             <!-- 検索（常時表示） -->
             <div class="control-section">
                 <label class="control-label" for="search-input">🔍 店名検索</label>
-                <input type="text" id="search-input" class="search-input" placeholder="店名・エリアで検索..." autocomplete="off">
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" class="search-input" placeholder="店名・エリアで検索..." autocomplete="off">
+                    <kbd class="search-shortcut">⌘K</kbd>
+                </div>
             </div>
 
             <!-- 絞り込みフィルタ（折りたたみ可能） -->
@@ -69,9 +72,9 @@
                     <div class="filter-subsection">
                         <label class="control-label">📍 エリア</label>
                         <div class="filter-group region-filters">
-                            <button class="filter-btn active" data-filter="all">ALL</button>
-                            <button class="filter-btn east-btn" data-filter="EAST">EAST</button>
-                            <button class="filter-btn west-btn" data-filter="WEST">WEST</button>
+                            <button class="filter-btn active" data-filter="all" aria-pressed="true">ALL</button>
+                            <button class="filter-btn east-btn" data-filter="EAST" aria-pressed="false">EAST</button>
+                            <button class="filter-btn west-btn" data-filter="WEST" aria-pressed="false">WEST</button>
                         </div>
                     </div>
                     <!-- 都道府県 -->
@@ -85,33 +88,33 @@
                     <div class="filter-subsection">
                         <label class="control-label">📅 選出年</label>
                         <div class="filter-group year-filters">
-                            <button class="filter-btn active" data-year="all">全年度</button>
-                            <button class="filter-btn year-filter-btn" data-year="2024">2024</button>
-                            <button class="filter-btn year-filter-btn" data-year="2022">2022</button>
-                            <button class="filter-btn year-filter-btn" data-year="2020">2020</button>
-                            <button class="filter-btn year-filter-btn" data-year="2019">2019</button>
-                            <button class="filter-btn year-filter-btn" data-year="2018">2018</button>
-                            <button class="filter-btn year-filter-btn" data-year="2017">2017</button>
+                            <button class="filter-btn active" data-year="all" aria-pressed="true">全年度</button>
+                            <button class="filter-btn year-filter-btn" data-year="2024" aria-pressed="false">2024</button>
+                            <button class="filter-btn year-filter-btn" data-year="2022" aria-pressed="false">2022</button>
+                            <button class="filter-btn year-filter-btn" data-year="2020" aria-pressed="false">2020</button>
+                            <button class="filter-btn year-filter-btn" data-year="2019" aria-pressed="false">2019</button>
+                            <button class="filter-btn year-filter-btn" data-year="2018" aria-pressed="false">2018</button>
+                            <button class="filter-btn year-filter-btn" data-year="2017" aria-pressed="false">2017</button>
                         </div>
                     </div>
                     <!-- 選出回数 -->
                     <div class="filter-subsection">
                         <label class="control-label">🏆 選出回数</label>
                         <div class="filter-group count-filters">
-                            <button class="filter-btn active" data-min-count="0">指定なし</button>
-                            <button class="filter-btn" data-min-count="2">2回以上</button>
-                            <button class="filter-btn" data-min-count="3">3回以上</button>
-                            <button class="filter-btn" data-min-count="4">4回以上</button>
-                            <button class="filter-btn" data-min-count="5">5回以上</button>
-                            <button class="filter-btn" data-min-count="6">6回以上</button>
+                            <button class="filter-btn active" data-min-count="0" aria-pressed="true">指定なし</button>
+                            <button class="filter-btn" data-min-count="2" aria-pressed="false">2回以上</button>
+                            <button class="filter-btn" data-min-count="3" aria-pressed="false">3回以上</button>
+                            <button class="filter-btn" data-min-count="4" aria-pressed="false">4回以上</button>
+                            <button class="filter-btn" data-min-count="5" aria-pressed="false">5回以上</button>
+                            <button class="filter-btn" data-min-count="6" aria-pressed="false">6回以上</button>
                         </div>
                     </div>
                     <!-- 特殊フィルタ -->
                     <div class="filter-subsection">
                         <label class="control-label">⭐ 特殊フィルタ</label>
                         <div class="filter-group special-filters">
-                            <button class="filter-btn" id="first-selected-btn">初選出のみ</button>
-                            <button class="filter-btn" id="hide-closed-btn">閉店を除外</button>
+                            <button class="filter-btn" id="first-selected-btn" aria-pressed="false">初選出のみ</button>
+                            <button class="filter-btn" id="hide-closed-btn" aria-pressed="false">閉店を除外</button>
                         </div>
                     </div>
                 </div>
@@ -120,7 +123,7 @@
             <!-- 表示件数 & ソート（常時表示） -->
             <div class="control-section results-info">
                 <div class="results-header">
-                    <div class="results-count">
+                    <div class="results-count" aria-live="polite">
                         表示中: <strong id="visible-count">0</strong> 件
                     </div>
                     <div class="sort-control">
@@ -149,6 +152,16 @@
     <!-- モバイル用パネル開閉ボタン（パネルの外に配置） -->
     <button id="mobile-panel-toggle" class="mobile-toggle-btn" aria-label="検索・フィルタを開く">
         🔍 検索・フィルタ
+    </button>
+
+    <!-- 日本全体に戻るボタン -->
+    <button id="home-btn" class="map-action-btn home-btn" aria-label="日本全体に戻る" title="日本全体に戻る">
+        🏠
+    </button>
+
+    <!-- 殿堂入りトグル -->
+    <button id="hall-of-fame-btn" class="map-action-btn hall-of-fame-btn" aria-label="殿堂入り（5回以上）だけ表示" aria-pressed="false" title="殿堂入り（5回以上）">
+        👑
     </button>
 
     <!-- 現在地ボタン -->
@@ -186,6 +199,6 @@
     <!-- Leaflet MarkerCluster JS -->
     <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
     
-    <script src="app.js?v=2.5"></script>
+    <script src="app.js?v=3.0"></script>
 </body>
 </html>

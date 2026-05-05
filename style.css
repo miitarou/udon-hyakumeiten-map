@@ -263,6 +263,61 @@ html, body {
 }
 
 /* === 現在地ボタン === */
+/* 地図上アクションボタン共通 */
+.map-action-btn {
+    position: fixed;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(26, 26, 46, 0.92);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-med);
+    font-size: 20px;
+}
+
+.map-action-btn:hover {
+    background: rgba(42, 42, 78, 0.95);
+    transform: scale(1.1);
+}
+
+.map-action-btn:active {
+    transform: scale(0.95);
+}
+
+.map-action-btn:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* ホームボタン（日本全体に戻る） */
+.home-btn {
+    bottom: 128px;
+    font-size: 18px;
+}
+
+/* 殿堂入りトグル */
+.hall-of-fame-btn {
+    bottom: 76px;
+    font-size: 18px;
+}
+
+.hall-of-fame-btn[aria-pressed="true"] {
+    background: linear-gradient(135deg, #d4a853, #b8860b);
+    box-shadow: 0 2px 16px rgba(212, 168, 83, 0.5);
+    color: #1a1a2e;
+}
+
+/* 現在地ボタン */
 .locate-btn {
     position: fixed;
     bottom: 24px;
@@ -271,7 +326,9 @@ html, body {
     height: 44px;
     border-radius: 50%;
     border: none;
-    background: #1a1a2e;
+    background: rgba(26, 26, 46, 0.92);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
     color: #ffffff;
     cursor: pointer;
@@ -482,9 +539,16 @@ body.panel-resizing * {
 /* パネルにposition:relativeを追加（リサイズハンドルの基準） */
 
 /* Search Input */
+.search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 .search-input {
     width: 100%;
     padding: 10px 14px;
+    padding-right: 50px;
     background: var(--bg-tertiary);
     border: 1px solid var(--border-color);
     border-radius: 10px;
@@ -502,6 +566,29 @@ body.panel-resizing * {
 .search-input:focus {
     border-color: var(--primary);
     box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.search-input:focus + .search-shortcut {
+    opacity: 0;
+}
+
+/* ⌘K ショートカットバッジ */
+.search-shortcut {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+    padding: 2px 7px;
+    font-size: 11px;
+    font-family: var(--font-main);
+    color: var(--text-muted);
+    pointer-events: none;
+    line-height: 1.4;
+    opacity: 1;
+    transition: opacity 0.15s ease;
 }
 
 /* Filter Buttons */
@@ -1426,8 +1513,23 @@ body.panel-resizing * {
 
     /* 現在地ボタンのモバイル位置調整 */
     .locate-btn {
-        bottom: 80px;
+        bottom: calc(80px + env(safe-area-inset-bottom, 0px));
         right: 12px;
+    }
+
+    .home-btn {
+        bottom: calc(184px + env(safe-area-inset-bottom, 0px));
+        right: 12px;
+    }
+
+    .hall-of-fame-btn {
+        bottom: calc(132px + env(safe-area-inset-bottom, 0px));
+        right: 12px;
+    }
+
+    /* ⌘Kバッジはモバイルで非表示 */
+    .search-shortcut {
+        display: none;
     }
 
     /* Leafletコントロールの位置調整 */
@@ -1449,6 +1551,16 @@ body.panel-resizing * {
 
     .restaurant-card {
         padding: 8px 10px;
+    }
+
+    /* フッタートグルボタンのsafe-area対応 */
+    .footer-toggle-btn {
+        bottom: calc(6px + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* モバイルパネルトグルのsafe-area対応 */
+    .mobile-toggle-btn {
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 8px);
     }
 }
 
@@ -1572,4 +1684,75 @@ body.panel-resizing * {
 
 .footer-toggle-btn.active {
     bottom: auto;
+}
+
+/* === 空状態UI（0件） === */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+    text-align: center;
+    gap: 12px;
+    animation: fadeIn 0.4s ease;
+}
+
+.empty-state-icon {
+    font-size: 40px;
+    opacity: 0.6;
+}
+
+.empty-state-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.empty-state-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.empty-state-reset {
+    margin-top: 4px;
+    padding: 8px 20px;
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--primary);
+    font-family: var(--font-main);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.empty-state-reset:hover {
+    background: var(--primary);
+    color: var(--bg-primary);
+}
+
+.empty-state-reset:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* === アクセシビリティ: focus-visible === */
+.filter-btn:focus-visible,
+.locate-btn:focus-visible,
+.mobile-toggle-btn:focus-visible,
+.footer-toggle-btn:focus-visible,
+#panel-toggle:focus-visible,
+.search-input:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* === モバイルタッチ最適化 === */
+@media (pointer: coarse) {
+    * {
+        touch-action: manipulation;
+    }
 }
