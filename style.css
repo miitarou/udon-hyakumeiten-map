@@ -1,27 +1,43 @@
 /* ======================================
-   うどん百名店 MAP - スタイルシート
+   うどん・そば百名店 MAP - スタイルシート
    Design System: Dark Mode + Glassmorphism
-   Primary: #D4A853 (麦穂ゴールド)
-   Secondary: #2B4C7E (藍色)
+   Udon Primary: #D4A853 (麦穂ゴールド)
+   Soba Primary:  #7B9E6B (そばの実グリーン)
    ====================================== */
 
 /* === CSS Variables === */
 :root {
-    /* Colors — 麦穂ゴールド × 藍 */
+    /* Colors — うどん: 麦穂ゴールド × 藍 */
     --primary: #D4A853;
     --primary-light: #E8C547;
     --primary-dark: #B08A3A;
     --primary-glow: rgba(212, 168, 83, 0.3);
-    
+
     --east-color: #5B8FB9;
     --east-light: #7AACCE;
     --east-dark: #2B4C7E;
     --east-glow: rgba(43, 76, 126, 0.3);
-    
+
     --west-color: #D4A853;
     --west-light: #E8C547;
     --west-dark: #B08A3A;
     --west-glow: rgba(212, 168, 83, 0.3);
+
+    /* Colors — そば: グリーン系 */
+    --soba-primary: #7B9E6B;
+    --soba-light: #9DBF8A;
+    --soba-dark: #5A7A50;
+    --soba-glow: rgba(123, 158, 107, 0.3);
+
+    --soba-east: #4E9090;
+    --soba-east-light: #6AAFAF;
+    --soba-east-dark: #2C6E6E;
+    --soba-east-glow: rgba(78, 144, 144, 0.3);
+
+    --soba-west: #7B9E6B;
+    --soba-west-light: #9DBF8A;
+    --soba-west-dark: #5A7A50;
+    --soba-west-glow: rgba(123, 158, 107, 0.3);
     
     --bg-primary: #0D1117;
     --bg-secondary: #161B22;
@@ -90,10 +106,11 @@ html, body {
 
 .header-inner {
     width: 100%;
-    padding: 0 20px;
+    padding: 0 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 12px;
 }
 
 .logo-area {
@@ -136,34 +153,106 @@ html, body {
     50% { transform: translateY(-4px); }
 }
 
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
 .logo-area h1 {
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     letter-spacing: 0.5px;
     background: linear-gradient(135deg, var(--primary), var(--primary-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    white-space: nowrap;
 }
 
-.year-badge {
-    font-size: 12px;
+/* そばカテゴリ選択時にグラデーションを切替 */
+[data-category="soba"] .logo-area h1 {
+    background: linear-gradient(135deg, var(--soba-primary), var(--soba-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+/* ヘッダー内の年度バッジ（年度範囲表示） */
+.header-year-badge {
+    font-size: 11px;
     font-weight: 600;
     padding: 2px 6px;
     border-radius: 4px;
     background: var(--primary);
     -webkit-text-fill-color: white;
+    color: white;
     vertical-align: middle;
+}
+
+.header-year-badge.soba-badge {
+    background: var(--soba-primary);
+}
+
+[data-category="soba"] .header-year-badge {
+    background: var(--soba-primary);
 }
 
 .subtitle {
     font-family: var(--font-display);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 500;
     color: var(--text-secondary);
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
+}
+
+/* === カテゴリ切替トグル === */
+.category-toggle {
+    display: flex;
+    gap: 3px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 3px;
+}
+
+.cat-btn {
+    padding: 5px 12px;
+    border: none;
+    border-radius: 7px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+.cat-btn:hover {
+    color: var(--text-primary);
+    background: var(--bg-glass-hover);
+}
+
+.cat-btn.active,
+.cat-btn[aria-pressed="true"] {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 2px 8px var(--primary-glow);
+}
+
+.cat-btn[data-cat="soba"].active,
+.cat-btn[data-cat="soba"][aria-pressed="true"] {
+    background: var(--soba-primary);
+    box-shadow: 0 2px 8px var(--soba-glow);
+}
+
+.cat-btn[data-cat="all"].active,
+.cat-btn[data-cat="all"][aria-pressed="true"] {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--soba-primary) 100%);
+    box-shadow: 0 2px 8px rgba(180, 140, 80, 0.3);
 }
 
 .header-stats {
@@ -738,8 +827,10 @@ body.panel-resizing * {
 .year-filter-btn[data-year="2018"].active { background: #6c5ce7; border-color: #6c5ce7; box-shadow: 0 2px 12px rgba(108,92,231,0.4); }
 .year-filter-btn[data-year="2019"].active { background: #00b894; border-color: #00b894; box-shadow: 0 2px 12px rgba(0,184,148,0.4); }
 .year-filter-btn[data-year="2020"].active { background: #0984e3; border-color: #0984e3; box-shadow: 0 2px 12px rgba(9,132,227,0.4); }
+.year-filter-btn[data-year="2021"].active { background: #e17055; border-color: #e17055; box-shadow: 0 2px 12px rgba(225,112,85,0.4); }
 .year-filter-btn[data-year="2022"].active { background: #d4a017; border-color: #d4a017; box-shadow: 0 2px 12px rgba(212,160,23,0.4); }
 .year-filter-btn[data-year="2024"].active { background: var(--primary); border-color: var(--primary); box-shadow: 0 2px 12px var(--primary-glow); }
+.year-filter-btn[data-year="2025"].active { background: #00cec9; border-color: #00cec9; box-shadow: 0 2px 12px rgba(0,206,201,0.4); }
 
 /* Count Badge (リストカード内) */
 .count-badge {
@@ -843,8 +934,12 @@ body.panel-resizing * {
     flex-shrink: 0;
 }
 
+/* うどん */
 .card-region-dot.east { background: var(--east-color); }
 .card-region-dot.west { background: var(--west-color); }
+/* そば */
+.card-region-dot.soba.east { background: var(--soba-east); }
+.card-region-dot.soba.west { background: var(--soba-primary); }
 
 .card-info {
     flex: 1;
@@ -895,6 +990,12 @@ body.panel-resizing * {
     border: 1px solid rgba(248, 81, 73, 0.3);
 }
 
+.badge-soba {
+    background: rgba(123, 158, 107, 0.15);
+    color: var(--soba-light);
+    border: 1px solid rgba(123, 158, 107, 0.3);
+}
+
 /* === Year Badges (年度バッジ) === */
 .year-badge {
     display: inline-block;
@@ -913,8 +1014,10 @@ body.panel-resizing * {
 .year-2018 { background: rgba(108, 92, 231, 0.2); color: #a29bfe; border: 1px solid rgba(108, 92, 231, 0.4); }
 .year-2019 { background: rgba(0, 184, 148, 0.2); color: #55efc4; border: 1px solid rgba(0, 184, 148, 0.4); }
 .year-2020 { background: rgba(9, 132, 227, 0.2); color: #74b9ff; border: 1px solid rgba(9, 132, 227, 0.4); }
+.year-2021 { background: rgba(225, 112, 85, 0.2); color: #fab1a0; border: 1px solid rgba(225, 112, 85, 0.4); }
 .year-2022 { background: rgba(253, 203, 110, 0.25); color: #ffeaa7; border: 1px solid rgba(253, 203, 110, 0.4); }
 .year-2024 { background: rgba(212, 168, 83, 0.2); color: var(--primary-light); border: 1px solid rgba(212, 168, 83, 0.4); }
+.year-2025 { background: rgba(0, 206, 201, 0.15); color: #81ecec; border: 1px solid rgba(0, 206, 201, 0.4); }
 
 /* Marker pin内の選出回数カウント */
 .marker-count {
@@ -1089,6 +1192,20 @@ body.panel-resizing * {
     box-shadow: 0 4px 16px var(--primary-glow);
 }
 
+/* そばポップアップリンク */
+.popup-link.soba-link {
+    background: linear-gradient(135deg, var(--soba-primary), var(--soba-dark));
+}
+
+.popup-link.soba-link:hover {
+    box-shadow: 0 4px 16px var(--soba-glow);
+}
+
+/* そば選出回数テキスト */
+.popup-select-count.soba-count {
+    color: var(--soba-light);
+}
+
 /* === 地図アプリ連携ボタン（ポップアップ内） === */
 .popup-map-links {
     display: flex;
@@ -1247,12 +1364,22 @@ body.panel-resizing * {
     position: relative;
 }
 
+/* うどんマーカー */
 .marker-pin.east {
     background: linear-gradient(135deg, var(--east-color), var(--east-dark));
 }
 
 .marker-pin.west {
     background: linear-gradient(135deg, var(--west-color), var(--west-dark));
+}
+
+/* そばマーカー */
+.marker-pin.soba.east {
+    background: linear-gradient(135deg, var(--soba-east-light), var(--soba-east-dark));
+}
+
+.marker-pin.soba.west {
+    background: linear-gradient(135deg, var(--soba-light), var(--soba-dark));
 }
 
 /* 選出回数による強調 (3-4回) */
@@ -1267,6 +1394,14 @@ body.panel-resizing * {
 }
 .marker-pin.select-mid.west {
     background: linear-gradient(135deg, var(--west-light), var(--west-color));
+}
+.marker-pin.select-mid.soba.east {
+    background: linear-gradient(135deg, var(--soba-east-light), var(--soba-east));
+    box-shadow: 0 2px 12px var(--soba-east-glow);
+}
+.marker-pin.select-mid.soba.west {
+    background: linear-gradient(135deg, var(--soba-light), var(--soba-primary));
+    box-shadow: 0 2px 12px var(--soba-glow);
 }
 
 /* 選出回数による強調 (5回以上 = 殿堂) */
@@ -1283,6 +1418,16 @@ body.panel-resizing * {
 }
 .marker-pin.select-high.west {
     background: linear-gradient(135deg, #E8C547, var(--primary));
+}
+.marker-pin.select-high.soba.east {
+    background: linear-gradient(135deg, #81ecec, var(--soba-east));
+    box-shadow: 0 3px 16px var(--soba-east-glow);
+    border-color: rgba(106, 175, 175, 0.8);
+}
+.marker-pin.select-high.soba.west {
+    background: linear-gradient(135deg, var(--soba-light), var(--soba-primary));
+    box-shadow: 0 3px 16px var(--soba-glow);
+    border-color: rgba(157, 191, 138, 0.8);
 }
 
 .marker-pin.closed {
@@ -1303,6 +1448,11 @@ body.panel-resizing * {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+/* そば猪口アイコン（台形＋上部から麺が溢れる） */
+.marker-pin.soba::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M12 42 L88 42 L73 82 L27 82 Z' fill='white'/%3E%3Cpath d='M10 42 L90 42' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3Cpath d='M20 30 Q35 20 50 26 Q65 32 80 22' stroke='white' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M22 38 Q37 28 52 34 Q67 40 82 30' stroke='white' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M27 82 L23 95 L77 95 L73 82 Z' fill='white'/%3E%3C/svg%3E");
 }
 
 .marker-pin.select-mid::after {
@@ -1356,15 +1506,25 @@ body.panel-resizing * {
     }
 
     .logo-area h1 {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .subtitle {
         display: none;
     }
 
+    .category-toggle {
+        padding: 2px;
+        gap: 2px;
+    }
+
+    .cat-btn {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+
     .header-stats {
-        gap: 12px;
+        gap: 10px;
     }
 
     .stat-number {

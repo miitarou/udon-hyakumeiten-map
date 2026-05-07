@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>うどん百名店 MAP 2017-2024 | EAST × WEST 全年度統合版</title>
-    <meta name="description" content="食べログ「うどん百名店」2017〜2024年 EAST・WEST全店舗を地図上にプロット。年度別選出履歴、エリア別フィルタ、検索、閉店情報付き。">
-    
+    <title>うどん・そば百名店 MAP 2017-2025 | EAST × WEST 全年度統合版</title>
+    <meta name="description" content="食べログ「うどん百名店」2017〜2024年・「そば百名店」2017〜2025年 EAST・WEST全店舗を地図上にプロット。年度別選出履歴、エリア別フィルタ、検索、閉店情報付き。">
+
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Leaflet MarkerCluster CSS -->
@@ -15,18 +15,38 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css?v=3.1">
+
+    <link rel="stylesheet" href="style.css?v=4.0">
 </head>
 <body>
     <!-- ヘッダー -->
     <header id="app-header">
         <div class="header-inner">
             <div class="logo-area logo-home" id="logo-home" role="button" tabindex="0" aria-label="トップに戻る" title="トップに戻る">
-                <span class="logo-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="28" height="28"><path d="M15 45 C15 45 18 30 50 30 C82 30 85 45 85 45 L80 48 C80 48 75 36 50 36 C25 36 20 48 20 48 Z" fill="#D4A853"/><path d="M20 48 C20 48 22 75 50 80 C78 75 80 48 80 48 Z" fill="#D4A853"/><path d="M35 42 Q50 32 65 42" stroke="#E8C547" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M30 48 Q45 38 60 48" stroke="#E8C547" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M40 36 Q55 26 70 36" stroke="#E8C547" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M42 80 L38 95 L62 95 L58 80" fill="#D4A853"/></svg></span>
-                <h1>うどん百名店 <span class="year-badge">2017-2024</span></h1>
-                <span class="subtitle">EAST × WEST MAP</span>
+                <span class="logo-icon" id="logo-icon">
+                    <!-- うどん + そば アイコン (ALL時は両方) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="28" height="28" id="logo-svg">
+                        <path d="M15 45 C15 45 18 30 50 30 C82 30 85 45 85 45 L80 48 C80 48 75 36 50 36 C25 36 20 48 20 48 Z" fill="#D4A853"/>
+                        <path d="M20 48 C20 48 22 75 50 80 C78 75 80 48 80 48 Z" fill="#D4A853"/>
+                        <path d="M35 42 Q50 32 65 42" stroke="#E8C547" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        <path d="M30 48 Q45 38 60 48" stroke="#E8C547" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        <path d="M40 36 Q55 26 70 36" stroke="#E8C547" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        <path d="M42 80 L38 95 L62 95 L58 80" fill="#D4A853"/>
+                    </svg>
+                </span>
+                <div class="logo-text">
+                    <h1 id="logo-title">百名店 <span class="header-year-badge" id="title-badge">2017-2025</span></h1>
+                    <span class="subtitle" id="logo-subtitle">うどん・そば MAP</span>
+                </div>
             </div>
+
+            <!-- カテゴリ切替トグル -->
+            <div class="category-toggle" id="category-toggle" role="group" aria-label="ジャンル選択">
+                <button class="cat-btn active" data-cat="all" aria-pressed="true">ALL</button>
+                <button class="cat-btn" data-cat="udon" aria-pressed="false">🍜 うどん</button>
+                <button class="cat-btn" data-cat="soba" aria-pressed="false">🥢 そば</button>
+            </div>
+
             <div class="header-stats" id="header-stats">
                 <div class="stat-item">
                     <span class="stat-number" id="stat-total">0</span>
@@ -50,7 +70,7 @@
             <span class="toggle-icon">◀</span>
             <span class="toggle-label">🔍 検索・フィルタ</span>
         </button>
-        
+
         <div class="panel-content">
             <!-- 検索（常時表示） -->
             <div class="control-section">
@@ -84,17 +104,11 @@
                             <option value="all">すべて</option>
                         </select>
                     </div>
-                    <!-- 選出年 -->
+                    <!-- 選出年（JSで動的生成） -->
                     <div class="filter-subsection">
                         <label class="control-label">📅 選出年</label>
-                        <div class="filter-group year-filters">
-                            <button class="filter-btn active" data-year="all" aria-pressed="true">全年度</button>
-                            <button class="filter-btn year-filter-btn" data-year="2024" aria-pressed="false">2024</button>
-                            <button class="filter-btn year-filter-btn" data-year="2022" aria-pressed="false">2022</button>
-                            <button class="filter-btn year-filter-btn" data-year="2020" aria-pressed="false">2020</button>
-                            <button class="filter-btn year-filter-btn" data-year="2019" aria-pressed="false">2019</button>
-                            <button class="filter-btn year-filter-btn" data-year="2018" aria-pressed="false">2018</button>
-                            <button class="filter-btn year-filter-btn" data-year="2017" aria-pressed="false">2017</button>
+                        <div class="filter-group year-filters" id="year-filters">
+                            <!-- JS で生成 -->
                         </div>
                     </div>
                     <!-- 選出回数 -->
@@ -137,7 +151,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- 店舗リスト -->
             <div class="control-section restaurant-list-section">
                 <label class="control-label">📋 店舗リスト</label>
@@ -153,8 +167,6 @@
     <button id="mobile-panel-toggle" class="mobile-toggle-btn" aria-label="検索・フィルタを開く">
         🔍 検索・フィルタ
     </button>
-
-
 
     <!-- 殿堂入りトグル -->
     <button id="hall-of-fame-btn" class="map-action-btn hall-of-fame-btn" aria-label="殿堂入り（5回以上）だけ表示" aria-pressed="false" title="殿堂入り（5回以上）">
@@ -195,7 +207,7 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <!-- Leaflet MarkerCluster JS -->
     <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
-    
-    <script src="app.js?v=3.1"></script>
+
+    <script src="app.js?v=4.0"></script>
 </body>
 </html>

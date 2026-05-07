@@ -1,38 +1,64 @@
 /**
- * うどん百名店 MAP - メインアプリケーション
+ * うどん・そば百名店 MAP - メインアプリケーション
  * Leaflet.js + MarkerCluster による地図ビジュアライゼーション
- * 2017〜2024 全年度統合版
+ * うどん: 2017〜2024 / そば: 2017〜2025 全年度統合版
  */
 
 (function () {
     'use strict';
 
     // === State ===
-    let allRestaurants = [];
+    let allRestaurants = [];   // udon + soba merged
+    let allUdon = [];
+    let allSoba = [];
     let filteredRestaurants = [];
     let map = null;
     let markerClusterGroup = null;
-    let markers = new Map(); // url -> marker
+    let markers = new Map();       // url -> marker
+    let activeCategory = 'all';    // 'all' | 'udon' | 'soba'
     let activeRegion = 'all';
     let activePrefecture = 'all';
-    let activeYear = 'all';       // 年度フィルタ
-    let minSelectCount = 0;       // 選出回数フィルタ
+    let activeYear = 'all';
+    let minSelectCount = 0;
     let firstSelectedOnly = false;
-    let hideClosedShops = false;   // 閉店除外フィルタ
+    let hideClosedShops = false;
     let searchQuery = '';
-    let sortMode = 'name';        // ソートモード
-    let userLat = null;           // 現在地 緯度
-    let userLng = null;           // 現在地 経度
-    let hallOfFameMode = false;   // 殿堂入りモード（5回以上）
-    let fitBoundsTimer = null;    // fitBounds debounce用
+    let sortMode = 'name';
+    let userLat = null;
+    let userLng = null;
+    let hallOfFameMode = false;
+    let fitBoundsTimer = null;
 
-    // === Map Tiles (国土地理院 淡色地図 - 全日本語表記) ===
+    // === Map Tiles (国土地理院 淡色地図) ===
     const TILE_URL = 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png';
     const TILE_ATTR = '<a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>';
 
-    // === Japan Center ===
     const JAPAN_CENTER = [36.0, 137.0];
     const JAPAN_ZOOM = 6;
+
+    // カテゴリごとの年度一覧
+    const UDON_YEARS = [2017, 2018, 2019, 2020, 2022, 2024];
+    const SOBA_YEARS = [2017, 2018, 2019, 2021, 2022, 2024, 2025];
+
+    // === SVG アイコン定義 ===
+    // うどん丼
+    const UDON_SVG = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='28' height='28'>
+        <path d='M15 45 C15 45 18 30 50 30 C82 30 85 45 85 45 L80 48 C80 48 75 36 50 36 C25 36 20 48 20 48 Z' fill='#D4A853'/>
+        <path d='M20 48 C20 48 22 75 50 80 C78 75 80 48 80 48 Z' fill='#D4A853'/>
+        <path d='M35 42 Q50 32 65 42' stroke='#E8C547' stroke-width='3' fill='none' stroke-linecap='round'/>
+        <path d='M30 48 Q45 38 60 48' stroke='#E8C547' stroke-width='3' fill='none' stroke-linecap='round'/>
+        <path d='M40 36 Q55 26 70 36' stroke='#E8C547' stroke-width='3' fill='none' stroke-linecap='round'/>
+        <path d='M42 80 L38 95 L62 95 L58 80' fill='#D4A853'/>
+    </svg>`;
+
+    // そば猪口
+    const SOBA_SVG = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='28' height='28'>
+        <path d='M12 42 L88 42 L73 82 L27 82 Z' fill='#7B9E6B'/>
+        <path d='M10 42 L90 42' stroke='#9DBF8A' stroke-width='6' stroke-linecap='round'/>
+        <path d='M20 30 Q35 20 50 26 Q65 32 80 22' stroke='#9DBF8A' stroke-width='3.5' fill='none' stroke-linecap='round'/>
+        <path d='M22 38 Q37 28 52 34 Q67 40 82 30' stroke='#9DBF8A' stroke-width='3' fill='none' stroke-linecap='round'/>
+        <path d='M27 82 L23 95 L77 95 L73 82 Z' fill='#7B9E6B'/>
+    </svg>`;
 
     // === Init ===
     async function init() {
@@ -40,12 +66,13 @@
         try {
             initMap();
             await loadData();
+            rebuildYearButtons();
             populateFilters();
             applyFilters();
             bindEvents();
             updateStats();
-            
-            // パネルを初期表示（デスクトップ時）
+            updateLogoForCategory();
+
             if (window.innerWidth > 768) {
                 togglePanel(true);
             }
@@ -81,61 +108,152 @@
         });
 
         map.addLayer(markerClusterGroup);
-        // 店名ラベルはpermanent tooltipとして各マーカーに設定済み
-        // MarkerClusterが個別マーカーを表示する際にラベルも自動表示される
     }
 
     // === Data Loading ===
     async function loadData() {
-        try {
-            const response = await fetch('data/restaurants.json');
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            allRestaurants = await response.json();
-            // yearsフィールドがない店舗にはデフォルト[2024]を設定
-            allRestaurants.forEach(r => {
-                if (!r.years || !Array.isArray(r.years)) {
-                    r.years = [2024];
-                }
-            });
-            console.log(`📊 データ読込完了: ${allRestaurants.length} 店舗`);
-        } catch (e) {
-            console.error('❌ データ読込失敗:', e);
-            // file:// プロトコル対策: XMLHttpRequest で再試行
-            console.log('🔄 XMLHttpRequest で再試行...');
+        const fetchJson = async (url) => {
             try {
-                allRestaurants = await loadDataXHR();
-                allRestaurants.forEach(r => {
-                    if (!r.years || !Array.isArray(r.years)) {
-                        r.years = [2024];
-                    }
-                });
-                console.log(`📊 XHR再試行成功: ${allRestaurants.length} 店舗`);
-            } catch (e2) {
-                console.error('❌ XHR再試行も失敗:', e2);
-                allRestaurants = [];
+                const res = await fetch(url);
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return await res.json();
+            } catch {
+                return await loadDataXHR(url);
             }
+        };
+
+        // うどんデータ: udon.json → なければ restaurants.json にフォールバック
+        let udonRaw = [];
+        try {
+            udonRaw = await fetchJson('data/udon.json');
+        } catch {
+            try { udonRaw = await fetchJson('data/restaurants.json'); } catch { udonRaw = []; }
         }
+
+        let sobaRaw = [];
+        try {
+            sobaRaw = await fetchJson('data/soba.json');
+        } catch { sobaRaw = []; }
+
+        // category フィールドと years の正規化
+        udonRaw.forEach(r => {
+            r.category = 'udon';
+            if (!r.years || !Array.isArray(r.years)) r.years = [2024];
+        });
+        sobaRaw.forEach(r => {
+            r.category = 'soba';
+            if (!r.years || !Array.isArray(r.years)) r.years = [2025];
+        });
+
+        allUdon = udonRaw;
+        allSoba = sobaRaw;
+        allRestaurants = [...udonRaw, ...sobaRaw];
+
+        console.log(`📊 データ読込完了: うどん ${allUdon.length} 店 / そば ${allSoba.length} 店`);
     }
 
-    // file:// プロトコル用のフォールバック
-    function loadDataXHR() {
+    function loadDataXHR(url) {
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
-            xhr.open('GET', 'data/restaurants.json', true);
-            xhr.onload = function() {
-                if (xhr.status === 200 || xhr.status === 0) { // status 0 = file:// protocol
-                    try {
-                        resolve(JSON.parse(xhr.responseText));
-                    } catch (e) {
-                        reject(e);
-                    }
+            xhr.open('GET', url, true);
+            xhr.onload = function () {
+                if (xhr.status === 200 || xhr.status === 0) {
+                    try { resolve(JSON.parse(xhr.responseText)); }
+                    catch (e) { reject(e); }
                 } else {
-                    reject(new Error(`XHR status: ${xhr.status}`));
+                    reject(new Error(`XHR ${xhr.status}`));
                 }
             };
-            xhr.onerror = function() { reject(new Error('XHR error')); };
+            xhr.onerror = () => reject(new Error('XHR error'));
             xhr.send();
         });
+    }
+
+    // === 年度ボタンを動的生成 ===
+    function getAvailableYears() {
+        if (activeCategory === 'udon') return UDON_YEARS;
+        if (activeCategory === 'soba') return SOBA_YEARS;
+        // ALL: 両方の union, 降順
+        const set = new Set([...UDON_YEARS, ...SOBA_YEARS]);
+        return [...set].sort((a, b) => b - a);
+    }
+
+    function rebuildYearButtons() {
+        const container = document.getElementById('year-filters');
+        if (!container) return;
+
+        const years = getAvailableYears();
+        // 現在の activeYear が新しいリストに含まれていなければリセット
+        if (activeYear !== 'all' && !years.includes(parseInt(activeYear, 10))) {
+            activeYear = 'all';
+        }
+
+        container.innerHTML = '';
+
+        const allBtn = document.createElement('button');
+        allBtn.className = 'filter-btn' + (activeYear === 'all' ? ' active' : '');
+        allBtn.dataset.year = 'all';
+        allBtn.setAttribute('aria-pressed', activeYear === 'all' ? 'true' : 'false');
+        allBtn.textContent = '全年度';
+        container.appendChild(allBtn);
+
+        [...years].sort((a, b) => b - a).forEach(y => {
+            const btn = document.createElement('button');
+            const ys = String(y);
+            btn.className = 'filter-btn year-filter-btn' + (activeYear === ys ? ' active' : '');
+            btn.dataset.year = ys;
+            btn.setAttribute('aria-pressed', activeYear === ys ? 'true' : 'false');
+            btn.textContent = ys;
+            container.appendChild(btn);
+        });
+
+        bindYearFilterEvents();
+    }
+
+    function bindYearFilterEvents() {
+        const container = document.getElementById('year-filters');
+        if (!container) return;
+        container.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                container.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-pressed', 'false');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-pressed', 'true');
+                activeYear = this.dataset.year;
+                applyFilters();
+            });
+        });
+    }
+
+    // === ロゴアイコン・タイトルをカテゴリに合わせて更新 ===
+    function updateLogoForCategory() {
+        const logoIcon = document.getElementById('logo-icon');
+        const logoTitle = document.getElementById('logo-title');
+        const logoSubtitle = document.getElementById('logo-subtitle');
+        const titleBadge = document.getElementById('title-badge');
+
+        if (activeCategory === 'udon') {
+            if (logoIcon) logoIcon.innerHTML = UDON_SVG;
+            if (logoTitle) logoTitle.innerHTML = 'うどん百名店 <span class="header-year-badge" id="title-badge">2017-2024</span>';
+            if (logoSubtitle) logoSubtitle.textContent = 'EAST × WEST MAP';
+        } else if (activeCategory === 'soba') {
+            if (logoIcon) logoIcon.innerHTML = SOBA_SVG;
+            if (logoTitle) logoTitle.innerHTML = 'そば百名店 <span class="header-year-badge soba-badge" id="title-badge">2017-2025</span>';
+            if (logoSubtitle) logoSubtitle.textContent = 'EAST × WEST MAP';
+        } else {
+            // ALL
+            if (logoIcon) {
+                logoIcon.innerHTML = `
+                    <span style="display:inline-flex;gap:2px">
+                        ${UDON_SVG.replace('width=\'28\'', 'width=\'22\'').replace('height=\'28\'', 'height=\'22\'')}
+                        ${SOBA_SVG.replace('width=\'28\'', 'width=\'22\'').replace('height=\'28\'', 'height=\'22\'')}
+                    </span>`;
+            }
+            if (logoTitle) logoTitle.innerHTML = '百名店 <span class="header-year-badge" id="title-badge">2017-2025</span>';
+            if (logoSubtitle) logoSubtitle.textContent = 'うどん・そば MAP';
+        }
     }
 
     // === Create Marker ===
@@ -143,10 +261,10 @@
         if (!restaurant.lat || !restaurant.lng) return null;
 
         const regionClass = restaurant.region.toLowerCase();
+        const categoryClass = restaurant.category === 'soba' ? ' soba' : '';
         const closedClass = restaurant.closed ? ' closed' : '';
         const selectCount = restaurant.years ? restaurant.years.length : 0;
 
-        // 選出回数による強調クラス
         let selectClass = '';
         let markerSize = [28, 36];
         let anchorPos = [14, 36];
@@ -162,7 +280,7 @@
 
         const icon = L.divIcon({
             className: 'custom-marker',
-            html: `<div class="marker-pin ${regionClass}${closedClass}${selectClass}">
+            html: `<div class="marker-pin ${regionClass}${categoryClass}${closedClass}${selectClass}">
                      <span class="marker-count">${selectCount}</span>
                    </div>`,
             iconSize: markerSize,
@@ -172,7 +290,6 @@
 
         const marker = L.marker([restaurant.lat, restaurant.lng], { icon });
 
-        // ポップアップ
         const popupContent = buildPopupContent(restaurant);
         marker.bindPopup(popupContent, {
             maxWidth: 300,
@@ -181,7 +298,6 @@
             autoPan: true
         });
 
-        // 店名ラベル（ズーム連動で表示/非表示）
         const labelClass = 'marker-label' + (restaurant.closed ? ' marker-label-closed' : '');
         marker.bindTooltip(restaurant.name, {
             permanent: true,
@@ -198,7 +314,7 @@
     function buildYearBadges(years) {
         if (!years || years.length === 0) return '';
         return years.map(y => {
-            const shortYear = String(y).slice(2); // 2024 -> 24
+            const shortYear = String(y).slice(2);
             return `<span class="year-badge year-${y}">'${shortYear}</span>`;
         }).join('');
     }
@@ -207,41 +323,33 @@
     function buildPopupContent(r) {
         const regionClass = r.region.toLowerCase();
         const selectCount = r.years ? r.years.length : 0;
-        
+        const isSoba = r.category === 'soba';
+
         let closedBanner = '';
         if (r.closed) {
-            closedBanner = `
-                <div class="popup-closed-banner">
-                    <span class="popup-closed-text">⚠ この店舗は閉店しました</span>
-                </div>`;
+            closedBanner = `<div class="popup-closed-banner"><span class="popup-closed-text">⚠ この店舗は閉店しました</span></div>`;
         }
 
         let badges = '';
-        if (r.firstSelected) {
-            badges += '<span class="badge badge-new">初選出</span>';
-        }
-        if (r.closed) {
-            badges += '<span class="badge badge-closed">閉店</span>';
-        }
+        if (r.firstSelected) badges += '<span class="badge badge-new">初選出</span>';
+        if (r.closed) badges += '<span class="badge badge-closed">閉店</span>';
+        if (isSoba) badges += '<span class="badge badge-soba">🥢 そば</span>';
         const badgesHtml = badges ? `<div class="popup-badges">${badges}</div>` : '';
 
-        // 年度バッジ
         const yearBadgesHtml = buildYearBadges(r.years);
+        const countText = selectCount > 0 ? `<span class="popup-select-count${isSoba ? ' soba-count' : ''}">${selectCount}回選出</span>` : '';
 
-        // 選出回数テキスト
-        const countText = selectCount > 0 ? `<span class="popup-select-count">${selectCount}回選出</span>` : '';
-
-        // 距離情報
-        const distText = (userLat !== null && r.lat != null) ? 
+        const distText = (userLat !== null && r.lat != null) ?
             `<div class="popup-detail-row"><span class="popup-detail-icon">📏</span><span class="popup-detail-text">現在地から ${formatDistance(calcDistance(userLat, userLng, r.lat, r.lng))}</span></div>` : '';
 
-        // 地図アプリリンク（Google Mapsのみ）
         const mapLinksHtml = (r.lat != null && r.lng != null) ? `
             <div class="popup-map-links">
                 <a href="${getGoogleMapsDirectionsUrl(r.lat, r.lng)}" target="_blank" rel="noopener noreferrer" class="popup-map-btn popup-map-google">
                     🗺 Google Mapsで経路
                 </a>
             </div>` : '';
+
+        const linkClass = isSoba ? 'popup-link soba-link' : 'popup-link';
 
         return `
             <div class="popup-inner">
@@ -259,15 +367,11 @@
                         <span class="popup-detail-icon">📍</span>
                         <span class="popup-detail-text">${escapeHtml(r.prefecture)} ${escapeHtml(r.area)}</span>
                     </div>
-                    ${r.holiday ? `
-                    <div class="popup-detail-row">
-                        <span class="popup-detail-icon">🗓</span>
-                        <span class="popup-detail-text">${escapeHtml(r.holiday)}</span>
-                    </div>` : ''}
+                    ${r.holiday ? `<div class="popup-detail-row"><span class="popup-detail-icon">🗓</span><span class="popup-detail-text">${escapeHtml(r.holiday)}</span></div>` : ''}
                     ${distText}
                 </div>
                 ${badgesHtml}
-                ${isSafeUrl(r.url) ? `<a href="${escapeHtml(r.url)}" target="_blank" rel="noopener noreferrer" class="popup-link">` : `<span class="popup-link popup-link-disabled">`}
+                ${isSafeUrl(r.url) ? `<a href="${escapeHtml(r.url)}" target="_blank" rel="noopener noreferrer" class="${linkClass}">` : `<span class="${linkClass} popup-link-disabled">`}
                     🔗 食べログで見る
                 ${isSafeUrl(r.url) ? '</a>' : '</span>'}
                 ${mapLinksHtml}
@@ -276,76 +380,75 @@
 
     // === Filters ===
     function populateFilters() {
+        const src = getCategorySource();
         const prefSet = new Set();
-        allRestaurants.forEach(r => {
-            if (r.prefecture) prefSet.add(r.prefecture);
-        });
-        
+        src.forEach(r => { if (r.prefecture) prefSet.add(r.prefecture); });
+
         const sortedPrefs = [...prefSet].sort();
         const select = document.getElementById('pref-select');
-        
+        if (!select) return;
+
+        // 既存オプションを削除（「すべて」は残す）
+        while (select.options.length > 1) select.remove(1);
+
         sortedPrefs.forEach(pref => {
-            const count = allRestaurants.filter(r => r.prefecture === pref).length;
+            const count = src.filter(r => r.prefecture === pref).length;
             const option = document.createElement('option');
             option.value = pref;
             option.textContent = `${pref} (${count})`;
             select.appendChild(option);
         });
+
+        // 現在の選択が新リストにない場合はリセット
+        if (activePrefecture !== 'all' && !prefSet.has(activePrefecture)) {
+            activePrefecture = 'all';
+            select.value = 'all';
+        }
+    }
+
+    function getCategorySource() {
+        if (activeCategory === 'udon') return allUdon;
+        if (activeCategory === 'soba') return allSoba;
+        return allRestaurants;
     }
 
     function applyFilters() {
-        filteredRestaurants = allRestaurants.filter(r => {
-            // Region filter
+        const src = getCategorySource();
+
+        filteredRestaurants = src.filter(r => {
+            // Region
             if (activeRegion !== 'all' && r.region !== activeRegion) return false;
-            
-            // Prefecture filter
+            // Prefecture
             if (activePrefecture !== 'all' && r.prefecture !== activePrefecture) return false;
-            
-            // Year filter（特定年度に選出されたもののみ表示）
+            // Year
             if (activeYear !== 'all') {
                 const yearNum = parseInt(activeYear, 10);
                 if (!r.years || !r.years.includes(yearNum)) return false;
             }
-
-            // Min select count filter
+            // Min count
             if (minSelectCount > 0) {
-                const count = r.years ? r.years.length : 0;
-                if (count < minSelectCount) return false;
+                if ((r.years ? r.years.length : 0) < minSelectCount) return false;
             }
-            
-            // First selected filter
+            // First selected
             if (firstSelectedOnly && !r.firstSelected) return false;
-
-            // Hide closed shops
+            // Hide closed
             if (hideClosedShops && r.closed) return false;
-            
-            // Search filter（ファジー検索: 駅名↔市区町村名の揺れに対応）
+            // Search
             if (searchQuery) {
                 const q = searchQuery.toLowerCase();
-                const area = (r.area || '');
-                // 駅名から「駅」を除去したトークンも検索対象に追加
+                const area = r.area || '';
                 const areaBase = area.replace(/駅$/, '').replace(/（.+?）/g, '');
-                const searchTarget = `${r.name || ''} ${r.prefecture || ''} ${area} ${areaBase} ${r.holiday || ''} ${r.address || ''}`.toLowerCase();
-                
-                // クエリからも「市」「区」「町」「村」「駅」を除去してベーストークンを作成
+                const target = `${r.name || ''} ${r.prefecture || ''} ${area} ${areaBase} ${r.holiday || ''} ${r.address || ''}`.toLowerCase();
                 const qBase = q.replace(/[市区町村駅]$/g, '');
-                
-                // 完全一致 or ベーストークン一致
-                if (!searchTarget.includes(q) && !searchTarget.includes(qBase)) return false;
+                if (!target.includes(q) && !target.includes(qBase)) return false;
             }
-            
-            // 殿堂入りモード（5回以上のみ）
-            if (hallOfFameMode) {
-                const count = r.years ? r.years.length : 0;
-                if (count < 5) return false;
-            }
+            // Hall of fame
+            if (hallOfFameMode && (r.years ? r.years.length : 0) < 5) return false;
 
             return true;
         });
 
-        // ソート適用
         sortRestaurants();
-
         renderMarkers();
         renderList();
         updateVisibleCount();
@@ -372,8 +475,8 @@
                 });
                 break;
             case 'pref':
-                filteredRestaurants.sort((a, b) => 
-                    (a.prefecture || '').localeCompare(b.prefecture || '', 'ja') || 
+                filteredRestaurants.sort((a, b) =>
+                    (a.prefecture || '').localeCompare(b.prefecture || '', 'ja') ||
                     (a.name || '').localeCompare(b.name || '', 'ja')
                 );
                 break;
@@ -389,19 +492,17 @@
         }
     }
 
-    // === Haversine距離計算 (km) ===
+    // === Haversine 距離計算 (km) ===
     function calcDistance(lat1, lon1, lat2, lon2) {
         if (lat2 == null || lon2 == null) return Infinity;
         const R = 6371;
         const dLat = (lat2 - lat1) * Math.PI / 180;
         const dLon = (lon2 - lon1) * Math.PI / 180;
-        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                  Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-                  Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        const a = Math.sin(dLat / 2) ** 2 +
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLon / 2) ** 2;
         return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     }
 
-    // === 距離フォーマット ===
     function formatDistance(km) {
         if (km === Infinity || km == null) return '';
         if (km < 1) return Math.round(km * 1000) + 'm';
@@ -409,16 +510,9 @@
         return Math.round(km) + 'km';
     }
 
-    // === 地図アプリURL生成 ===
-    function getGoogleMapsUrl(lat, lng, name) {
-        const q = encodeURIComponent(name);
-        return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}&query_place_id=${q}`;
-    }
-
     function getGoogleMapsDirectionsUrl(lat, lng) {
         return `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
     }
-
 
     // === Render Markers ===
     function renderMarkers() {
@@ -433,12 +527,11 @@
             }
         });
 
-        // フィルタ適用時にビューをフィット（debounce付き）
         if (filteredRestaurants.length > 0 && filteredRestaurants.length < allRestaurants.length) {
             const validPoints = filteredRestaurants
                 .filter(r => r.lat && r.lng)
                 .map(r => [r.lat, r.lng]);
-            
+
             if (validPoints.length > 0) {
                 clearTimeout(fitBoundsTimer);
                 fitBoundsTimer = setTimeout(() => {
@@ -454,21 +547,17 @@
         const container = document.getElementById('restaurant-list');
         container.innerHTML = '';
 
-        // 空状態UI: 0件時
         if (filteredRestaurants.length === 0) {
+            const emptyCat = activeCategory === 'soba' ? '🥢' : activeCategory === 'udon' ? '🍜' : '🍜';
             container.innerHTML = `
                 <div class="empty-state">
-                    <div class="empty-state-icon">🍜</div>
+                    <div class="empty-state-icon">${emptyCat}</div>
                     <div class="empty-state-title">該当する店舗が見つかりません</div>
                     <div class="empty-state-desc">検索条件を変更するか、フィルタをリセットしてください。</div>
                     <button class="empty-state-reset" id="empty-reset-btn">フィルタをリセット</button>
-                </div>
-            `;
-            // リセットボタンのイベント
+                </div>`;
             const resetBtn = document.getElementById('empty-reset-btn');
-            if (resetBtn) {
-                resetBtn.addEventListener('click', resetAllFilters);
-            }
+            if (resetBtn) resetBtn.addEventListener('click', resetAllFilters);
             return;
         }
 
@@ -476,31 +565,32 @@
             const card = document.createElement('div');
             card.className = 'restaurant-card';
             card.style.animationDelay = `${Math.min(i * 0.02, 0.5)}s`;
-            
+
             const selectCount = r.years ? r.years.length : 0;
+            const isSoba = r.category === 'soba';
 
             let badgesHtml = '';
             if (r.firstSelected) badgesHtml += '<span class="badge badge-new">NEW</span>';
             if (r.closed) badgesHtml += '<span class="badge badge-closed">閉店</span>';
 
-            // 年度バッジ
             const yearBadgesHtml = buildYearBadges(r.years);
-
-            // 選出回数バッジ
             const countBadgeClass = selectCount >= 5 ? 'count-badge-gold' : selectCount >= 3 ? 'count-badge-silver' : '';
             const countBadge = `<span class="count-badge ${countBadgeClass}">${selectCount}回</span>`;
 
-            // 距離表示
             const distStr = (userLat !== null && r.lat != null) ?
                 formatDistance(calcDistance(userLat, userLng, r.lat, r.lng)) : '';
             const distHtml = distStr ? `<span class="card-distance">📏 ${distStr}</span>` : '';
 
-            // カード内地図ボタン
             const cardMapBtn = (r.lat != null && r.lng != null) ?
                 `<div class="card-map-links"><a href="${getGoogleMapsDirectionsUrl(r.lat, r.lng)}" target="_blank" rel="noopener noreferrer" class="card-map-btn" title="Google Mapsで経路検索" onclick="event.stopPropagation()">🗺</a></div>` : '';
 
+            // カテゴリ識別ドット: soba = グリーン系
+            const dotClass = isSoba
+                ? `${r.region.toLowerCase()} soba`
+                : r.region.toLowerCase();
+
             card.innerHTML = `
-                <div class="card-region-dot ${r.region.toLowerCase()}"></div>
+                <div class="card-region-dot ${dotClass}"></div>
                 <div class="card-info">
                     <div class="card-name">${escapeHtml(r.name)}</div>
                     <div class="card-area">${escapeHtml(r.prefecture)} ${escapeHtml(r.area)} ${distHtml}</div>
@@ -510,12 +600,10 @@
                     <div class="card-year-badges">${yearBadgesHtml}</div>
                     ${badgesHtml}
                     ${cardMapBtn}
-                </div>
-            `;
+                </div>`;
 
             card.addEventListener('click', () => {
                 focusRestaurant(r);
-                // Active状態の更新
                 container.querySelectorAll('.restaurant-card').forEach(c => c.classList.remove('active'));
                 card.classList.add('active');
             });
@@ -527,26 +615,16 @@
     // === Focus on Restaurant ===
     function focusRestaurant(r) {
         if (!r.lat || !r.lng) return;
-
         map.setView([r.lat, r.lng], 16, { animate: true });
-
         const marker = markers.get(r.url);
         if (marker) {
-            // クラスターからスパイダーフィを展開
-            markerClusterGroup.zoomToShowLayer(marker, () => {
-                marker.openPopup();
-            });
+            markerClusterGroup.zoomToShowLayer(marker, () => marker.openPopup());
         }
-
-        // モバイルではパネルを閉じる
-        if (window.innerWidth <= 768) {
-            togglePanel(false);
-        }
+        if (window.innerWidth <= 768) togglePanel(false);
     }
 
     // === フィルタ全リセット ===
     function resetAllFilters() {
-        // State初期化
         activeRegion = 'all';
         activePrefecture = 'all';
         activeYear = 'all';
@@ -556,51 +634,37 @@
         searchQuery = '';
         hallOfFameMode = false;
 
-        // UI リセット
         const searchInput = document.getElementById('search-input');
         if (searchInput) searchInput.value = '';
-
         const prefSelect = document.getElementById('pref-select');
         if (prefSelect) prefSelect.value = 'all';
 
-        // フィルタボタンのactive/aria-pressed リセット
         document.querySelectorAll('.filter-btn').forEach(btn => {
             const isDefault = btn.dataset.filter === 'all' ||
-                              btn.dataset.year === 'all' ||
-                              btn.dataset.minCount === '0' ||
-                              btn.getAttribute('data-min-count') === '0';
+                btn.dataset.year === 'all' ||
+                btn.getAttribute('data-min-count') === '0';
             btn.classList.toggle('active', isDefault);
             btn.setAttribute('aria-pressed', isDefault ? 'true' : 'false');
         });
 
-        // 初選出・閉店ボタンの明示リセット
         const firstBtn = document.getElementById('first-selected-btn');
-        if (firstBtn) {
-            firstBtn.classList.remove('active');
-            firstBtn.setAttribute('aria-pressed', 'false');
-        }
+        if (firstBtn) { firstBtn.classList.remove('active'); firstBtn.setAttribute('aria-pressed', 'false'); }
         const closedBtn = document.getElementById('hide-closed-btn');
-        if (closedBtn) {
-            closedBtn.classList.remove('active');
-            closedBtn.setAttribute('aria-pressed', 'false');
-        }
-
-        // 殿堂入りボタンリセット
+        if (closedBtn) { closedBtn.classList.remove('active'); closedBtn.setAttribute('aria-pressed', 'false'); }
         const hofBtn = document.getElementById('hall-of-fame-btn');
         if (hofBtn) hofBtn.setAttribute('aria-pressed', 'false');
 
-        // 地図を日本全体に戻す
+        rebuildYearButtons();
         map.flyTo(JAPAN_CENTER, JAPAN_ZOOM, { duration: 0.8 });
-
         applyFilters();
-        console.log('🔄 全フィルタリセット');
     }
 
     // === UI Updates ===
     function updateStats() {
-        const total = allRestaurants.length;
-        const east = allRestaurants.filter(r => r.region === 'EAST').length;
-        const west = allRestaurants.filter(r => r.region === 'WEST').length;
+        const src = getCategorySource();
+        const total = src.length;
+        const east = src.filter(r => r.region === 'EAST').length;
+        const west = src.filter(r => r.region === 'WEST').length;
 
         animateNumber('stat-total', total);
         animateNumber('stat-east', east);
@@ -612,17 +676,12 @@
         if (!el) return;
         const duration = 800;
         const start = performance.now();
-        const startVal = 0;
-
         function tick(now) {
-            const elapsed = now - start;
-            const progress = Math.min(elapsed / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-            const current = Math.round(startVal + (target - startVal) * eased);
-            el.textContent = current;
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(target * eased);
             if (progress < 1) requestAnimationFrame(tick);
         }
-
         requestAnimationFrame(tick);
     }
 
@@ -637,98 +696,60 @@
 
     function locateUser() {
         const btn = document.getElementById('locate-btn');
-        if (!navigator.geolocation) {
-            alert('お使いのブラウザは位置情報に対応していません');
-            return;
-        }
+        if (!navigator.geolocation) { alert('お使いのブラウザは位置情報に対応していません'); return; }
 
-        // ボタンにローディング状態を設定
         btn.classList.add('locating');
 
         navigator.geolocation.getCurrentPosition(
-            function(position) {
+            function (position) {
                 const lat = position.coords.latitude;
                 const lng = position.coords.longitude;
                 const accuracy = position.coords.accuracy;
-                console.log('📍 現在地取得:', lat, lng, '精度:', accuracy + 'm');
 
-                // 既存のマーカーを削除
                 if (userLocationMarker) map.removeLayer(userLocationMarker);
                 if (userLocationCircle) map.removeLayer(userLocationCircle);
 
-                // 現在地マーカー（青い丸）
                 userLocationMarker = L.circleMarker([lat, lng], {
-                    radius: 8,
-                    fillColor: '#4285F4',
-                    color: '#ffffff',
-                    weight: 3,
-                    fillOpacity: 1,
-                    className: 'user-location-marker'
+                    radius: 8, fillColor: '#4285F4', color: '#ffffff',
+                    weight: 3, fillOpacity: 1
                 }).addTo(map);
-
                 userLocationMarker.bindPopup(
                     '<div style="text-align:center;font-family:var(--font-main);">' +
                     '<strong>📍 現在地</strong><br>' +
-                    '<span style="font-size:12px;color:#999;">精度: 約' + Math.round(accuracy) + 'm</span>' +
-                    '</div>'
+                    `<span style="font-size:12px;color:#999;">精度: 約${Math.round(accuracy)}m</span></div>`
                 );
 
-                // 精度範囲の円
                 userLocationCircle = L.circle([lat, lng], {
-                    radius: accuracy,
-                    fillColor: '#4285F4',
-                    fillOpacity: 0.1,
-                    color: '#4285F4',
-                    weight: 1,
-                    opacity: 0.3
+                    radius: accuracy, fillColor: '#4285F4', fillOpacity: 0.1,
+                    color: '#4285F4', weight: 1, opacity: 0.3
                 }).addTo(map);
 
-                // ユーザー位置をグローバルに保存
                 userLat = lat;
                 userLng = lng;
-
-                // ズームレベル14で現在地にフライ
                 map.flyTo([lat, lng], 14, { duration: 1.5 });
 
-                // 「近い順」ソートオプションを有効化
                 const sortSelect = document.getElementById('sort-select');
                 const distOption = sortSelect ? sortSelect.querySelector('option[value="distance"]') : null;
                 if (distOption) {
                     distOption.removeAttribute('disabled');
-                    distOption.disabled = false;
                     distOption.textContent = '現在地から近い順 📍';
                 }
 
-                // 現在のソートが距離順ならリスト更新
-                if (sortMode === 'distance') {
-                    applyFilters();
-                } else {
-                    // リストを再描画して距離表示を追加
-                    renderList();
-                }
+                if (sortMode === 'distance') applyFilters();
+                else renderList();
 
                 btn.classList.remove('locating');
             },
-            function(error) {
+            function (error) {
                 btn.classList.remove('locating');
-                console.error('❌ 位置情報エラー:', error);
-                switch (error.code) {
-                    case error.PERMISSION_DENIED:
-                        alert('位置情報の使用が許可されていません。\nブラウザの設定から位置情報を許可してください。');
-                        break;
-                    case error.POSITION_UNAVAILABLE:
-                        alert('現在地を取得できませんでした。');
-                        break;
-                    case error.TIMEOUT:
-                        alert('位置情報の取得がタイムアウトしました。');
-                        break;
-                }
+                const msgs = {
+                    [error.PERMISSION_DENIED]: '位置情報の使用が許可されていません。\nブラウザの設定から位置情報を許可してください。',
+                    [error.POSITION_UNAVAILABLE]: '現在地を取得できませんでした。',
+                    [error.TIMEOUT]: '位置情報の取得がタイムアウトしました。',
+                };
+                alert(msgs[error.code] || '位置情報の取得に失敗しました。');
             },
-            {
-                enableHighAccuracy: true,
-                timeout: 10000,
-                maximumAge: 60000
-            }
+            { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
         );
     }
 
@@ -741,12 +762,11 @@
         const toggleLabel = document.querySelector('.toggle-label');
         const toggleIcon = document.querySelector('.toggle-icon');
         const isMobile = window.innerWidth <= 768;
-        
+
         if (forceOpen === true || (!isOpen && forceOpen !== false)) {
             panel.classList.remove('panel-closed');
             panel.classList.add('panel-open');
             if (mobileBtn) mobileBtn.classList.add('mobile-toggle-hidden');
-            // モバイルではラベルを「閉じる」に変更
             if (isMobile) {
                 if (toggleLabel) toggleLabel.textContent = '閉じる';
                 if (toggleIcon) toggleIcon.textContent = '🔽';
@@ -755,70 +775,79 @@
             panel.classList.remove('panel-open');
             panel.classList.add('panel-closed');
             if (mobileBtn) mobileBtn.classList.remove('mobile-toggle-hidden');
-            // ラベルを元に戻す
             if (isMobile) {
                 if (toggleLabel) toggleLabel.textContent = '🔍 検索・フィルタ';
                 if (toggleIcon) toggleIcon.textContent = '◀';
             }
         }
-        
-        // 地図のリサイズ
         setTimeout(() => map.invalidateSize(), 350);
     }
 
     // === Event Binding ===
     function bindEvents() {
-        console.log('🔗 イベントバインド開始');
-
-        // タイトルクリックでトップに戻る（🏠ボタン統合）
+        // ロゴクリックでリセット
         const logoHome = document.getElementById('logo-home');
         if (logoHome) {
-            const goHome = () => {
-                resetAllFilters();
-            };
+            const goHome = () => resetAllFilters();
             logoHome.addEventListener('click', goHome);
-            logoHome.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    goHome();
-                }
+            logoHome.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goHome(); }
             });
         }
 
-        // 殿堂入りトグル（5回以上）
+        // カテゴリ切替
+        document.querySelectorAll('.cat-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.cat-btn').forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-pressed', 'false');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-pressed', 'true');
+                activeCategory = this.dataset.cat;
+
+                // カテゴリ変更時: 年度リセット・都道府県リセット
+                activeYear = 'all';
+                activePrefecture = 'all';
+                const prefSelect = document.getElementById('pref-select');
+                if (prefSelect) prefSelect.value = 'all';
+
+                rebuildYearButtons();
+                populateFilters();
+                updateStats();
+                updateLogoForCategory();
+
+                // ヘッダーのカテゴリカラー切替
+                document.documentElement.setAttribute('data-category', activeCategory);
+
+                applyFilters();
+            });
+        });
+
+        // 殿堂入りトグル
         const hofBtn = document.getElementById('hall-of-fame-btn');
         if (hofBtn) {
-            hofBtn.addEventListener('click', function() {
+            hofBtn.addEventListener('click', function () {
                 hallOfFameMode = !hallOfFameMode;
                 this.setAttribute('aria-pressed', hallOfFameMode);
-                console.log('👑 殿堂入り:', hallOfFameMode);
                 applyFilters();
             });
         }
 
         // Panel toggle
         const panelToggle = document.getElementById('panel-toggle');
-        if (panelToggle) {
-            panelToggle.addEventListener('click', () => togglePanel());
-        }
+        if (panelToggle) panelToggle.addEventListener('click', () => togglePanel());
 
-        // モバイル用パネル開閉ボタン
         const mobileToggle = document.getElementById('mobile-panel-toggle');
-        if (mobileToggle) {
-            mobileToggle.addEventListener('click', () => togglePanel(true));
-        }
+        if (mobileToggle) mobileToggle.addEventListener('click', () => togglePanel(true));
 
-        // 現在地ボタン
         const locateBtn = document.getElementById('locate-btn');
-        if (locateBtn) {
-            locateBtn.addEventListener('click', () => locateUser());
-        }
+        if (locateBtn) locateBtn.addEventListener('click', () => locateUser());
 
-        // フィルタセクション折りたたみ
+        // フィルタ折りたたみ
         document.querySelectorAll('.section-toggle').forEach(toggle => {
-            toggle.addEventListener('click', function() {
-                const targetId = this.getAttribute('aria-controls');
-                const body = document.getElementById(targetId);
+            toggle.addEventListener('click', function () {
+                const body = document.getElementById(this.getAttribute('aria-controls'));
                 if (!body) return;
                 const isExpanded = this.getAttribute('aria-expanded') === 'true';
                 this.setAttribute('aria-expanded', !isExpanded);
@@ -826,39 +855,28 @@
             });
         });
 
-        // パネル幅リサイズ（PC用ドラッグ）
+        // パネル幅リサイズ（PC用）
         const resizeHandle = document.getElementById('panel-resize-handle');
         if (resizeHandle && window.innerWidth > 768) {
-            let isResizing = false;
-            let startX = 0;
-            let startWidth = 0;
-
-            resizeHandle.addEventListener('mousedown', function(e) {
+            let isResizing = false, startX = 0, startWidth = 0;
+            resizeHandle.addEventListener('mousedown', e => {
                 e.preventDefault();
                 isResizing = true;
                 startX = e.clientX;
-                const panel = document.getElementById('control-panel');
-                startWidth = panel.offsetWidth;
+                startWidth = document.getElementById('control-panel').offsetWidth;
                 document.body.classList.add('panel-resizing');
                 resizeHandle.classList.add('dragging');
             });
-
-            document.addEventListener('mousemove', function(e) {
+            document.addEventListener('mousemove', e => {
                 if (!isResizing) return;
                 e.preventDefault();
-                const diff = e.clientX - startX;
-                let newWidth = startWidth + diff;
-                // 最小280px、最大600pxに制限
-                newWidth = Math.max(280, Math.min(600, newWidth));
+                const newWidth = Math.max(280, Math.min(600, startWidth + e.clientX - startX));
                 const panel = document.getElementById('control-panel');
                 panel.style.width = newWidth + 'px';
-                // CSS変数も更新（translateXの計算に使われる）
                 document.documentElement.style.setProperty('--panel-width', newWidth + 'px');
-                // 地図をリサイズ
                 map.invalidateSize();
             });
-
-            document.addEventListener('mouseup', function() {
+            document.addEventListener('mouseup', () => {
                 if (!isResizing) return;
                 isResizing = false;
                 document.body.classList.remove('panel-resizing');
@@ -869,15 +887,13 @@
 
         // Region filter
         document.querySelectorAll('.region-filters .filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 document.querySelectorAll('.region-filters .filter-btn').forEach(b => {
-                    b.classList.remove('active');
-                    b.setAttribute('aria-pressed', 'false');
+                    b.classList.remove('active'); b.setAttribute('aria-pressed', 'false');
                 });
                 this.classList.add('active');
                 this.setAttribute('aria-pressed', 'true');
                 activeRegion = this.dataset.filter;
-                console.log('🔍 Region:', activeRegion);
                 applyFilters();
             });
         });
@@ -885,67 +901,41 @@
         // Prefecture filter
         const prefSelect = document.getElementById('pref-select');
         if (prefSelect) {
-            prefSelect.addEventListener('change', function() {
+            prefSelect.addEventListener('change', function () {
                 activePrefecture = this.value;
-                console.log('🔍 Prefecture:', activePrefecture);
                 applyFilters();
             });
         }
 
-        // Year filter（年度フィルタ）
-        const yearBtns = document.querySelectorAll('.year-filters .filter-btn');
-        console.log(`  年度ボタン: ${yearBtns.length} 個検出`);
-        yearBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.year-filters .filter-btn').forEach(b => {
-                    b.classList.remove('active');
-                    b.setAttribute('aria-pressed', 'false');
-                });
-                this.classList.add('active');
-                this.setAttribute('aria-pressed', 'true');
-                activeYear = this.getAttribute('data-year');
-                console.log('📅 Year filter:', activeYear);
-                applyFilters();
-            });
-        });
-
-        // Count filter（選出回数フィルタ）
-        const countBtns = document.querySelectorAll('.count-filters .filter-btn');
-        console.log(`  回数ボタン: ${countBtns.length} 個検出`);
-        countBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
+        // Count filter
+        document.querySelectorAll('.count-filters .filter-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
                 document.querySelectorAll('.count-filters .filter-btn').forEach(b => {
-                    b.classList.remove('active');
-                    b.setAttribute('aria-pressed', 'false');
+                    b.classList.remove('active'); b.setAttribute('aria-pressed', 'false');
                 });
                 this.classList.add('active');
                 this.setAttribute('aria-pressed', 'true');
                 minSelectCount = parseInt(this.getAttribute('data-min-count'), 10) || 0;
-                console.log('🏆 Count filter:', minSelectCount);
                 applyFilters();
             });
         });
 
-        // First selected filter
+        // First selected / hide closed
         const firstBtn = document.getElementById('first-selected-btn');
         if (firstBtn) {
-            firstBtn.addEventListener('click', function() {
+            firstBtn.addEventListener('click', function () {
                 firstSelectedOnly = !firstSelectedOnly;
                 this.classList.toggle('active', firstSelectedOnly);
                 this.setAttribute('aria-pressed', firstSelectedOnly);
-                console.log('⭐ First selected:', firstSelectedOnly);
                 applyFilters();
             });
         }
-
-        // Hide closed filter
         const closedBtn = document.getElementById('hide-closed-btn');
         if (closedBtn) {
-            closedBtn.addEventListener('click', function() {
+            closedBtn.addEventListener('click', function () {
                 hideClosedShops = !hideClosedShops;
                 this.classList.toggle('active', hideClosedShops);
                 this.setAttribute('aria-pressed', hideClosedShops);
-                console.log('🚫 Hide closed:', hideClosedShops);
                 applyFilters();
             });
         }
@@ -953,35 +943,29 @@
         // Sort
         const sortSelect = document.getElementById('sort-select');
         if (sortSelect) {
-            sortSelect.addEventListener('change', function() {
+            sortSelect.addEventListener('change', function () {
                 sortMode = this.value;
-                console.log('📊 Sort:', sortMode);
                 applyFilters();
             });
         }
 
-        // Search
+        // Search (debounce 200ms)
         let searchTimeout;
         const searchInput = document.getElementById('search-input');
         if (searchInput) {
-            searchInput.addEventListener('input', function() {
+            searchInput.addEventListener('input', function () {
                 clearTimeout(searchTimeout);
-                const input = this;
+                const val = this.value;
                 searchTimeout = setTimeout(() => {
-                    searchQuery = input.value.trim();
-                    console.log('🔍 Search:', searchQuery);
+                    searchQuery = val.trim();
                     applyFilters();
-                }, 300);
+                }, 200);
             });
         }
 
         // キーボードショートカット
-        document.addEventListener('keydown', (e) => {
-            // Escape: パネルを閉じる
-            if (e.key === 'Escape') {
-                togglePanel(false);
-            }
-            // Ctrl+K: 検索にフォーカス
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') togglePanel(false);
             if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                 e.preventDefault();
                 togglePanel(true);
@@ -999,20 +983,15 @@
                 footerToggle.textContent = isOpen ? '✕ 閉じる' : 'ℹ️ 免責・出典';
             });
         }
-
-        console.log('✅ イベントバインド完了');
     }
 
     // === Utility ===
-    // URLが安全な食べログリンクかどうかを検証
     function isSafeUrl(url) {
         if (!url || typeof url !== 'string') return false;
         try {
             const parsed = new URL(url);
             return parsed.protocol === 'https:' && parsed.hostname.endsWith('tabelog.com');
-        } catch {
-            return false;
-        }
+        } catch { return false; }
     }
 
     function escapeHtml(str) {
