@@ -122,13 +122,10 @@
             }
         };
 
-        // うどんデータ: udon.json → なければ restaurants.json にフォールバック
         let udonRaw = [];
         try {
             udonRaw = await fetchJson('data/udon.json');
-        } catch {
-            try { udonRaw = await fetchJson('data/restaurants.json'); } catch { udonRaw = []; }
-        }
+        } catch { udonRaw = []; }
 
         let sobaRaw = [];
         try {
