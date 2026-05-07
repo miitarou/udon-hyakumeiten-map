@@ -15,12 +15,13 @@ nissei-report-intelligence/
 watch-antigravity.sh
 package.json
 
-# Raw / intermediate data (keep only final restaurants.json for app)
+# Raw / intermediate data
 data/restaurants_raw.json
 data/all_years_raw.json
 data/restaurants_merged.json
 data/address_progress.json
 data/sample_2022.html
+# 公開済み: data/udon.json, data/soba.json, data/soba_raw.json
 
 # Python cache
 __pycache__/

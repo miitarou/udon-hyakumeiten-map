@@ -16,7 +16,8 @@
 
 | 情報 | 参照元 |
 |------|--------|
-| 店舗名・選出年度 | [食べログ 百名店](https://award.tabelog.com/hyakumeiten/) |
+| うどん店舗名・選出年度 | [食べログ うどん百名店](https://award.tabelog.com/hyakumeiten/udon/) |
+| そば店舗名・選出年度 | [食べログ そば百名店](https://award.tabelog.com/hyakumeiten/soba/) |
 | 地図タイル | [国土地理院](https://maps.gsi.go.jp/)（地理院タイル） |
 | 一部座標データ | [OpenStreetMap](https://www.openstreetmap.org/) / [Nominatim](https://nominatim.org/) |
 
