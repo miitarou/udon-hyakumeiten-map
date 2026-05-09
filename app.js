@@ -21,6 +21,7 @@
     let activeYear = 'all';
     let minSelectCount = 0;
     let firstSelectedOnly = false;
+    let hideClosedShops = false;
     let searchQuery = '';
     let sortMode = 'name';
     let userLat = null;
@@ -427,6 +428,8 @@
             }
             // First selected
             if (firstSelectedOnly && !r.firstSelected) return false;
+            // Hide closed / relocated shops
+            if (hideClosedShops && r.closed) return false;
             // Search
             if (searchQuery) {
                 const q = searchQuery.toLowerCase();
@@ -624,6 +627,7 @@
         activeYear = 'all';
         minSelectCount = 0;
         firstSelectedOnly = false;
+        hideClosedShops = false;
         searchQuery = '';
         hallOfFameMode = false;
 
@@ -642,6 +646,8 @@
 
         const firstBtn = document.getElementById('first-selected-btn');
         if (firstBtn) { firstBtn.classList.remove('active'); firstBtn.setAttribute('aria-pressed', 'false'); }
+        const closedBtn = document.getElementById('hide-closed-btn');
+        if (closedBtn) { closedBtn.classList.remove('active'); closedBtn.setAttribute('aria-pressed', 'false'); }
         const hofBtn = document.getElementById('hall-of-fame-btn');
         if (hofBtn) hofBtn.setAttribute('aria-pressed', 'false');
 
@@ -924,6 +930,17 @@
                 firstSelectedOnly = !firstSelectedOnly;
                 this.classList.toggle('active', firstSelectedOnly);
                 this.setAttribute('aria-pressed', firstSelectedOnly);
+                applyFilters();
+            });
+        }
+
+        // Hide closed / relocated shops
+        const closedBtn = document.getElementById('hide-closed-btn');
+        if (closedBtn) {
+            closedBtn.addEventListener('click', function () {
+                hideClosedShops = !hideClosedShops;
+                this.classList.toggle('active', hideClosedShops);
+                this.setAttribute('aria-pressed', hideClosedShops);
                 applyFilters();
             });
         }
