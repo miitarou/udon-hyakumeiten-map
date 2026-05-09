@@ -16,7 +16,8 @@
 
 | 情報 | 参照元 |
 |------|--------|
-| うどん店舗名・選出年度 | [食べログ うどん百名店](https://award.tabelog.com/hyakumeiten/udon/) |
+| うどん店舗名・選出年度（EAST/WEST） | [食べログ うどん百名店 EAST/WEST](https://award.tabelog.com/hyakumeiten/udon_east) |
+| うどん店舗名・選出年度（KAGAWA） | [食べログ うどん百名店 KAGAWA](https://award.tabelog.com/hyakumeiten/udon_kagawa) |
 | そば店舗名・選出年度 | [食べログ そば百名店](https://award.tabelog.com/hyakumeiten/soba/) |
 | 地図タイル | [国土地理院](https://maps.gsi.go.jp/)（地理院タイル） |
 | 一部座標データ | [OpenStreetMap](https://www.openstreetmap.org/) / [Nominatim](https://nominatim.org/) |
@@ -31,5 +32,5 @@ Nominatimを利用する場合は、[OpenStreetMap Foundation の利用ポリシ
 本サイトは個人が作成した**非公式のファンツール**です。
 食べログ、株式会社カカクコム、食べログ 百名店とは提携・協賛・承認関係にありません。
 
-掲載情報の正確性、完全性、最新性は保証しません。
-営業時間、定休日、閉店・移転状況、予約可否等は、来店前に必ず公式情報または食べログ店舗ページでご確認ください。
+掲載情報の正確性、完全性、最新性は保証しません。座標は住所・店舗ページ等から推定しており、誤差が生じる場合があります。
+来店前に必ず公式情報または食べログ店舗ページでご確認ください。

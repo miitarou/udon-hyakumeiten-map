@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>うどん・そば百名店 MAP 2017-2025 | EAST × WEST 全年度統合版</title>
-    <meta name="description" content="食べログ「うどん百名店」2017〜2024年・「そば百名店」2017〜2025年 EAST・WEST全店舗を地図上にプロット。年度別選出履歴、エリア別フィルタ、検索、閉店情報付き。">
+    <title>うどん・そば百名店 MAP 2017-2025 | EAST × WEST × KAGAWA 全年度統合版</title>
+    <meta name="description" content="食べログ「うどん百名店」2017〜2024年・「そば百名店」2017〜2025年 EAST・WEST・KAGAWA全店舗を地図上にプロット。年度別選出履歴、エリア別フィルタ、検索付き。">
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -60,6 +60,10 @@
                     <span class="stat-number" id="stat-west">0</span>
                     <span class="stat-label">WEST</span>
                 </div>
+                <div class="stat-item stat-kagawa">
+                    <span class="stat-number" id="stat-kagawa">0</span>
+                    <span class="stat-label">KAGAWA</span>
+                </div>
             </div>
         </div>
     </header>
@@ -95,6 +99,7 @@
                             <button class="filter-btn active" data-filter="all" aria-pressed="true">ALL</button>
                             <button class="filter-btn east-btn" data-filter="EAST" aria-pressed="false">EAST</button>
                             <button class="filter-btn west-btn" data-filter="WEST" aria-pressed="false">WEST</button>
+                            <button class="filter-btn kagawa-btn" data-filter="KAGAWA" aria-pressed="false">KAGAWA</button>
                         </div>
                     </div>
                     <!-- 都道府県 -->
@@ -128,7 +133,6 @@
                         <label class="control-label">⭐ 特殊フィルタ</label>
                         <div class="filter-group special-filters">
                             <button class="filter-btn" id="first-selected-btn" aria-pressed="false">初選出のみ</button>
-                            <button class="filter-btn" id="hide-closed-btn" aria-pressed="false">閉店を除外</button>
                         </div>
                     </div>
                 </div>

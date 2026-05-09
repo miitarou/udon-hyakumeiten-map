@@ -21,7 +21,6 @@
     let activeYear = 'all';
     let minSelectCount = 0;
     let firstSelectedOnly = false;
-    let hideClosedShops = false;
     let searchQuery = '';
     let sortMode = 'name';
     let userLat = null;
@@ -428,8 +427,6 @@
             }
             // First selected
             if (firstSelectedOnly && !r.firstSelected) return false;
-            // Hide closed
-            if (hideClosedShops && r.closed) return false;
             // Search
             if (searchQuery) {
                 const q = searchQuery.toLowerCase();
@@ -627,7 +624,6 @@
         activeYear = 'all';
         minSelectCount = 0;
         firstSelectedOnly = false;
-        hideClosedShops = false;
         searchQuery = '';
         hallOfFameMode = false;
 
@@ -646,8 +642,6 @@
 
         const firstBtn = document.getElementById('first-selected-btn');
         if (firstBtn) { firstBtn.classList.remove('active'); firstBtn.setAttribute('aria-pressed', 'false'); }
-        const closedBtn = document.getElementById('hide-closed-btn');
-        if (closedBtn) { closedBtn.classList.remove('active'); closedBtn.setAttribute('aria-pressed', 'false'); }
         const hofBtn = document.getElementById('hall-of-fame-btn');
         if (hofBtn) hofBtn.setAttribute('aria-pressed', 'false');
 
@@ -660,12 +654,18 @@
     function updateStats() {
         const src = getCategorySource();
         const total = src.length;
-        const east = src.filter(r => r.region === 'EAST').length;
-        const west = src.filter(r => r.region === 'WEST').length;
+        const east   = src.filter(r => r.region === 'EAST').length;
+        const west   = src.filter(r => r.region === 'WEST').length;
+        const kagawa = src.filter(r => r.region === 'KAGAWA').length;
 
         animateNumber('stat-total', total);
         animateNumber('stat-east', east);
         animateNumber('stat-west', west);
+        animateNumber('stat-kagawa', kagawa);
+
+        // KAGAWAがそばカテゴリ表示時は非表示（そばにKAGAWAなし）
+        const kagawaEl = document.getElementById('stat-kagawa')?.closest('.stat-item');
+        if (kagawaEl) kagawaEl.style.display = (activeCategory === 'soba') ? 'none' : '';
     }
 
     function animateNumber(elementId, target) {
@@ -917,22 +917,13 @@
             });
         });
 
-        // First selected / hide closed
+        // First selected
         const firstBtn = document.getElementById('first-selected-btn');
         if (firstBtn) {
             firstBtn.addEventListener('click', function () {
                 firstSelectedOnly = !firstSelectedOnly;
                 this.classList.toggle('active', firstSelectedOnly);
                 this.setAttribute('aria-pressed', firstSelectedOnly);
-                applyFilters();
-            });
-        }
-        const closedBtn = document.getElementById('hide-closed-btn');
-        if (closedBtn) {
-            closedBtn.addEventListener('click', function () {
-                hideClosedShops = !hideClosedShops;
-                this.classList.toggle('active', hideClosedShops);
-                this.setAttribute('aria-pressed', hideClosedShops);
                 applyFilters();
             });
         }

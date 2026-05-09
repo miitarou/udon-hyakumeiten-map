@@ -4,33 +4,33 @@
 
 🔗 **公開URL**: [https://miitarou.github.io/udon-hyakumeiten-map/](https://miitarou.github.io/udon-hyakumeiten-map/)
 
-![Udon](https://img.shields.io/badge/うどん-364店-D4A853)
+![Udon](https://img.shields.io/badge/うどん-432店-D4A853)
 ![Soba](https://img.shields.io/badge/そば-267店-7B9E6B)
-![Total](https://img.shields.io/badge/合計-631店-555555)
+![Total](https://img.shields.io/badge/合計-699店-555555)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
 ## ✨ 特徴
 
 ### 🗂️ ジャンル切替
 - **ALL / 🍜 うどん / 🥢 そば** — ヘッダーのトグルでワンタップ切替、同時表示も可能
-- **カテゴリ別マーカー** — うどん（青・ゴールド）/ そば（ティール・グリーン）で一目で識別
+- **カテゴリ別マーカー** — うどん（青・ゴールド・テラコッタ）/ そば（ティール・グリーン）で識別
 - **カテゴリ別アイコン** — うどん：丼鉢SVG / そば：猪口SVGを独自デザイン
 
 ### 🗺️ マップ機能
-- **631店舗マップ表示** — Leaflet.js + MarkerCluster による高速レンダリング
+- **699店舗マップ表示** — Leaflet.js + MarkerCluster による高速レンダリング
 - **選出回数による強調** — 3-4回：中サイズ / 5回以上：大サイズ＋殿堂ボーダー
 - **店名ラベル自動表示** — マーカー個別表示時に自動表示（クリック不要）
 - **現在地ボタン** — GPS連動で現在地周辺の名店を素早く探索
 
 ### 🔍 フィルタ・検索
-- **EAST / WEST 切替** — エリアで絞り込み
+- **EAST / WEST / KAGAWA 切替** — うどんのみKAGAWA対応（2024年独立カテゴリ）
 - **店名・エリア検索** — リアルタイムインクリメンタル検索
 - **都道府県フィルタ** — 全国から絞り込み
 - **選出年フィルタ** — カテゴリに応じて利用可能年度を動的生成
   - うどん：2017 / 2018 / 2019 / 2020 / 2022 / 2024
   - そば：2017 / 2018 / 2019 / 2021 / 2022 / 2024 / 2025
 - **選出回数フィルタ** — 2回以上〜6回以上で常連名店を発見
-- **特殊フィルタ** — 初選出のみ / 閉店を除外
+- **初選出フィルタ** — 新顔店舗だけを表示
 - **👑 殿堂入りモード** — 5回以上選出の名店だけを表示
 
 ### 🎨 デザイン
@@ -61,13 +61,16 @@ open http://localhost:8080
 ├── style.css                   # スタイルシート (ダークモード + グラスモーフィズム)
 ├── app.js                      # アプリケーションロジック
 ├── data/
-│   ├── udon.json               # うどん百名店データ（364店）
+│   ├── udon.json               # うどん百名店データ（432店）
+│   ├── udon_raw.json           # うどんデータ生成元（ジオコーディング前）
 │   ├── soba.json               # そば百名店データ（267店）
 │   └── soba_raw.json           # そばデータ生成元（ジオコーディング前）
 ├── scripts/
+│   ├── build_udon_json.py      # うどんデータ年度別マージ・生成スクリプト
+│   ├── geocode_udon.py         # うどん店舗 Nominatim ジオコーディング
 │   ├── build_soba_json.py      # そばデータ年度別マージ・生成スクリプト
-│   ├── geocode_soba.py         # そば店舗 Nominatim ジオコーディング
-│   └── geocode_restaurants.py  # うどん店舗 Nominatim ジオコーディング
+│   └── geocode_soba.py         # そば店舗 Nominatim ジオコーディング
+├── LICENSE                     # MIT License
 ├── DATA_LICENSE.md             # データ利用条件
 └── README.md
 ```
@@ -85,11 +88,16 @@ open http://localhost:8080
 ## 📊 データについて
 
 本サイトは、公開情報をもとに個人が整理した**非公式の参考マップ**です。
+座標は住所・店舗ページ等から推定しており、誤差が生じる場合があります。
 
 ### うどん百名店
 - **対象**: 2017〜2024年（全6回分）
-- **店舗数**: 364店（EAST 202店 / WEST 162店）
-- **選出年**: 2017, 2018, 2019, 2020, 2022, 2024
+- **店舗数**: 432店（EAST 212店 / WEST 113店 / KAGAWA 107店）
+- **年度・カテゴリ構成**:
+  - 2017/2018/2019：全国100店（単一リスト）
+  - 2020：TOKYO 100店 + EAST 100店 + WEST 100店（TOKYO はEASTとして統合）
+  - 2022：EAST 100店 + WEST 100店
+  - 2024：EAST 100店 + WEST 100店 + **KAGAWA 100店**（香川県が独立カテゴリとして初登場）
 
 ### そば百名店
 - **対象**: 2017〜2025年（全7回分）
@@ -102,7 +110,7 @@ open http://localhost:8080
 
 ## ⚖️ ライセンス
 
-**ソースコードは MIT License で提供します。**
+**ソースコードは MIT License で提供します。** 詳細は [LICENSE](LICENSE) をご確認ください。
 
 `data/` 配下の店舗データ（店舗名、選出年度、住所、座標、URL等）は **MIT License の対象外** です。
 詳細は [DATA_LICENSE.md](DATA_LICENSE.md) をご確認ください。

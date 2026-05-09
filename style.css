@@ -23,6 +23,12 @@
     --west-dark: #B08A3A;
     --west-glow: rgba(212, 168, 83, 0.3);
 
+    /* Colors — KAGAWA: テラコッタレッド（うどん県の独自色） */
+    --kagawa-color: #C44536;
+    --kagawa-light: #D86553;
+    --kagawa-dark: #8B2D24;
+    --kagawa-glow: rgba(196, 69, 54, 0.3);
+
     /* Colors — そば: グリーン系 */
     --soba-primary: #7B9E6B;
     --soba-light: #9DBF8A;
@@ -274,8 +280,9 @@ html, body {
     color: var(--text-primary);
 }
 
-.stat-item.stat-east .stat-number { color: var(--east-color); }
-.stat-item.stat-west .stat-number { color: var(--west-color); }
+.stat-item.stat-east .stat-number   { color: var(--east-color); }
+.stat-item.stat-west .stat-number   { color: var(--west-color); }
+.stat-item.stat-kagawa .stat-number { color: var(--kagawa-color); }
 
 .stat-label {
     font-size: 10px;
@@ -742,6 +749,12 @@ body.panel-resizing * {
     box-shadow: 0 2px 12px var(--west-glow);
 }
 
+.filter-btn.kagawa-btn.active {
+    background: var(--kagawa-color);
+    border-color: var(--kagawa-color);
+    box-shadow: 0 2px 12px var(--kagawa-glow);
+}
+
 /* Prefecture Select */
 .pref-select {
     width: 100%;
@@ -935,8 +948,9 @@ body.panel-resizing * {
 }
 
 /* うどん */
-.card-region-dot.east { background: var(--east-color); }
-.card-region-dot.west { background: var(--west-color); }
+.card-region-dot.east   { background: var(--east-color); }
+.card-region-dot.west   { background: var(--west-color); }
+.card-region-dot.kagawa { background: var(--kagawa-color); }
 /* そば */
 .card-region-dot.soba.east { background: var(--soba-east); }
 .card-region-dot.soba.west { background: var(--soba-primary); }
@@ -1131,6 +1145,11 @@ body.panel-resizing * {
 
 .popup-region-badge.west {
     background: linear-gradient(135deg, var(--west-color), var(--west-dark));
+    color: white;
+}
+
+.popup-region-badge.kagawa {
+    background: linear-gradient(135deg, var(--kagawa-color), var(--kagawa-dark));
     color: white;
 }
 
@@ -1373,6 +1392,11 @@ body.panel-resizing * {
     background: linear-gradient(135deg, var(--west-color), var(--west-dark));
 }
 
+/* KAGAWAマーカー */
+.marker-pin.kagawa {
+    background: linear-gradient(135deg, var(--kagawa-color), var(--kagawa-dark));
+}
+
 /* そばマーカー */
 .marker-pin.soba.east {
     background: linear-gradient(135deg, var(--soba-east-light), var(--soba-east-dark));
@@ -1394,6 +1418,10 @@ body.panel-resizing * {
 }
 .marker-pin.select-mid.west {
     background: linear-gradient(135deg, var(--west-light), var(--west-color));
+}
+.marker-pin.select-mid.kagawa {
+    background: linear-gradient(135deg, var(--kagawa-light), var(--kagawa-color));
+    box-shadow: 0 2px 12px var(--kagawa-glow);
 }
 .marker-pin.select-mid.soba.east {
     background: linear-gradient(135deg, var(--soba-east-light), var(--soba-east));
@@ -1418,6 +1446,11 @@ body.panel-resizing * {
 }
 .marker-pin.select-high.west {
     background: linear-gradient(135deg, #E8C547, var(--primary));
+}
+.marker-pin.select-high.kagawa {
+    background: linear-gradient(135deg, var(--kagawa-light), var(--kagawa-color));
+    box-shadow: 0 3px 16px var(--kagawa-glow);
+    border-color: rgba(216, 101, 83, 0.8);
 }
 .marker-pin.select-high.soba.east {
     background: linear-gradient(135deg, #81ecec, var(--soba-east));
@@ -1524,11 +1557,15 @@ body.panel-resizing * {
     }
 
     .header-stats {
-        gap: 10px;
+        gap: 8px;
     }
 
     .stat-number {
-        font-size: 18px;
+        font-size: 16px;
+    }
+
+    .stat-label {
+        font-size: 9px;
     }
 
     /* パネル: 下部ドロワー */
