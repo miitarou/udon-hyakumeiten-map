@@ -7,14 +7,14 @@
     "area": "八軒駅",
     "holiday": null,
     "url": "https://tabelog.com/hokkaido/A0101/A010204/1002003/",
-    "lat": null,
-    "lng": null,
+    "lat": 43.08421082451013,
+    "lng": 141.32359737806985,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "北海道札幌市西区八軒七条東4-1-11"
   },
   {
     "name": "かれーうどん 椿",
@@ -24,15 +24,15 @@
     "area": "西18丁目駅",
     "holiday": null,
     "url": "https://tabelog.com/hokkaido/A0101/A010102/1006400/",
-    "lat": null,
-    "lng": null,
+    "lat": 43.05829863372365,
+    "lng": 141.33121495664102,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2022
     ],
-    "address": null
+    "address": "北海道札幌市中央区大通西17-1-5 ノワム大通ビル 1Ｆ"
   },
   {
     "name": "ザンギうどん一久 狸小路店",
@@ -42,14 +42,14 @@
     "area": "狸小路駅",
     "holiday": null,
     "url": "https://tabelog.com/hokkaido/A0101/A010102/1007039/",
-    "lat": null,
-    "lng": null,
+    "lat": 43.057973884537326,
+    "lng": 141.35663282778168,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "北海道札幌市中央区南2条西1-5-1 広和ビルNO．21 1F"
   },
   {
     "name": "増田うどん",
@@ -59,14 +59,14 @@
     "area": "中央区役所前駅",
     "holiday": null,
     "url": "https://tabelog.com/hokkaido/A0101/A010102/1043434/",
-    "lat": null,
-    "lng": null,
+    "lat": 43.05526515453486,
+    "lng": 141.34351481776352,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "北海道札幌市中央区南3条西9-1000-6 イオ3条ビル １Ｆ"
   },
   {
     "name": "手打ちうどん寺屋",
@@ -76,8 +76,8 @@
     "area": "札幌市西区",
     "holiday": null,
     "url": "https://tabelog.com/hokkaido/A0101/A010204/1001950/",
-    "lat": null,
-    "lng": null,
+    "lat": 43.06834653370573,
+    "lng": 141.2949979567679,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -87,7 +87,7 @@
       2020,
       2022
     ],
-    "address": null
+    "address": "北海道札幌市西区山の手3条6丁目1-10"
   },
   {
     "name": "鬼はそと福はうち",
@@ -97,14 +97,14 @@
     "area": "西線16条駅",
     "holiday": null,
     "url": "https://tabelog.com/hokkaido/A0101/A010104/1002856/",
-    "lat": null,
-    "lng": null,
+    "lat": 43.036881033735916,
+    "lng": 141.32700995642762,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "北海道札幌市中央区伏見1-3-11"
   },
   {
     "name": "お多福",
@@ -114,14 +114,14 @@
     "area": "鎌ケ谷大仏駅",
     "holiday": null,
     "url": "https://tabelog.com/chiba/A1203/A120303/12007471/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.756522058747564,
+    "lng": 140.01560500497027,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "千葉県鎌ケ谷市鎌ケ谷4丁目2-51"
   },
   {
     "name": "しょうね家",
@@ -131,14 +131,14 @@
     "area": "富里市",
     "holiday": null,
     "url": "https://tabelog.com/chiba/A1204/A120403/12004760/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.69640649889174,
+    "lng": 140.34847171412972,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "千葉県富里市十倉208-104"
   },
   {
     "name": "手打ちうどんZ",
@@ -148,14 +148,14 @@
     "area": "大網白里市",
     "holiday": null,
     "url": "https://tabelog.com/chiba/A1205/A120503/12005569/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.54727629897091,
+    "lng": 140.2996376726576,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "千葉県大網白里市季美の森南1-8-15"
   },
   {
     "name": "讃岐饂飩 まるは",
@@ -165,14 +165,14 @@
     "area": "船橋法典駅",
     "holiday": null,
     "url": "https://tabelog.com/chiba/A1202/A120201/12023023/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.73052863874872,
+    "lng": 139.9674506847415,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "千葉県船橋市上山町1-128 藤井マンション101号"
   },
   {
     "name": "鈴や",
@@ -182,14 +182,14 @@
     "area": "印西市",
     "holiday": null,
     "url": "https://tabelog.com/chiba/A1204/A120402/12006332/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.772293007749354,
+    "lng": 140.22989995573673,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "千葉県印西市山田1783-8 いんば農産物直売所「グリーブ」内"
   },
   {
     "name": "あじめん 北浦和店",
@@ -199,14 +199,14 @@
     "area": "北浦和駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1101/A110102/11024986/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.8710301377517,
+    "lng": 139.6458423852243,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "埼玉県さいたま市浦和区常盤9-19-11 第3スミダビル1Ｆ"
   },
   {
     "name": "あそび",
@@ -216,15 +216,15 @@
     "area": "比企郡小川町",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1105/A110605/11017560/",
-    "lat": null,
-    "lng": null,
+    "lat": 36.05124607831702,
+    "lng": 139.2514934884829,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2024
     ],
-    "address": null
+    "address": "埼玉県比企郡小川町増尾473-6"
   },
   {
     "name": "うどん 有田",
@@ -234,14 +234,14 @@
     "area": "北上尾駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1104/A110401/11009188/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.98606036845942,
+    "lng": 139.56861065760216,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "埼玉県上尾市中妻3-7-4 ヤマフジ中妻店 敷地内"
   },
   {
     "name": "うどん処 おはな",
@@ -251,8 +251,8 @@
     "area": "朝霞台駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1103/A110301/11022150/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.81463417857354,
+    "lng": 139.58508411585908,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -260,7 +260,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県朝霞市西弁財1-10-25 保第一ビル 1F"
   },
   {
     "name": "うどん家 一",
@@ -270,8 +270,8 @@
     "area": "小手指駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1106/A110601/11026435/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.80522694853268,
+    "lng": 139.43801280586712,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -279,7 +279,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県所沢市小手指町1-29-3"
   },
   {
     "name": "うどん本舗",
@@ -289,14 +289,14 @@
     "area": "川越市",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1103/A110303/11033050/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.93707793570865,
+    "lng": 139.46963023128205,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "埼玉県川越市大字寺山194-1"
   },
   {
     "name": "おのうどん",
@@ -306,8 +306,8 @@
     "area": "北与野駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1101/A110101/11000761/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.890365269209695,
+    "lng": 139.61933050498212,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -315,7 +315,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県さいたま市中央区本町東5-13-21"
   },
   {
     "name": "ががちゃ屋",
@@ -325,8 +325,8 @@
     "area": "一本松駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1103/A110304/11017604/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.94280643842368,
+    "lng": 139.37013415730436,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -334,7 +334,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県鶴ヶ島市下新田12-8"
   },
   {
     "name": "がむしゃら",
@@ -344,8 +344,8 @@
     "area": "仏子駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1106/A110602/11029324/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.84604408848219,
+    "lng": 139.36089349633343,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -353,7 +353,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県入間市野田886-3"
   },
   {
     "name": "さわだ",
@@ -363,14 +363,14 @@
     "area": "入間市",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1106/A110602/11004534/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.82276212849515,
+    "lng": 139.3551406361023,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "埼玉県入間市根岸461-1"
   },
   {
     "name": "だるまや",
@@ -380,14 +380,14 @@
     "area": "比企郡川島町",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1105/A110502/11016730/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.978304958429256,
+    "lng": 139.45842631760107,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "埼玉県比企郡川島町上伊草985"
   },
   {
     "name": "三丁目の手打うどん",
@@ -397,8 +397,8 @@
     "area": "武蔵藤沢駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1106/A110602/11001573/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.82144097851612,
+    "lng": 139.41836555604465,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -406,7 +406,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県狭山市水野1266-49"
   },
   {
     "name": "久良一",
@@ -416,14 +416,14 @@
     "area": "鴻巣市",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1104/A110401/11009882/",
-    "lat": null,
-    "lng": null,
+    "lat": 36.05089462840277,
+    "lng": 139.52006288829105,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "埼玉県鴻巣市人形4-1-36"
   },
   {
     "name": "元祖武蔵野うどん めんこや 本店",
@@ -433,14 +433,14 @@
     "area": "川越市",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1103/A110303/11003031/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.93383747431695,
+    "lng": 139.51878907561985,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "埼玉県川越市大字鴨田1984-1 （埼玉医大となり）"
   },
   {
     "name": "六助うどん",
@@ -450,8 +450,8 @@
     "area": "本庄市",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1105/A110504/11004153/",
-    "lat": null,
-    "lng": null,
+    "lat": 36.23670556818603,
+    "lng": 139.21004448038525,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -459,7 +459,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県本庄市傍示堂575"
   },
   {
     "name": "喜多一",
@@ -469,14 +469,14 @@
     "area": "航空公園駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1106/A110601/11003682/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.80015881854392,
+    "lng": 139.46320475579827,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "埼玉県所沢市喜多町11-13"
   },
   {
     "name": "四方吉うどん 吉見本店",
@@ -486,14 +486,14 @@
     "area": "比企郡吉見町",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1105/A110502/11006341/",
-    "lat": null,
-    "lng": null,
+    "lat": 36.05167151838182,
+    "lng": 139.45583096834395,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "埼玉県比企郡吉見町中新井990-3"
   },
   {
     "name": "大地",
@@ -503,14 +503,14 @@
     "area": "行田市駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1104/A110403/11034232/",
-    "lat": null,
-    "lng": null,
+    "lat": 36.13919788832641,
+    "lng": 139.45636767922767,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "埼玉県行田市忍2-18-37"
   },
   {
     "name": "手打うどん 寿庵",
@@ -520,14 +520,14 @@
     "area": "土呂駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1101/A110103/11028810/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.93997333770232,
+    "lng": 139.62827068593302,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "埼玉県さいたま市北区本郷町167-1 グランドプルミエール 1F"
   },
   {
     "name": "手打うどん 松屋",
@@ -537,8 +537,8 @@
     "area": "桶川駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1104/A110401/11004724/",
-    "lat": null,
-    "lng": null,
+    "lat": 36.00210566844787,
+    "lng": 139.56434097776722,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -546,7 +546,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県桶川市寿1-11-18"
   },
   {
     "name": "手打うどん 長谷沼",
@@ -556,8 +556,8 @@
     "area": "本川越駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1103/A110303/11033610/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.91573965847635,
+    "lng": 139.4815442169529,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -567,7 +567,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県川越市中原町2-1-13"
   },
   {
     "name": "手打ちうどん いしづか",
@@ -577,8 +577,8 @@
     "area": "桶川駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1104/A110401/11005554/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.999983518449866,
+    "lng": 139.56638081774435,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -586,7 +586,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県桶川市南1-7-5"
   },
   {
     "name": "手打ちうどん さわいち",
@@ -596,14 +596,14 @@
     "area": "大和田駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1101/A110103/11003324/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.934719885263966,
+    "lng": 139.64631594389903,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "埼玉県さいたま市見沼区大和田町2-1009-1"
   },
   {
     "name": "手打ちうどん まつ奈",
@@ -613,15 +613,15 @@
     "area": "浦和駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1101/A110102/11028299/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.85365493776716,
+    "lng": 139.65967788503912,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2024
     ],
-    "address": null
+    "address": "埼玉県さいたま市浦和区岸町3-3-16"
   },
   {
     "name": "本手打ちうどん庄司",
@@ -631,8 +631,8 @@
     "area": "比企郡川島町",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1105/A110502/11001574/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.972800368433916,
+    "lng": 139.4620962175429,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -640,7 +640,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県比企郡川島町上伊草743-9"
   },
   {
     "name": "武蔵野 伝統の味 涼太郎",
@@ -650,8 +650,8 @@
     "area": "所沢駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1106/A110601/11000460/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.78710991855672,
+    "lng": 139.47738299565654,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -659,7 +659,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県所沢市くすのき台3-14-4"
   },
   {
     "name": "武蔵野うどん 澤村",
@@ -669,14 +669,14 @@
     "area": "北戸田駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1102/A110202/11049204/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.833862358583175,
+    "lng": 139.6536645260052,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "埼玉県戸田市美女木北1-2-25"
   },
   {
     "name": "武蔵野うどん 藤原 北与野本店",
@@ -686,8 +686,8 @@
     "area": "北与野駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1101/A110101/11004286/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.88936987853851,
+    "lng": 139.62414405658654,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -695,7 +695,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県さいたま市中央区上落合3-12-36"
   },
   {
     "name": "永井",
@@ -705,8 +705,8 @@
     "area": "入間郡三芳町",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1103/A110302/11033420/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.83433048393453,
+    "lng": 139.51113401507757,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -714,7 +714,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県入間郡三芳町北永井264-2"
   },
   {
     "name": "深山うどん",
@@ -724,14 +724,14 @@
     "area": "上尾市",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1104/A110401/11005759/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.99568684845526,
+    "lng": 139.5747319476951,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "埼玉県上尾市大字上字堤下303-4"
   },
   {
     "name": "熊たまや",
@@ -741,14 +741,14 @@
     "area": "熊谷駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1105/A110501/11020450/",
-    "lat": null,
-    "lng": null,
+    "lat": 36.139350731385974,
+    "lng": 139.38934147513595,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "埼玉県熊谷市桜木町1-202-1 熊谷駅秩父鉄道 改札口前"
   },
   {
     "name": "田舎うどん てつ",
@@ -758,8 +758,8 @@
     "area": "川越市",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1103/A110303/11004160/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.889829568512944,
+    "lng": 139.54477727664684,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -767,7 +767,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県川越市久下戸2881"
   },
   {
     "name": "田舎打ち 麺蔵",
@@ -777,14 +777,14 @@
     "area": "川越市",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1103/A110304/11000974/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.937435956657275,
+    "lng": 139.43803589426054,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "埼玉県川越市大字小堤16-10"
   },
   {
     "name": "由す美",
@@ -794,8 +794,8 @@
     "area": "行田市",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1104/A110403/11003505/",
-    "lat": null,
-    "lng": null,
+    "lat": 36.124774348329254,
+    "lng": 139.43653134909587,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -803,7 +803,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県行田市棚田町2-3-6"
   },
   {
     "name": "粉家",
@@ -813,14 +813,14 @@
     "area": "小前田駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1105/A110503/11006382/",
-    "lat": null,
-    "lng": null,
+    "lat": 36.122182468261165,
+    "lng": 139.2175619692232,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "埼玉県深谷市小前田289-1"
   },
   {
     "name": "藤店うどん",
@@ -830,8 +830,8 @@
     "area": "さいたま市西区",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1101/A110103/11000476/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.910647418514266,
+    "lng": 139.59044876682512,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -839,7 +839,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県さいたま市西区三橋6-14-7"
   },
   {
     "name": "藤店うどん 川越店",
@@ -849,8 +849,8 @@
     "area": "川越市",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1103/A110303/11004070/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.89801240848735,
+    "lng": 139.4807104167744,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -858,7 +858,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県川越市新宿町4-1-5"
   },
   {
     "name": "讃岐うどん 條辺",
@@ -868,8 +868,8 @@
     "area": "上福岡駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1103/A110302/11004258/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.874968508512254,
+    "lng": 139.51296475651904,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -880,7 +880,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県ふじみ野市上福岡1-7-9"
   },
   {
     "name": "駕籠休み",
@@ -890,16 +890,16 @@
     "area": "さいたま新都心駅",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1101/A110101/11005442/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.90088333772807,
+    "lng": 139.63119488553616,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020,
       2022,
       2024
     ],
-    "address": null
+    "address": "埼玉県さいたま市大宮区吉敷町2-108-12"
   },
   {
     "name": "麦屋",
@@ -909,14 +909,14 @@
     "area": "深谷市",
     "holiday": null,
     "url": "https://tabelog.com/saitama/A1105/A110503/11024696/",
-    "lat": null,
-    "lng": null,
+    "lat": 36.19186988121522,
+    "lng": 139.26470107509755,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "埼玉県深谷市萱場265-3"
   },
   {
     "name": "うどん屋 源さん 本店",
@@ -926,14 +926,14 @@
     "area": "甲府市",
     "holiday": null,
     "url": "https://tabelog.com/yamanashi/A1901/A190101/19000403/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.65110138834909,
+    "lng": 138.55417473492986,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "山梨県甲府市上石田4-5-3"
   },
   {
     "name": "くれちうどん",
@@ -943,14 +943,14 @@
     "area": "富士吉田市",
     "holiday": null,
     "url": "https://tabelog.com/yamanashi/A1903/A190301/19004114/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.509857808526014,
+    "lng": 138.8280389833112,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "山梨県富士吉田市上暮地1-18-22"
   },
   {
     "name": "たかちゃんうどん",
@@ -960,14 +960,14 @@
     "area": "富士吉田市",
     "holiday": null,
     "url": "https://tabelog.com/yamanashi/A1903/A190301/19000919/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.512757668523626,
+    "lng": 138.82630695334169,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "山梨県富士吉田市上暮地2295-3"
   },
   {
     "name": "たけ川うどん",
@@ -977,14 +977,14 @@
     "area": "南都留郡富士河口湖町",
     "holiday": null,
     "url": "https://tabelog.com/yamanashi/A1903/A190303/19000815/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.49287392851764,
+    "lng": 138.76785262318182,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "山梨県南都留郡富士河口湖町船津3371"
   },
   {
     "name": "みうらうどん",
@@ -994,8 +994,8 @@
     "area": "富士吉田市",
     "holiday": null,
     "url": "https://tabelog.com/yamanashi/A1903/A190301/19000359/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.49455799852965,
+    "lng": 138.80896079317003,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1003,7 +1003,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "山梨県富士吉田市下吉田1-22-5"
   },
   {
     "name": "彩花",
@@ -1013,14 +1013,14 @@
     "area": "南都留郡富士河口湖町",
     "holiday": null,
     "url": "https://tabelog.com/yamanashi/A1903/A190303/19000050/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.48690476852017,
+    "lng": 138.7638983931243,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "山梨県南都留郡富士河口湖町船津7436-2"
   },
   {
     "name": "手打ち 山もとうどん",
@@ -1030,14 +1030,14 @@
     "area": "都留市",
     "holiday": null,
     "url": "https://tabelog.com/yamanashi/A1905/A190501/19000292/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.57233462851722,
+    "lng": 138.9250093338743,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "山梨県都留市古川渡397-1"
   },
   {
     "name": "手打ちうどん ムサシ",
@@ -1047,8 +1047,8 @@
     "area": "富士吉田市",
     "holiday": null,
     "url": "https://tabelog.com/yamanashi/A1903/A190301/19000243/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.47607801853578,
+    "lng": 138.7913268329957,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1056,7 +1056,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "山梨県富士吉田市上吉田6-10-19"
   },
   {
     "name": "桜井うどん",
@@ -1066,8 +1066,8 @@
     "area": "富士吉田市",
     "holiday": null,
     "url": "https://tabelog.com/yamanashi/A1903/A190301/19000357/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.489090248530964,
+    "lng": 138.80215418311954,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1075,7 +1075,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "山梨県富士吉田市下吉田5-1-33"
   },
   {
     "name": "渡辺うどん",
@@ -1085,14 +1085,14 @@
     "area": "南都留郡忍野村",
     "holiday": null,
     "url": "https://tabelog.com/yamanashi/A1903/A190302/19000342/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.45817641856857,
+    "lng": 138.85859674276773,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "山梨県南都留郡忍野村内野545-2"
   },
   {
     "name": "白須うどん",
@@ -1102,14 +1102,14 @@
     "area": "富士吉田市",
     "holiday": null,
     "url": "https://tabelog.com/yamanashi/A1903/A190301/19000055/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.4789464085398,
+    "lng": 138.8096762730118,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "山梨県富士吉田市上吉田東6-1-44"
   },
   {
     "name": "美也樹",
@@ -1119,15 +1119,15 @@
     "area": "富士吉田市",
     "holiday": null,
     "url": "https://tabelog.com/yamanashi/A1903/A190301/19000160/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.485163737722026,
+    "lng": 138.78316538193144,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020,
       2022
     ],
-    "address": null
+    "address": "山梨県富士吉田市新西原4-3-6"
   },
   {
     "name": "麺許皆伝",
@@ -1137,8 +1137,8 @@
     "area": "富士吉田市",
     "holiday": null,
     "url": "https://tabelog.com/yamanashi/A1903/A190301/19000136/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.47910837853683,
+    "lng": 138.80067846301978,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1146,7 +1146,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "山梨県富士吉田市上吉田東1-4-58"
   },
   {
     "name": "信濃屋",
@@ -1156,8 +1156,8 @@
     "area": "多治見市",
     "holiday": null,
     "url": "https://tabelog.com/gifu/A2103/A210301/21000027/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.33831608809297,
+    "lng": 137.12614477277145,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1168,7 +1168,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "岐阜県多治見市上野町3-46"
   },
   {
     "name": "手打うどん 郁兵衛",
@@ -1178,14 +1178,14 @@
     "area": "土岐市",
     "holiday": null,
     "url": "https://tabelog.com/gifu/A2103/A210301/21001856/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.32386765812056,
+    "lng": 137.18398979258495,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "岐阜県土岐市下石町378"
   },
   {
     "name": "うどん 錦",
@@ -1195,8 +1195,8 @@
     "area": "栄(名古屋)駅",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2301/A230103/23000374/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.17058594812922,
+    "lng": 136.90545868123192,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1207,7 +1207,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "愛知県名古屋市中区錦3-18-9 錦花園ビル 1F"
   },
   {
     "name": "うどん料理 千",
@@ -1217,8 +1217,8 @@
     "area": "伏見駅",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2301/A230102/23007583/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.16760376812992,
+    "lng": 136.9017200112044,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1226,7 +1226,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "愛知県名古屋市中区栄2-4-24 谷口ビル １Ｆ"
   },
   {
     "name": "きしや",
@@ -1236,8 +1236,8 @@
     "area": "池下駅",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2301/A230106/23001708/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.168633478142254,
+    "lng": 136.94249486118622,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1245,7 +1245,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "愛知県名古屋市千種区仲田2-17-7 池下タワーズ1F"
   },
   {
     "name": "まことや",
@@ -1255,15 +1255,15 @@
     "area": "川名駅",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2301/A230108/23000094/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.141765318160154,
+    "lng": 136.945123030913,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2022
     ],
-    "address": null
+    "address": "愛知県名古屋市昭和区檀渓通4-14"
   },
   {
     "name": "めん専門店 味良",
@@ -1273,8 +1273,8 @@
     "area": "名古屋市北区",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2301/A230110/23013430/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.21235023729908,
+    "lng": 136.91101438048807,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1285,7 +1285,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "愛知県名古屋市北区川中町4-3"
   },
   {
     "name": "カレーうどん 鯱乃家",
@@ -1295,8 +1295,8 @@
     "area": "黒川駅",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2301/A230110/23000050/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.19633148811442,
+    "lng": 136.9103555414885,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1304,7 +1304,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "愛知県名古屋市北区田幡2-14-1"
   },
   {
     "name": "千年ニコ天",
@@ -1314,14 +1314,14 @@
     "area": "名古屋市熱田区",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2301/A230112/23012864/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.115852831593095,
+    "lng": 136.89984146267557,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "愛知県名古屋市熱田区千年1-20-11"
   },
   {
     "name": "太門",
@@ -1331,15 +1331,15 @@
     "area": "今池駅",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2301/A230106/23045911/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.16823538931121,
+    "lng": 136.93766007672176,
     "closed": false,
     "firstSelected": false,
     "years": [
       2017,
       2020
     ],
-    "address": null
+    "address": "愛知県名古屋市千種区今池5-9-18 衣笠ビル 1F"
   },
   {
     "name": "岡崎 二橋",
@@ -1349,9 +1349,9 @@
     "area": "岡崎市",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2305/A230502/23008668/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 34.934385069643376,
+    "lng": 137.173071014985,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017,
@@ -1359,7 +1359,7 @@
       2019,
       2020
     ],
-    "address": null
+    "address": "愛知県岡崎市明大寺町字大圦51-1 ポプラ51 101号"
   },
   {
     "name": "川井屋本店",
@@ -1369,14 +1369,14 @@
     "area": "高岳駅",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2301/A230104/23001465/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.179500458127656,
+    "lng": 136.91832648131293,
     "closed": false,
     "firstSelected": false,
     "years": [
       2019
     ],
-    "address": null
+    "address": "愛知県名古屋市東区飯田町31"
   },
   {
     "name": "手打うどん かとう",
@@ -1386,8 +1386,8 @@
     "area": "太閤通駅",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2301/A230101/23039141/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.16747082812082,
+    "lng": 136.8728657512233,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1398,7 +1398,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "愛知県名古屋市中村区太閤通3-26"
   },
   {
     "name": "手打うどん 牛コロ 宮内",
@@ -1408,14 +1408,14 @@
     "area": "志賀本通駅",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2301/A230110/23040430/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.19549123811861,
+    "lng": 136.92184529147198,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "愛知県名古屋市北区大蔵町22-2"
   },
   {
     "name": "手打麺舗丸一",
@@ -1425,14 +1425,14 @@
     "area": "上前津駅",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2301/A230105/23013180/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.155249637332965,
+    "lng": 136.90351117991656,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "愛知県名古屋市中区上前津1-12-26"
   },
   {
     "name": "清平",
@@ -1442,14 +1442,14 @@
     "area": "浄心駅",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2301/A230109/23013234/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.19588276811009,
+    "lng": 136.89584593149414,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "愛知県名古屋市西区上名古屋3-13-30"
   },
   {
     "name": "煮込うどん 山本屋本店 エスカ店",
@@ -1459,14 +1459,14 @@
     "area": "名古屋駅",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2301/A230101/23000123/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.16954255812195,
+    "lng": 136.8805495912388,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "愛知県名古屋市中村区椿町6-9 エスカ地下街"
   },
   {
     "name": "玉川 豊橋広小路本店",
@@ -1476,8 +1476,8 @@
     "area": "豊橋市",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2306/A230601/23009617/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.764437037734346,
+    "lng": 137.38446187563187,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1485,7 +1485,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "愛知県豊橋市広小路1-13"
   },
   {
     "name": "角丸",
@@ -1495,15 +1495,15 @@
     "area": "久屋大通駅",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2301/A230103/23000031/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.17505999812835,
+    "lng": 136.91167749127274,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2022
     ],
-    "address": null
+    "address": "愛知県名古屋市東区泉1-18-33"
   },
   {
     "name": "讃岐うどん 本格手打 てつ家",
@@ -1513,9 +1513,9 @@
     "area": "豊橋市",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2306/A230601/23041118/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 34.7487097634717,
+    "lng": 137.4021013762002,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017,
@@ -1523,7 +1523,7 @@
       2019,
       2020
     ],
-    "address": null
+    "address": "愛知県豊橋市佐藤1-11-1"
   },
   {
     "name": "讃岐うどん 麦福",
@@ -1533,14 +1533,14 @@
     "area": "今池駅",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2301/A230106/23059222/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.1703263373335,
+    "lng": 136.9352545800466,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "愛知県名古屋市千種区内山3-11-19"
   },
   {
     "name": "讃州手打ちうどん 我龍",
@@ -1550,8 +1550,8 @@
     "area": "西尾市",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2305/A230504/23032890/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.880711058381635,
+    "lng": 137.11994179815355,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1562,7 +1562,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "愛知県西尾市下羽角町六反60-1"
   },
   {
     "name": "鈴家",
@@ -1572,14 +1572,14 @@
     "area": "名古屋市名東区",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2301/A230111/23007899/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.15446950817216,
+    "lng": 137.00816379099712,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "愛知県名古屋市名東区高針2-2507-1"
   },
   {
     "name": "鯱市 錦通伏見店",
@@ -1589,15 +1589,15 @@
     "area": "伏見駅",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2301/A230102/23053858/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.16947993732208,
+    "lng": 136.89772578006438,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2022
     ],
-    "address": null
+    "address": "愛知県名古屋市中区錦2-16-21 GS伏見センタービル 1F"
   },
   {
     "name": "麺処 龍",
@@ -1607,16 +1607,16 @@
     "area": "栄(名古屋)駅",
     "holiday": null,
     "url": "https://tabelog.com/aichi/A2301/A230103/23000609/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.171921919513686,
+    "lng": 136.90471375428697,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017,
       2018,
       2019
     ],
-    "address": null
+    "address": "愛知県名古屋市中区錦3-8-24 東袋町ビル"
   },
   {
     "name": "JAZZ KEIRIN",
@@ -1626,14 +1626,14 @@
     "area": "下高井戸駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1318/A131809/13000696/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.66677754868575,
+    "lng": 139.64256913432524,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都世田谷区松原3-30-17 大和屋ビル １Ｆ"
   },
   {
     "name": "cuud",
@@ -1643,8 +1643,8 @@
     "area": "羽田空港第１ターミナル駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1315/A131504/13193378/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.54809603800114,
+    "lng": 139.78504228186483,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1652,7 +1652,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都大田区羽田空港3-3-2 羽田空港第1旅客ターミナル 2F"
   },
   {
     "name": "あんぷく 池袋店",
@@ -1662,8 +1662,8 @@
     "area": "池袋駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1305/A130501/13097934/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.73250143785981,
+    "lng": 139.70905998378078,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1671,7 +1671,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都豊島区西池袋1-37-8 ＪＰビル １Ｆ"
   },
   {
     "name": "うたた寝",
@@ -1681,14 +1681,14 @@
     "area": "石神井公園駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1321/A132103/13012311/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.74326073705723,
+    "lng": 139.60407076748464,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都練馬区石神井町3-27-20 早川ビル １Ｆ"
   },
   {
     "name": "うちたて家",
@@ -1698,8 +1698,8 @@
     "area": "池袋駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1305/A130501/13003889/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.726157137865,
+    "lng": 139.71266388371416,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1707,7 +1707,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都豊島区南池袋3-13-17"
   },
   {
     "name": "うどん sugita",
@@ -1716,15 +1716,15 @@
     "prefecture": "東京都",
     "area": "東急沿線",
     "holiday": null,
-    "url": "https://tabelog.com/tokyo/A1303/A130302/13040275/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "url": "https://tabelog.com/tokyo/A1317/A131701/13040275/",
+    "lat": 35.641539600984004,
+    "lng": 139.69537731235678,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017
     ],
-    "address": null
+    "address": "東京都目黒区上目黒2-47-5"
   },
   {
     "name": "うどん 丸香",
@@ -1734,8 +1734,8 @@
     "area": "神保町駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1310/A131003/13000629/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.696707437898816,
+    "lng": 139.7601316833834,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1746,7 +1746,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都千代田区神田小川町3-16-1 ニュー駿河台ビル 1F"
   },
   {
     "name": "うどん 慎",
@@ -1756,8 +1756,8 @@
     "area": "南新宿駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1304/A130401/13125862/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.686497368690574,
+    "lng": 139.6970089644863,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1768,7 +1768,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都渋谷区代々木2-20-16 相馬ビル1F"
   },
   {
     "name": "うどん山長",
@@ -1778,8 +1778,8 @@
     "area": "恵比寿駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1303/A130302/13045327/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.64830013791395,
+    "lng": 139.71112428292878,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1787,7 +1787,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都渋谷区恵比寿1-1-5 エビスオークビル1 1F"
   },
   {
     "name": "うどん弥 根古坂",
@@ -1797,14 +1797,14 @@
     "area": "新小平駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1328/A132804/13137697/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.729156337784026,
+    "lng": 139.46442558391846,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都小平市小川町1-1104-1"
   },
   {
     "name": "うどん豊前房",
@@ -1814,14 +1814,14 @@
     "area": "池尻大橋駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1317/A131701/13003158/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.64832305871323,
+    "lng": 139.6920406841042,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都目黒区東山1-11-15 中目黒 ARK-II 1F"
   },
   {
     "name": "おにやんま 中目黒店",
@@ -1831,8 +1831,8 @@
     "area": "中目黒駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1317/A131701/13199054/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.64464223791225,
+    "lng": 139.69849628290072,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1840,7 +1840,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都目黒区上目黒3-3-1 1F"
   },
   {
     "name": "おにやんま 五反田本店",
@@ -1850,8 +1850,8 @@
     "area": "五反田駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1316/A131603/13111869/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.62543503793255,
+    "lng": 139.7239612826888,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1862,7 +1862,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都品川区西五反田1-6-3"
   },
   {
     "name": "おにやんま 人形町店",
@@ -1872,8 +1872,8 @@
     "area": "人形町駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1302/A130204/13216456/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.686006837912814,
+    "lng": 139.78277678325944,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1881,7 +1881,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都中央区日本橋人形町2-6-1"
   },
   {
     "name": "おにやんま 新橋店",
@@ -1891,8 +1891,8 @@
     "area": "新橋駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1301/A130103/13162575/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.6658329379173,
+    "lng": 139.756647583074,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1900,7 +1900,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都港区新橋3-16-23"
   },
   {
     "name": "おにやんま 東品川店",
@@ -1910,8 +1910,8 @@
     "area": "青物横丁駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1315/A131501/13142095/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.61085933794863,
+    "lng": 139.74534418252662,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1919,7 +1919,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都品川区東品川4-1-20"
   },
   {
     "name": "きくや",
@@ -1929,14 +1929,14 @@
     "area": "武蔵大和駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1328/A132806/13010118/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.75305804856958,
+    "lng": 139.44985598533185,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都東村山市廻田町2-12-16"
   },
   {
     "name": "きつね庵",
@@ -1946,15 +1946,15 @@
     "area": "東銀座駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1301/A130101/13181414/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.6716648387224,
+    "lng": 139.76739131428712,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2024
     ],
-    "address": null
+    "address": "東京都中央区銀座3-8-13 光生ビル 2F"
   },
   {
     "name": "こくわがた",
@@ -1964,16 +1964,16 @@
     "area": "本郷三丁目駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1310/A131004/13136989/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.70645629360434,
+    "lng": 139.76042169932205,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017,
       2018,
       2019
     ],
-    "address": null
+    "address": "東京都文京区本郷2-39-7"
   },
   {
     "name": "こんぴら茶屋",
@@ -1983,8 +1983,8 @@
     "area": "目黒駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1316/A131601/13013189/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.63382563792522,
+    "lng": 139.71762688277803,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -1992,7 +1992,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都品川区上大崎3-3-1 坂上ビル １Ｆ"
   },
   {
     "name": "さぬきや",
@@ -2002,14 +2002,14 @@
     "area": "高円寺駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1319/A131904/13011726/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.70449063786024,
+    "lng": 139.65451968353605,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都杉並区高円寺南4-38-7"
   },
   {
     "name": "さぬきや 学芸大店",
@@ -2019,14 +2019,14 @@
     "area": "学芸大学駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1317/A131702/13018265/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.629749928722156,
+    "lng": 139.6830253739229,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都目黒区鷹番3-19-15"
   },
   {
     "name": "つくつくぼうし",
@@ -2036,14 +2036,14 @@
     "area": "野方駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1321/A132104/13218651/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.72093183784913,
+    "lng": 139.65241698370357,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都中野区野方6-8-5"
   },
   {
     "name": "つるとんたん 六本木店",
@@ -2053,14 +2053,14 @@
     "area": "六本木駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1307/A130701/13001859/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.662540437912305,
+    "lng": 139.73435618305635,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都港区六本木3-14-12 六本木3丁目ビル 1F"
   },
   {
     "name": "でら打ち",
@@ -2070,14 +2070,14 @@
     "area": "旗の台駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1317/A131712/13003419/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.60596550314656,
+    "lng": 139.7041187798307,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都品川区旗の台2-7-3"
   },
   {
     "name": "とこ井",
@@ -2087,15 +2087,15 @@
     "area": "高円寺駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1319/A131904/13153065/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.70332520866463,
+    "lng": 139.6491368646898,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2024
     ],
-    "address": null
+    "address": "東京都杉並区高円寺南4-7-5 久万乃ビル 1F"
   },
   {
     "name": "むぎきり",
@@ -2105,14 +2105,14 @@
     "area": "一橋学園駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1328/A132804/13005951/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.721441998598536,
+    "lng": 139.477720074993,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都小平市学園西町1-26-26"
   },
   {
     "name": "むさしの エン座",
@@ -2122,8 +2122,8 @@
     "area": "石神井公園駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1321/A132103/13022818/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.737538637821714,
+    "lng": 139.59947388390844,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2131,7 +2131,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都練馬区石神井町5-12-16 石神井公園ふるさと文化館内"
   },
   {
     "name": "ゆず屋製麺所",
@@ -2141,14 +2141,14 @@
     "area": "神田駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1310/A131002/13043315/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.69218744272796,
+    "lng": 139.77063928549424,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都千代田区内神田3-19-10 ソーシャルビル １Ｆ"
   },
   {
     "name": "よしふじ",
@@ -2158,8 +2158,8 @@
     "area": "小平駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1328/A132804/13080472/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.73707297859538,
+    "lng": 139.49899093513594,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2167,7 +2167,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都小平市大沼町7-6-6"
   },
   {
     "name": "ウドンスタンド五頭",
@@ -2177,8 +2177,8 @@
     "area": "三鷹駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1320/A132002/13117283/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.70734036863392,
+    "lng": 139.56072074479235,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2186,7 +2186,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都武蔵野市西久保1-6-20 FF三鷹"
   },
   {
     "name": "カレーうどん ひかり TOKYO",
@@ -2196,14 +2196,14 @@
     "area": "池袋駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1305/A130501/13170124/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.73043053786026,
+    "lng": 139.70632948376175,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都豊島区西池袋3-22-8 パークサイドフキビル B1F 岸野宅"
   },
   {
     "name": "トウキョウライトブルー ホンゴウスリー",
@@ -2213,8 +2213,8 @@
     "area": "本郷三丁目駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1310/A131004/13240246/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.70647863789273,
+    "lng": 139.76056338348178,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2222,7 +2222,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都文京区本郷2-39-7"
   },
   {
     "name": "一滴八銭屋 新宿本店",
@@ -2232,8 +2232,8 @@
     "area": "新宿駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1304/A130401/13000760/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.68904883788364,
+    "lng": 139.69717398335018,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2241,7 +2241,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都新宿区西新宿1-15-9 KCビル ２Ｆ・３Ｆ"
   },
   {
     "name": "二◯加屋長介 中目黒店",
@@ -2251,14 +2251,14 @@
     "area": "中目黒駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1317/A131701/13201618/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.643100837912925,
+    "lng": 139.69757278288577,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都目黒区上目黒3-5-29 中目黒高架下 52"
   },
   {
     "name": "二代目 甚八",
@@ -2268,14 +2268,14 @@
     "area": "本郷三丁目駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1310/A131004/13121200/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.70541623789461,
+    "lng": 139.76431348346844,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都文京区本郷3-22-9 真鍋ビル 1F"
   },
   {
     "name": "五代目 花山うどん 銀座店",
@@ -2285,8 +2285,8 @@
     "area": "東銀座駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1301/A130101/13200630/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.669908837918705,
+    "lng": 139.7691464831064,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2294,7 +2294,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都中央区銀座3-14-13"
   },
   {
     "name": "五島うどん びぜん家",
@@ -2304,8 +2304,8 @@
     "area": "武蔵小金井駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1325/A132501/13126103/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.6997707378152,
+    "lng": 139.50370718359412,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2313,7 +2313,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都小金井市本町6-9-42"
   },
   {
     "name": "五葵",
@@ -2323,14 +2323,14 @@
     "area": "葛飾区",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1324/A132403/13161758/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.76001133868946,
+    "lng": 139.84014988512854,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都葛飾区西亀有3-20-14"
   },
   {
     "name": "元咲",
@@ -2340,14 +2340,14 @@
     "area": "小岩駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1312/A131204/13041174/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.72778783791782,
+    "lng": 139.88179448361205,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都江戸川区南小岩6-25-15"
   },
   {
     "name": "切麦や 甚六",
@@ -2357,8 +2357,8 @@
     "area": "新宿御苑前駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1304/A130402/13182646/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.689166628693606,
+    "lng": 139.71186989450283,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2367,7 +2367,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都新宿区新宿1-17-1 LAND・DEN 1F"
   },
   {
     "name": "初代 恵比寿店",
@@ -2377,14 +2377,14 @@
     "area": "恵比寿駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1303/A130302/13118189/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.646497088719606,
+    "lng": 139.70841434407427,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都渋谷区恵比寿南1-1-10 サウスコラム小林 1F"
   },
   {
     "name": "千駄木うどん 汐満",
@@ -2394,14 +2394,14 @@
     "area": "千駄木駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1311/A131106/13119510/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.7245541267144,
+    "lng": 139.76309203318274,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都文京区千駄木2-33-9"
   },
   {
     "name": "博多うどん酒場イチカバチカ 恵比寿店",
@@ -2411,8 +2411,8 @@
     "area": "恵比寿駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1303/A130302/13198167/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.64597053791477,
+    "lng": 139.7090737829067,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2421,7 +2421,7 @@
       2019,
       2020
     ],
-    "address": null
+    "address": "東京都渋谷区恵比寿南1-8-9 京城ビル 1F"
   },
   {
     "name": "古奈屋 丸の内オアゾ店",
@@ -2431,15 +2431,15 @@
     "area": "大手町駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1302/A130201/13017139/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.6833560930389,
+    "lng": 139.76651309034156,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020,
       2022
     ],
-    "address": null
+    "address": "東京都千代田区丸の内1-6-4 丸の内オアゾ 5F"
   },
   {
     "name": "古奈屋 巣鴨本店",
@@ -2449,14 +2449,14 @@
     "area": "巣鴨駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1323/A132301/13003814/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.735823488671386,
+    "lng": 139.7351486449578,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都豊島区巣鴨3-37-1 鈴越コーポ １Ｆ"
   },
   {
     "name": "叶屋",
@@ -2466,14 +2466,14 @@
     "area": "浅草(東武・都営・メトロ)駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1311/A131102/13025846/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.712790958705504,
+    "lng": 139.79637054468225,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都台東区浅草1-37-12"
   },
   {
     "name": "咲花善伝",
@@ -2483,14 +2483,14 @@
     "area": "四谷三丁目駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1309/A130903/13104627/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.68602583519966,
+    "lng": 139.7203917977901,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都新宿区左門町12-8 NK第5ビル 1F"
   },
   {
     "name": "四ツ木製麺所",
@@ -2500,14 +2500,14 @@
     "area": "京成立石駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1324/A132403/13163404/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.73371963870822,
+    "lng": 139.8466293848584,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都葛飾区東立石2-11-7"
   },
   {
     "name": "四国屋",
@@ -2517,14 +2517,14 @@
     "area": "新中野駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1319/A131902/13046601/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.69805646059483,
+    "lng": 139.67083758157295,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都中野区中央4-1-23"
   },
   {
     "name": "大地のうどん 東京馬場店",
@@ -2534,8 +2534,8 @@
     "area": "高田馬場駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1305/A130503/13193668/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.71248028867481,
+    "lng": 139.6993443147471,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2543,7 +2543,7 @@
       2019,
       2020
     ],
-    "address": null
+    "address": "東京都新宿区高田馬場3-22-14 アビテヒデミ 101"
   },
   {
     "name": "天茶屋 七蔵",
@@ -2553,8 +2553,8 @@
     "area": "新橋駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1301/A130103/13002602/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.666162418723395,
+    "lng": 139.75953921423704,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2565,7 +2565,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都港区新橋2-20-15 新橋駅前ビル1号館 2F"
   },
   {
     "name": "太常うどん 銀座本店",
@@ -2575,8 +2575,8 @@
     "area": "東銀座駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1301/A130101/13104580/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.66733700872448,
+    "lng": 139.7652829242449,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2584,7 +2584,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都中央区銀座7-15-17 だいつねビル１階"
   },
   {
     "name": "小平うどん 小平本店",
@@ -2594,8 +2594,8 @@
     "area": "小平市",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1328/A132804/13087964/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.71695434860745,
+    "lng": 139.4967605249343,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2603,7 +2603,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都小平市回田町300-2"
   },
   {
     "name": "恵",
@@ -2613,14 +2613,14 @@
     "area": "荻窪駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1319/A131906/13141730/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.70761093784719,
+    "lng": 139.6197734835919,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都杉並区天沼3-6-21 船木ビル 1F"
   },
   {
     "name": "慶屋",
@@ -2630,16 +2630,16 @@
     "area": "日比谷駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1301/A130102/13044658/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.673746837913896,
+    "lng": 139.7617127831504,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020,
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都千代田区有楽町2丁目4-11"
   },
   {
     "name": "手打 しまだ",
@@ -2649,8 +2649,8 @@
     "area": "表参道駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1306/A130602/13006991/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.665867538709044,
+    "lng": 139.71389915426607,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2658,7 +2658,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都港区南青山3-13-3"
   },
   {
     "name": "手打うどん あかう",
@@ -2668,8 +2668,8 @@
     "area": "日暮里駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1311/A131105/13018604/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.73077253788058,
+    "lng": 139.77083668371998,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2677,7 +2677,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都荒川区西日暮里2-39-6 ＧＳハイム日暮里 １０３"
   },
   {
     "name": "手打うどん いわしや 青山店",
@@ -2687,8 +2687,8 @@
     "area": "青山一丁目駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1306/A130603/13224471/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.6729947379021,
+    "lng": 139.72314168316979,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2696,7 +2696,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都港区北青山1-2-3 青山ビルヂング B1F"
   },
   {
     "name": "手打うどん すみた",
@@ -2706,8 +2706,8 @@
     "area": "赤羽岩淵駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1323/A132305/13003783/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.780507738640296,
+    "lng": 139.72663232541512,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2718,7 +2718,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都北区志茂2-52-8"
   },
   {
     "name": "手打うどん 福助",
@@ -2728,15 +2728,15 @@
     "area": "青梅街道駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1328/A132804/13149268/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.72742783778848,
+    "lng": 139.4749607838936,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2024
     ],
-    "address": null
+    "address": "東京都小平市小川町2-1307-20"
   },
   {
     "name": "手打うどん長谷川",
@@ -2746,8 +2746,8 @@
     "area": "大泉学園駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1321/A132103/13105083/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.75077460325357,
+    "lng": 139.58517171331948,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2758,7 +2758,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都練馬区東大泉4-3-18-102"
   },
   {
     "name": "手打ちうどん こげら",
@@ -2768,8 +2768,8 @@
     "area": "東村山市",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1328/A132805/13163619/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.74218429857685,
+    "lng": 139.45098396522124,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2778,7 +2778,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都東村山市富士見町2-6-72"
   },
   {
     "name": "本格ぶっかけうどん 麺の里",
@@ -2788,14 +2788,14 @@
     "area": "上石神井駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1321/A132105/13182335/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.72401090790313,
+    "lng": 139.59139215118435,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都練馬区上石神井1-11-8"
   },
   {
     "name": "本格手打 もり家 東京店",
@@ -2805,8 +2805,8 @@
     "area": "浜松町駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1314/A131401/13227953/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.65441873792432,
+    "lng": 139.75585678295926,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2814,7 +2814,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都港区浜松町2-6-5 浜松町エクセレントビル ポンテせとうみ 2F"
   },
   {
     "name": "本格手打うどん あらた",
@@ -2824,16 +2824,16 @@
     "area": "八王子駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1329/A132904/13025001/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.66022953778613,
+    "lng": 139.33354268331396,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020,
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都八王子市八日町10-1"
   },
   {
     "name": "村山 満月うどん",
@@ -2843,8 +2843,8 @@
     "area": "武蔵村山市",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1329/A132901/13026307/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.757730778544165,
+    "lng": 139.37935734542847,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2852,7 +2852,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都武蔵村山市三ツ木1-12-10"
   },
   {
     "name": "栄屋うどん店",
@@ -2862,14 +2862,14 @@
     "area": "ひばりケ丘駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1328/A132801/13070422/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.75266749859998,
+    "lng": 139.54454546526154,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都西東京市 ひばりが丘北 4-1-29"
   },
   {
     "name": "根津 釜竹",
@@ -2879,8 +2879,8 @@
     "area": "根津駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1311/A131106/13020252/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.718090838692774,
+    "lng": 139.76697234475637,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2891,7 +2891,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都文京区根津2-14-18"
   },
   {
     "name": "楢製麺",
@@ -2901,15 +2901,15 @@
     "area": "南新宿駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1304/A130401/13234984/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.685298837886684,
+    "lng": 139.6993131833108,
     "closed": false,
     "firstSelected": true,
     "years": [
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都渋谷区代々木2-26-2 第2桑野ビル"
   },
   {
     "name": "正太郎うどん",
@@ -2919,8 +2919,8 @@
     "area": "上井草駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1321/A132105/13095768/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.72990604450538,
+    "lng": 139.6035058737181,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2928,7 +2928,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都練馬区下石神井5-1-36"
   },
   {
     "name": "澤乃井",
@@ -2938,14 +2938,14 @@
     "area": "渋谷駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1303/A130301/13001352/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.66025777464545,
+    "lng": 139.70544005927226,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都渋谷区渋谷1-8-5 小山ビル 1F"
   },
   {
     "name": "玉丁本店 八重洲店",
@@ -2955,8 +2955,8 @@
     "area": "東京駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1302/A130201/13015841/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.6792660054042,
+    "lng": 139.76825591169353,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -2964,7 +2964,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都中央区八重洲2-1 八重洲地下街 外堀地下2番通り"
   },
   {
     "name": "石臼挽きうどん しゅはり",
@@ -2974,14 +2974,14 @@
     "area": "錦糸町駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1312/A131201/13174640/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.698251637914716,
+    "lng": 139.81317188336183,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都墨田区錦糸2-5-10 私学ビル B1F"
   },
   {
     "name": "稲庭うどんとめし 金子半之助 コレド室町店",
@@ -2991,8 +2991,8 @@
     "area": "三越前駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1302/A130202/13193074/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.68696943871495,
+    "lng": 139.77451171443673,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3000,7 +3000,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都中央区日本橋室町2-3-1 コレド室町2 B1F"
   },
   {
     "name": "竹や",
@@ -3010,8 +3010,8 @@
     "area": "御茶ノ水駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1310/A131002/13005072/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.70182683789747,
+    "lng": 139.76611108343093,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3019,7 +3019,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都文京区湯島1-9-15 御茶ノ水HYビル 1F"
   },
   {
     "name": "笑乃讃",
@@ -3029,14 +3029,14 @@
     "area": "武蔵村山市",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1329/A132901/13067097/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.7462700685525,
+    "lng": 139.38268250531038,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都武蔵村山市三ツ藤1-86-4"
   },
   {
     "name": "籠や",
@@ -3046,14 +3046,14 @@
     "area": "赤坂駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1308/A130801/13015161/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.67337914871184,
+    "lng": 139.7376342443253,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都港区赤坂3-13-3 みすじ３１３ビル １Ｆ"
   },
   {
     "name": "純手打ち讃岐うどん五郎",
@@ -3063,9 +3063,9 @@
     "area": "錦糸町駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1312/A131201/13156107/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.695825937915444,
+    "lng": 139.8105927833391,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017,
@@ -3075,7 +3075,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都墨田区江東橋1-13-1"
   },
   {
     "name": "肉汁うどん長嶋屋",
@@ -3085,14 +3085,14 @@
     "area": "武蔵村山市",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1329/A132901/13120176/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.73908507856085,
+    "lng": 139.39455938522948,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都武蔵村山市大南1-135-2"
   },
   {
     "name": "自家製さぬきうどんと肉 甚三 大門店",
@@ -3102,8 +3102,8 @@
     "area": "大門駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1314/A131401/13188754/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.65486803792331,
+    "lng": 139.75361768296534,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3113,7 +3113,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都港区芝大門2-6-10 コンフォート芝大門 1F"
   },
   {
     "name": "葉隠",
@@ -3123,8 +3123,8 @@
     "area": "赤坂見附駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1308/A130801/13024229/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.67642340870955,
+    "lng": 139.73652578435684,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3132,7 +3132,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都港区赤坂3-10-20 第三対翠館ビル Ｂ１Ｆ"
   },
   {
     "name": "讃岐うどん あ季",
@@ -3141,15 +3141,15 @@
     "prefecture": "東京都",
     "area": "両国・錦糸町・小岩",
     "holiday": null,
-    "url": "https://tabelog.com/tokyo/A1303/A130302/13188291/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "url": "https://tabelog.com/tokyo/A1312/A131201/13188291/",
+    "lat": 35.698405800367986,
+    "lng": 139.8101087768081,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017
     ],
-    "address": null
+    "address": "東京都墨田区錦糸1-10-17 小池ビル 1F"
   },
   {
     "name": "讃岐うどん いそや",
@@ -3159,8 +3159,8 @@
     "area": "京王八王子駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1329/A132904/13022380/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.66135320859276,
+    "lng": 139.33973434448276,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3168,7 +3168,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都八王子市元横山町2-1-14 中島ビル １Ｆ"
   },
   {
     "name": "讃岐うどん いわい",
@@ -3178,8 +3178,8 @@
     "area": "十条駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1323/A132304/13141130/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.76154022864987,
+    "lng": 139.71887661522896,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3190,7 +3190,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都北区上十条3-28-7"
   },
   {
     "name": "讃岐うどん 蔵之介",
@@ -3200,8 +3200,8 @@
     "area": "高田馬場駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1305/A130503/13049983/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.71450983867612,
+    "lng": 139.70751861476188,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3212,7 +3212,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都豊島区高田3-7-15"
   },
   {
     "name": "讃岐うどん河野",
@@ -3222,8 +3222,8 @@
     "area": "要町駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1305/A130501/13109309/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.73263417285818,
+    "lng": 139.7038926887732,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3231,7 +3231,7 @@
       2019,
       2020
     ],
-    "address": null
+    "address": "東京都豊島区西池袋5-12-7"
   },
   {
     "name": "讃岐のおうどん 花は咲く 新中野本店",
@@ -3241,8 +3241,8 @@
     "area": "新中野駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1319/A131902/13156851/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.69919153786782,
+    "lng": 139.66774898347325,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3252,7 +3252,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都中野区中央4-6-12 新中野マンション 1F"
   },
   {
     "name": "讃岐饂飩 元喜",
@@ -3262,14 +3262,14 @@
     "area": "千石駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1323/A132301/13023908/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.7275390106286,
+    "lng": 139.7429185711572,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都文京区千石1-19-8 エクセル千石 1F"
   },
   {
     "name": "讃岐饂飩 恩家",
@@ -3279,14 +3279,14 @@
     "area": "学芸大学駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1317/A131702/13008395/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.629739237917896,
+    "lng": 139.68648978275854,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都目黒区鷹番2-20-19"
   },
   {
     "name": "讃岐饂飩 根の津",
@@ -3296,16 +3296,16 @@
     "area": "根津駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1311/A131106/13003566/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.71981157171471,
+    "lng": 139.76270783900145,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017,
       2018,
       2019
     ],
-    "address": null
+    "address": "東京都文京区根津1-23-16"
   },
   {
     "name": "谷や",
@@ -3315,8 +3315,8 @@
     "area": "水天宮前駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1302/A130204/13114085/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.68463709872,
+    "lng": 139.7857164844053,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3324,7 +3324,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都中央区日本橋人形町2-15-17 １階"
   },
   {
     "name": "豚や",
@@ -3334,8 +3334,8 @@
     "area": "杉並区",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1319/A131907/13018776/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.71096128864656,
+    "lng": 139.60760710479607,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3343,7 +3343,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都杉並区上荻4-19-23"
   },
   {
     "name": "賞讃",
@@ -3353,8 +3353,8 @@
     "area": "京成立石駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1324/A132403/13022111/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.730342508710145,
+    "lng": 139.8459023748248,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3362,7 +3362,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都葛飾区東四つ木2-18-4"
   },
   {
     "name": "酒と味噌煮込み 味噌煮込罠",
@@ -3372,8 +3372,8 @@
     "area": "本郷三丁目駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1310/A131004/13036030/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.70640461869844,
+    "lng": 139.7614435446422,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3384,7 +3384,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都文京区本郷3-31-15 菅谷ビル"
   },
   {
     "name": "野口製麺所",
@@ -3394,15 +3394,15 @@
     "area": "東村山駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1328/A132806/13016162/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.765395118564925,
+    "lng": 139.4598183954495,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2022
     ],
-    "address": null
+    "address": "東京都東村山市野口町4-46-1"
   },
   {
     "name": "釜あげうどん はつとみ",
@@ -3412,9 +3412,9 @@
     "area": "江戸川橋駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1309/A130905/13095976/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.709519737881195,
+    "lng": 139.7303749835337,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017,
@@ -3424,7 +3424,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都文京区関口1-48-5 イシダビル 1F"
   },
   {
     "name": "銀座 佐藤養助",
@@ -3434,8 +3434,8 @@
     "area": "銀座駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1301/A130101/13033146/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.67146102872068,
+    "lng": 139.76156226428915,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3444,7 +3444,7 @@
       2019,
       2020
     ],
-    "address": null
+    "address": "東京都中央区銀座6-4-17 出井本館 １Ｆ"
   },
   {
     "name": "関西風手打うどん いらっしゃい",
@@ -3454,15 +3454,15 @@
     "area": "入谷駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1311/A131104/13042758/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.72037101005006,
+    "lng": 139.7816865148446,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2024
     ],
-    "address": null
+    "address": "東京都台東区下谷1-13-10"
   },
   {
     "name": "雅楽",
@@ -3472,8 +3472,8 @@
     "area": "飯田橋駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1309/A130905/13032356/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.70186030869667,
+    "lng": 139.74682023460656,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3481,7 +3481,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都千代田区飯田橋3-7-3 岡田ビル １Ｆ"
   },
   {
     "name": "難波千日前 釜たけうどん 八重洲北口店",
@@ -3491,8 +3491,8 @@
     "area": "東京駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1302/A130201/13156494/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.68247762871576,
+    "lng": 139.76808184439588,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3501,7 +3501,7 @@
       2020,
       2024
     ],
-    "address": null
+    "address": "東京都千代田区丸の内1-9-1 八重北食堂 1F"
   },
   {
     "name": "香川 一福 神田店",
@@ -3511,8 +3511,8 @@
     "area": "小川町駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1310/A131002/13185500/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.6919137379041,
+    "lng": 139.76717368333004,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3523,7 +3523,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "東京都千代田区内神田1-18-11 東京ロイヤルプラザ102"
   },
   {
     "name": "香川 一福 立川店",
@@ -3533,16 +3533,16 @@
     "area": "立川駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1329/A132901/13209088/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.69581614109347,
+    "lng": 139.41618966653772,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2018,
       2020,
       2022
     ],
-    "address": null
+    "address": "東京都立川市錦町2-2-1 SK錦町ビル 1F"
   },
   {
     "name": "麺匠 釜善",
@@ -3552,15 +3552,15 @@
     "area": "淡路町駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1310/A131002/13201863/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.69369613790333,
+    "lng": 139.76832178334726,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2024
     ],
-    "address": null
+    "address": "東京都千代田区神田司町2-14-15 高梨ビル 1F"
   },
   {
     "name": "麻布久徳 六本木ヒルズ店",
@@ -3570,14 +3570,14 @@
     "area": "六本木駅",
     "holiday": null,
     "url": "https://tabelog.com/tokyo/A1307/A130701/13015611/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.66039317597653,
+    "lng": 139.72924529823774,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "東京都港区六本木6-10-1 六本木ヒルズ ウェストウォーク 5F"
   },
   {
     "name": "うどん匠人 岡本",
@@ -3587,14 +3587,14 @@
     "area": "那須郡那須町",
     "holiday": null,
     "url": "https://tabelog.com/tochigi/A0905/A090501/9002782/",
-    "lat": null,
-    "lng": null,
+    "lat": 37.06815407792342,
+    "lng": 140.04357181819938,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "栃木県那須郡那須町高久丙1147-236"
   },
   {
     "name": "ぶつをのうどん",
@@ -3604,8 +3604,8 @@
     "area": "宇都宮市",
     "holiday": null,
     "url": "https://tabelog.com/tochigi/A0901/A090101/9003113/",
-    "lat": null,
-    "lng": null,
+    "lat": 36.55575378819735,
+    "lng": 139.88184634313703,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3613,7 +3613,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "栃木県宇都宮市松が峰2-9-3"
   },
   {
     "name": "野村屋本店",
@@ -3623,8 +3623,8 @@
     "area": "佐野市",
     "holiday": null,
     "url": "https://tabelog.com/tochigi/A0902/A090202/9001007/",
-    "lat": null,
-    "lng": null,
+    "lat": 36.313182658255926,
+    "lng": 139.58202428089697,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3632,7 +3632,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "栃木県佐野市相生町2819"
   },
   {
     "name": "うどんAGATA",
@@ -3642,14 +3642,14 @@
     "area": "中郡大磯町",
     "holiday": null,
     "url": "https://tabelog.com/kanagawa/A1404/A140408/14053535/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.30957248879536,
+    "lng": 139.27437287097527,
     "closed": false,
     "firstSelected": false,
     "years": [
       2019
     ],
-    "address": null
+    "address": "神奈川県中郡大磯町月京29-7"
   },
   {
     "name": "宗",
@@ -3659,14 +3659,14 @@
     "area": "向ケ丘遊園駅",
     "holiday": null,
     "url": "https://tabelog.com/kanagawa/A1405/A140506/14033545/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.618741588690824,
+    "lng": 139.56267845389604,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "神奈川県川崎市多摩区登戸1883-4 グランメール遊園"
   },
   {
     "name": "手打ちうどん 自遊席",
@@ -3676,14 +3676,14 @@
     "area": "藤沢市",
     "holiday": null,
     "url": "https://tabelog.com/kanagawa/A1404/A140405/14014003/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.38308176880529,
+    "lng": 139.45213840159317,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "神奈川県藤沢市石川5-24-11"
   },
   {
     "name": "純手打ち讃岐うどん 綾",
@@ -3692,15 +3692,15 @@
     "prefecture": "神奈川県",
     "area": "川崎市",
     "holiday": null,
-    "url": "https://tabelog.com/kanagawa/14000035/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "url": "https://tabelog.com/kanagawa/A1405/A140507/14000035/",
+    "lat": 35.58826131418848,
+    "lng": 139.56262606814116,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017
     ],
-    "address": null
+    "address": "神奈川県川崎市宮前区犬蔵1-9-21 コーポ向井 １Ｆ"
   },
   {
     "name": "釜揚げうどん専門店もと",
@@ -3710,8 +3710,8 @@
     "area": "平塚駅",
     "holiday": null,
     "url": "https://tabelog.com/kanagawa/A1404/A140407/14061080/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.334243848803965,
+    "lng": 139.35058434117104,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3721,7 +3721,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "神奈川県平塚市宮松町6-26"
   },
   {
     "name": "饂飩頑陣 本店",
@@ -3731,14 +3731,14 @@
     "area": "馬車道駅",
     "holiday": null,
     "url": "https://tabelog.com/kanagawa/A1401/A140104/14055488/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.447863418261576,
+    "lng": 139.6343996270852,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "神奈川県横浜市中区住吉町6-74 A102"
   },
   {
     "name": "麺一滴",
@@ -3748,15 +3748,15 @@
     "area": "京急川崎駅",
     "holiday": null,
     "url": "https://tabelog.com/kanagawa/A1405/A140501/14041477/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.52861934879285,
+    "lng": 139.70334531288714,
     "closed": false,
     "firstSelected": false,
     "years": [
       2019,
       2020
     ],
-    "address": null
+    "address": "神奈川県川崎市川崎区東田町10-21"
   },
   {
     "name": "佐藤養助 秋田店",
@@ -3766,8 +3766,8 @@
     "area": "秋田市",
     "holiday": null,
     "url": "https://tabelog.com/akita/A0501/A050101/5000022/",
-    "lat": null,
-    "lng": null,
+    "lat": 39.71700617626765,
+    "lng": 140.12702511489672,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -3776,7 +3776,7 @@
       2019,
       2020
     ],
-    "address": null
+    "address": "秋田県秋田市中通2-6-1 西武秋田店 B1F"
   },
   {
     "name": "寛文五年堂 秋田店",
@@ -3786,14 +3786,14 @@
     "area": "秋田市",
     "holiday": null,
     "url": "https://tabelog.com/akita/A0501/A050101/5005720/",
-    "lat": null,
-    "lng": null,
+    "lat": 39.71711363546037,
+    "lng": 140.12127192374007,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "秋田県秋田市中通1-4-3 エリアなかいち 1F"
   },
   {
     "name": "清水屋",
@@ -3803,14 +3803,14 @@
     "area": "渋川市",
     "holiday": null,
     "url": "https://tabelog.com/gunma/A1004/A100401/10000216/",
-    "lat": null,
-    "lng": null,
+    "lat": 36.479526987948105,
+    "lng": 138.94719879302224,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "群馬県渋川市伊香保町水沢204"
   },
   {
     "name": "田中屋",
@@ -3820,14 +3820,14 @@
     "area": "前橋市",
     "holiday": null,
     "url": "https://tabelog.com/gunma/A1001/A100101/10000108/",
-    "lat": null,
-    "lng": null,
+    "lat": 36.392606337226844,
+    "lng": 139.03796599091882,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "群馬県前橋市総社町総社3600-11"
   },
   {
     "name": "田丸屋",
@@ -3837,15 +3837,15 @@
     "area": "渋川市",
     "holiday": null,
     "url": "https://tabelog.com/gunma/A1004/A100401/10000215/",
-    "lat": null,
-    "lng": null,
+    "lat": 36.47954711794802,
+    "lng": 138.94698217302258,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2022
     ],
-    "address": null
+    "address": "群馬県渋川市伊香保町水沢206-1"
   },
   {
     "name": "花山うどん 本店",
@@ -3855,14 +3855,14 @@
     "area": "館林市",
     "holiday": null,
     "url": "https://tabelog.com/gunma/A1002/A100204/10001132/",
-    "lat": null,
-    "lng": null,
+    "lat": 36.245952828281766,
+    "lng": 139.529092130255,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "群馬県館林市本町2-3-48"
   },
   {
     "name": "藤屋本店",
@@ -3872,14 +3872,14 @@
     "area": "桐生市",
     "holiday": null,
     "url": "https://tabelog.com/gunma/A1002/A100201/10001147/",
-    "lat": null,
-    "lng": null,
+    "lat": 36.41913358811312,
+    "lng": 139.3449060721334,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "群馬県桐生市本町1-6-35"
   },
   {
     "name": "地酒と饂飩 たらいうどん椛や",
@@ -3889,15 +3889,15 @@
     "area": "水戸市",
     "holiday": null,
     "url": "https://tabelog.com/ibaraki/A0801/A080101/8001852/",
-    "lat": null,
-    "lng": null,
+    "lat": 36.387691081739156,
+    "lng": 140.3576065712216,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2022
     ],
-    "address": null
+    "address": "茨城県水戸市有賀町1021"
   },
   {
     "name": "あづま",
@@ -3907,14 +3907,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37001224/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.29884026779645,
+    "lng": 134.12204499437755,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市前田東町340-1"
   },
   {
     "name": "あやうた製麺",
@@ -3924,15 +3924,15 @@
     "area": "丸亀市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37007004/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.23236756774942,
+    "lng": 133.84179719390258,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2024
     ],
-    "address": null
+    "address": "香川県丸亀市綾歌町岡田西1785"
   },
   {
     "name": "いけこうどん",
@@ -3942,14 +3942,14 @@
     "area": "仲多度郡多度津町",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37011173/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.27147166769364,
+    "lng": 133.74461223436566,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県仲多度郡多度津町西浜11-18"
   },
   {
     "name": "いなもく",
@@ -3959,14 +3959,14 @@
     "area": "綾歌郡綾川町",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37008978/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.19932063700966,
+    "lng": 133.98191807230876,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県綾歌郡綾川町枌所西甲1420-3"
   },
   {
     "name": "うつ海うどん",
@@ -3976,14 +3976,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37008654/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.292947157789534,
+    "lng": 134.08855396434151,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市下田井町359-2"
   },
   {
     "name": "うどん おかだ",
@@ -3993,14 +3993,14 @@
     "area": "丸亀市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37009661/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.26444439772634,
+    "lng": 133.83328214423256,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県丸亀市飯野町東二623-1"
   },
   {
     "name": "うどん さか枝",
@@ -4010,8 +4010,8 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000026/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.33981563693945,
+    "lng": 134.04162887368602,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4022,7 +4022,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市番町5-2-23"
   },
   {
     "name": "うどん 一福",
@@ -4032,8 +4032,8 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37001209/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.30804390774388,
+    "lng": 133.97532716457337,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4044,7 +4044,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市国分寺町新居169-1"
   },
   {
     "name": "うどんの田",
@@ -4054,8 +4054,8 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000384/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.28264472777914,
+    "lng": 134.0354006742747,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4063,7 +4063,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市寺井町38-1"
   },
   {
     "name": "うどん屋 まつはま",
@@ -4073,14 +4073,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37005468/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.312763227777864,
+    "lng": 134.09143250453965,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市元山町308-1"
   },
   {
     "name": "うどん本陣 山田家 讃岐本店",
@@ -4090,8 +4090,8 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000002/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.35308262776447,
+    "lng": 134.12976378492004,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4102,7 +4102,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市牟礼町牟礼3186"
   },
   {
     "name": "うどん職人さぬき麺之介",
@@ -4112,14 +4112,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37007679/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.34102779774763,
+    "lng": 134.0528385948522,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市瓦町1-7-3 平川ビル 1F"
   },
   {
     "name": "うぶしな",
@@ -4129,15 +4129,15 @@
     "area": "宇多津町",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37000231/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.30780492613743,
+    "lng": 133.82099353134393,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2022
     ],
-    "address": null
+    "address": "香川県綾歌郡宇多津町1597-1 宇夫階神社"
   },
   {
     "name": "おうどん 瀬戸晴れ",
@@ -4147,14 +4147,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37010530/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 34.32445338139278,
+    "lng": 134.1048497461449,
+    "closed": true,
     "firstSelected": true,
     "years": [
       2022
     ],
-    "address": null
+    "address": "香川県高松市新田町甲910-2"
   },
   {
     "name": "おうどん 瀬戸晴れ",
@@ -4164,14 +4164,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37012417/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.34900958776483,
+    "lng": 134.12281767488375,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市牟礼町牟礼2694-1"
   },
   {
     "name": "かしむらうどん",
@@ -4181,14 +4181,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37001242/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.350634347753186,
+    "lng": 134.08947240492355,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市屋島西町2485-12"
   },
   {
     "name": "かなくま餅",
@@ -4198,14 +4198,14 @@
     "area": "観音寺市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3703/A370301/37000510/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.12438525776842,
+    "lng": 133.68610241292097,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県観音寺市植田町35-2"
   },
   {
     "name": "ざいごうどん 本家 わら家",
@@ -4215,15 +4215,15 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000057/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.34375316776354,
+    "lng": 134.1082431348409,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2024
     ],
-    "address": null
+    "address": "香川県高松市屋島中町91"
   },
   {
     "name": "しんぺいうどん",
@@ -4233,14 +4233,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37006884/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 34.33824163694283,
+    "lng": 134.0491248736649,
+    "closed": true,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市田町13-6"
   },
   {
     "name": "とらや",
@@ -4250,14 +4250,14 @@
     "area": "坂出市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370201/37001355/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.32442817769145,
+    "lng": 133.84337698483137,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県坂出市沖の浜1-4"
   },
   {
     "name": "なかむら",
@@ -4267,8 +4267,8 @@
     "area": "丸亀市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37000068/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.26045168772967,
+    "lng": 133.83576063419048,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4276,7 +4276,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県丸亀市飯山町西坂元1373-3"
   },
   {
     "name": "ふるかわうどん",
@@ -4286,14 +4286,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000375/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.31780889776805,
+    "lng": 134.07067795460517,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市木太町5016-1"
   },
   {
     "name": "ふる里うどん",
@@ -4303,15 +4303,15 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37006820/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.27567756780435,
+    "lng": 134.10066148415856,
     "closed": false,
     "firstSelected": true,
     "years": [
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市川島東町523-4"
   },
   {
     "name": "まいどまいど",
@@ -4321,14 +4321,14 @@
     "area": "坂出市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370201/37005010/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.28273688772134,
+    "lng": 133.85406414440274,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県坂出市川津町45-5"
   },
   {
     "name": "まえばうどん",
@@ -4338,14 +4338,14 @@
     "area": "丸亀市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37000070/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.23564625776031,
+    "lng": 133.88250863390718,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県丸亀市綾歌町栗熊東420-2"
   },
   {
     "name": "まつばら",
@@ -4355,14 +4355,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37008585/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.2763757777805,
+    "lng": 134.02715280421717,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市寺井町1015"
   },
   {
     "name": "むさし",
@@ -4372,14 +4372,14 @@
     "area": "仲多度郡琴平町",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3703/A370302/37000722/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.18988723777223,
+    "lng": 133.82869649348265,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県仲多度郡琴平町五條637-2 小出ビル １Ｆ"
   },
   {
     "name": "めんや七福 本店",
@@ -4389,14 +4389,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37007443/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.33836267774659,
+    "lng": 134.0442651248313,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市天神前6-10"
   },
   {
     "name": "やなぎ屋 西大浜店",
@@ -4406,14 +4406,14 @@
     "area": "坂出市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370201/37005702/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.322144447692814,
+    "lng": 133.8430858548085,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県坂出市西大浜北2-48-22"
   },
   {
     "name": "カマ喜ri",
@@ -4423,8 +4423,8 @@
     "area": "観音寺市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3703/A370301/37006622/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.11275437883594,
+    "lng": 133.67665866548913,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4434,7 +4434,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県観音寺市柞田町甲46-3"
   },
   {
     "name": "ゴッドハンド",
@@ -4444,15 +4444,15 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000710/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.346636697744295,
+    "lng": 134.05357177490833,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2022
     ],
-    "address": null
+    "address": "香川県高松市内町4-1"
   },
   {
     "name": "シラカワ",
@@ -4462,15 +4462,15 @@
     "area": "三豊市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3703/A370303/37000147/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.1230680177797,
+    "lng": 133.7188885928847,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2024
     ],
-    "address": null
+    "address": "香川県三豊市山本町大野2854-8"
   },
   {
     "name": "マルタニ製麺",
@@ -4480,8 +4480,8 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000378/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.28937193776723,
+    "lng": 134.01140131435946,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4489,7 +4489,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市円座町1023-1"
   },
   {
     "name": "ヨコクラうどん",
@@ -4499,14 +4499,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000381/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.31535001774365,
+    "lng": 133.98915798463747,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市鬼無町鬼無136-1"
   },
   {
     "name": "三好うどん",
@@ -4516,8 +4516,8 @@
     "area": "三豊市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3703/A370303/37008190/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.1823468377336,
+    "lng": 133.6923284335021,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4527,7 +4527,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県三豊市高瀬町比地1583-1"
   },
   {
     "name": "三嶋製麺所",
@@ -4537,8 +4537,8 @@
     "area": "仲多度郡まんのう町",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3703/A370302/37000140/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.1419831278449,
+    "lng": 133.9613585829058,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4549,7 +4549,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県仲多度郡まんのう町川東276"
   },
   {
     "name": "中村うどん",
@@ -4559,8 +4559,8 @@
     "area": "丸亀市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37000135/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.300406537695245,
+    "lng": 133.80737735461398,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4571,7 +4571,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県丸亀市土器町東9-283 CLOVER SHOEIビル1F"
   },
   {
     "name": "中西うどん",
@@ -4581,8 +4581,8 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000040/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.30236303392931,
+    "lng": 134.02920149024908,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4590,7 +4590,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市鹿角町899-3"
   },
   {
     "name": "元祖しょうゆうどん 小縣家",
@@ -4600,14 +4600,14 @@
     "area": "仲多度郡まんのう町",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3703/A370302/37000004/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.185375497784754,
+    "lng": 133.85900575341586,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県仲多度郡まんのう町吉野1298-2"
   },
   {
     "name": "六車",
@@ -4617,14 +4617,14 @@
     "area": "東かがわ市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3704/A370402/37000251/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.246308637097094,
+    "lng": 134.35017687252525,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県東かがわ市湊6-1"
   },
   {
     "name": "准手打ちな 満福うどん",
@@ -4634,14 +4634,14 @@
     "area": "丸亀市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37010831/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.26956448351946,
+    "lng": 133.8795437627463,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県丸亀市飯山町東坂元3626-1"
   },
   {
     "name": "古奈や",
@@ -4651,14 +4651,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37001256/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.30883494775437,
+    "lng": 134.00983857455716,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市勅使町302-7"
   },
   {
     "name": "吉本食品",
@@ -4668,8 +4668,8 @@
     "area": "東かがわ市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3704/A370402/37000684/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.25055756789643,
+    "lng": 134.3396930337373,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4677,7 +4677,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県東かがわ市三本松608"
   },
   {
     "name": "多田製麺所",
@@ -4687,14 +4687,14 @@
     "area": "木田郡三木町",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370102/37000244/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.272813797813775,
+    "lng": 134.12452372411295,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県木田郡三木町大字池戸2918"
   },
   {
     "name": "大島うどん",
@@ -4704,14 +4704,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000344/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.30226192776875,
+    "lng": 134.04185680446832,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市太田上町1058"
   },
   {
     "name": "宮川製麺所",
@@ -4721,8 +4721,8 @@
     "area": "善通寺市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3703/A370302/37000128/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.231446377727764,
+    "lng": 133.7719466239422,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4730,7 +4730,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県善通寺市中村町1-1-20"
   },
   {
     "name": "宮武うどん",
@@ -4740,8 +4740,8 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37005339/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.293875907760224,
+    "lng": 133.9983711444141,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4751,7 +4751,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市円座町340"
   },
   {
     "name": "山とも",
@@ -4761,14 +4761,14 @@
     "area": "丸亀市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37008415/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.29864020769739,
+    "lng": 133.81056768459388,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県丸亀市土器町東9-194"
   },
   {
     "name": "山下うどん",
@@ -4778,8 +4778,8 @@
     "area": "坂出市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370201/37000020/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.29985517773138,
+    "lng": 133.91971750452964,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4787,7 +4787,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県坂出市加茂町147-1"
   },
   {
     "name": "山下うどん",
@@ -4797,8 +4797,8 @@
     "area": "善通寺市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3703/A370302/37000012/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.22988019774334,
+    "lng": 133.81773081389431,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4806,7 +4806,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県善通寺市与北町284-1"
   },
   {
     "name": "山内うどん店",
@@ -4816,8 +4816,8 @@
     "area": "仲多度郡まんのう町",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3703/A370302/37000007/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.13704684780613,
+    "lng": 133.82975886294818,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4827,7 +4827,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県仲多度郡まんのう町十郷字大口1010"
   },
   {
     "name": "山越うどん",
@@ -4837,8 +4837,8 @@
     "area": "綾歌郡綾川町",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37000080/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.225789027781126,
+    "lng": 133.92821841377554,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4849,7 +4849,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県綾歌郡綾川町羽床上602‐2"
   },
   {
     "name": "岡製麺所",
@@ -4859,14 +4859,14 @@
     "area": "綾歌郡綾川町",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37000141/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.21483864780344,
+    "lng": 133.97644064363112,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県綾歌郡綾川町山田上甲1949-8"
   },
   {
     "name": "川福 本店",
@@ -4876,14 +4876,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000034/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.344905167744884,
+    "lng": 134.05195832489198,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市大工町2-1"
   },
   {
     "name": "手打うどん たむら",
@@ -4893,8 +4893,8 @@
     "area": "綾歌郡綾川町",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37000077/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.26650410775753,
+    "lng": 133.93532319418185,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4905,7 +4905,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県綾歌郡綾川町陶1090-3"
   },
   {
     "name": "手打うどん はりや",
@@ -4915,8 +4915,8 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000049/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.34936294773032,
+    "lng": 134.0151588849628,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4924,7 +4924,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市郷東町587-174"
   },
   {
     "name": "手打うどん 三徳",
@@ -4934,8 +4934,8 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000142/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.29269291778346,
+    "lng": 134.06899409435266,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -4943,7 +4943,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市林町390-1"
   },
   {
     "name": "手打うどん 松岡",
@@ -4953,15 +4953,15 @@
     "area": "坂出・丸亀・塩飽諸島",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37000078/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 34.24842125836174,
+    "lng": 133.91529398938852,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017,
       2018
     ],
-    "address": null
+    "address": "香川県綾歌郡綾川町滝宮1722"
   },
   {
     "name": "手打うどん 源内",
@@ -4971,14 +4971,14 @@
     "area": "さぬき市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3704/A370401/37000100/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.321406077805555,
+    "lng": 134.19562953455392,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県さぬき市志度1597-10"
   },
   {
     "name": "手打うどん 風月",
@@ -4988,8 +4988,8 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37001023/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.34488797101364,
+    "lng": 134.0474591271397,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5000,7 +5000,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市紺屋町4-13 中井ビル１F"
   },
   {
     "name": "手打うどん 麦蔵",
@@ -5010,8 +5010,8 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000874/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.34778363694035,
+    "lng": 134.06032757375345,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5022,7 +5022,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市福岡町1-482-5"
   },
   {
     "name": "手打ちうどん つるや",
@@ -5032,14 +5032,14 @@
     "area": "観音寺市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3703/A370301/37000148/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.126983167760734,
+    "lng": 133.66713116296054,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県観音寺市坂本町3-7-18"
   },
   {
     "name": "手打ちうどん ひさ枝",
@@ -5049,14 +5049,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37008648/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.353559357726226,
+    "lng": 134.01063508500835,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市郷東町796-53"
   },
   {
     "name": "手打ちうどん 上田",
@@ -5066,14 +5066,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000564/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.29999927386435,
+    "lng": 134.04624110051444,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市太田上町763-3"
   },
   {
     "name": "手打ちうどん 大蔵",
@@ -5083,15 +5083,15 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37009422/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 34.323791877662984,
+    "lng": 134.0465162878561,
+    "closed": true,
     "firstSelected": true,
     "years": [
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市花ノ宮町3-4-12 K&A花ノ宮"
   },
   {
     "name": "手打ちうどん 清水屋",
@@ -5101,14 +5101,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37006950/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.2955665977631,
+    "lng": 134.01077390442248,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市成合町8"
   },
   {
     "name": "手打ちうどん 鶴丸",
@@ -5118,8 +5118,8 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000044/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.34238854774662,
+    "lng": 134.05240500486627,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5127,7 +5127,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市古馬場町9-34"
   },
   {
     "name": "手打ちうどんますや",
@@ -5137,14 +5137,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37005861/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.33734135776322,
+    "lng": 134.09446627478582,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市春日町1743-2"
   },
   {
     "name": "手打ちセルフうどん 海侍 其の壱 飯山店",
@@ -5154,14 +5154,14 @@
     "area": "丸亀市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37006447/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.269073597735364,
+    "lng": 133.870854744253,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県丸亀市飯山町東坂元2710-5"
   },
   {
     "name": "手打十段 うどんバカ一代",
@@ -5171,8 +5171,8 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000242/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.33675012775216,
+    "lng": 134.058546184805,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5183,7 +5183,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市多賀町1-6-7"
   },
   {
     "name": "手打麺や 大島",
@@ -5193,8 +5193,8 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000224/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.30287913777125,
+    "lng": 134.0509478844682,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5202,7 +5202,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市太田下町3013-1"
   },
   {
     "name": "日の出製麺所",
@@ -5212,8 +5212,8 @@
     "area": "坂出市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370201/37000016/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.31036296770256,
+    "lng": 133.85017186468454,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5224,7 +5224,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県坂出市富士見町1-8-5"
   },
   {
     "name": "本格手打 もり家",
@@ -5234,8 +5234,8 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000134/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.23966920781157,
+    "lng": 134.05150749382932,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5246,7 +5246,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市香川町川内原1575-1"
   },
   {
     "name": "本格手打うどん おか泉",
@@ -5256,8 +5256,8 @@
     "area": "綾歌郡宇多津町",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37000074/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.30929944769394,
+    "lng": 133.82100496469423,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5268,7 +5268,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県綾歌郡宇多津町浜八番丁129-10"
   },
   {
     "name": "本格手打うどん はゆか",
@@ -5278,8 +5278,8 @@
     "area": "綾歌郡綾川町",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37000233/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.23239245776948,
+    "lng": 133.90482832385865,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5290,7 +5290,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県綾歌郡綾川町羽床下2222-5"
   },
   {
     "name": "本格手打うどん 麺むすび",
@@ -5300,8 +5300,8 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37004775/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.30652863962157,
+    "lng": 134.05757977497672,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5311,7 +5311,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市多肥下町949"
   },
   {
     "name": "本格手打ちうどん もり",
@@ -5321,15 +5321,15 @@
     "area": "三豊市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3703/A370303/37009664/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.17142109775853,
+    "lng": 133.7488735333521,
     "closed": false,
     "firstSelected": true,
     "years": [
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県三豊市高瀬町下麻678-2"
   },
   {
     "name": "松下製麺所",
@@ -5339,8 +5339,8 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000033/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.33502468774891,
+    "lng": 134.04491692479712,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5350,7 +5350,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市中野町2-2"
   },
   {
     "name": "根ッ子うどん",
@@ -5360,9 +5360,9 @@
     "area": "多度津町",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37000533/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 34.25871753689889,
+    "lng": 133.75253877306955,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2018,
@@ -5370,7 +5370,7 @@
       2020,
       2022
     ],
-    "address": null
+    "address": "香川県仲多度郡多度津町大字青木565-2"
   },
   {
     "name": "植田うどん",
@@ -5380,14 +5380,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000027/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.346903677743086,
+    "lng": 134.05031227491332,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市内町1-8"
   },
   {
     "name": "歩",
@@ -5397,14 +5397,14 @@
     "area": "丸亀市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37001376/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.2650692777269,
+    "lng": 133.83629152423674,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県丸亀市飯野町東二484"
   },
   {
     "name": "池上製麺所",
@@ -5414,15 +5414,15 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000031/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.24616516779889,
+    "lng": 134.02465656391374,
     "closed": false,
     "firstSelected": true,
     "years": [
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市香川町川東下字高須899-1"
   },
   {
     "name": "滝音",
@@ -5432,14 +5432,14 @@
     "area": "木田郡三木町",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370102/37001522/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.25292956783096,
+    "lng": 134.13881365390208,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県木田郡三木町大字上高岡266-1"
   },
   {
     "name": "玉藻うどん",
@@ -5448,15 +5448,15 @@
     "prefecture": "香川県",
     "area": "高松",
     "holiday": null,
-    "url": "https://tabelog.com/kagawa/37000383/",
-    "lat": null,
-    "lng": null,
+    "url": "https://tabelog.com/kagawa/A3701/A370101/37000383/",
+    "lat": 34.3492137684539,
+    "lng": 134.05599044166954,
     "closed": false,
     "firstSelected": false,
     "years": [
       2017
     ],
-    "address": null
+    "address": "香川県高松市北浜町13-11"
   },
   {
     "name": "白川うどん",
@@ -5466,8 +5466,8 @@
     "area": "善通寺市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3703/A370302/37000240/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.224382237741956,
+    "lng": 133.8024321938495,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5475,7 +5475,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県善通寺市櫛梨町500-1"
   },
   {
     "name": "空海房",
@@ -5485,14 +5485,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37005722/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.228784427811476,
+    "lng": 134.02950152373478,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市香南町岡199"
   },
   {
     "name": "竹清 本店",
@@ -5502,8 +5502,8 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000051/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.33811863694075,
+    "lng": 134.04231687366843,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5514,7 +5514,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市亀岡町2-23"
   },
   {
     "name": "純手打うどん よしや",
@@ -5524,8 +5524,8 @@
     "area": "丸亀市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37004606/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.26575215772721,
+    "lng": 133.838623524242,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5536,7 +5536,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県丸亀市飯野町東二343-1"
   },
   {
     "name": "西端手打 上戸",
@@ -5546,8 +5546,8 @@
     "area": "観音寺市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3703/A370301/37000152/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.048008636990176,
+    "lng": 133.61890887103485,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5558,7 +5558,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県観音寺市豊浜町箕浦974-1"
   },
   {
     "name": "誠うどん",
@@ -5568,14 +5568,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37002062/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.3361745377471,
+    "lng": 134.0415145148111,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市亀岡町17-14"
   },
   {
     "name": "讃岐うどん がもう",
@@ -5585,8 +5585,8 @@
     "area": "坂出市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370201/37000019/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.304975387726586,
+    "lng": 133.91488409458472,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5597,7 +5597,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県坂出市加茂町420-1"
   },
   {
     "name": "讃岐うどん 上原屋本店",
@@ -5607,8 +5607,8 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000048/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.32712643775408,
+    "lng": 134.045393614717,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5619,7 +5619,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県高松市栗林町1-18-8"
   },
   {
     "name": "讃岐うどん工房 アイ・スタイル",
@@ -5629,14 +5629,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37008968/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.32488765776442,
+    "lng": 134.07339510467477,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市木太町1905-3"
   },
   {
     "name": "讃岐つけ麺 寒川",
@@ -5646,14 +5646,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37009958/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.34282543774522,
+    "lng": 134.04886667487315,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市鍛冶屋町4-16 SOUGENビル 1F"
   },
   {
     "name": "谷川米穀店",
@@ -5663,8 +5663,8 @@
     "area": "仲多度郡まんのう町",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3703/A370302/37000011/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.11136968786913,
+    "lng": 133.97636724258606,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5675,7 +5675,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県仲多度郡まんのう町川東1490"
   },
   {
     "name": "野口製麺",
@@ -5685,14 +5685,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000536/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.33315844775519,
+    "lng": 134.0608802647671,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市上福岡町1286"
   },
   {
     "name": "釜あげうどん 長田 in 香の香",
@@ -5702,8 +5702,8 @@
     "area": "善通寺市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3703/A370302/37000015/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.25087756771787,
+    "lng": 133.7796427841331,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5714,7 +5714,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県善通寺市金蔵寺町本村1180"
   },
   {
     "name": "釜揚げうどん岡じま 丸亀店",
@@ -5724,14 +5724,14 @@
     "area": "丸亀市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37007722/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.28653604769426,
+    "lng": 133.77660657449542,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県丸亀市塩屋町3-11-24"
   },
   {
     "name": "長田うどん",
@@ -5741,8 +5741,8 @@
     "area": "仲多度郡まんのう町",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3703/A370302/37000005/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.185121787784446,
+    "lng": 133.8575503734143,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5750,7 +5750,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県仲多度郡まんのう町吉野1290-1"
   },
   {
     "name": "須崎食料品店",
@@ -5760,8 +5760,8 @@
     "area": "三豊市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3703/A370303/37000143/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.17513635776277,
+    "lng": 133.76956039337512,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5772,7 +5772,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県三豊市高瀬町上麻3778"
   },
   {
     "name": "飯野屋",
@@ -5782,14 +5782,14 @@
     "area": "丸亀市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37000136/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.2809274477141,
+    "lng": 133.82772568440294,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県丸亀市飯野町東二1888-1"
   },
   {
     "name": "饂飩家 五右衛門",
@@ -5799,14 +5799,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37000131/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.342152367746614,
+    "lng": 134.0519026748642,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市古馬場町13-15 ＡＩビル １Ｆ"
   },
   {
     "name": "麦香",
@@ -5816,15 +5816,15 @@
     "area": "丸亀市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37006914/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.21652111776458,
+    "lng": 133.8577767037313,
     "closed": false,
     "firstSelected": false,
     "years": [
       2020,
       2022
     ],
-    "address": null
+    "address": "香川県丸亀市綾歌町岡田上1898-3"
   },
   {
     "name": "麺処 綿谷 丸亀店",
@@ -5834,8 +5834,8 @@
     "area": "丸亀市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3702/A370202/37000289/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.29632098769427,
+    "lng": 133.79616791458054,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5843,7 +5843,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "香川県丸亀市北平山町2-6-18"
   },
   {
     "name": "麺処 綿谷 高松店",
@@ -5853,14 +5853,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37005730/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.33926252774763,
+    "lng": 134.04934810483684,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市南新町8-11"
   },
   {
     "name": "麺処まはろ",
@@ -5870,14 +5870,14 @@
     "area": "さぬき市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3704/A370401/37001543/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.29029863702722,
+    "lng": 134.21847917306192,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県さぬき市寒川町神前3970"
   },
   {
     "name": "麺匠 くすがみ",
@@ -5887,14 +5887,14 @@
     "area": "高松市",
     "holiday": null,
     "url": "https://tabelog.com/kagawa/A3701/A370101/37008913/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.32860548775635,
+    "lng": 134.05548358472487,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "香川県高松市楠上町2-6-36"
   },
   {
     "name": "京うどん 生蕎麦 岡北",
@@ -5903,9 +5903,9 @@
     "prefecture": "京都府",
     "area": "東山駅",
     "holiday": null,
-    "url": "https://tabelog.com/kyoto/A2601/A260301/26000919/",
-    "lat": null,
-    "lng": null,
+    "url": "https://tabelog.com/kyoto/A2601/A260302/26000919/",
+    "lat": 35.01433060787157,
+    "lng": 135.78481367043912,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5915,7 +5915,7 @@
       2020,
       2024
     ],
-    "address": null
+    "address": "京都府京都市左京区岡崎南御所町34"
   },
   {
     "name": "仁王門 うね乃",
@@ -5925,9 +5925,9 @@
     "area": "三条京阪駅",
     "holiday": null,
     "url": "https://tabelog.com/kyoto/A2601/A260301/26023852/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 35.01185705294636,
+    "lng": 135.77317287609617,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017,
@@ -5935,7 +5935,7 @@
       2019,
       2020
     ],
-    "address": null
+    "address": "京都府京都市左京区新丸太町41"
   },
   {
     "name": "山元麺蔵",
@@ -5945,8 +5945,8 @@
     "area": "東山駅",
     "holiday": null,
     "url": "https://tabelog.com/kyoto/A2601/A260301/26002504/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.014273557871604,
+    "lng": 135.78481643043853,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5957,7 +5957,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "京都府京都市左京区岡崎南御所町34"
   },
   {
     "name": "日の出うどん",
@@ -5967,8 +5967,8 @@
     "area": "蹴上駅",
     "holiday": null,
     "url": "https://tabelog.com/kyoto/A2601/A260301/26000815/",
-    "lat": null,
-    "lng": null,
+    "lat": 35.01639043787307,
+    "lng": 135.79364916045375,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5977,7 +5977,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "京都府京都市左京区南禅寺北ノ坊町36"
   },
   {
     "name": "本格手打うどん 大河",
@@ -5987,8 +5987,8 @@
     "area": "藤森駅",
     "holiday": null,
     "url": "https://tabelog.com/kyoto/A2601/A260601/26020260/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.957966567900954,
+    "lng": 135.76467833988391,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -5999,7 +5999,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "京都府京都市伏見区深草西浦町7-45-1"
   },
   {
     "name": "うどん工房悠々",
@@ -6009,8 +6009,8 @@
     "area": "塚口(阪急)駅",
     "holiday": null,
     "url": "https://tabelog.com/hyogo/A2803/A280304/28029478/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.751789057921,
+    "lng": 135.41644878804541,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6021,7 +6021,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "兵庫県尼崎市南塚口町2-1-2 塚口さんさんタウン２番館１Ｆ"
   },
   {
     "name": "がいな製麺所",
@@ -6031,8 +6031,8 @@
     "area": "加西市",
     "holiday": null,
     "url": "https://tabelog.com/hyogo/A2804/A280403/28003753/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.946722767628415,
+    "lng": 134.88647874038594,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6043,7 +6043,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "兵庫県加西市和泉町25-2"
   },
   {
     "name": "千舟屋",
@@ -6053,14 +6053,14 @@
     "area": "伊丹(阪急)駅",
     "holiday": null,
     "url": "https://tabelog.com/hyogo/A2803/A280306/28040453/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.778447967904086,
+    "lng": 135.41648306831468,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "兵庫県伊丹市中央5-2-18"
   },
   {
     "name": "手しごと讃岐うどん 讃々",
@@ -6070,14 +6070,14 @@
     "area": "平野駅",
     "holiday": null,
     "url": "https://tabelog.com/hyogo/A2803/A280305/28006846/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.87121831784323,
+    "lng": 135.41040411925601,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "兵庫県川西市緑台2-2-121 多田グリーンハイツ商店街内"
   },
   {
     "name": "手打ちうどん吉野",
@@ -6087,14 +6087,14 @@
     "area": "尼崎(JR)駅",
     "holiday": null,
     "url": "https://tabelog.com/hyogo/A2803/A280304/28004745/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.729935377939874,
+    "lng": 135.43214688781367,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "兵庫県尼崎市長洲本通1-7-5"
   },
   {
     "name": "本格さぬきうどん 穂乃香",
@@ -6104,8 +6104,8 @@
     "area": "尼崎(阪神)駅",
     "holiday": null,
     "url": "https://tabelog.com/hyogo/A2803/A280304/28025306/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.72049302793925,
+    "lng": 135.41131216773292,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6116,7 +6116,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "兵庫県尼崎市神田中通4-157-1"
   },
   {
     "name": "本格手打 いわしや 西宮店",
@@ -6126,8 +6126,8 @@
     "area": "西宮市",
     "holiday": null,
     "url": "https://tabelog.com/hyogo/A2803/A280301/28002495/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.83425500781161,
+    "lng": 135.23743869900386,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6138,7 +6138,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "兵庫県西宮市山口町下山口3-12-20"
   },
   {
     "name": "讃岐うどん はるしん",
@@ -6148,15 +6148,15 @@
     "area": "尼崎(JR)駅",
     "holiday": null,
     "url": "https://tabelog.com/hyogo/A2803/A280304/28004733/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.73341649132799,
+    "lng": 135.43543624499966,
     "closed": false,
     "firstSelected": false,
     "years": [
       2017,
       2024
     ],
-    "address": null
+    "address": "兵庫県尼崎市潮江1丁目8-1-109"
   },
   {
     "name": "讃岐麺房 すずめ",
@@ -6166,14 +6166,14 @@
     "area": "三宮(神戸新交通)駅",
     "holiday": null,
     "url": "https://tabelog.com/hyogo/A2801/A280101/28000703/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.695984287887036,
+    "lng": 135.19849400763454,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "兵庫県神戸市中央区雲井通4-1-23 アスティ三宮 １Ｆ"
   },
   {
     "name": "讃松庵",
@@ -6183,14 +6183,14 @@
     "area": "中央市場前駅",
     "holiday": null,
     "url": "https://tabelog.com/hyogo/A2801/A280109/28002342/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.66684368789742,
+    "lng": 135.17297442735804,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "兵庫県神戸市兵庫区切戸町6-18"
   },
   {
     "name": "讃歌うどん はんげしょう",
@@ -6200,8 +6200,8 @@
     "area": "西宮(阪神)駅",
     "holiday": null,
     "url": "https://tabelog.com/hyogo/A2803/A280301/28026561/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.73430863710145,
+    "lng": 135.33707937676274,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6210,7 +6210,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "兵庫県西宮市本町9-5"
   },
   {
     "name": "麦きり トクオカ",
@@ -6220,8 +6220,8 @@
     "area": "土山駅",
     "holiday": null,
     "url": "https://tabelog.com/hyogo/A2804/A280401/28001187/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.721941036967436,
+    "lng": 134.89159127695007,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6229,7 +6229,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "兵庫県明石市魚住町清水2189"
   },
   {
     "name": "麺匠 空海",
@@ -6239,14 +6239,14 @@
     "area": "西宮(JR)駅",
     "holiday": null,
     "url": "https://tabelog.com/hyogo/A2803/A280301/28003941/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 34.73717573710408,
+    "lng": 135.3510117767819,
+    "closed": true,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "兵庫県西宮市津門稲荷町4-6"
   },
   {
     "name": "JUN大谷製麺処",
@@ -6256,14 +6256,14 @@
     "area": "なんば(大阪メトロ)駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270202/27049353/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 34.66588006428953,
+    "lng": 135.49677620466701,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2020
     ],
-    "address": null
+    "address": "大阪府大阪市浪速区元町1-3-18 難波ミツミコープ 1F"
   },
   {
     "name": "Udama 谷町base",
@@ -6273,14 +6273,14 @@
     "area": "谷町四丁目駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270104/27131636/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 34.68498163718936,
+    "lng": 135.51471757613996,
+    "closed": true,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市中央区北新町3-2 アルベルトビル 1F"
   },
   {
     "name": "Udon Kyutaro",
@@ -6290,15 +6290,15 @@
     "area": "本町駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270106/27100801/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.680876647993465,
+    "lng": 135.50256885726878,
     "closed": false,
     "firstSelected": true,
     "years": [
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市中央区久太郎町3-1-16 丼池繊維会館 1F"
   },
   {
     "name": "うさみ亭マツバヤ",
@@ -6308,14 +6308,14 @@
     "area": "心斎橋駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270201/27000931/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.67795990799526,
+    "lng": 135.50238151723946,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市中央区南船場3-8-1"
   },
   {
     "name": "うつ輪",
@@ -6325,14 +6325,14 @@
     "area": "東貝塚駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2705/A270502/27040395/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.43937887137722,
+    "lng": 135.3773365526453,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府貝塚市半田581-1"
   },
   {
     "name": "うどん うばら",
@@ -6342,8 +6342,8 @@
     "area": "大阪上本町駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270205/27060219/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.66701561800868,
+    "lng": 135.52269538711462,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6354,7 +6354,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市天王寺区東高津町9-19"
   },
   {
     "name": "うどん ゆきの",
@@ -6364,8 +6364,8 @@
     "area": "西田辺駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270405/27000574/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.621242298037025,
+    "lng": 135.5204219566539,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6376,7 +6376,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市東住吉区山坂3-10-14"
   },
   {
     "name": "うどん 兎麦 阪急三番街店",
@@ -6386,14 +6386,14 @@
     "area": "大阪梅田(阪急)駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270101/27002469/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.7047669371715,
+    "lng": 135.49809947635146,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市北区芝田1-1-3 阪急三番街 B2F"
   },
   {
     "name": "うどん 蔵十",
@@ -6403,8 +6403,8 @@
     "area": "千林大宮駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270304/27000719/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.72172953717519,
+    "lng": 135.54353157649095,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6412,7 +6412,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市旭区中宮1-12-18"
   },
   {
     "name": "うどん 讃く",
@@ -6422,8 +6422,8 @@
     "area": "新福島駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270108/27066859/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.69453903717446,
+    "lng": 135.48697397625594,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6434,7 +6434,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市福島区福島2-8-3"
   },
   {
     "name": "うどんdining KONA×MIZU×SHIO",
@@ -6444,14 +6444,14 @@
     "area": "堺筋本町駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270106/27089426/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.682252167994925,
+    "lng": 135.50987747727757,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市中央区南本町1-2-6 Fiore Building 1F"
   },
   {
     "name": "うどん上々",
@@ -6461,14 +6461,14 @@
     "area": "玉造(JR)駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270204/27063831/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.669123449109335,
+    "lng": 135.535487284829,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市東成区玉津2-10-22 ロイヤルハイツ宏和 1F"
   },
   {
     "name": "うどん居酒屋 江戸堀",
@@ -6478,8 +6478,8 @@
     "area": "肥後橋駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270102/27094721/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.689193237179815,
+    "lng": 135.4931621761976,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6489,7 +6489,7 @@
       2020,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市西区江戸堀1-23-20 ライフデザイン江戸堀 1F"
   },
   {
     "name": "うどん居酒屋 麦笑",
@@ -6499,8 +6499,8 @@
     "area": "森ノ宮駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270107/27013801/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.67792673720048,
+    "lng": 135.53557527605406,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6508,7 +6508,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市東成区中道1-10-19"
   },
   {
     "name": "うどん屋 きすけ",
@@ -6518,8 +6518,8 @@
     "area": "中崎町駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270101/27015342/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.70937272797503,
+    "lng": 135.50148878755735,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6530,7 +6530,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市北区鶴野町4-1 コープ野村梅田Ａ棟1F"
   },
   {
     "name": "うどん日和",
@@ -6540,8 +6540,8 @@
     "area": "吉田駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2707/A270703/27023042/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.6834351080305,
+    "lng": 135.62398458720952,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6549,7 +6549,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府東大阪市中新開2-13-46-103 正起吉田ハイツ１階"
   },
   {
     "name": "うどん棒 大阪本店",
@@ -6559,8 +6559,8 @@
     "area": "東梅田駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270101/27003766/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.69904943717558,
+    "lng": 135.49950707629273,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6571,7 +6571,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市北区梅田1-1-3 大阪駅前第3ビル B2F"
   },
   {
     "name": "うどん蔵ふじたや",
@@ -6581,14 +6581,14 @@
     "area": "岸和田駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2705/A270502/27073717/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.46323258809141,
+    "lng": 135.37606082515904,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府岸和田市筋海町8-9"
   },
   {
     "name": "きしめん あまの",
@@ -6598,14 +6598,14 @@
     "area": "梅田駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270101/27000285/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.70314861797835,
+    "lng": 135.49952161749584,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市北区角田町2-5 ホワイティうめだノースモール１"
   },
   {
     "name": "き田たけうどん",
@@ -6615,14 +6615,14 @@
     "area": "難波(南海)駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270202/27103359/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.662747698005546,
+    "lng": 135.50434600708442,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市浪速区難波中2-4-17"
   },
   {
     "name": "さぬき手打ちうどん 銭形",
@@ -6632,8 +6632,8 @@
     "area": "服部天神駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2706/A270601/27012525/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.76283549793185,
+    "lng": 135.4725497181177,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6641,7 +6641,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府豊中市服部西町2-2-21"
   },
   {
     "name": "たからや",
@@ -6651,8 +6651,8 @@
     "area": "八尾南駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2707/A270705/27019530/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.59382880807415,
+    "lng": 135.58231078633364,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6660,7 +6660,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府八尾市若林町3-104-7"
   },
   {
     "name": "たけうちうどん店",
@@ -6670,8 +6670,8 @@
     "area": "中津(大阪メトロ)駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270101/27006684/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.712379017972594,
+    "lng": 135.4998452475889,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6682,7 +6682,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市北区豊崎5-2-19"
   },
   {
     "name": "つきろう",
@@ -6692,14 +6692,14 @@
     "area": "北加賀屋駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270404/27018219/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.62270313721894,
+    "lng": 135.48336737553285,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市西成区南津守7-14-7"
   },
   {
     "name": "どとう ぜにや",
@@ -6709,8 +6709,8 @@
     "area": "堺市中区",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2705/A270501/27013157/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.533834288088514,
+    "lng": 135.50775167577987,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6721,7 +6721,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府堺市中区土塔町2076-1"
   },
   {
     "name": "やたがらす UDON",
@@ -6731,14 +6731,14 @@
     "area": "谷町四丁目駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270104/27104366/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.682861037191415,
+    "lng": 135.51695267611694,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市中央区谷町3-5-9 レジュールアッシュ谷町 1F"
   },
   {
     "name": "ゆうすけ",
@@ -6748,14 +6748,14 @@
     "area": "南方駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270301/27078444/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.725813137158966,
+    "lng": 135.50071607656218,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市淀川区西中島3-15-3"
   },
   {
     "name": "らんぷ若蔵",
@@ -6765,14 +6765,14 @@
     "area": "寝屋川市駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2707/A270702/27078379/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.766839157977415,
+    "lng": 135.62359169805222,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府寝屋川市八坂町25-7"
   },
   {
     "name": "三ツ島 真打",
@@ -6781,15 +6781,15 @@
     "prefecture": "大阪府",
     "area": "北河内・東大阪",
     "holiday": null,
-    "url": "https://tabelog.com/osaka/27007177/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "url": "https://tabelog.com/osaka/A2707/A270701/27007177/",
+    "lat": 34.719606649518894,
+    "lng": 135.59846917429533,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017
     ],
-    "address": null
+    "address": "大阪府門真市三ツ島5-1-8"
   },
   {
     "name": "三ツ島 真打",
@@ -6799,14 +6799,14 @@
     "area": "門真市駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2707/A270701/27107160/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 34.73398263717992,
+    "lng": 135.58281587658715,
+    "closed": true,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府門真市新橋町34-17 ロータリー門真 １F"
   },
   {
     "name": "上を向いて",
@@ -6816,15 +6816,15 @@
     "area": "香里園駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2707/A270702/27094977/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.78379623716276,
+    "lng": 135.62826737705845,
     "closed": false,
     "firstSelected": true,
     "years": [
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府寝屋川市香里南之町34-5"
   },
   {
     "name": "千とせ 本店",
@@ -6834,15 +6834,15 @@
     "area": "難波(南海)駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270202/27002763/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.66408793800459,
+    "lng": 135.50401069709818,
     "closed": false,
     "firstSelected": true,
     "years": [
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市中央区難波千日前8-1"
   },
   {
     "name": "堺うどん ちはや",
@@ -6852,14 +6852,14 @@
     "area": "堺東駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2705/A270501/27061050/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.576064958053685,
+    "lng": 135.48262885622407,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府堺市堺区北瓦町1-4-13 テイサンビル南1Ｆ"
   },
   {
     "name": "天政",
@@ -6869,14 +6869,14 @@
     "area": "大阪難波駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270202/27024361/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.66645004800245,
+    "lng": 135.50201717712343,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市中央区難波3-3-3"
   },
   {
     "name": "山斗",
@@ -6886,14 +6886,14 @@
     "area": "西大橋駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270201/27040461/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.67786453718716,
+    "lng": 135.49362907608284,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市西区新町1-33-16 日宝新町ビル 1F"
   },
   {
     "name": "山田製麺所",
@@ -6903,14 +6903,14 @@
     "area": "清水(大阪メトロ)駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270304/27014945/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.72197381798541,
+    "lng": 135.55921902764416,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市旭区清水2-12-4"
   },
   {
     "name": "情熱うどん 讃州",
@@ -6919,15 +6919,15 @@
     "prefecture": "大阪府",
     "area": "大阪市",
     "holiday": null,
-    "url": "https://tabelog.com/osaka/27004475/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "url": "https://tabelog.com/osaka/A2701/A270101/27004475/",
+    "lat": 34.711293596749435,
+    "lng": 135.50001578914245,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017
     ],
-    "address": null
+    "address": "大阪府大阪市北区豊崎3-4-12"
   },
   {
     "name": "情熱うどん讃州 新大阪店",
@@ -6937,14 +6937,14 @@
     "area": "東三国駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270301/27066277/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.737709437150556,
+    "lng": 135.49804247668425,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市淀川区宮原4-4-63 新大阪千代田ビル別館 1Ｆ"
   },
   {
     "name": "扇町うどん屋 あすろう",
@@ -6954,14 +6954,14 @@
     "area": "扇町駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270103/27110013/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.701760997982966,
+    "lng": 135.51124364747363,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市北区天神橋3-8-3 マチスビル 1F"
   },
   {
     "name": "手作りうどん 天粉盛",
@@ -6971,14 +6971,14 @@
     "area": "大国町駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270206/27111140/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.654797418008904,
+    "lng": 135.49903910700783,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市浪速区戎本町1-7-26"
   },
   {
     "name": "手打ちうどん 団平",
@@ -6988,8 +6988,8 @@
     "area": "御殿山駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2707/A270702/27006805/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.832327707945936,
+    "lng": 135.65535293869146,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -6997,7 +6997,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府枚方市三栗1-1-10"
   },
   {
     "name": "手打ちうどん 紅屋",
@@ -7007,8 +7007,8 @@
     "area": "滝井駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2707/A270701/27017094/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.727989357980796,
+    "lng": 135.55672714770668,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7016,7 +7016,7 @@
       2020,
       2024
     ],
-    "address": null
+    "address": "大阪府守口市紅屋町5-4"
   },
   {
     "name": "手造りうどん 楽々",
@@ -7026,8 +7026,8 @@
     "area": "郡津駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2707/A270704/27011240/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.80156160797174,
+    "lng": 135.67502041836693,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7038,7 +7038,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府交野市幾野6-6-1"
   },
   {
     "name": "本町製麺所 本店",
@@ -7048,8 +7048,8 @@
     "area": "堺筋本町駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270106/27014646/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.6798317179947,
+    "lng": 135.50437548725694,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7057,7 +7057,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市中央区北久宝寺町2-6-13"
   },
   {
     "name": "桂ちゃん",
@@ -7067,8 +7067,8 @@
     "area": "長原駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270405/27013633/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.601615868066624,
+    "lng": 135.57421282641798,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7076,7 +7076,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市平野区長吉長原東3-1-68"
   },
   {
     "name": "梅田 釜たけうどん",
@@ -7086,15 +7086,15 @@
     "area": "梅田駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270101/27052204/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.70335683717238,
+    "lng": 135.49804377633725,
     "closed": false,
     "firstSelected": true,
     "years": [
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市北区角田町9-25 新梅田食道街"
   },
   {
     "name": "梅田はがくれ 本店",
@@ -7104,15 +7104,15 @@
     "area": "大阪市",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270101/27000352/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 34.698859636903556,
+    "lng": 135.49932808540504,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017,
       2018
     ],
-    "address": null
+    "address": "大阪府大阪市北区梅田1-1-3 大阪駅前第3ビル B2F"
   },
   {
     "name": "極楽うどん Ah-麺",
@@ -7122,8 +7122,8 @@
     "area": "寺田町駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270306/27075334/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.64814660802132,
+    "lng": 135.52475370692264,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7134,7 +7134,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市生野区生野西2-1-29 宇野ビル 1F"
   },
   {
     "name": "極楽うどん TKU",
@@ -7144,9 +7144,9 @@
     "area": "玉造(JR)駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270204/27042400/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 34.67428397800756,
+    "lng": 135.5336598271804,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017,
@@ -7156,7 +7156,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市東成区東小橋1-1-4"
   },
   {
     "name": "極浄うどん うだま",
@@ -7166,9 +7166,9 @@
     "area": "東梅田駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270101/27056300/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 34.69862633415736,
+    "lng": 135.4996505693645,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017,
@@ -7177,7 +7177,7 @@
       2020,
       2022
     ],
-    "address": null
+    "address": "大阪府大阪市北区梅田1-1-3 大阪駅前第3ビル B1F"
   },
   {
     "name": "江戸堀 木田 讃岐うどん",
@@ -7187,8 +7187,8 @@
     "area": "肥後橋駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270102/27027893/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.689617307984975,
+    "lng": 135.49332263736352,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7197,7 +7197,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市西区江戸堀1丁目23-31"
   },
   {
     "name": "活麺富蔵",
@@ -7207,8 +7207,8 @@
     "area": "四条畷駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2707/A270704/27052338/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.73249553719902,
+    "lng": 135.6398370765322,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7216,7 +7216,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府四條畷市楠公2-8-26 谷山ビル １F"
   },
   {
     "name": "瀬戸内製麺710",
@@ -7226,15 +7226,15 @@
     "area": "北河内・東大阪",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2707/A270704/27054506/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 34.70966800195611,
+    "lng": 135.61503686705473,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017,
       2018
     ],
-    "address": null
+    "address": "大阪府大東市赤井3-1-28"
   },
   {
     "name": "熟成うどん なかや",
@@ -7244,14 +7244,14 @@
     "area": "東三国駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270301/27053546/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.739158347589886,
+    "lng": 135.4973533384259,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市淀川区宮原5-3-52 フォルム新大阪 1F"
   },
   {
     "name": "爽月",
@@ -7261,8 +7261,8 @@
     "area": "粉浜駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270404/27051701/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.617332068030194,
+    "lng": 135.4911623866349,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7270,7 +7270,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市住之江区粉浜2-11-3"
   },
   {
     "name": "空飛ぶうどん やまぶき家",
@@ -7280,8 +7280,8 @@
     "area": "豊中駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2706/A270601/27069779/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.78475833710965,
+    "lng": 135.46339247718373,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7289,7 +7289,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府豊中市岡上の町2-2-5"
   },
   {
     "name": "純愛うどん なでしこ",
@@ -7299,14 +7299,14 @@
     "area": "布施駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2707/A270703/27097554/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 34.661879637219364,
+    "lng": 135.56287087587282,
+    "closed": true,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府東大阪市足代1-19-6"
   },
   {
     "name": "自家製粉石臼挽きうどん 青空blue 本店",
@@ -7316,8 +7316,8 @@
     "area": "肥後橋駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270102/27082212/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.68786973718234,
+    "lng": 135.49840307618055,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7325,7 +7325,7 @@
       2020,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市中央区平野町4-5-8"
   },
   {
     "name": "讃岐うどん いってつ",
@@ -7335,8 +7335,8 @@
     "area": "大阪狭山市",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2708/A270802/27009072/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.49373480812683,
+    "lng": 135.54812062534657,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7344,7 +7344,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪狭山市茱萸木3丁目245-1"
   },
   {
     "name": "讃岐うどん 今雪",
@@ -7354,8 +7354,8 @@
     "area": "扇町駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270101/27067874/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.70300773717516,
+    "lng": 135.5060773763281,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7366,7 +7366,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市北区神山町3-10 クラウンマエダビル 1F"
   },
   {
     "name": "讃岐うどん 白庵",
@@ -7376,8 +7376,8 @@
     "area": "神崎川駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270302/27014852/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.73197623714646,
+    "lng": 135.4737119766434,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7388,7 +7388,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市淀川区新高6-12-7 三和マンション 1F"
   },
   {
     "name": "讃岐屋 雅次郎",
@@ -7398,8 +7398,8 @@
     "area": "久宝寺口駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2707/A270705/27019261/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.64020834164038,
+    "lng": 135.59081457676288,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7408,7 +7408,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府八尾市美園町4丁目59"
   },
   {
     "name": "讃岐立食いうどん きりん屋 本町本店",
@@ -7418,14 +7418,14 @@
     "area": "本町駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270102/27107948/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.68741442798938,
+    "lng": 135.50277809733467,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市中央区平野町3-2-2"
   },
   {
     "name": "踊るうどん 梅田店",
@@ -7435,15 +7435,15 @@
     "area": "東梅田駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270101/27015312/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.69848500798123,
+    "lng": 135.49925883744893,
     "closed": false,
     "firstSelected": true,
     "years": [
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市北区梅田1-1 駅前第３ビル Ｂ２Ｆ"
   },
   {
     "name": "踊るうどん 滝井本店",
@@ -7453,8 +7453,8 @@
     "area": "滝井駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2707/A270701/27004023/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.727540627981156,
+    "lng": 135.55695915770198,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7465,7 +7465,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府守口市紅屋町6-7"
   },
   {
     "name": "道頓堀 今井 本店",
@@ -7475,8 +7475,8 @@
     "area": "大阪難波駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270202/27001289/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.66864173719592,
+    "lng": 135.5027232759833,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7485,7 +7485,7 @@
       2019,
       2020
     ],
-    "address": null
+    "address": "大阪府大阪市中央区道頓堀1-7-22"
   },
   {
     "name": "釜あげ饂飩 楽",
@@ -7495,14 +7495,14 @@
     "area": "玉出駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270406/27018449/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.62674382802397,
+    "lng": 135.49037341673053,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市西成区玉出西1-5-13"
   },
   {
     "name": "釜たけうどん",
@@ -7511,15 +7511,15 @@
     "prefecture": "大阪府",
     "area": "大阪市",
     "holiday": null,
-    "url": "https://tabelog.com/osaka/27001207/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "url": "https://tabelog.com/osaka/A2701/A270202/27001207/",
+    "lat": 34.66425397772759,
+    "lng": 135.50412705793627,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017
     ],
-    "address": null
+    "address": "大阪府大阪市中央区難波千日前4-20 せんだビル １Ｆ"
   },
   {
     "name": "釜ひろ",
@@ -7529,8 +7529,8 @@
     "area": "鶴ケ丘駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270405/27011913/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.61767969803829,
+    "lng": 135.51728146662012,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7538,7 +7538,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市東住吉区山坂5-2-27 ジョイフル鶴が丘 １F"
   },
   {
     "name": "釜揚うどん 一心",
@@ -7548,14 +7548,14 @@
     "area": "長居駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270404/27013396/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.60811840804323,
+    "lng": 135.513752196526,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市住吉区長居東3-4-21 エメラルド長居 １Ｆ"
   },
   {
     "name": "釜揚うどん一紀",
@@ -7565,8 +7565,8 @@
     "area": "今宮駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270406/27059480/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.65137285800849,
+    "lng": 135.49089873697895,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7577,7 +7577,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市西成区南開1-6-10"
   },
   {
     "name": "饂飩とお酒 からほり きぬ川",
@@ -7587,15 +7587,15 @@
     "area": "谷町六丁目駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2701/A270204/27061119/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.67347684800221,
+    "lng": 135.51526778718514,
     "closed": false,
     "firstSelected": true,
     "years": [
       2022,
       2024
     ],
-    "address": null
+    "address": "大阪府大阪市中央区谷町7-6-35"
   },
   {
     "name": "麺くい やまちゃん",
@@ -7605,14 +7605,14 @@
     "area": "堺東駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2705/A270501/27017764/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.57031690805715,
+    "lng": 135.48204290616638,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府堺市堺区一条通16-24"
   },
   {
     "name": "麺匠 やしま",
@@ -7622,14 +7622,14 @@
     "area": "守口駅",
     "holiday": null,
     "url": "https://tabelog.com/osaka/A2707/A270701/27012380/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.74183208797584,
+    "lng": 135.5687632478381,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "大阪府守口市八雲東町1-7-2"
   },
   {
     "name": "釜揚げうどん 鈴庵",
@@ -7639,8 +7639,8 @@
     "area": "北葛城郡広陵町",
     "holiday": null,
     "url": "https://tabelog.com/nara/A2903/A290301/29004110/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.54784285814787,
+    "lng": 135.72208142577117,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7648,7 +7648,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "奈良県北葛城郡広陵町馬見中5-1-26"
   },
   {
     "name": "ふたみうどん研究所",
@@ -7658,9 +7658,9 @@
     "area": "都城市",
     "holiday": null,
     "url": "https://tabelog.com/miyazaki/A4503/A450302/45004957/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 31.75622838597282,
+    "lng": 131.1008296976837,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017,
@@ -7668,7 +7668,7 @@
       2019,
       2020
     ],
-    "address": null
+    "address": "宮崎県都城市神之山町1793-1"
   },
   {
     "name": "釜揚げうどん 織田薪 本店",
@@ -7678,8 +7678,8 @@
     "area": "宮崎市",
     "holiday": null,
     "url": "https://tabelog.com/miyazaki/A4501/A450101/45001975/",
-    "lat": null,
-    "lng": null,
+    "lat": 31.914843437645178,
+    "lng": 131.42150555102822,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7687,7 +7687,7 @@
       2020,
       2024
     ],
-    "address": null
+    "address": "宮崎県宮崎市中央通2-23"
   },
   {
     "name": "糸庄 本店",
@@ -7697,8 +7697,8 @@
     "area": "富山市",
     "holiday": null,
     "url": "https://tabelog.com/toyama/A1601/A160101/16000661/",
-    "lat": null,
-    "lng": null,
+    "lat": 36.67793453726927,
+    "lng": 137.2113340462431,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7708,7 +7708,7 @@
       2020,
       2024
     ],
-    "address": null
+    "address": "富山県富山市太郎丸本町1-7-6"
   },
   {
     "name": "純手打 うどん 勝一",
@@ -7718,8 +7718,8 @@
     "area": "山口市",
     "holiday": null,
     "url": "https://tabelog.com/yamaguchi/A3501/A350101/35000311/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.16178433496746,
+    "lng": 131.44584917655823,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7727,7 +7727,7 @@
       2019,
       2020
     ],
-    "address": null
+    "address": "山口県山口市大字吉敷3271-3"
   },
   {
     "name": "たぬき屋",
@@ -7737,14 +7737,14 @@
     "area": "岡山市北区",
     "holiday": null,
     "url": "https://tabelog.com/okayama/A3301/A330101/33000212/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.64895688750853,
+    "lng": 133.91617938805837,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "岡山県岡山市北区東古松2-2-1"
   },
   {
     "name": "本格手打ちうどん とも作",
@@ -7754,14 +7754,14 @@
     "area": "倉敷市",
     "holiday": null,
     "url": "https://tabelog.com/okayama/A3302/A330201/33000864/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.636218636679516,
+    "lng": 133.81654307683777,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "岡山県倉敷市二子26-1"
   },
   {
     "name": "一匠",
@@ -7771,8 +7771,8 @@
     "area": "鳴門市",
     "holiday": null,
     "url": "https://tabelog.com/tokushima/A3601/A360102/36002902/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.15498659803768,
+    "lng": 134.59260034259464,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7780,7 +7780,7 @@
       2020,
       2024
     ],
-    "address": null
+    "address": "徳島県鳴門市大津町矢倉六ノ越37-3"
   },
   {
     "name": "丸池製麺所",
@@ -7790,15 +7790,15 @@
     "area": "板野郡板野町",
     "holiday": null,
     "url": "https://tabelog.com/tokushima/A3603/A360303/36003089/",
-    "lat": null,
-    "lng": null,
+    "lat": 34.13588028801109,
+    "lng": 134.47101739248689,
     "closed": false,
     "firstSelected": true,
     "years": [
       2022,
       2024
     ],
-    "address": null
+    "address": "徳島県板野郡板野町大寺字大向北98-8"
   },
   {
     "name": "ことり",
@@ -7808,14 +7808,14 @@
     "area": "松山市",
     "holiday": null,
     "url": "https://tabelog.com/ehime/A3801/A380101/38000037/",
-    "lat": null,
-    "lng": null,
+    "lat": 33.836135227659625,
+    "lng": 132.76962192065182,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "愛媛県松山市湊町3-7-2"
   },
   {
     "name": "鍋焼うどん アサヒ",
@@ -7825,14 +7825,14 @@
     "area": "松山市",
     "holiday": null,
     "url": "https://tabelog.com/ehime/A3801/A380101/38000348/",
-    "lat": null,
-    "lng": null,
+    "lat": 33.836409637659386,
+    "lng": 132.76942501065474,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "愛媛県松山市湊町3-10-11"
   },
   {
     "name": "うどん平",
@@ -7842,16 +7842,16 @@
     "area": "祇園駅",
     "holiday": null,
     "url": "https://tabelog.com/fukuoka/A4001/A400101/40000480/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "lat": 33.58855318127849,
+    "lng": 130.4140701471965,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017,
       2018,
       2019
     ],
-    "address": null
+    "address": "福岡県福岡市博多区博多駅前3-17-10"
   },
   {
     "name": "うどん平",
@@ -7861,14 +7861,14 @@
     "area": "博多駅",
     "holiday": null,
     "url": "https://tabelog.com/fukuoka/A4001/A400101/40052349/",
-    "lat": null,
-    "lng": null,
+    "lat": 33.58318858707075,
+    "lng": 130.41604991974663,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "福岡県福岡市博多区住吉5-10-7 第3住吉ハイツ 1F"
   },
   {
     "name": "かろのうろん",
@@ -7878,14 +7878,14 @@
     "area": "櫛田神社前駅",
     "holiday": null,
     "url": "https://tabelog.com/fukuoka/A4001/A400102/40000027/",
-    "lat": null,
-    "lng": null,
+    "lat": 33.59243944706328,
+    "lng": 130.41104465984355,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "福岡県福岡市博多区上川端町2-1"
   },
   {
     "name": "みやけうどん",
@@ -7895,14 +7895,14 @@
     "area": "呉服町駅",
     "holiday": null,
     "url": "https://tabelog.com/fukuoka/A4001/A400106/40003615/",
-    "lat": null,
-    "lng": null,
+    "lat": 33.5983618570594,
+    "lng": 130.41070120990364,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "福岡県福岡市博多区上呉服町10-24"
   },
   {
     "name": "今浪うどん",
@@ -7912,14 +7912,14 @@
     "area": "北九州市小倉南区",
     "holiday": null,
     "url": "https://tabelog.com/fukuoka/A4004/A400502/40005789/",
-    "lat": null,
-    "lng": null,
+    "lat": 33.847589797049466,
+    "lng": 130.87652625209452,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "福岡県北九州市小倉南区北方3-49-29"
   },
   {
     "name": "侍．うどん",
@@ -7928,15 +7928,15 @@
     "prefecture": "福岡県",
     "area": "福岡市",
     "holiday": null,
-    "url": "https://tabelog.com/fukuoka/40033482/",
-    "lat": null,
-    "lng": null,
-    "closed": false,
+    "url": "https://tabelog.com/fukuoka/A4001/A400101/40033482/",
+    "lat": 33.58132321911028,
+    "lng": 130.41967168153695,
+    "closed": true,
     "firstSelected": false,
     "years": [
       2017
     ],
-    "address": null
+    "address": "福岡県福岡市博多区博多駅前4-36-20 内山ビル 1F"
   },
   {
     "name": "津田屋官兵衛",
@@ -7946,14 +7946,14 @@
     "area": "北九州市小倉南区",
     "holiday": null,
     "url": "https://tabelog.com/fukuoka/A4004/A400502/40000486/",
-    "lat": null,
-    "lng": null,
+    "lat": 33.83231963626927,
+    "lng": 130.92513487074444,
     "closed": false,
     "firstSelected": true,
     "years": [
       2024
     ],
-    "address": null
+    "address": "福岡県北九州市小倉南区津田新町3-3-20"
   },
   {
     "name": "立花うどん",
@@ -7963,8 +7963,8 @@
     "area": "久留米市",
     "holiday": null,
     "url": "https://tabelog.com/fukuoka/A4008/A400801/40006354/",
-    "lat": null,
-    "lng": null,
+    "lat": 33.319641687281525,
+    "lng": 130.55231942698904,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7972,7 +7972,7 @@
       2020,
       2024
     ],
-    "address": null
+    "address": "福岡県久留米市東合川5-6-1"
   },
   {
     "name": "葉隠うどん",
@@ -7982,8 +7982,8 @@
     "area": "博多駅",
     "holiday": null,
     "url": "https://tabelog.com/fukuoka/A4001/A400101/40004342/",
-    "lat": null,
-    "lng": null,
+    "lat": 33.58360973707322,
+    "lng": 130.42465410974484,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -7993,7 +7993,7 @@
       2022,
       2024
     ],
-    "address": null
+    "address": "福岡県福岡市博多区博多駅南2-3-32"
   },
   {
     "name": "釜喜利うどん",
@@ -8003,8 +8003,8 @@
     "area": "赤坂駅",
     "holiday": null,
     "url": "https://tabelog.com/fukuoka/A4001/A400104/40034851/",
-    "lat": null,
-    "lng": null,
+    "lat": 33.58582984706128,
+    "lng": 130.39157080979047,
     "closed": false,
     "firstSelected": false,
     "years": [
@@ -8014,6 +8014,6 @@
       2020,
       2024
     ],
-    "address": null
+    "address": "福岡県福岡市中央区大名1-7-8"
   }
 ]
