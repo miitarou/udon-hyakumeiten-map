@@ -737,6 +737,11 @@ body.panel-resizing * {
     box-shadow: 0 2px 12px var(--primary-glow);
 }
 
+.filter-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
 .filter-btn.east-btn.active {
     background: var(--east-color);
     border-color: var(--east-color);
@@ -783,6 +788,28 @@ body.panel-resizing * {
 .pref-select option {
     background: var(--bg-secondary);
     color: var(--text-primary);
+}
+
+.radius-control {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.radius-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.radius-select {
+    max-width: 180px;
+}
+
+.radius-summary {
+    min-height: 18px;
+    font-size: 12px;
+    color: var(--text-secondary);
 }
 
 /* Results Info */
@@ -1008,6 +1035,18 @@ body.panel-resizing * {
     background: rgba(123, 158, 107, 0.15);
     color: var(--soba-light);
     border: 1px solid rgba(123, 158, 107, 0.3);
+}
+
+.badge-want {
+    background: rgba(232, 197, 71, 0.15);
+    color: #E8C547;
+    border: 1px solid rgba(232, 197, 71, 0.35);
+}
+
+.badge-visited {
+    background: rgba(66, 133, 244, 0.15);
+    color: #74B9FF;
+    border: 1px solid rgba(66, 133, 244, 0.35);
 }
 
 /* === Year Badges (年度バッジ) === */
@@ -1255,6 +1294,56 @@ body.panel-resizing * {
     transform: translateY(-1px);
     box-shadow: 0 3px 12px rgba(66, 133, 244, 0.4);
     color: white !important;
+}
+
+.popup-save-actions,
+.card-save-actions {
+    display: flex;
+    gap: 4px;
+}
+
+.popup-save-actions {
+    margin-top: 8px;
+}
+
+.save-btn {
+    border: 1px solid var(--border-color);
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border-radius: 6px;
+    font-family: var(--font-main);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.popup-save-actions .save-btn {
+    flex: 1;
+    padding: 8px 6px;
+    font-size: 11px;
+}
+
+.card-save-actions .save-btn {
+    padding: 5px 6px;
+}
+
+.save-btn:hover {
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+}
+
+.save-btn.active {
+    background: rgba(232, 197, 71, 0.18);
+    border-color: rgba(232, 197, 71, 0.45);
+    color: #E8C547;
+}
+
+.save-btn.active.visited {
+    background: rgba(66, 133, 244, 0.18);
+    border-color: rgba(66, 133, 244, 0.45);
+    color: #74B9FF;
 }
 
 /* === カード内距離表示 === */

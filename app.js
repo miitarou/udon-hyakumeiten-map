@@ -21,13 +21,21 @@
     let activeYear = 'all';
     let minSelectCount = 0;
     let firstSelectedOnly = false;
-    let hideClosedShops = false;
+    let activeStatus = 'all';     // 'all' | 'open' | 'closed'
+    let saveFilter = 'all';       // 'all' | 'want' | 'visited' | 'none'
     let searchQuery = '';
     let sortMode = 'name';
     let userLat = null;
     let userLng = null;
+    let radiusOrigin = null;      // { lat, lng }
+    let radiusKm = 5;
+    let radiusPickMode = false;
+    let radiusMarker = null;
+    let radiusCircle = null;
+    let savedStates = {};
     let hallOfFameMode = false;
     let fitBoundsTimer = null;
+    const SAVE_STORAGE_KEY = 'hyakumeiten-map-store-states-v1';
 
     // === Map Tiles (国土地理院 淡色地図) ===
     const TILE_URL = 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png';
@@ -65,6 +73,7 @@
         console.log('🚀 初期化開始');
         try {
             initMap();
+            loadSavedStates();
             await loadData();
             rebuildYearButtons();
             populateFilters();
@@ -108,6 +117,7 @@
         });
 
         map.addLayer(markerClusterGroup);
+        map.on('click', handleMapClick);
     }
 
     // === Data Loading ===
@@ -336,8 +346,9 @@
         const yearBadgesHtml = buildYearBadges(r.years);
         const countText = selectCount > 0 ? `<span class="popup-select-count${isSoba ? ' soba-count' : ''}">${selectCount}回選出</span>` : '';
 
-        const distText = (userLat !== null && r.lat != null) ?
-            `<div class="popup-detail-row"><span class="popup-detail-icon">📏</span><span class="popup-detail-text">現在地から ${formatDistance(calcDistance(userLat, userLng, r.lat, r.lng))}</span></div>` : '';
+        const distanceOrigin = getActiveDistanceOrigin();
+        const distText = (distanceOrigin && r.lat != null) ?
+            `<div class="popup-detail-row"><span class="popup-detail-icon">📏</span><span class="popup-detail-text">${distanceOrigin.label}から ${formatDistance(calcDistance(distanceOrigin.lat, distanceOrigin.lng, r.lat, r.lng))}</span></div>` : '';
 
         const mapLinksHtml = (r.lat != null && r.lng != null) ? `
             <div class="popup-map-links">
@@ -372,6 +383,7 @@
                     🔗 食べログで見る
                 ${isSafeUrl(r.url) ? '</a>' : '</span>'}
                 ${mapLinksHtml}
+                ${buildSaveButtons(r, 'popup-save-actions')}
             </div>`;
     }
 
@@ -428,8 +440,19 @@
             }
             // First selected
             if (firstSelectedOnly && !r.firstSelected) return false;
-            // Hide closed / relocated shops
-            if (hideClosedShops && r.closed) return false;
+            // Business status
+            if (activeStatus === 'open' && r.closed) return false;
+            if (activeStatus === 'closed' && !r.closed) return false;
+            // Saved state
+            const currentSavedState = getSavedState(r);
+            if (saveFilter === 'want' && currentSavedState !== 'want') return false;
+            if (saveFilter === 'visited' && currentSavedState !== 'visited') return false;
+            if (saveFilter === 'none' && currentSavedState !== 'none') return false;
+            // Radius search
+            if (radiusOrigin) {
+                const d = calcDistance(radiusOrigin.lat, radiusOrigin.lng, r.lat, r.lng);
+                if (d > radiusKm) return false;
+            }
             // Search
             if (searchQuery) {
                 const q = searchQuery.toLowerCase();
@@ -478,10 +501,12 @@
                 );
                 break;
             case 'distance':
-                if (userLat !== null && userLng !== null) {
+                {
+                    const origin = getActiveDistanceOrigin();
+                    if (!origin) break;
                     filteredRestaurants.sort((a, b) => {
-                        const da = calcDistance(userLat, userLng, a.lat, a.lng);
-                        const db = calcDistance(userLat, userLng, b.lat, b.lng);
+                        const da = calcDistance(origin.lat, origin.lng, a.lat, a.lng);
+                        const db = calcDistance(origin.lat, origin.lng, b.lat, b.lng);
                         return da - db;
                     });
                 }
@@ -509,6 +534,55 @@
 
     function getGoogleMapsDirectionsUrl(lat, lng) {
         return `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+    }
+
+    function getActiveDistanceOrigin() {
+        if (radiusOrigin) return { ...radiusOrigin, label: '起点' };
+        if (userLat !== null && userLng !== null) return { lat: userLat, lng: userLng, label: '現在地' };
+        return null;
+    }
+
+    // === Local Save State ===
+    function loadSavedStates() {
+        try {
+            const raw = localStorage.getItem(SAVE_STORAGE_KEY);
+            savedStates = raw ? JSON.parse(raw) : {};
+        } catch {
+            savedStates = {};
+        }
+    }
+
+    function persistSavedStates() {
+        localStorage.setItem(SAVE_STORAGE_KEY, JSON.stringify(savedStates));
+    }
+
+    function getSavedState(r) {
+        return savedStates[r.url] || 'none';
+    }
+
+    function setSavedState(url, state) {
+        if (state === 'none') delete savedStates[url];
+        else savedStates[url] = state;
+        persistSavedStates();
+        applyFilters();
+    }
+
+    function buildSaveButtons(r, contextClass) {
+        const state = getSavedState(r);
+        const safeUrl = encodeURIComponent(r.url);
+        return `
+            <div class="${contextClass}">
+                <button type="button" class="save-btn ${state === 'want' ? 'active' : ''}" data-save-url="${safeUrl}" data-save-state="want" aria-pressed="${state === 'want'}">行きたい</button>
+                <button type="button" class="save-btn ${state === 'visited' ? 'active visited' : ''}" data-save-url="${safeUrl}" data-save-state="visited" aria-pressed="${state === 'visited'}">訪問済み</button>
+            </div>`;
+    }
+
+    function handleSaveButtonClick(btn) {
+        const url = decodeURIComponent(btn.dataset.saveUrl || '');
+        const nextState = btn.dataset.saveState || 'none';
+        if (!url) return;
+        const current = savedStates[url] || 'none';
+        setSavedState(url, current === nextState ? 'none' : nextState);
     }
 
     // === Render Markers ===
@@ -565,17 +639,21 @@
 
             const selectCount = r.years ? r.years.length : 0;
             const isSoba = r.category === 'soba';
+            const savedState = getSavedState(r);
 
             let badgesHtml = '';
             if (r.firstSelected) badgesHtml += '<span class="badge badge-new">NEW</span>';
             if (r.closed) badgesHtml += '<span class="badge badge-closed">閉店</span>';
+            if (savedState === 'want') badgesHtml += '<span class="badge badge-want">行きたい</span>';
+            if (savedState === 'visited') badgesHtml += '<span class="badge badge-visited">訪問済み</span>';
 
             const yearBadgesHtml = buildYearBadges(r.years);
             const countBadgeClass = selectCount >= 5 ? 'count-badge-gold' : selectCount >= 3 ? 'count-badge-silver' : '';
             const countBadge = `<span class="count-badge ${countBadgeClass}">${selectCount}回</span>`;
 
-            const distStr = (userLat !== null && r.lat != null) ?
-                formatDistance(calcDistance(userLat, userLng, r.lat, r.lng)) : '';
+            const distanceOrigin = getActiveDistanceOrigin();
+            const distStr = (distanceOrigin && r.lat != null) ?
+                formatDistance(calcDistance(distanceOrigin.lat, distanceOrigin.lng, r.lat, r.lng)) : '';
             const distHtml = distStr ? `<span class="card-distance">📏 ${distStr}</span>` : '';
 
             const cardMapBtn = (r.lat != null && r.lng != null) ?
@@ -596,6 +674,7 @@
                     ${countBadge}
                     <div class="card-year-badges">${yearBadgesHtml}</div>
                     ${badgesHtml}
+                    ${buildSaveButtons(r, 'card-save-actions')}
                     ${cardMapBtn}
                 </div>`;
 
@@ -606,6 +685,14 @@
             });
 
             container.appendChild(card);
+        });
+
+        container.querySelectorAll('.save-btn').forEach(btn => {
+            btn.addEventListener('click', e => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleSaveButtonClick(btn);
+            });
         });
     }
 
@@ -627,7 +714,9 @@
         activeYear = 'all';
         minSelectCount = 0;
         firstSelectedOnly = false;
-        hideClosedShops = false;
+        activeStatus = 'all';
+        saveFilter = 'all';
+        clearRadiusSearch(false);
         searchQuery = '';
         hallOfFameMode = false;
 
@@ -646,8 +735,8 @@
 
         const firstBtn = document.getElementById('first-selected-btn');
         if (firstBtn) { firstBtn.classList.remove('active'); firstBtn.setAttribute('aria-pressed', 'false'); }
-        const closedBtn = document.getElementById('hide-closed-btn');
-        if (closedBtn) { closedBtn.classList.remove('active'); closedBtn.setAttribute('aria-pressed', 'false'); }
+        setSegmentedButtons('.status-filters .filter-btn', 'all', 'status');
+        setSegmentedButtons('.save-filters .filter-btn', 'all', 'saveFilter');
         const hofBtn = document.getElementById('hall-of-fame-btn');
         if (hofBtn) hofBtn.setAttribute('aria-pressed', 'false');
 
@@ -693,6 +782,14 @@
         if (el) el.textContent = filteredRestaurants.length;
     }
 
+    function setSegmentedButtons(selector, activeValue, datasetKey) {
+        document.querySelectorAll(selector).forEach(btn => {
+            const isActive = btn.dataset[datasetKey] === activeValue;
+            btn.classList.toggle('active', isActive);
+            btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+    }
+
     // === 現在地機能 ===
     let userLocationMarker = null;
     let userLocationCircle = null;
@@ -735,7 +832,7 @@
                 const distOption = sortSelect ? sortSelect.querySelector('option[value="distance"]') : null;
                 if (distOption) {
                     distOption.removeAttribute('disabled');
-                    distOption.textContent = '現在地から近い順 📍';
+                    distOption.textContent = radiusOrigin ? '起点から近い順 📌' : '現在地から近い順 📍';
                 }
 
                 if (sortMode === 'distance') applyFilters();
@@ -754,6 +851,102 @@
             },
             { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
         );
+    }
+
+    // === 任意地点からの半径検索 ===
+    function handleMapClick(e) {
+        if (!radiusPickMode) return;
+        setRadiusOrigin(e.latlng.lat, e.latlng.lng);
+        radiusPickMode = false;
+        const pickBtn = document.getElementById('radius-pick-btn');
+        if (pickBtn) {
+            pickBtn.classList.remove('active');
+            pickBtn.setAttribute('aria-pressed', 'false');
+        }
+    }
+
+    function setRadiusOrigin(lat, lng) {
+        radiusOrigin = { lat, lng };
+        updateRadiusOverlay();
+        enableDistanceSort('起点から近い順 📌');
+        sortMode = 'distance';
+        const sortSelect = document.getElementById('sort-select');
+        if (sortSelect) sortSelect.value = 'distance';
+        applyFilters();
+        map.flyTo([lat, lng], Math.max(map.getZoom(), 13), { duration: 0.8 });
+    }
+
+    function updateRadiusOverlay() {
+        if (radiusMarker) map.removeLayer(radiusMarker);
+        if (radiusCircle) map.removeLayer(radiusCircle);
+
+        const clearBtn = document.getElementById('radius-clear-btn');
+        const summary = document.getElementById('radius-summary');
+        if (!radiusOrigin) {
+            if (clearBtn) clearBtn.disabled = true;
+            if (summary) summary.textContent = '起点未指定';
+            return;
+        }
+
+        radiusMarker = L.circleMarker([radiusOrigin.lat, radiusOrigin.lng], {
+            radius: 7,
+            fillColor: '#E8C547',
+            color: '#ffffff',
+            weight: 2,
+            fillOpacity: 1
+        }).addTo(map);
+        radiusMarker.bindPopup('<strong>検索起点</strong>');
+
+        radiusCircle = L.circle([radiusOrigin.lat, radiusOrigin.lng], {
+            radius: radiusKm * 1000,
+            fillColor: '#E8C547',
+            fillOpacity: 0.08,
+            color: '#D4A853',
+            weight: 2,
+            opacity: 0.65
+        }).addTo(map);
+
+        if (clearBtn) clearBtn.disabled = false;
+        if (summary) summary.textContent = `起点から${radiusKm}km以内`;
+    }
+
+    function clearRadiusSearch(shouldApply = true) {
+        radiusOrigin = null;
+        radiusPickMode = false;
+        if (radiusMarker) map.removeLayer(radiusMarker);
+        if (radiusCircle) map.removeLayer(radiusCircle);
+        radiusMarker = null;
+        radiusCircle = null;
+        updateRadiusOverlay();
+        const pickBtn = document.getElementById('radius-pick-btn');
+        if (pickBtn) {
+            pickBtn.classList.remove('active');
+            pickBtn.setAttribute('aria-pressed', 'false');
+        }
+        if (sortMode === 'distance' && userLat === null) {
+            sortMode = 'name';
+            const sortSelect = document.getElementById('sort-select');
+            if (sortSelect) sortSelect.value = 'name';
+        }
+        if (userLat !== null && userLng !== null) enableDistanceSort('現在地から近い順 📍');
+        else {
+            const sortSelect = document.getElementById('sort-select');
+            const distOption = sortSelect ? sortSelect.querySelector('option[value="distance"]') : null;
+            if (distOption) {
+                distOption.setAttribute('disabled', 'disabled');
+                distOption.textContent = '近い順（📍取得後）';
+            }
+        }
+        if (shouldApply) applyFilters();
+    }
+
+    function enableDistanceSort(label) {
+        const sortSelect = document.getElementById('sort-select');
+        const distOption = sortSelect ? sortSelect.querySelector('option[value="distance"]') : null;
+        if (distOption) {
+            distOption.removeAttribute('disabled');
+            distOption.textContent = label;
+        }
     }
 
     // === Panel Toggle ===
@@ -934,16 +1127,60 @@
             });
         }
 
-        // Hide closed / relocated shops
-        const closedBtn = document.getElementById('hide-closed-btn');
-        if (closedBtn) {
-            closedBtn.addEventListener('click', function () {
-                hideClosedShops = !hideClosedShops;
-                this.classList.toggle('active', hideClosedShops);
-                this.setAttribute('aria-pressed', hideClosedShops);
+        // Business status filter
+        document.querySelectorAll('.status-filters .filter-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.status-filters .filter-btn').forEach(b => {
+                    b.classList.remove('active'); b.setAttribute('aria-pressed', 'false');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-pressed', 'true');
+                activeStatus = this.dataset.status || 'all';
                 applyFilters();
             });
+        });
+
+        // Save state filter
+        document.querySelectorAll('.save-filters .filter-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.save-filters .filter-btn').forEach(b => {
+                    b.classList.remove('active'); b.setAttribute('aria-pressed', 'false');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-pressed', 'true');
+                saveFilter = this.dataset.saveFilter || 'all';
+                applyFilters();
+            });
+        });
+
+        const radiusPickBtn = document.getElementById('radius-pick-btn');
+        if (radiusPickBtn) {
+            radiusPickBtn.addEventListener('click', function () {
+                radiusPickMode = !radiusPickMode;
+                this.classList.toggle('active', radiusPickMode);
+                this.setAttribute('aria-pressed', radiusPickMode ? 'true' : 'false');
+            });
         }
+
+        const radiusClearBtn = document.getElementById('radius-clear-btn');
+        if (radiusClearBtn) radiusClearBtn.addEventListener('click', () => clearRadiusSearch());
+
+        const radiusSelect = document.getElementById('radius-select');
+        if (radiusSelect) {
+            radiusSelect.addEventListener('change', function () {
+                radiusKm = parseFloat(this.value) || 5;
+                updateRadiusOverlay();
+                if (radiusOrigin) applyFilters();
+            });
+        }
+
+        document.addEventListener('click', e => {
+            const saveBtn = e.target.closest('.leaflet-popup .save-btn');
+            if (!saveBtn) return;
+            e.preventDefault();
+            e.stopPropagation();
+            handleSaveButtonClick(saveBtn);
+        });
 
         // Sort
         const sortSelect = document.getElementById('sort-select');

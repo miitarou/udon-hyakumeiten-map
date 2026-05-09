@@ -133,7 +133,43 @@
                         <label class="control-label">⭐ 特殊フィルタ</label>
                         <div class="filter-group special-filters">
                             <button class="filter-btn" id="first-selected-btn" aria-pressed="false">初選出のみ</button>
-                            <button class="filter-btn" id="hide-closed-btn" aria-pressed="false">閉店を除外</button>
+                        </div>
+                    </div>
+                    <!-- 営業状態 -->
+                    <div class="filter-subsection">
+                        <label class="control-label">🚪 営業状態</label>
+                        <div class="filter-group status-filters">
+                            <button class="filter-btn active" data-status="all" aria-pressed="true">全店舗</button>
+                            <button class="filter-btn" data-status="open" aria-pressed="false">営業中のみ</button>
+                            <button class="filter-btn" data-status="closed" aria-pressed="false">閉店・移転のみ</button>
+                        </div>
+                    </div>
+                    <!-- 起点からの半径検索 -->
+                    <div class="filter-subsection">
+                        <label class="control-label" for="radius-select">📌 起点から探す</label>
+                        <div class="radius-control">
+                            <div class="radius-actions">
+                                <button class="filter-btn" id="radius-pick-btn" aria-pressed="false">地図クリックで起点指定</button>
+                                <button class="filter-btn" id="radius-clear-btn" disabled>解除</button>
+                            </div>
+                            <select id="radius-select" class="pref-select radius-select">
+                                <option value="1">1km以内</option>
+                                <option value="3">3km以内</option>
+                                <option value="5" selected>5km以内</option>
+                                <option value="10">10km以内</option>
+                                <option value="20">20km以内</option>
+                            </select>
+                            <div id="radius-summary" class="radius-summary">起点未指定</div>
+                        </div>
+                    </div>
+                    <!-- 保存状態 -->
+                    <div class="filter-subsection">
+                        <label class="control-label">💾 保存状態</label>
+                        <div class="filter-group save-filters">
+                            <button class="filter-btn active" data-save-filter="all" aria-pressed="true">すべて</button>
+                            <button class="filter-btn" data-save-filter="want" aria-pressed="false">行きたい</button>
+                            <button class="filter-btn" data-save-filter="visited" aria-pressed="false">訪問済み</button>
+                            <button class="filter-btn" data-save-filter="none" aria-pressed="false">未分類</button>
                         </div>
                     </div>
                 </div>
