@@ -562,11 +562,10 @@ html, body {
 }
 
 .section-body {
-    overflow: hidden;
-    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.25s ease,
+    overflow: visible;
+    transition: opacity 0.25s ease,
                 padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    max-height: 500px;
+    max-height: none;
     opacity: 1;
     padding: 12px;
     background: rgba(33, 38, 45, 0.5);
@@ -579,6 +578,8 @@ html, body {
 }
 
 .section-body.collapsed {
+    display: none;
+    overflow: hidden;
     max-height: 0;
     opacity: 0;
     padding-top: 0;
@@ -1035,18 +1036,6 @@ body.panel-resizing * {
     background: rgba(123, 158, 107, 0.15);
     color: var(--soba-light);
     border: 1px solid rgba(123, 158, 107, 0.3);
-}
-
-.badge-want {
-    background: rgba(232, 197, 71, 0.15);
-    color: #E8C547;
-    border: 1px solid rgba(232, 197, 71, 0.35);
-}
-
-.badge-visited {
-    background: rgba(66, 133, 244, 0.15);
-    color: #74B9FF;
-    border: 1px solid rgba(66, 133, 244, 0.35);
 }
 
 /* === Year Badges (年度バッジ) === */

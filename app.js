@@ -644,8 +644,6 @@
             let badgesHtml = '';
             if (r.firstSelected) badgesHtml += '<span class="badge badge-new">NEW</span>';
             if (r.closed) badgesHtml += '<span class="badge badge-closed">閉店</span>';
-            if (savedState === 'want') badgesHtml += '<span class="badge badge-want">行きたい</span>';
-            if (savedState === 'visited') badgesHtml += '<span class="badge badge-visited">訪問済み</span>';
 
             const yearBadgesHtml = buildYearBadges(r.years);
             const countBadgeClass = selectCount >= 5 ? 'count-badge-gold' : selectCount >= 3 ? 'count-badge-silver' : '';
