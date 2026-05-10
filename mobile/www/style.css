@@ -347,10 +347,6 @@ html, body {
     image-rendering: auto;
 }
 
-.leaflet-tile-pane img {
-    box-shadow: 0 0 0 1px rgba(246, 247, 244, 0.72);
-}
-
 /* === Control Panel === */
 #control-panel {
     position: fixed;
