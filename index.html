@@ -78,9 +78,9 @@
         <div class="panel-content">
             <!-- 検索（常時表示） -->
             <div class="control-section">
-                <label class="control-label" for="search-input">🔍 店名検索</label>
+                <label class="control-label" for="search-input">🔍 店名・住所・駅名検索</label>
                 <div class="search-wrapper">
-                    <input type="text" id="search-input" class="search-input" placeholder="店名・エリアで検索..." autocomplete="off">
+                    <input type="text" id="search-input" class="search-input" placeholder="店名・住所・駅名で検索..." autocomplete="off">
                     <kbd class="search-shortcut">⌘K</kbd>
                 </div>
             </div>
@@ -89,7 +89,9 @@
             <div class="control-section collapsible-section" id="filter-section">
                 <button class="section-toggle" aria-expanded="false" aria-controls="filter-body">
                     <span class="section-toggle-label">🎯 絞り込みフィルタ</span>
+                    <span class="section-toggle-action"><span class="section-toggle-text">開く</span>
                     <span class="section-toggle-arrow">▼</span>
+                    </span>
                 </button>
                 <div class="section-body collapsed" id="filter-body">
                     <!-- エリア -->

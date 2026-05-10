@@ -451,14 +451,11 @@
                 const d = calcDistance(distanceOrigin.lat, distanceOrigin.lng, r.lat, r.lng);
                 if (d > radiusKm) return false;
             }
-            // Search
+            // Search by store name, address, nearest station/area, prefecture, and holiday.
             if (searchQuery) {
-                const q = searchQuery.toLowerCase();
-                const area = r.area || '';
-                const areaBase = area.replace(/駅$/, '').replace(/（.+?）/g, '');
-                const target = `${r.name || ''} ${r.prefecture || ''} ${area} ${areaBase} ${r.holiday || ''} ${r.address || ''}`.toLowerCase();
-                const qBase = q.replace(/[市区町村駅]$/g, '');
-                if (!target.includes(q) && !target.includes(qBase)) return false;
+                const queries = buildSearchQueries(searchQuery);
+                const target = buildSearchTarget(r);
+                if (!queries.some(q => target.includes(q))) return false;
             }
             // Hall of fame
             if (hallOfFameMode && (r.years ? r.years.length : 0) < 5) return false;
@@ -536,6 +533,33 @@
 
     function getActiveDistanceOrigin() {
         return distanceOrigin;
+    }
+
+    function normalizeSearchText(value) {
+        return String(value || '')
+            .normalize('NFKC')
+            .toLowerCase()
+            .replace(/[‐‑‒–—―ー−]/g, '-')
+            .replace(/\s+/g, '');
+    }
+
+    function buildSearchQueries(query) {
+        const normalized = normalizeSearchText(query);
+        const base = normalized.replace(/[市区町村駅]$/g, '');
+        return [...new Set([normalized, base].filter(Boolean))];
+    }
+
+    function buildSearchTarget(r) {
+        const area = r.area || '';
+        const areaBase = area.replace(/駅$/, '').replace(/（.+?）/g, '');
+        return normalizeSearchText([
+            r.name,
+            r.prefecture,
+            area,
+            areaBase,
+            r.address,
+            r.holiday
+        ].filter(Boolean).join(' '));
     }
 
     // === Local Save State ===
@@ -1035,12 +1059,18 @@
 
         // フィルタ折りたたみ
         document.querySelectorAll('.section-toggle').forEach(toggle => {
+            const updateToggleText = () => {
+                const text = toggle.querySelector('.section-toggle-text');
+                if (text) text.textContent = toggle.getAttribute('aria-expanded') === 'true' ? '閉じる' : '開く';
+            };
+            updateToggleText();
             toggle.addEventListener('click', function () {
                 const body = document.getElementById(this.getAttribute('aria-controls'));
                 if (!body) return;
                 const isExpanded = this.getAttribute('aria-expanded') === 'true';
                 this.setAttribute('aria-expanded', !isExpanded);
                 body.classList.toggle('collapsed', isExpanded);
+                updateToggleText();
             });
         });
 
