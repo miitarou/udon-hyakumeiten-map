@@ -23,6 +23,7 @@ DATASETS = (
     ("data/soba.json", "soba"),
 )
 DATA_VERSION = "data/data-version.json"
+RECOMMENDATION_TAGS = "data/recommendation_tags.json"
 REQUIRED_FIELDS = ("name", "category", "prefecture", "region", "lat", "lng", "url", "years")
 RECOMMENDED_FIELDS = ("area", "address", "closed", "firstSelected")
 VALID_CATEGORIES = {"udon", "soba"}
@@ -37,6 +38,7 @@ MAX_YEAR = 2026
 MIN_LAT, MAX_LAT = 20.0, 46.5
 MIN_LNG, MAX_LNG = 122.0, 154.0
 HTML_TAG_RE = re.compile(r"<[^>]+>")
+VALID_TAG_SOURCES = {"data", "name_keyword", "selection_prior", "regional_prior", "model_prior"}
 
 
 def sha256(path: Path) -> str:
@@ -219,11 +221,129 @@ def validate_data_version(dataset_records: dict[str, int]) -> tuple[int, int]:
     return len(errors), len(warnings)
 
 
+def validate_recommendation_tags(known_restaurants: dict[str, dict]) -> tuple[int, int]:
+    path = ROOT / RECOMMENDATION_TAGS
+    print(f"Checking {RECOMMENDATION_TAGS}...")
+
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        print(f"  [WARN] {RECOMMENDATION_TAGS} does not exist")
+        return 0, 1
+    except Exception as exc:  # noqa: BLE001
+        print(f"  [ERROR] Failed to load {RECOMMENDATION_TAGS}: {exc}")
+        return 1, 0
+
+    errors: list[str] = []
+    warnings: list[str] = []
+
+    if not isinstance(payload, dict):
+        errors.append("root must be an object")
+        payload = {}
+
+    if payload.get("version") != 1:
+        errors.append("version must be 1")
+
+    tag_definitions = payload.get("tagDefinitions")
+    if not isinstance(tag_definitions, dict) or not tag_definitions:
+        errors.append("tagDefinitions must be a non-empty object")
+        tag_definitions = {}
+
+    restaurants = payload.get("restaurants")
+    if not isinstance(restaurants, list):
+        errors.append("restaurants must be a list")
+        restaurants = []
+
+    seen_urls: set[str] = set()
+    for index, item in enumerate(restaurants):
+        prefix = f"item {index}"
+        if not isinstance(item, dict):
+            errors.append(f"{prefix}: must be an object")
+            continue
+
+        url = item.get("url")
+        if not isinstance(url, str) or not url:
+            errors.append(f"{prefix}: url must be a non-empty string")
+            continue
+        if url in seen_urls:
+            errors.append(f"{prefix}: duplicate url {url}")
+        seen_urls.add(url)
+
+        known = known_restaurants.get(url)
+        if not known:
+            errors.append(f"{prefix}: url is not present in public restaurant data: {url}")
+        else:
+            if item.get("name") != known.get("name"):
+                errors.append(f"{prefix}: name mismatch for {url}")
+            if item.get("category") != known.get("category"):
+                errors.append(f"{prefix}: category mismatch for {url}")
+
+        tags = item.get("tags")
+        if not isinstance(tags, list) or not tags:
+            errors.append(f"{prefix}: tags must be a non-empty list")
+            continue
+
+        seen_tag_keys: set[str] = set()
+        for tag_index, tag in enumerate(tags):
+            tag_prefix = f"{prefix}.tags[{tag_index}]"
+            if not isinstance(tag, dict):
+                errors.append(f"{tag_prefix}: must be an object")
+                continue
+            key = tag.get("key")
+            if not isinstance(key, str) or not key:
+                errors.append(f"{tag_prefix}: key must be a non-empty string")
+                continue
+            if key in seen_tag_keys:
+                errors.append(f"{tag_prefix}: duplicate tag key {key}")
+            seen_tag_keys.add(key)
+            if key not in tag_definitions:
+                errors.append(f"{tag_prefix}: missing tag definition for {key}")
+
+            for field in ("weight", "confidence"):
+                value = tag.get(field)
+                if not isinstance(value, (int, float)) or isinstance(value, bool) or not (0 <= float(value) <= 1):
+                    errors.append(f"{tag_prefix}: {field} must be a number between 0 and 1")
+
+            source = tag.get("source")
+            if source not in VALID_TAG_SOURCES:
+                errors.append(f"{tag_prefix}: source must be one of {sorted(VALID_TAG_SOURCES)}, got {source!r}")
+
+            evidence = tag.get("evidence")
+            if not isinstance(evidence, list) or not evidence or not all(isinstance(value, str) and value for value in evidence):
+                errors.append(f"{tag_prefix}: evidence must be a non-empty list of strings")
+
+    expected_urls = set(known_restaurants)
+    if seen_urls != expected_urls:
+        missing = sorted(expected_urls - seen_urls)
+        extra = sorted(seen_urls - expected_urls)
+        if missing:
+            errors.append(f"missing recommendation records: {len(missing)}")
+        if extra:
+            errors.append(f"extra recommendation records: {len(extra)}")
+
+    for key, definition in tag_definitions.items():
+        if not isinstance(definition, dict):
+            errors.append(f"tagDefinitions.{key}: must be an object")
+            continue
+        if definition.get("kind") not in {"fact", "inferred"}:
+            errors.append(f"tagDefinitions.{key}.kind must be fact or inferred")
+        if not isinstance(definition.get("label"), str) or not definition["label"]:
+            errors.append(f"tagDefinitions.{key}.label must be a non-empty string")
+
+    for error in errors:
+        print(f"  [ERROR] {error}")
+    for warning in warnings:
+        print(f"  [WARN] {warning}")
+    print(f"  Summary: records={len(restaurants)}, errors={len(errors)}, warnings={len(warnings)}")
+    return len(errors), len(warnings)
+
+
 def main() -> int:
     total_records = 0
     total_errors = 0
     total_warnings = 0
     dataset_records: dict[str, int] = {}
+    known_restaurants: dict[str, dict] = {}
 
     for relative_path, expected_category in DATASETS:
         records, errors, warnings = validate_dataset(relative_path, expected_category)
@@ -231,10 +351,19 @@ def main() -> int:
         total_records += records
         total_errors += errors
         total_warnings += warnings
+        data, load_errors = load_json(ROOT / relative_path)
+        if not load_errors:
+            for item in data:
+                if isinstance(item, dict) and isinstance(item.get("url"), str):
+                    known_restaurants[item["url"]] = item
 
     version_errors, version_warnings = validate_data_version(dataset_records)
     total_errors += version_errors
     total_warnings += version_warnings
+
+    tag_errors, tag_warnings = validate_recommendation_tags(known_restaurants)
+    total_errors += tag_errors
+    total_warnings += tag_warnings
 
     print("\nFinal summary")
     print(f"  total_records={total_records}")

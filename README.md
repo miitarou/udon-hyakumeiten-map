@@ -72,6 +72,7 @@ open http://localhost:8080
 ├── privacy.html                # プライバシーポリシー
 ├── data/
 │   ├── data-version.json       # iPhone版向けデータ更新メタ情報
+│   ├── recommendation_tags.json # 推薦機能向けの静的タグデータ（探索補助用）
 │   ├── udon.json               # うどん百名店データ（428店）
 │   ├── udon_raw.json           # うどんデータ生成元（ジオコーディング前）
 │   ├── soba.json               # そば百名店データ（266店）
@@ -82,6 +83,7 @@ open http://localhost:8080
 │   ├── build_soba_json.py      # そばデータ年度別マージ・生成スクリプト
 │   ├── geocode_soba.py         # そば店舗 Nominatim ジオコーディング
 │   ├── fetch_tabelog_details.py # 店舗ページ由来の住所・座標・閉店状態取得
+│   ├── generate_recommendation_tags.py # 推薦タグデータ生成
 │   ├── generate_data_version.py # iPhone版向けデータメタ情報生成
 │   ├── sync_mobile_assets.py   # Web資産を mobile/www へ同期
 │   └── check_data_quality.py   # 公開データ品質チェック
@@ -115,6 +117,12 @@ Leaflet / Leaflet.markercluster の CDN 読み込みには Subresource Integrity
 「殿堂入り」は公式称号ではなく、本サイト内での表示上の便宜的な分類です。
 固定の選出回数ではなく、うどん・そばそれぞれのカテゴリ別全体データにおける選出回数上位10%相当を基準にしています。
 
+### 推薦タグデータ
+
+`data/recommendation_tags.json` は、将来の店舗推薦機能に向けた静的タグデータです。
+既存データから確定できるジャンル・地域・選出履歴タグと、店名・地域・選出履歴から控えめに推定した探索補助タグを分けて保持しています。
+推定タグは店舗説明の事実断定ではなく、店舗間の類似度計算に使うための補助情報です。
+
 ### うどん百名店
 - **対象**: 2017〜2024年（全6回分）
 - **店舗数**: 428店（EAST 212店 / WEST 111店 / KAGAWA 105店）
@@ -139,9 +147,10 @@ Leaflet / Leaflet.markercluster の CDN 読み込みには Subresource Integrity
 本リポジトリではデータ品質を保つために検証スクリプトを提供しています。データを更新した際は、以下の手順で検証を行ってください。
 
 1. `data/udon.json` または `data/soba.json` を更新する
-2. iPhone版向けのデータメタ情報を更新する
+2. iPhone版向けのデータメタ情報と推薦タグを更新する
    ```bash
    python3 scripts/generate_data_version.py
+   python3 scripts/generate_recommendation_tags.py
    ```
 3. 以下のコマンドで検証スクリプトを実行する
    ```bash
@@ -161,6 +170,7 @@ Leaflet / Leaflet.markercluster の CDN 読み込みには Subresource Integrity
 - `closed` / `firstSelected` のboolean形式
 - 店名 + 都道府県による重複候補
 - `data/data-version.json` の件数・ハッシュ整合
+- `data/recommendation_tags.json` のURL照合・タグ定義・weight/confidence形式
 
 ## 📱 iPhone版
 

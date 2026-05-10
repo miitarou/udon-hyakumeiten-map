@@ -23,6 +23,7 @@ ROOT_FILES = (
 )
 DATA_FILES = (
     "data-version.json",
+    "recommendation_tags.json",
     "udon.json",
     "soba.json",
 )
