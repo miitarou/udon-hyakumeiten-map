@@ -13,6 +13,8 @@
     let allSoba = [];
     let filteredRestaurants = [];
     let visibleRestaurants = [];
+    let udonHallOfFameThreshold = Infinity;
+    let sobaHallOfFameThreshold = Infinity;
     let map = null;
     let markerClusterGroup = null;
     let markers = new Map();       // url -> marker
@@ -158,7 +160,15 @@
         allSoba = sobaRaw;
         allRestaurants = [...udonRaw, ...sobaRaw];
 
-        console.log(`📊 データ読込完了: うどん ${allUdon.length} 店 / そば ${allSoba.length} 店`);
+        function calcThreshold(src) {
+            const counts = src.map(r => r.years ? r.years.length : 0).filter(c => c > 0).sort((a, b) => b - a);
+            if (!counts.length) return Infinity;
+            return counts[Math.max(0, Math.ceil(counts.length * 0.1) - 1)];
+        }
+        udonHallOfFameThreshold = calcThreshold(allUdon);
+        sobaHallOfFameThreshold = calcThreshold(allSoba);
+
+        console.log(`📊 データ読込完了: うどん ${allUdon.length} 店 (殿堂閾値:${udonHallOfFameThreshold}) / そば ${allSoba.length} 店 (殿堂閾値:${sobaHallOfFameThreshold})`);
     }
 
     function loadDataXHR(url) {
@@ -277,11 +287,14 @@
         let selectClass = '';
         let markerSize = [28, 36];
         let anchorPos = [14, 36];
-        if (selectCount >= 5) {
+        
+        const hofThreshold = restaurant.category === 'soba' ? sobaHallOfFameThreshold : udonHallOfFameThreshold;
+        
+        if (selectCount >= hofThreshold) {
             selectClass = ' select-high';
             markerSize = [36, 44];
             anchorPos = [18, 44];
-        } else if (selectCount >= 3) {
+        } else if (selectCount >= Math.max(2, hofThreshold - 2)) {
             selectClass = ' select-mid';
             markerSize = [32, 40];
             anchorPos = [16, 40];
@@ -436,13 +449,10 @@
     }
 
     function getHallOfFameThreshold(src) {
-        const counts = getCountFilterBase(src)
-            .map(r => r.years ? r.years.length : 0)
-            .filter(count => count > 0)
-            .sort((a, b) => b - a);
-        if (!counts.length) return Infinity;
-        const targetIndex = Math.max(0, Math.ceil(counts.length * 0.1) - 1);
-        return counts[targetIndex];
+        if (src === allUdon) return udonHallOfFameThreshold;
+        if (src === allSoba) return sobaHallOfFameThreshold;
+        // fallback for ALL
+        return Math.min(udonHallOfFameThreshold, sobaHallOfFameThreshold);
     }
 
     function matchesCountFilter(r, src) {
@@ -927,7 +937,8 @@
             if (r.closed) badgesHtml += '<span class="badge badge-closed">閉店</span>';
 
             const yearBadgesHtml = buildYearBadges(r.years);
-            const countBadgeClass = selectCount >= 5 ? 'count-badge-gold' : selectCount >= 3 ? 'count-badge-silver' : '';
+            const hofThreshold = isSoba ? sobaHallOfFameThreshold : udonHallOfFameThreshold;
+            const countBadgeClass = selectCount >= hofThreshold ? 'count-badge-gold' : selectCount >= Math.max(2, hofThreshold - 2) ? 'count-badge-silver' : '';
             const countBadge = `<span class="count-badge ${countBadgeClass}">${selectCount}回</span>`;
 
             const distanceOrigin = getActiveDistanceOrigin();
