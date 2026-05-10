@@ -2043,6 +2043,11 @@ body.panel-resizing * {
 
 /* === アクセシビリティ: focus-visible === */
 .filter-btn:focus-visible,
+.cat-btn:focus-visible,
+.section-toggle:focus-visible,
+.restaurant-card:focus-visible,
+.save-btn:focus-visible,
+.save-backup-btn:focus-visible,
 .locate-btn:focus-visible,
 .mobile-toggle-btn:focus-visible,
 .footer-toggle-btn:focus-visible,
