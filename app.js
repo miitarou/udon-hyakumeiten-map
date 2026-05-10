@@ -352,8 +352,8 @@
 
         const mapLinksHtml = (r.lat != null && r.lng != null) ? `
             <div class="popup-map-links">
-                <a href="${getGoogleMapsDirectionsUrl(r.lat, r.lng)}" target="_blank" rel="noopener noreferrer" class="popup-map-btn popup-map-google">
-                    🗺 Google Mapsで経路
+                <a href="${getGoogleMapsSearchUrl(r)}" target="_blank" rel="noopener noreferrer" class="popup-map-btn popup-map-google">
+                    🗺 Googleで見る
                 </a>
             </div>` : '';
 
@@ -568,8 +568,9 @@
         return Math.round(km) + 'km';
     }
 
-    function getGoogleMapsDirectionsUrl(lat, lng) {
-        return `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+    function getGoogleMapsSearchUrl(r) {
+        const query = `${r.name || ''} ${r.lat},${r.lng}`.trim();
+        return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
     }
 
     function getActiveDistanceOrigin() {
@@ -923,7 +924,7 @@
             const distHtml = distStr ? `<span class="card-distance">📏 ${distStr}</span>` : '';
 
             const cardMapBtn = (r.lat != null && r.lng != null) ?
-                `<div class="card-map-links"><a href="${getGoogleMapsDirectionsUrl(r.lat, r.lng)}" target="_blank" rel="noopener noreferrer" class="card-map-btn" title="Google Mapsで経路検索" onclick="event.stopPropagation()">🗺</a></div>` : '';
+                `<div class="card-map-links"><a href="${getGoogleMapsSearchUrl(r)}" target="_blank" rel="noopener noreferrer" class="card-map-btn" title="Googleで見る" onclick="event.stopPropagation()">🗺</a></div>` : '';
 
             // カテゴリ識別ドット: soba = グリーン系
             const dotClass = isSoba
