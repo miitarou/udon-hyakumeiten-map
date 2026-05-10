@@ -118,6 +118,7 @@
 
         map.addLayer(markerClusterGroup);
         map.on('click', handleMapClick);
+        map.on('moveend zoomend', updateVisibleCount);
     }
 
     // === Data Loading ===
@@ -1039,8 +1040,17 @@
     }
 
     function updateVisibleCount() {
-        const el = document.getElementById('visible-count');
-        if (el) el.textContent = filteredRestaurants.length;
+        const totalEl = document.getElementById('visible-count');
+        const mapEl = document.getElementById('map-visible-count');
+        if (totalEl) totalEl.textContent = filteredRestaurants.length;
+        if (!mapEl || !map) return;
+        const bounds = map.getBounds();
+        const inViewCount = filteredRestaurants.filter(r =>
+            r.lat != null &&
+            r.lng != null &&
+            bounds.contains([r.lat, r.lng])
+        ).length;
+        mapEl.textContent = inViewCount;
     }
 
     function setSegmentedButtons(selector, activeValue, datasetKey) {
