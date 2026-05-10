@@ -41,6 +41,7 @@
     const numberAnimationState = new Map();
     const SAVE_STORAGE_KEY = 'hyakumeiten-map-store-states-v1';
     const NATIVE_DATA_CACHE_KEY = 'hyakumeiten-map-native-data-v1';
+    const MOBILE_PANEL_HEIGHT_KEY = 'hyakumeiten-map-mobile-panel-height-v1';
     const SAVE_BACKUP_FORMAT = 'udon-hyakumeiten-map.saved-states';
     const SAVE_BACKUP_VERSION = 1;
     const REMOTE_DATA_BASE_URL = 'https://miitarou.github.io/udon-hyakumeiten-map/data/';
@@ -149,7 +150,8 @@
             spiderfyOnMaxZoom: true,
             showCoverageOnHover: false,
             zoomToBoundsOnClick: true,
-            disableClusteringAtZoom: 15
+            disableClusteringAtZoom: 15,
+            iconCreateFunction: createClusterIcon
         });
 
         map.addLayer(markerClusterGroup);
@@ -373,7 +375,9 @@
 
         const hofThreshold = restaurant.category === 'soba' ? sobaHallOfFameThreshold : udonHallOfFameThreshold;
 
-        if (selectCount >= hofThreshold) {
+        const isHof = selectCount >= hofThreshold;
+
+        if (isHof) {
             selectClass = ' select-high';
             markerSize = [36, 44];
             anchorPos = [18, 44];
@@ -387,13 +391,18 @@
             className: 'custom-marker',
             html: `<div class="marker-pin ${regionClass}${categoryClass}${closedClass}${selectClass}">
                      <span class="marker-count">${selectCount}</span>
+                     ${isHof && !restaurant.closed ? '<span class="marker-crown">👑</span>' : ''}
                    </div>`,
             iconSize: markerSize,
             iconAnchor: anchorPos,
             popupAnchor: [0, -anchorPos[1]]
         });
 
-        const marker = L.marker([restaurant.lat, restaurant.lng], { icon });
+        const marker = L.marker([restaurant.lat, restaurant.lng], {
+            icon,
+            isHallOfFame: isHof && !restaurant.closed,
+            zIndexOffset: isHof && !restaurant.closed ? 1000 : selectClass ? 300 : 0
+        });
 
         const popupContent = buildPopupContent(restaurant);
         marker.bindPopup(popupContent, {
@@ -403,7 +412,9 @@
             autoPan: true
         });
 
-        const labelClass = 'marker-label' + (restaurant.closed ? ' marker-label-closed' : '');
+        const labelClass = 'marker-label'
+            + (restaurant.closed ? ' marker-label-closed' : '')
+            + (isHof && !restaurant.closed ? ' marker-label-hof' : '');
         const tooltip = document.createElement('span');
         tooltip.textContent = restaurant.name || '';
         marker.bindTooltip(tooltip, {
@@ -415,6 +426,21 @@
         });
 
         return marker;
+    }
+
+    function createClusterIcon(cluster) {
+        const count = cluster.getChildCount();
+        const sizeClass = count < 10 ? 'small' : count < 100 ? 'medium' : 'large';
+        const hofCount = cluster.getAllChildMarkers().filter(marker => marker.options?.isHallOfFame).length;
+        const hofClass = hofCount ? ' marker-cluster-hof' : '';
+        const crown = hofCount ? '<span class="cluster-crown" aria-hidden="true">👑</span>' : '';
+        const iconSize = hofCount ? 46 : 40;
+
+        return L.divIcon({
+            html: `<div><span>${count}</span>${crown}</div>`,
+            className: `marker-cluster marker-cluster-${sizeClass}${hofClass}`,
+            iconSize: L.point(iconSize, iconSize)
+        });
     }
 
     // === Build Year Badges ===
@@ -1535,6 +1561,7 @@
             panel.classList.add('panel-open');
             if (mobileBtn) mobileBtn.classList.add('mobile-toggle-hidden');
             if (isMobile) {
+                applyStoredMobilePanelHeight();
                 if (toggleLabel) toggleLabel.textContent = '閉じる';
                 if (toggleIcon) toggleIcon.textContent = '🔽';
             }
@@ -1548,6 +1575,115 @@
             }
         }
         setTimeout(() => map.invalidateSize(), 350);
+    }
+
+    function getMobileViewportHeight() {
+        return window.visualViewport?.height || window.innerHeight || document.documentElement.clientHeight || 0;
+    }
+
+    function clampMobilePanelHeight(height) {
+        const viewportHeight = getMobileViewportHeight();
+        if (!viewportHeight) return height;
+        const minHeight = Math.min(320, Math.max(240, viewportHeight * 0.34));
+        const maxHeight = Math.max(minHeight, viewportHeight - 78);
+        return Math.max(minHeight, Math.min(maxHeight, height));
+    }
+
+    function setMobilePanelHeight(height, persist = false) {
+        if (window.innerWidth > 768) return;
+        const panelHeight = clampMobilePanelHeight(height);
+        document.documentElement.style.setProperty('--mobile-sheet-height', `${Math.round(panelHeight)}px`);
+        if (persist) {
+            try {
+                localStorage.setItem(MOBILE_PANEL_HEIGHT_KEY, String(Math.round(panelHeight)));
+            } catch (error) {
+                console.warn('Failed to store mobile panel height:', error);
+            }
+        }
+        if (map) setTimeout(() => map.invalidateSize(), 80);
+    }
+
+    function applyStoredMobilePanelHeight() {
+        if (window.innerWidth > 768) return;
+        let savedHeight = 0;
+        try {
+            savedHeight = parseInt(localStorage.getItem(MOBILE_PANEL_HEIGHT_KEY) || '', 10) || 0;
+        } catch (error) {
+            savedHeight = 0;
+        }
+        const fallbackHeight = getMobileViewportHeight() * 0.7;
+        setMobilePanelHeight(savedHeight || fallbackHeight, false);
+    }
+
+    function setupMobilePanelHeightDrag() {
+        const panel = document.getElementById('control-panel');
+        const handle = document.getElementById('mobile-sheet-handle');
+        if (!panel || !handle || !window.PointerEvent) return;
+
+        let dragging = false;
+        let startY = 0;
+        let startHeight = 0;
+        let targetHeight = 0;
+
+        const endDrag = e => {
+            if (!dragging) return;
+            dragging = false;
+            handle.classList.remove('dragging');
+            panel.classList.remove('panel-dragging');
+            document.body.classList.remove('sheet-resizing');
+            if (e.pointerId != null) {
+                try { handle.releasePointerCapture(e.pointerId); } catch (error) { /* pointer may already be released */ }
+            }
+            setMobilePanelHeight(targetHeight || panel.getBoundingClientRect().height, true);
+        };
+
+        handle.addEventListener('pointerdown', e => {
+            if (window.innerWidth > 768 || !panel.classList.contains('panel-open')) return;
+            e.preventDefault();
+            dragging = true;
+            startY = e.clientY;
+            startHeight = panel.getBoundingClientRect().height;
+            targetHeight = startHeight;
+            handle.classList.add('dragging');
+            panel.classList.add('panel-dragging');
+            document.body.classList.add('sheet-resizing');
+            handle.setPointerCapture(e.pointerId);
+        });
+
+        handle.addEventListener('pointermove', e => {
+            if (!dragging) return;
+            e.preventDefault();
+            targetHeight = startHeight + startY - e.clientY;
+            setMobilePanelHeight(targetHeight, false);
+        });
+        handle.addEventListener('pointerup', endDrag);
+        handle.addEventListener('pointercancel', endDrag);
+
+        handle.addEventListener('keydown', e => {
+            if (window.innerWidth > 768 || !panel.classList.contains('panel-open')) return;
+            const current = panel.getBoundingClientRect().height;
+            if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                setMobilePanelHeight(current + 48, true);
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                setMobilePanelHeight(current - 48, true);
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                setMobilePanelHeight(0, true);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                setMobilePanelHeight(getMobileViewportHeight(), true);
+            }
+        });
+
+        const resizeViewport = () => {
+            if (window.innerWidth <= 768 && panel.classList.contains('panel-open')) {
+                setMobilePanelHeight(panel.getBoundingClientRect().height, false);
+            }
+        };
+        window.addEventListener('resize', resizeViewport);
+        window.visualViewport?.addEventListener('resize', resizeViewport);
     }
 
     // === Event Binding ===
@@ -1597,6 +1733,8 @@
 
         const mobileToggle = document.getElementById('mobile-panel-toggle');
         if (mobileToggle) mobileToggle.addEventListener('click', () => togglePanel(true));
+
+        setupMobilePanelHeightDrag();
 
         const locateBtn = document.getElementById('locate-btn');
         if (locateBtn) locateBtn.addEventListener('click', () => locateUser());

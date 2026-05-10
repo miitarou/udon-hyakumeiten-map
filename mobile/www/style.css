@@ -60,6 +60,8 @@
 
     --closed-color: #F85149;
     --new-badge: #3FB950;
+    --hof-gold: #E8C547;
+    --hof-glow: rgba(232, 197, 71, 0.34);
 
     /* Typography */
     --font-main: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -68,6 +70,7 @@
     /* Spacing */
     --panel-width: 380px;
     --header-height: 60px;
+    --mobile-sheet-height: 70dvh;
 
     /* Effects */
     --glass-blur: blur(20px);
@@ -409,6 +412,15 @@ html, body {
 /* モバイル用トグルボタン（デスクトップでは非表示） */
 .mobile-toggle-btn {
     display: none;
+}
+
+.mobile-sheet-handle {
+    display: none;
+}
+
+body.sheet-resizing {
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 /* 現在地ボタン */
@@ -1494,6 +1506,11 @@ body.panel-resizing * {
     border-color: rgba(100, 100, 100, 0.3) !important;
 }
 
+.marker-label-hof {
+    border-color: rgba(232, 197, 71, 0.72) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.44), 0 0 0 2px rgba(232, 197, 71, 0.14) !important;
+}
+
 /* ラベルはマーカーの表示状態に連動（MarkerCluster管理） */
 
 .marker-pin {
@@ -1562,12 +1579,15 @@ body.panel-resizing * {
 .marker-pin.select-high {
     width: 36px;
     height: 36px;
-    box-shadow: 0 3px 16px rgba(232, 197, 71, 0.6);
-    border: 2px solid rgba(232, 197, 71, 0.8);
+    box-shadow:
+        0 0 0 3px rgba(232, 197, 71, 0.24),
+        0 0 0 6px rgba(232, 197, 71, 0.1),
+        0 4px 18px rgba(232, 197, 71, 0.45),
+        0 5px 16px rgba(0, 0, 0, 0.45);
+    border: 2px solid rgba(232, 197, 71, 0.92);
 }
 .marker-pin.select-high.east {
     background: linear-gradient(135deg, #8BB8D9, var(--east-color));
-    box-shadow: 0 3px 16px rgba(91, 143, 185, 0.6);
     border-color: rgba(122, 172, 206, 0.8);
 }
 .marker-pin.select-high.west {
@@ -1575,18 +1595,34 @@ body.panel-resizing * {
 }
 .marker-pin.select-high.kagawa {
     background: linear-gradient(135deg, var(--kagawa-light), var(--kagawa-color));
-    box-shadow: 0 3px 16px var(--kagawa-glow);
     border-color: rgba(216, 101, 83, 0.8);
 }
 .marker-pin.select-high.soba.east {
     background: linear-gradient(135deg, #81ecec, var(--soba-east));
-    box-shadow: 0 3px 16px var(--soba-east-glow);
     border-color: rgba(106, 175, 175, 0.8);
 }
 .marker-pin.select-high.soba.west {
     background: linear-gradient(135deg, var(--soba-light), var(--soba-primary));
-    box-shadow: 0 3px 16px var(--soba-glow);
     border-color: rgba(157, 191, 138, 0.8);
+}
+
+.marker-crown {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 21px;
+    height: 21px;
+    border-radius: 999px;
+    background: rgba(13, 17, 23, 0.94);
+    border: 1px solid rgba(232, 197, 71, 0.86);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.45), 0 0 12px rgba(232, 197, 71, 0.35);
+    font-size: 12px;
+    line-height: 1;
+    transform: rotate(45deg);
 }
 
 .marker-pin.closed {
@@ -1634,6 +1670,34 @@ body.panel-resizing * {
     font-weight: 700;
 }
 
+.marker-cluster-hof {
+    background-color: rgba(232, 197, 71, 0.3) !important;
+    box-shadow: 0 0 0 3px rgba(232, 197, 71, 0.18), 0 6px 18px rgba(0, 0, 0, 0.32);
+}
+
+.marker-cluster-hof div {
+    position: relative;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-dark)) !important;
+    border: 1px solid rgba(232, 197, 71, 0.72);
+}
+
+.cluster-crown {
+    position: absolute;
+    top: -12px;
+    right: -10px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(13, 17, 23, 0.94);
+    border: 1px solid rgba(232, 197, 71, 0.74);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    font-size: 10px;
+    line-height: 1;
+}
+
 /* Leaflet control overrides */
 .leaflet-control-zoom a {
     background: var(--bg-secondary) !important;
@@ -1662,6 +1726,7 @@ body.panel-resizing * {
     :root {
         --panel-width: 100vw;
         --header-height: 52px;
+        --mobile-sheet-height: 70dvh;
     }
 
     .logo-area h1 {
@@ -1701,12 +1766,20 @@ body.panel-resizing * {
         left: 0;
         right: 0;
         width: 100%;
-        height: 70vh;
+        height: var(--mobile-sheet-height);
+        min-height: min(320px, 42dvh);
+        max-height: calc(100dvh - var(--header-height) - 8px);
         border-right: none;
         border-top: 1px solid var(--border-color);
         border-radius: 20px 20px 0 0;
         box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.5);
         overflow: visible;
+        transition: transform var(--transition-med), height 0.18s ease;
+        will-change: transform, height;
+    }
+
+    #control-panel.panel-dragging {
+        transition: none;
     }
 
     /* モバイルではリサイズハンドル非表示 */
@@ -1724,11 +1797,46 @@ body.panel-resizing * {
 
     .panel-content {
         width: 100%;
-        padding: 24px 16px 16px;
+        padding: 58px 16px 16px;
         height: 100%;
-        max-height: calc(70vh - 10px);
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-sheet-handle {
+        display: none;
+    }
+
+    .panel-open .mobile-sheet-handle {
+        display: flex;
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        z-index: 604;
+        width: 112px;
+        height: 38px;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(-50%);
+        cursor: ns-resize;
+        touch-action: none;
+    }
+
+    .panel-open .mobile-sheet-handle::before {
+        content: '';
+        display: block;
+        width: 48px;
+        height: 5px;
+        border-radius: 999px;
+        background: rgba(139, 148, 158, 0.55);
+        box-shadow: 0 0 0 1px rgba(240, 246, 252, 0.04);
+        transition: width var(--transition-fast), background var(--transition-fast);
+    }
+
+    .panel-open .mobile-sheet-handle.dragging::before,
+    .panel-open .mobile-sheet-handle:focus-visible::before {
+        width: 64px;
+        background: rgba(232, 197, 71, 0.72);
     }
 
     /* パネル内のトグルボタン（デスクトップ用）はモバイルでは非表示 */
@@ -1803,30 +1911,13 @@ body.panel-resizing * {
         transform: translateX(-50%) translateY(20px);
     }
 
-    /* ドロワーハンドル（開いた時のみ表示） */
-    .panel-open .panel-content::before {
-        content: '';
-        display: block;
-        width: 40px;
-        height: 4px;
-        background: var(--text-muted);
-        border-radius: 2px;
-        margin: 4px auto 8px;
-        flex-shrink: 0;
-    }
-
     #map {
         bottom: 0;
     }
 
-    /* オーバーレイ背景 */
+    /* パネルを半開きにして地図操作できるよう、背景オーバーレイは出さない */
     .panel-open ~ #map::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.3);
-        z-index: 2;
-        pointer-events: auto;
+        content: none;
     }
 
     .leaflet-popup-content {
