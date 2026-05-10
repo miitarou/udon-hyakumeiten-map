@@ -12,6 +12,7 @@
     let allUdon = [];
     let allSoba = [];
     let filteredRestaurants = [];
+    let visibleRestaurants = [];
     let map = null;
     let markerClusterGroup = null;
     let markers = new Map();       // url -> marker
@@ -118,7 +119,7 @@
 
         map.addLayer(markerClusterGroup);
         map.on('click', handleMapClick);
-        map.on('moveend zoomend', updateVisibleCount);
+        map.on('moveend zoomend', updateMapViewportState);
     }
 
     // === Data Loading ===
@@ -497,8 +498,7 @@
         updateSearchDistanceOrigin();
         sortRestaurants();
         renderMarkers();
-        renderList();
-        updateVisibleCount();
+        updateMapViewportState();
         syncDistanceSortControl();
     }
 
@@ -887,6 +887,7 @@
     function renderList() {
         const container = document.getElementById('restaurant-list');
         container.innerHTML = '';
+        const listRestaurants = visibleRestaurants;
 
         if (filteredRestaurants.length === 0) {
             const emptyCat = activeCategory === 'soba' ? '🥢' : activeCategory === 'udon' ? '🍜' : '🍜';
@@ -902,7 +903,17 @@
             return;
         }
 
-        filteredRestaurants.forEach((r, i) => {
+        if (listRestaurants.length === 0) {
+            container.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon">🗺</div>
+                    <div class="empty-state-title">地図内に店舗がありません</div>
+                    <div class="empty-state-desc">地図を移動または縮小すると、表示範囲内の店舗がリストに出ます。</div>
+                </div>`;
+            return;
+        }
+
+        listRestaurants.forEach((r, i) => {
             const card = document.createElement('div');
             card.className = 'restaurant-card';
             card.style.animationDelay = `${Math.min(i * 0.02, 0.5)}s`;
@@ -1039,18 +1050,35 @@
         requestAnimationFrame(tick);
     }
 
+    function getViewportBounds() {
+        if (!map) return null;
+        const bounds = map.getBounds();
+        const zoom = map.getZoom();
+        const paddingRatio = zoom <= 7 ? 0.18 : zoom <= 10 ? 0.1 : 0.04;
+        return bounds.pad(paddingRatio);
+    }
+
+    function getRestaurantsInViewport() {
+        const bounds = getViewportBounds();
+        if (!bounds) return filteredRestaurants;
+        return filteredRestaurants.filter(r =>
+            r.lat != null &&
+            r.lng != null &&
+            bounds.contains([r.lat, r.lng])
+        );
+    }
+
+    function updateMapViewportState() {
+        visibleRestaurants = getRestaurantsInViewport();
+        updateVisibleCount();
+        renderList();
+    }
+
     function updateVisibleCount() {
         const totalEl = document.getElementById('visible-count');
         const mapEl = document.getElementById('map-visible-count');
         if (totalEl) totalEl.textContent = filteredRestaurants.length;
-        if (!mapEl || !map) return;
-        const bounds = map.getBounds();
-        const inViewCount = filteredRestaurants.filter(r =>
-            r.lat != null &&
-            r.lng != null &&
-            bounds.contains([r.lat, r.lng])
-        ).length;
-        mapEl.textContent = inViewCount;
+        if (mapEl) mapEl.textContent = visibleRestaurants.length;
     }
 
     function setSegmentedButtons(selector, activeValue, datasetKey) {
