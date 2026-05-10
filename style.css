@@ -1088,6 +1088,21 @@ body.panel-resizing * {
 .year-2024 { background: rgba(212, 168, 83, 0.2); color: var(--primary-light); border: 1px solid rgba(212, 168, 83, 0.4); }
 .year-2025 { background: rgba(0, 206, 201, 0.15); color: #81ecec; border: 1px solid rgba(0, 206, 201, 0.4); }
 
+.hof-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    background: rgba(232, 197, 71, 0.18);
+    border: 1px solid rgba(232, 197, 71, 0.55);
+    box-shadow: 0 0 10px rgba(232, 197, 71, 0.18);
+    font-size: 11px;
+    line-height: 1;
+    flex: 0 0 auto;
+}
+
 /* Marker pin内の選出回数カウント */
 .marker-count {
     position: absolute;

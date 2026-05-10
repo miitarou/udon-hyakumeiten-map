@@ -426,6 +426,18 @@
         }).join('');
     }
 
+    function isHallOfFameRestaurant(r) {
+        const selectCount = r.years ? r.years.length : 0;
+        if (!selectCount) return false;
+        const threshold = r.category === 'soba' ? sobaHallOfFameThreshold : udonHallOfFameThreshold;
+        return selectCount >= threshold;
+    }
+
+    function buildHallOfFameBadge(r) {
+        if (!isHallOfFameRestaurant(r)) return '';
+        return '<span class="hof-badge" title="殿堂入り（カテゴリ上位10%）" aria-label="殿堂入り（カテゴリ上位10%）">👑</span>';
+    }
+
     // === Build Popup Content ===
     function buildPopupContent(r) {
         // All restaurant-data-derived text inserted via innerHTML must be escaped.
@@ -444,7 +456,7 @@
         if (isSoba) badges += '<span class="badge badge-soba">🥢 そば</span>';
         const badgesHtml = badges ? `<div class="popup-badges">${badges}</div>` : '';
 
-        const yearBadgesHtml = buildYearBadges(r.years);
+        const yearBadgesHtml = buildYearBadges(r.years) + buildHallOfFameBadge(r);
         const countText = selectCount > 0 ? `<span class="popup-select-count${isSoba ? ' soba-count' : ''}">${selectCount}回選出</span>` : '';
 
         const distanceOrigin = getActiveDistanceOrigin();
@@ -1123,7 +1135,7 @@
             if (r.firstSelected) badgesHtml += '<span class="badge badge-new">NEW</span>';
             if (r.closed) badgesHtml += '<span class="badge badge-closed">閉店</span>';
 
-            const yearBadgesHtml = buildYearBadges(r.years);
+            const yearBadgesHtml = buildYearBadges(r.years) + buildHallOfFameBadge(r);
             const hofThreshold = isSoba ? sobaHallOfFameThreshold : udonHallOfFameThreshold;
             const countBadgeClass = selectCount >= hofThreshold ? 'count-badge-gold' : selectCount >= Math.max(2, hofThreshold - 2) ? 'count-badge-silver' : '';
             const countBadge = `<span class="count-badge ${countBadgeClass}">${selectCount}回</span>`;
