@@ -380,55 +380,6 @@ html, body {
     display: none;
 }
 
-/* === 現在地ボタン === */
-/* 地図上アクションボタン共通 */
-.map-action-btn {
-    position: fixed;
-    right: 16px;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(26, 26, 46, 0.92);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
-    color: #ffffff;
-    cursor: pointer;
-    z-index: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all var(--transition-med);
-    font-size: 20px;
-}
-
-.map-action-btn:hover {
-    background: rgba(42, 42, 78, 0.95);
-    transform: scale(1.1);
-}
-
-.map-action-btn:active {
-    transform: scale(0.95);
-}
-
-.map-action-btn:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
-}
-
-/* 殿堂入りトグル */
-.hall-of-fame-btn {
-    bottom: 76px;
-    font-size: 18px;
-}
-
-.hall-of-fame-btn[aria-pressed="true"] {
-    background: linear-gradient(135deg, #d4a853, #b8860b);
-    box-shadow: 0 2px 16px rgba(212, 168, 83, 0.5);
-    color: #1a1a2e;
-}
-
 /* 現在地ボタン */
 .locate-btn {
     position: fixed;
@@ -1844,11 +1795,6 @@ body.panel-resizing * {
     /* 現在地ボタンのモバイル位置調整 */
     .locate-btn {
         bottom: calc(80px + env(safe-area-inset-bottom, 0px));
-        right: 12px;
-    }
-
-    .hall-of-fame-btn {
-        bottom: calc(132px + env(safe-area-inset-bottom, 0px));
         right: 12px;
     }
 

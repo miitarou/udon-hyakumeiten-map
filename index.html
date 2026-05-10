@@ -122,19 +122,13 @@
                     <div class="filter-subsection">
                         <label class="control-label">🏆 選出回数</label>
                         <div class="filter-group count-filters">
-                            <button class="filter-btn active" data-min-count="0" aria-pressed="true">指定なし</button>
-                            <button class="filter-btn" data-min-count="2" aria-pressed="false">2回以上</button>
-                            <button class="filter-btn" data-min-count="3" aria-pressed="false">3回以上</button>
-                            <button class="filter-btn" data-min-count="4" aria-pressed="false">4回以上</button>
-                            <button class="filter-btn" data-min-count="5" aria-pressed="false">5回以上</button>
-                            <button class="filter-btn" data-min-count="6" aria-pressed="false">6回以上</button>
-                        </div>
-                    </div>
-                    <!-- 特殊フィルタ -->
-                    <div class="filter-subsection">
-                        <label class="control-label">⭐ 特殊フィルタ</label>
-                        <div class="filter-group special-filters">
-                            <button class="filter-btn" id="first-selected-btn" aria-pressed="false">初選出のみ</button>
+                            <button class="filter-btn active" data-count-mode="all" aria-pressed="true">指定なし</button>
+                            <button class="filter-btn" data-count-mode="first" aria-pressed="false">最新年度で初登場</button>
+                            <button class="filter-btn" data-count-mode="exact-1" aria-pressed="false">1回のみ</button>
+                            <button class="filter-btn" data-count-mode="min-2" aria-pressed="false">2回以上</button>
+                            <button class="filter-btn" data-count-mode="min-3" aria-pressed="false">3回以上</button>
+                            <button class="filter-btn" data-count-mode="min-4" aria-pressed="false">4回以上</button>
+                            <button class="filter-btn" data-count-mode="hall-of-fame" aria-pressed="false">殿堂入り（上位10%）</button>
                         </div>
                     </div>
                     <!-- 営業状態 -->
@@ -216,11 +210,6 @@
     <!-- モバイル用パネル開閉ボタン（パネルの外に配置） -->
     <button id="mobile-panel-toggle" class="mobile-toggle-btn" aria-label="検索・フィルタを開く">
         🔍 検索・フィルタ
-    </button>
-
-    <!-- 殿堂入りトグル -->
-    <button id="hall-of-fame-btn" class="map-action-btn hall-of-fame-btn" aria-label="殿堂入り（5回以上）だけ表示" aria-pressed="false" title="殿堂入り（5回以上）">
-        👑
     </button>
 
     <!-- 現在地ボタン -->

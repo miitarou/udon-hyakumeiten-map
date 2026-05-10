@@ -19,8 +19,7 @@
     let activeRegion = 'all';
     let activePrefecture = 'all';
     let activeYear = 'all';
-    let minSelectCount = 0;
-    let firstSelectedOnly = false;
+    let countFilterMode = 'all';  // 'all' | 'first' | 'exact-1' | 'min-N' | 'hall-of-fame'
     let activeStatus = 'all';     // 'all' | 'open' | 'closed'
     let saveFilter = 'all';       // 'all' | 'want' | 'visited' | 'none'
     let searchQuery = '';
@@ -33,7 +32,6 @@
     let radiusMarker = null;
     let radiusCircle = null;
     let savedStates = {};
-    let hallOfFameMode = false;
     let fitBoundsTimer = null;
     const SAVE_STORAGE_KEY = 'hyakumeiten-map-store-states-v1';
     const SAVE_BACKUP_FORMAT = 'udon-hyakumeiten-map.saved-states';
@@ -423,6 +421,41 @@
         return allRestaurants;
     }
 
+    function getCountFilterBase(src) {
+        return src.filter(r => {
+            if (activeRegion !== 'all' && r.region !== activeRegion) return false;
+            if (activePrefecture !== 'all' && r.prefecture !== activePrefecture) return false;
+            if (activeYear !== 'all') {
+                const yearNum = parseInt(activeYear, 10);
+                if (!r.years || !r.years.includes(yearNum)) return false;
+            }
+            return true;
+        });
+    }
+
+    function getHallOfFameThreshold(src) {
+        const counts = getCountFilterBase(src)
+            .map(r => r.years ? r.years.length : 0)
+            .filter(count => count > 0)
+            .sort((a, b) => b - a);
+        if (!counts.length) return Infinity;
+        const targetIndex = Math.max(0, Math.ceil(counts.length * 0.1) - 1);
+        return counts[targetIndex];
+    }
+
+    function matchesCountFilter(r, src) {
+        const count = r.years ? r.years.length : 0;
+        if (countFilterMode === 'all') return true;
+        if (countFilterMode === 'first') return Boolean(r.firstSelected);
+        if (countFilterMode === 'exact-1') return count === 1;
+        if (countFilterMode === 'hall-of-fame') return count >= getHallOfFameThreshold(src);
+        if (countFilterMode.startsWith('min-')) {
+            const min = parseInt(countFilterMode.replace('min-', ''), 10) || 0;
+            return count >= min;
+        }
+        return true;
+    }
+
     function applyFilters() {
         const src = getCategorySource();
 
@@ -436,12 +469,8 @@
                 const yearNum = parseInt(activeYear, 10);
                 if (!r.years || !r.years.includes(yearNum)) return false;
             }
-            // Min count
-            if (minSelectCount > 0) {
-                if ((r.years ? r.years.length : 0) < minSelectCount) return false;
-            }
-            // First selected
-            if (firstSelectedOnly && !r.firstSelected) return false;
+            // Selection count
+            if (!matchesCountFilter(r, src)) return false;
             // Business status
             if (activeStatus === 'open' && r.closed) return false;
             if (activeStatus === 'closed' && !r.closed) return false;
@@ -461,9 +490,6 @@
                 const target = buildSearchTarget(r);
                 if (!queries.some(q => target.includes(q))) return false;
             }
-            // Hall of fame
-            if (hallOfFameMode && (r.years ? r.years.length : 0) < 5) return false;
-
             return true;
         });
 
@@ -770,9 +796,8 @@
 
     function importSavedStates(data) {
         const entries = normalizeImportedSaveEntries(data);
-        const currentUrls = new Set(allRestaurants.map(r => r.url));
         const nextStates = { ...savedStates };
-        const stats = { imported: 0, remapped: 0, preservedUnknown: 0, skipped: 0 };
+        const stats = { imported: 0, remapped: 0, missing: [], skipped: 0 };
 
         entries.forEach(entry => {
             const state = entry.state;
@@ -782,18 +807,21 @@
             }
 
             const matched = findRestaurantForImportedEntry(entry);
-            const targetUrl = matched?.url || entry.url;
-            if (!targetUrl) {
-                stats.skipped += 1;
+            if (!matched) {
+                stats.missing.push({
+                    name: entry.name || entry.url || '不明な店舗',
+                    address: entry.address || entry.area || '',
+                    state
+                });
                 return;
             }
 
+            const targetUrl = matched.url;
             if (state === 'none') delete nextStates[targetUrl];
             else nextStates[targetUrl] = state;
 
             stats.imported += 1;
             if (matched && entry.url && matched.url !== entry.url) stats.remapped += 1;
-            if (!matched && !currentUrls.has(targetUrl)) stats.preservedUnknown += 1;
         });
 
         savedStates = nextStates;
@@ -811,7 +839,11 @@
                     `保存状態を復元しました。`,
                     `反映: ${stats.imported}件`,
                     stats.remapped ? `現行店舗へ再対応: ${stats.remapped}件` : null,
-                    stats.preservedUnknown ? `現行データ外として保持: ${stats.preservedUnknown}件` : null,
+                    stats.missing.length ? `現行マップにない保存データ: ${stats.missing.length}件` : null,
+                    stats.missing.length ? stats.missing.slice(0, 10).map(item =>
+                        `- ${item.name}${item.address ? ` / ${item.address}` : ''} / ${item.state === 'want' ? '行きたい' : '訪問済み'}`
+                    ).join('\n') : null,
+                    stats.missing.length > 10 ? `ほか${stats.missing.length - 10}件` : null,
                     stats.skipped ? `スキップ: ${stats.skipped}件` : null
                 ].filter(Boolean).join('\n'));
             } catch (e) {
@@ -946,13 +978,11 @@
         activeRegion = 'all';
         activePrefecture = 'all';
         activeYear = 'all';
-        minSelectCount = 0;
-        firstSelectedOnly = false;
+        countFilterMode = 'all';
         activeStatus = 'all';
         saveFilter = 'all';
         clearRadiusSearch(false);
         searchQuery = '';
-        hallOfFameMode = false;
 
         const searchInput = document.getElementById('search-input');
         if (searchInput) searchInput.value = '';
@@ -962,17 +992,13 @@
         document.querySelectorAll('.filter-btn').forEach(btn => {
             const isDefault = btn.dataset.filter === 'all' ||
                 btn.dataset.year === 'all' ||
-                btn.getAttribute('data-min-count') === '0';
+                btn.dataset.countMode === 'all';
             btn.classList.toggle('active', isDefault);
             btn.setAttribute('aria-pressed', isDefault ? 'true' : 'false');
         });
 
-        const firstBtn = document.getElementById('first-selected-btn');
-        if (firstBtn) { firstBtn.classList.remove('active'); firstBtn.setAttribute('aria-pressed', 'false'); }
         setSegmentedButtons('.status-filters .filter-btn', 'all', 'status');
         setSegmentedButtons('.save-filters .filter-btn', 'all', 'saveFilter');
-        const hofBtn = document.getElementById('hall-of-fame-btn');
-        if (hofBtn) hofBtn.setAttribute('aria-pressed', 'false');
 
         rebuildYearButtons();
         map.flyTo(JAPAN_CENTER, JAPAN_ZOOM, { duration: 0.8 });
@@ -1274,16 +1300,6 @@
             });
         });
 
-        // 殿堂入りトグル
-        const hofBtn = document.getElementById('hall-of-fame-btn');
-        if (hofBtn) {
-            hofBtn.addEventListener('click', function () {
-                hallOfFameMode = !hallOfFameMode;
-                this.setAttribute('aria-pressed', hallOfFameMode);
-                applyFilters();
-            });
-        }
-
         // Panel toggle
         const panelToggle = document.getElementById('panel-toggle');
         if (panelToggle) panelToggle.addEventListener('click', () => togglePanel());
@@ -1371,21 +1387,10 @@
                 });
                 this.classList.add('active');
                 this.setAttribute('aria-pressed', 'true');
-                minSelectCount = parseInt(this.getAttribute('data-min-count'), 10) || 0;
+                countFilterMode = this.dataset.countMode || 'all';
                 applyFilters();
             });
         });
-
-        // First selected
-        const firstBtn = document.getElementById('first-selected-btn');
-        if (firstBtn) {
-            firstBtn.addEventListener('click', function () {
-                firstSelectedOnly = !firstSelectedOnly;
-                this.classList.toggle('active', firstSelectedOnly);
-                this.setAttribute('aria-pressed', firstSelectedOnly);
-                applyFilters();
-            });
-        }
 
         // Business status filter
         document.querySelectorAll('.status-filters .filter-btn').forEach(btn => {
