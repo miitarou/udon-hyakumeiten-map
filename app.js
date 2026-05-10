@@ -246,7 +246,7 @@
         if (activeCategory === 'udon') {
             if (logoIcon) logoIcon.innerHTML = UDON_SVG;
             if (logoTitle) logoTitle.innerHTML = 'うどん百名店 <span class="header-year-badge" id="title-badge">2017-2024</span>';
-            if (logoSubtitle) logoSubtitle.textContent = 'EAST × WEST MAP';
+            if (logoSubtitle) logoSubtitle.textContent = 'EAST × WEST × KAGAWA MAP';
         } else if (activeCategory === 'soba') {
             if (logoIcon) logoIcon.innerHTML = SOBA_SVG;
             if (logoTitle) logoTitle.innerHTML = 'そば百名店 <span class="header-year-badge soba-badge" id="title-badge">2017-2025</span>';
