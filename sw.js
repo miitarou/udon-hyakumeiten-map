@@ -1,9 +1,9 @@
-const CACHE_NAME = 'hyakumeiten-map-v4';
+const CACHE_NAME = 'hyakumeiten-map-v5';
 const APP_SHELL = [
   './',
   './index.html',
-  './style.css?v=4.4',
-  './app.js?v=4.4',
+  './style.css?v=4.5',
+  './app.js?v=4.5',
   './manifest.webmanifest',
   './icon.svg',
   './privacy.html',
@@ -34,6 +34,21 @@ self.addEventListener('fetch', event => {
 
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
+
+  const accept = request.headers.get('accept') || '';
+  const isNavigation = request.mode === 'navigate' || accept.includes('text/html');
+  if (isNavigation) {
+    event.respondWith(
+      fetch(request).then(response => {
+        if (response && response.ok) {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+        }
+        return response;
+      }).catch(() => caches.match(request).then(cached => cached || caches.match('./index.html')))
+    );
+    return;
+  }
 
   event.respondWith(
     caches.match(request).then(cached => {
