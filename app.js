@@ -946,7 +946,7 @@
             try {
                 const stats = importSavedStates(JSON.parse(reader.result));
                 alert([
-                    `保存状態を復元しました。`,
+                    `訪問状況を復元しました。`,
                     `反映: ${stats.imported}件`,
                     stats.remapped ? `現行店舗へ再対応: ${stats.remapped}件` : null,
                     stats.missing.length ? `現行マップにない保存データ: ${stats.missing.length}件` : null,
@@ -957,7 +957,7 @@
                     stats.skipped ? `スキップ: ${stats.skipped}件` : null
                 ].filter(Boolean).join('\n'));
             } catch (e) {
-                alert(`復元できませんでした。\n${e.message || e}`);
+                alert(`設定復元できませんでした。\n${e.message || e}`);
             }
         };
         reader.readAsText(file);
