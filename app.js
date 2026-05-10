@@ -36,6 +36,8 @@
     let hallOfFameMode = false;
     let fitBoundsTimer = null;
     const SAVE_STORAGE_KEY = 'hyakumeiten-map-store-states-v1';
+    const SAVE_BACKUP_FORMAT = 'udon-hyakumeiten-map.saved-states';
+    const SAVE_BACKUP_VERSION = 1;
 
     // === Map Tiles (国土地理院 淡色地図) ===
     const TILE_URL = 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png';
@@ -668,6 +670,157 @@
         setSavedState(url, current === nextState ? 'none' : nextState);
     }
 
+    function getRestaurantByUrl(url) {
+        return allRestaurants.find(r => r.url === url) || null;
+    }
+
+    function buildSavedStateEntry(url, state) {
+        const r = getRestaurantByUrl(url);
+        return {
+            url,
+            state,
+            name: r?.name || null,
+            category: r?.category || null,
+            prefecture: r?.prefecture || null,
+            area: r?.area || null,
+            address: r?.address || null,
+            current: Boolean(r)
+        };
+    }
+
+    function exportSavedStates() {
+        const entries = Object.entries(savedStates)
+            .filter(([, state]) => state === 'want' || state === 'visited')
+            .sort(([a], [b]) => a.localeCompare(b))
+            .map(([url, state]) => buildSavedStateEntry(url, state));
+
+        const payload = {
+            format: SAVE_BACKUP_FORMAT,
+            version: SAVE_BACKUP_VERSION,
+            exportedAt: new Date().toISOString(),
+            source: location.href,
+            total: entries.length,
+            stores: entries
+        };
+
+        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const date = new Date().toISOString().slice(0, 10);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `hyakumeiten-saved-states-${date}.json`;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+    }
+
+    function normalizeImportedSaveEntries(data) {
+        if (!data || typeof data !== 'object') throw new Error('JSONの形式を読み取れませんでした。');
+
+        const source = Array.isArray(data.stores) ? data.stores
+            : Array.isArray(data.items) ? data.items
+                : Array.isArray(data.entries) ? data.entries
+                    : null;
+
+        if (source) {
+            return source.map(item => ({
+                url: item.url,
+                state: item.state,
+                name: item.name,
+                category: item.category,
+                prefecture: item.prefecture,
+                area: item.area,
+                address: item.address
+            }));
+        }
+
+        const stateMap = data.savedStates && typeof data.savedStates === 'object' ? data.savedStates : data;
+        return Object.entries(stateMap).map(([url, state]) => ({ url, state }));
+    }
+
+    function findRestaurantForImportedEntry(entry) {
+        if (entry.url) {
+            const byUrl = getRestaurantByUrl(entry.url);
+            if (byUrl) return byUrl;
+        }
+
+        const name = normalizeSearchText(entry.name);
+        const address = normalizeSearchText(entry.address);
+        const category = normalizeSearchText(entry.category);
+        const prefecture = normalizeSearchText(entry.prefecture);
+        if (!name) return null;
+
+        const exactAddressMatches = allRestaurants.filter(r =>
+            normalizeSearchText(r.name) === name &&
+            address &&
+            normalizeSearchText(r.address) === address
+        );
+        if (exactAddressMatches.length === 1) return exactAddressMatches[0];
+
+        const scopedNameMatches = allRestaurants.filter(r =>
+            normalizeSearchText(r.name) === name &&
+            (!category || normalizeSearchText(r.category) === category) &&
+            (!prefecture || normalizeSearchText(r.prefecture) === prefecture)
+        );
+        if (scopedNameMatches.length === 1) return scopedNameMatches[0];
+
+        return null;
+    }
+
+    function importSavedStates(data) {
+        const entries = normalizeImportedSaveEntries(data);
+        const currentUrls = new Set(allRestaurants.map(r => r.url));
+        const nextStates = { ...savedStates };
+        const stats = { imported: 0, remapped: 0, preservedUnknown: 0, skipped: 0 };
+
+        entries.forEach(entry => {
+            const state = entry.state;
+            if (state !== 'want' && state !== 'visited' && state !== 'none') {
+                stats.skipped += 1;
+                return;
+            }
+
+            const matched = findRestaurantForImportedEntry(entry);
+            const targetUrl = matched?.url || entry.url;
+            if (!targetUrl) {
+                stats.skipped += 1;
+                return;
+            }
+
+            if (state === 'none') delete nextStates[targetUrl];
+            else nextStates[targetUrl] = state;
+
+            stats.imported += 1;
+            if (matched && entry.url && matched.url !== entry.url) stats.remapped += 1;
+            if (!matched && !currentUrls.has(targetUrl)) stats.preservedUnknown += 1;
+        });
+
+        savedStates = nextStates;
+        persistSavedStates();
+        applyFilters();
+        return stats;
+    }
+
+    function handleImportFile(file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            try {
+                const stats = importSavedStates(JSON.parse(reader.result));
+                alert([
+                    `保存状態を復元しました。`,
+                    `反映: ${stats.imported}件`,
+                    stats.remapped ? `現行店舗へ再対応: ${stats.remapped}件` : null,
+                    stats.preservedUnknown ? `現行データ外として保持: ${stats.preservedUnknown}件` : null,
+                    stats.skipped ? `スキップ: ${stats.skipped}件` : null
+                ].filter(Boolean).join('\n'));
+            } catch (e) {
+                alert(`復元できませんでした。\n${e.message || e}`);
+            }
+        };
+        reader.readAsText(file);
+    }
+
     // === Render Markers ===
     function renderMarkers() {
         markerClusterGroup.clearLayers();
@@ -1259,6 +1412,20 @@
                 applyFilters();
             });
         });
+
+        const saveExportBtn = document.getElementById('save-export-btn');
+        if (saveExportBtn) saveExportBtn.addEventListener('click', exportSavedStates);
+
+        const saveImportBtn = document.getElementById('save-import-btn');
+        const saveImportInput = document.getElementById('save-import-input');
+        if (saveImportBtn && saveImportInput) {
+            saveImportBtn.addEventListener('click', () => saveImportInput.click());
+            saveImportInput.addEventListener('change', function () {
+                const file = this.files && this.files[0];
+                if (file) handleImportFile(file);
+                this.value = '';
+            });
+        }
 
         const radiusPickBtn = document.getElementById('radius-pick-btn');
         if (radiusPickBtn) {

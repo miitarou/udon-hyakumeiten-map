@@ -826,6 +826,32 @@ body.panel-resizing * {
     color: var(--text-secondary);
 }
 
+.save-backup-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.save-backup-btn {
+    flex: 1;
+    border: 1px solid var(--border-color);
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border-radius: 6px;
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 7px 8px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.save-backup-btn:hover {
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+    background: var(--bg-glass-hover);
+}
+
 /* Results Info */
 .results-info {
     padding: 8px 0;
