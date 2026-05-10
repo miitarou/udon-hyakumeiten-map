@@ -948,13 +948,15 @@
                 <div class="card-info">
                     <div class="card-name">${escapeHtml(r.name)}</div>
                     <div class="card-area">${escapeHtml(r.prefecture)} ${escapeHtml(r.area)} ${distHtml}</div>
+                    <div class="card-badges-row">
+                        ${countBadge}
+                        <div class="card-year-badges">${yearBadgesHtml}</div>
+                        ${badgesHtml}
+                    </div>
                 </div>
-                <div class="card-right">
-                    ${countBadge}
-                    <div class="card-year-badges">${yearBadgesHtml}</div>
-                    ${badgesHtml}
-                    ${buildSaveButtons(r, 'card-save-actions')}
+                <div class="card-actions">
                     ${cardMapBtn}
+                    ${buildSaveButtons(r, 'card-save-actions')}
                 </div>`;
 
             card.addEventListener('click', () => {
@@ -1303,7 +1305,7 @@
         // ロゴクリックでリセット
         const logoHome = document.getElementById('logo-home');
         if (logoHome) {
-            const goHome = () => resetAllFilters();
+            const goHome = () => { window.location.href = window.location.pathname; };
             logoHome.addEventListener('click', goHome);
             logoHome.addEventListener('keydown', e => {
                 if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goHome(); }

@@ -4152,26 +4152,10 @@
     "closed": true,
     "firstSelected": true,
     "years": [
-      2022
-    ],
-    "address": "香川県高松市新田町甲910-2"
-  },
-  {
-    "name": "おうどん 瀬戸晴れ",
-    "category": "udon",
-    "region": "KAGAWA",
-    "prefecture": "香川県",
-    "area": "高松市",
-    "holiday": null,
-    "url": "https://tabelog.com/kagawa/A3701/A370101/37012417/",
-    "lat": 34.34900958776483,
-    "lng": 134.12281767488375,
-    "closed": false,
-    "firstSelected": true,
-    "years": [
+      2022,
       2024
     ],
-    "address": "香川県高松市牟礼町牟礼2694-1"
+    "address": "香川県高松市新田町甲910-2"
   },
   {
     "name": "かしむらうどん",
@@ -4788,25 +4772,6 @@
       2024
     ],
     "address": "香川県坂出市加茂町147-1"
-  },
-  {
-    "name": "山下うどん",
-    "category": "udon",
-    "region": "KAGAWA",
-    "prefecture": "香川県",
-    "area": "善通寺市",
-    "holiday": null,
-    "url": "https://tabelog.com/kagawa/A3703/A370302/37000012/",
-    "lat": 34.22988019774334,
-    "lng": 133.81773081389431,
-    "closed": false,
-    "firstSelected": false,
-    "years": [
-      2020,
-      2022,
-      2024
-    ],
-    "address": "香川県善通寺市与北町284-1"
   },
   {
     "name": "山内うどん店",
@@ -6787,26 +6752,10 @@
     "closed": true,
     "firstSelected": false,
     "years": [
-      2017
-    ],
-    "address": "大阪府門真市三ツ島5-1-8"
-  },
-  {
-    "name": "三ツ島 真打",
-    "category": "udon",
-    "region": "WEST",
-    "prefecture": "大阪府",
-    "area": "門真市駅",
-    "holiday": null,
-    "url": "https://tabelog.com/osaka/A2707/A270701/27107160/",
-    "lat": 34.73398263717992,
-    "lng": 135.58281587658715,
-    "closed": true,
-    "firstSelected": true,
-    "years": [
+      2017,
       2024
     ],
-    "address": "大阪府門真市新橋町34-17 ロータリー門真 １F"
+    "address": "大阪府門真市三ツ島5-1-8"
   },
   {
     "name": "上を向いて",
@@ -7849,26 +7798,10 @@
     "years": [
       2017,
       2018,
-      2019
-    ],
-    "address": "福岡県福岡市博多区博多駅前3-17-10"
-  },
-  {
-    "name": "うどん平",
-    "category": "udon",
-    "region": "WEST",
-    "prefecture": "福岡県",
-    "area": "博多駅",
-    "holiday": null,
-    "url": "https://tabelog.com/fukuoka/A4001/A400101/40052349/",
-    "lat": 33.58318858707075,
-    "lng": 130.41604991974663,
-    "closed": false,
-    "firstSelected": true,
-    "years": [
+      2019,
       2024
     ],
-    "address": "福岡県福岡市博多区住吉5-10-7 第3住吉ハイツ 1F"
+    "address": "福岡県福岡市博多区博多駅前3-17-10"
   },
   {
     "name": "かろのうろん",

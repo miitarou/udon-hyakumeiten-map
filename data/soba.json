@@ -3271,27 +3271,11 @@
     "closed": true,
     "firstSelected": false,
     "years": [
-      2022
-    ],
-    "address": "東京都港区西麻布1-7-2 アデッソ西麻布 2F"
-  },
-  {
-    "name": "蕎麦おさめ",
-    "category": "soba",
-    "region": "EAST",
-    "prefecture": "東京都",
-    "area": "目白駅",
-    "holiday": null,
-    "url": "https://tabelog.com/tokyo/A1305/A130502/13283508/",
-    "lat": 35.72263013786351,
-    "lng": 139.70100838368668,
-    "closed": false,
-    "firstSelected": true,
-    "years": [
+      2022,
       2024,
       2025
     ],
-    "address": "東京都新宿区下落合3-21-5"
+    "address": "東京都港区西麻布1-7-2 アデッソ西麻布 2F"
   },
   {
     "name": "蕎麦切 森の",

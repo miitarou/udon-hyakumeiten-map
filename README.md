@@ -4,9 +4,9 @@
 
 🔗 **公開URL**: [https://miitarou.github.io/udon-hyakumeiten-map/](https://miitarou.github.io/udon-hyakumeiten-map/)
 
-![Udon](https://img.shields.io/badge/うどん-432店-D4A853)
-![Soba](https://img.shields.io/badge/そば-267店-7B9E6B)
-![Total](https://img.shields.io/badge/合計-699店-555555)
+![Udon](https://img.shields.io/badge/うどん-428店-D4A853)
+![Soba](https://img.shields.io/badge/そば-266店-7B9E6B)
+![Total](https://img.shields.io/badge/合計-694店-555555)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
 ## ✨ 特徴
@@ -17,7 +17,7 @@
 - **カテゴリ別アイコン** — うどん：丼鉢SVG / そば：猪口SVGを独自デザイン
 
 ### 🗺️ マップ機能
-- **699店舗マップ表示** — Leaflet.js + MarkerCluster による高速レンダリング
+- **694店舗マップ表示** — Leaflet.js + MarkerCluster による高速レンダリング
 - **選出回数による強調** — 3-4回：中サイズ / 5回以上：大サイズ＋殿堂ボーダー
 - **店名ラベル自動表示** — マーカー個別表示時に自動表示（クリック不要）
 - **現在地ボタン** — GPS連動で現在地周辺の名店を素早く探索
@@ -61,9 +61,9 @@ open http://localhost:8080
 ├── style.css                   # スタイルシート (ダークモード + グラスモーフィズム)
 ├── app.js                      # アプリケーションロジック
 ├── data/
-│   ├── udon.json               # うどん百名店データ（432店）
+│   ├── udon.json               # うどん百名店データ（428店）
 │   ├── udon_raw.json           # うどんデータ生成元（ジオコーディング前）
-│   ├── soba.json               # そば百名店データ（267店）
+│   ├── soba.json               # そば百名店データ（266店）
 │   └── soba_raw.json           # そばデータ生成元（ジオコーディング前）
 ├── scripts/
 │   ├── build_udon_json.py      # うどんデータ年度別マージ・生成スクリプト
@@ -92,7 +92,7 @@ open http://localhost:8080
 
 ### うどん百名店
 - **対象**: 2017〜2024年（全6回分）
-- **店舗数**: 432店（EAST 212店 / WEST 113店 / KAGAWA 107店）
+- **店舗数**: 428店（EAST 212店 / WEST 111店 / KAGAWA 105店）
 - **年度・カテゴリ構成**:
   - 2017/2018/2019：全国100店（単一リスト）
   - 2020：TOKYO 100店 + EAST 100店 + WEST 100店（TOKYO はEASTとして統合）
@@ -101,7 +101,7 @@ open http://localhost:8080
 
 ### そば百名店
 - **対象**: 2017〜2025年（全7回分）
-- **店舗数**: 267店（EAST 158店 / WEST 109店）
+- **店舗数**: 266店（EAST 157店 / WEST 109店）
 - **選出年**: 2017, 2018, 2019, 2021, 2022, 2024, 2025
 - **注記**: 2024年以降 EAST/WEST 分割。2020・2023年は非開催。
 

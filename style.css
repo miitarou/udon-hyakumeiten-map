@@ -569,7 +569,7 @@ html, body {
 .panel-resize-handle {
     position: absolute;
     top: 0;
-    right: -4px;
+    right: 0;
     width: 8px;
     height: 100%;
     cursor: col-resize;
@@ -1082,23 +1082,28 @@ body.panel-resizing * {
     width: 100%;
 }
 
-/* カード内の右側レイアウト */
-.card-right {
+/* カード内のバッジレイアウト（左側） */
+.card-badges-row {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: flex-end;
-    gap: 3px;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+/* カード内のアクションボタン（右側） */
+.card-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
     flex-shrink: 0;
-    max-width: 55%;
 }
 
 .card-year-badges {
     display: flex;
     flex-wrap: wrap;
     gap: 2px;
-    justify-content: flex-end;
 }
 
 /* ヘッダー内の年度バッジ（既存・上書き） */
