@@ -7,6 +7,7 @@
     <meta name="description" content="公開情報をもとに個人が整理した、うどん・そば百名店 MAP 2017-2025 非公式参考ツール。年度別選出履歴、エリア別フィルタ、検索付き。">
     <meta name="theme-color" content="#121218">
     <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -24,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css?v=4.3">
+    <link rel="stylesheet" href="style.css?v=4.4">
 </head>
 <body>
     <noscript>
@@ -36,10 +37,15 @@
         <div class="loading-spinner" aria-hidden="true">🍜</div>
         <div class="loading-text" id="loading-text">データを読み込み中...</div>
     </div>
+    <div id="app-banner" class="app-banner" role="status" aria-live="polite" hidden>
+        <span id="app-banner-message" class="app-banner-message"></span>
+        <button type="button" id="app-banner-action" class="app-banner-action" hidden></button>
+        <button type="button" id="app-banner-close" class="app-banner-close" aria-label="通知を閉じる">×</button>
+    </div>
     <!-- ヘッダー -->
     <header id="app-header">
         <div class="header-inner">
-            <div class="logo-area logo-home" id="logo-home" role="button" tabindex="0" aria-label="トップに戻る" title="トップに戻る">
+            <div class="logo-area logo-home" id="logo-home" role="button" tabindex="0" aria-label="百名店 2017-2025 トップに戻る" title="トップに戻る">
                 <span class="logo-icon" id="logo-icon">
                     <!-- うどん + そば アイコン (ALL時は両方) -->
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="28" height="28" id="logo-svg">
@@ -202,7 +208,7 @@
                         地図内: <strong id="map-visible-count">0</strong>件 / 条件一致: <strong id="visible-count">0</strong>件
                     </div>
                     <div class="sort-control">
-                        <select id="sort-select" class="sort-select">
+                        <select id="sort-select" class="sort-select" aria-label="店舗リストの並び順">
                             <option value="name">名前順</option>
                             <option value="count-desc">選出回数 ↓</option>
                             <option value="count-asc">選出回数 ↑</option>
@@ -268,6 +274,6 @@
         integrity="sha384-eXVCORTRlv4FUUgS/xmOyr66XBVraen8ATNLMESp92FKXLAMiKkerixTiBvXriZr"
         crossorigin="anonymous"></script>
 
-    <script src="app.js?v=4.3"></script>
+    <script src="app.js?v=4.4"></script>
 </body>
 </html>

@@ -1349,6 +1349,7 @@ body.panel-resizing * {
     justify-content: center;
     width: 22px;
     height: 22px;
+    border: 0;
     border-radius: 5px;
     background: rgba(66, 133, 244, 0.1);
     color: #4285F4;
@@ -1907,6 +1908,63 @@ body.panel-resizing * {
     line-height: 1.7;
 }
 
+.app-banner {
+    position: fixed;
+    top: 82px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: min(720px, calc(100vw - 24px));
+    padding: 10px 12px;
+    border: 1px solid rgba(212, 168, 83, 0.28);
+    border-radius: 8px;
+    background: rgba(18, 18, 24, 0.94);
+    color: var(--text-primary);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.app-banner[hidden] {
+    display: none;
+}
+
+.app-banner[data-kind="offline"] {
+    border-color: rgba(232, 197, 71, 0.36);
+}
+
+.app-banner-message {
+    flex: 1;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.app-banner-action,
+.app-banner-close {
+    flex: 0 0 auto;
+    border: 1px solid rgba(212, 168, 83, 0.35);
+    border-radius: 6px;
+    background: rgba(212, 168, 83, 0.16);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.app-banner-action {
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.app-banner-close {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+    line-height: 1;
+}
+
 /* === Footer: 免責・出典 === */
 #app-footer {
     position: fixed;
@@ -1971,7 +2029,8 @@ body.panel-resizing * {
     color: rgba(255, 255, 255, 0.5);
     border: 1px solid rgba(212, 168, 83, 0.2);
     border-radius: 12px;
-    padding: 3px 12px;
+    min-height: 28px;
+    padding: 4px 12px;
     font-size: 9px;
     cursor: pointer;
     backdrop-filter: blur(4px);
@@ -2045,9 +2104,11 @@ body.panel-resizing * {
 .filter-btn:focus-visible,
 .cat-btn:focus-visible,
 .section-toggle:focus-visible,
-.restaurant-card:focus-visible,
 .save-btn:focus-visible,
 .save-backup-btn:focus-visible,
+.card-map-btn:focus-visible,
+.app-banner-action:focus-visible,
+.app-banner-close:focus-visible,
 .locate-btn:focus-visible,
 .mobile-toggle-btn:focus-visible,
 .footer-toggle-btn:focus-visible,
