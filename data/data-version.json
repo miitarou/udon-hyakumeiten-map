@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-10T13:10:40Z",
+  "datasets": {
+    "udon": {
+      "path": "data/udon.json",
+      "records": 428,
+      "sha256": "649eb84e28a0e06eae94b4fd199a4be44e1bf547d2e621b1c31934da957412cd"
+    },
+    "soba": {
+      "path": "data/soba.json",
+      "records": 266,
+      "sha256": "68c5eeecc1360d4428a8cfb2fb465f6943c5ef60fb75682f526afde12c0b6367"
+    }
+  }
+}

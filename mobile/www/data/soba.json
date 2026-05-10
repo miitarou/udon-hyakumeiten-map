@@ -1,0 +1,4786 @@
+[
+  {
+    "name": "おがわ",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "京都府",
+    "area": "北大路駅",
+    "holiday": null,
+    "url": "https://tabelog.com/kyoto/A2601/A260503/26000389/",
+    "lat": 35.04996375783764,
+    "lng": 135.74933176082394,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2025
+    ],
+    "address": "京都府京都市北区紫竹下芝本町25"
+  },
+  {
+    "name": "しゅばく",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "京都府",
+    "area": "宇治駅",
+    "holiday": null,
+    "url": "https://tabelog.com/kyoto/A2607/A260701/26004771/",
+    "lat": 34.893080837955864,
+    "lng": 135.80769608919834,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "京都府宇治市宇治東内13-1"
+  },
+  {
+    "name": "すば",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "京都府",
+    "area": "清水五条駅",
+    "holiday": null,
+    "url": "https://tabelog.com/kyoto/A2601/A260202/26036945/",
+    "lat": 34.99897579787612,
+    "lng": 135.76848536029547,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "京都府京都市下京区木屋町通松原上ル美濃屋町182-10"
+  },
+  {
+    "name": "そば処 桝富",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "京都府",
+    "area": "京都市",
+    "holiday": null,
+    "url": "https://tabelog.com/kyoto/A2601/A260301/26000344/",
+    "lat": 35.00969463899548,
+    "lng": 135.78076040107,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "京都府京都市東山区三条通白川橋西入ル大井手町103"
+  },
+  {
+    "name": "まつもと",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "京都府",
+    "area": "京都河原町駅",
+    "holiday": null,
+    "url": "https://tabelog.com/kyoto/A2601/A260201/26022778/",
+    "lat": 35.004477947872566,
+    "lng": 135.7682893703512,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "京都府京都市中京区中之町577"
+  },
+  {
+    "name": "手打ちそば 花もも",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "京都府",
+    "area": "丸太町駅",
+    "holiday": null,
+    "url": "https://tabelog.com/kyoto/A2601/A260202/26016470/",
+    "lat": 35.01728994984739,
+    "lng": 135.76555270325468,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "京都府京都市中京区丸太町麩屋町西入ル昆布屋町398"
+  },
+  {
+    "name": "手打ち蕎麦 かね井",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "京都府",
+    "area": "京都市北区",
+    "holiday": null,
+    "url": "https://tabelog.com/kyoto/A2601/A260503/26001676/",
+    "lat": 35.03760444784466,
+    "lng": 135.7467407107009,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "京都府京都市北区紫野東藤ノ森町11-1"
+  },
+  {
+    "name": "手打ち蕎麦・鮨 いまふく",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "京都府",
+    "area": "藤森駅",
+    "holiday": null,
+    "url": "https://tabelog.com/kyoto/A2601/A260601/26024211/",
+    "lat": 34.9602524379007,
+    "lng": 135.76843228990438,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "京都府京都市伏見区深草町通町26"
+  },
+  {
+    "name": "石臼挽き手打蕎麦 むら木",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "京都府",
+    "area": "京都市",
+    "holiday": null,
+    "url": "https://tabelog.com/kyoto/A2601/A260401/26005485/",
+    "lat": 34.99985083705846,
+    "lng": 135.73164417916834,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "京都府京都市右京区西院平町5-1"
+  },
+  {
+    "name": "蕎麦 ろうじな",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "京都府",
+    "area": "京都市役所前駅",
+    "holiday": null,
+    "url": "https://tabelog.com/kyoto/A2601/A260202/26023992/",
+    "lat": 35.01504283706003,
+    "lng": 135.7668870792971,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "京都府京都市中京区丸屋町691"
+  },
+  {
+    "name": "蕎麦屋 にこら",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "京都府",
+    "area": "京都市上京区",
+    "holiday": null,
+    "url": "https://tabelog.com/kyoto/A2601/A260202/26000514/",
+    "lat": 35.031309837848745,
+    "lng": 135.74698990063712,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "京都府京都市上京区五辻町69-3"
+  },
+  {
+    "name": "蕎麦工房 膳",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "京都府",
+    "area": "宇治市",
+    "holiday": null,
+    "url": "https://tabelog.com/kyoto/A2607/A260702/26002288/",
+    "lat": 34.937265402924666,
+    "lng": 135.7308364931306,
+    "closed": true,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2021
+    ],
+    "address": "京都府京都市伏見区久我東町2-22"
+  },
+  {
+    "name": "蕎麦處 笹屋",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "京都府",
+    "area": "四条駅",
+    "holiday": null,
+    "url": "https://tabelog.com/kyoto/A2601/A260201/26004345/",
+    "lat": 35.00190986787161,
+    "lng": 135.76018052033095,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024
+    ],
+    "address": "京都府京都市下京区烏丸通仏光寺東入ル上柳町315-10"
+  },
+  {
+    "name": "隆兵そば",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "京都府",
+    "area": "桂駅",
+    "holiday": null,
+    "url": "https://tabelog.com/kyoto/A2601/A260401/26038921/",
+    "lat": 34.98255142786849,
+    "lng": 135.7117954701693,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "京都府京都市西京区桂浅原町157"
+  },
+  {
+    "name": "里味庵",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "佐賀県",
+    "area": "唐津市",
+    "holiday": null,
+    "url": "https://tabelog.com/saga/A4102/A410201/41001368/",
+    "lat": 33.44681637705839,
+    "lng": 130.10529602858696,
+    "closed": true,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "佐賀県唐津市七山白木414-1"
+  },
+  {
+    "name": "そばんち",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "兵庫県",
+    "area": "丹波市",
+    "holiday": null,
+    "url": "https://tabelog.com/hyogo/A2807/A280701/28009027/",
+    "lat": 35.196624907548106,
+    "lng": 135.1326817127376,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2025
+    ],
+    "address": "兵庫県丹波市市島町梶原125"
+  },
+  {
+    "name": "ろあん松田 篠山店",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "兵庫県",
+    "area": "丹波篠山市",
+    "holiday": null,
+    "url": "https://tabelog.com/hyogo/A2807/A280702/28000070/",
+    "lat": 35.10614344764246,
+    "lng": 135.24852472174246,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2025
+    ],
+    "address": "兵庫県丹波篠山市丸山154"
+  },
+  {
+    "name": "一会庵",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "兵庫県",
+    "area": "丹波篠山市",
+    "holiday": null,
+    "url": "https://tabelog.com/hyogo/A2807/A280702/28000072/",
+    "lat": 35.08630553684549,
+    "lng": 135.23531358038952,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "兵庫県丹波篠山市大熊10-2"
+  },
+  {
+    "name": "久庵",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "兵庫県",
+    "area": "兵庫駅",
+    "holiday": null,
+    "url": "https://tabelog.com/hyogo/A2801/A280109/28002313/",
+    "lat": 34.66983679789281,
+    "lng": 135.16449095739424,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2025
+    ],
+    "address": "兵庫県神戸市兵庫区塚本通6-1-3 ＳＵＮつかろくビル １Ｆ"
+  },
+  {
+    "name": "八起",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "兵庫県",
+    "area": "三宮駅",
+    "holiday": null,
+    "url": "https://tabelog.com/hyogo/A2801/A280101/28036843/",
+    "lat": 34.69491518788578,
+    "lng": 135.19244700762798,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "兵庫県神戸市中央区中山手通1-7-21 ホワイトキャッスルビル 1F"
+  },
+  {
+    "name": "北野坂 こばやし",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "兵庫県",
+    "area": "三宮駅",
+    "holiday": null,
+    "url": "https://tabelog.com/hyogo/A2801/A280101/28045408/",
+    "lat": 34.697913177883656,
+    "lng": 135.19174576765874,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "兵庫県神戸市中央区中山手通1-22-10 象ビル 1F"
+  },
+  {
+    "name": "十割そば処 山獲",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "兵庫県",
+    "area": "三田市",
+    "holiday": null,
+    "url": "https://tabelog.com/hyogo/A2807/A280703/28006795/",
+    "lat": 34.93839661775837,
+    "lng": 135.27791431002746,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "兵庫県三田市下槻瀬50-1"
+  },
+  {
+    "name": "土山人 芦屋店",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "兵庫県",
+    "area": "芦屋駅",
+    "holiday": null,
+    "url": "https://tabelog.com/hyogo/A2803/A280302/28000023/",
+    "lat": 34.729230367898396,
+    "lng": 135.30048601789883,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2025
+    ],
+    "address": "兵庫県芦屋市川西町7-3-112 芦屋川ビューハイツ １Ｆ"
+  },
+  {
+    "name": "堂源",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "兵庫県",
+    "area": "元町駅",
+    "holiday": null,
+    "url": "https://tabelog.com/hyogo/A2801/A280102/28042600/",
+    "lat": 34.69183126788665,
+    "lng": 135.18898983759922,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024
+    ],
+    "address": "兵庫県神戸市中央区北長狭通3-11-17 ベルズコート 2F"
+  },
+  {
+    "name": "淡路翁",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "兵庫県",
+    "area": "淡路市",
+    "holiday": null,
+    "url": "https://tabelog.com/hyogo/A2806/A280601/28038156/",
+    "lat": 34.52098863711477,
+    "lng": 134.9534427748769,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "兵庫県淡路市小田1157"
+  },
+  {
+    "name": "蕎麦 ふくあかり",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "兵庫県",
+    "area": "御影駅",
+    "holiday": null,
+    "url": "https://tabelog.com/hyogo/A2801/A280106/28015965/",
+    "lat": 34.7254822278857,
+    "lng": 135.25312632789417,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024
+    ],
+    "address": "兵庫県神戸市東灘区御影山手1-4-20"
+  },
+  {
+    "name": "蕎麦前 中手 とうは",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "兵庫県",
+    "area": "県庁前駅",
+    "holiday": null,
+    "url": "https://tabelog.com/hyogo/A2801/A280102/28065454/",
+    "lat": 34.69329285788411,
+    "lng": 135.18395418761753,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "兵庫県神戸市中央区中山手通4-22-16"
+  },
+  {
+    "name": "いし豆",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "北海道",
+    "area": "虻田郡真狩村",
+    "holiday": null,
+    "url": "https://tabelog.com/hokkaido/A0106/A010603/1005543/",
+    "lat": 42.779554934531475,
+    "lng": 140.78304108537145,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "北海道虻田郡真狩村字社206-8"
+  },
+  {
+    "name": "そば切 雨耕庵",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "北海道",
+    "area": "札幌市",
+    "holiday": null,
+    "url": "https://tabelog.com/hokkaido/A0101/A010204/1007468/",
+    "lat": 43.07054403450187,
+    "lng": 141.2703924479691,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "北海道札幌市西区西野6条5丁目5-25"
+  },
+  {
+    "name": "そば喜香庵",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "北海道",
+    "area": "西18丁目駅",
+    "holiday": null,
+    "url": "https://tabelog.com/hokkaido/A0101/A010102/1002180/",
+    "lat": 43.05418434453125,
+    "lng": 141.33002165776207,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022
+    ],
+    "address": "北海道札幌市中央区南三条西17-291 すずかけビル 2F"
+  },
+  {
+    "name": "そば屋 けん豆",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "北海道",
+    "area": "札幌市",
+    "holiday": null,
+    "url": "https://tabelog.com/hokkaido/A0101/A010303/1031239/",
+    "lat": 43.03438433762379,
+    "lng": 141.3767400730788,
+    "closed": true,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "北海道札幌市豊平区平岸5条7-8-27 新晃ビル１Ｆ"
+  },
+  {
+    "name": "伊達 翁",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "北海道",
+    "area": "伊達市",
+    "holiday": null,
+    "url": "https://tabelog.com/hokkaido/A0108/A010801/1003486/",
+    "lat": 42.457760344768865,
+    "lng": 140.88669633204836,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "北海道伊達市弄月町239-3"
+  },
+  {
+    "name": "手打蕎麦いちむら",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "北海道",
+    "area": "虻田郡倶知安町",
+    "holiday": null,
+    "url": "https://tabelog.com/hokkaido/A0106/A010603/1005397/",
+    "lat": 42.86350672445947,
+    "lng": 140.7243354662606,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "北海道虻田郡倶知安町字山田68-4"
+  },
+  {
+    "name": "手打蕎麦のたぐと",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "北海道",
+    "area": "発寒南駅",
+    "holiday": null,
+    "url": "https://tabelog.com/hokkaido/A0101/A010204/1000649/",
+    "lat": 43.07673268450247,
+    "lng": 141.28459772802165,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "北海道札幌市西区西野一条3-2-2"
+  },
+  {
+    "name": "蕎麦切り 春のすけ",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "北海道",
+    "area": "札幌市",
+    "holiday": null,
+    "url": "https://tabelog.com/hokkaido/A0101/A010202/1001922/",
+    "lat": 43.07074806453007,
+    "lng": 141.3593367479088,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "北海道札幌市東区北七条東3-15-72"
+  },
+  {
+    "name": "蕎麦屋 此花",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "北海道",
+    "area": "札幌市",
+    "holiday": null,
+    "url": "https://tabelog.com/hokkaido/A0101/A010305/1009297/",
+    "lat": 42.961455498424115,
+    "lng": 141.28286678257814,
+    "closed": true,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "北海道札幌市南区藤野2条10丁目1-16"
+  },
+  {
+    "name": "手造りそば 打墨庵 加瀬",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "千葉県",
+    "area": "鴨川市",
+    "holiday": null,
+    "url": "https://tabelog.com/chiba/A1207/A120703/12020932/",
+    "lat": 35.14803943834628,
+    "lng": 140.0709959776234,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "千葉県鴨川市打墨2329-1"
+  },
+  {
+    "name": "流山 すず季",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "千葉県",
+    "area": "初石駅",
+    "holiday": null,
+    "url": "https://tabelog.com/chiba/A1203/A120305/12003116/",
+    "lat": 35.88412483782809,
+    "lng": 139.91180358517016,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "千葉県流山市西初石3-1-17"
+  },
+  {
+    "name": "竹やぶ 柏本店",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "千葉県",
+    "area": "柏市",
+    "holiday": null,
+    "url": "https://tabelog.com/chiba/A1203/A120301/12000067/",
+    "lat": 35.86585067866929,
+    "lng": 139.98786089609405,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "千葉県柏市柏1144-2"
+  },
+  {
+    "name": "久呂無木",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "埼玉県",
+    "area": "西所沢駅",
+    "holiday": null,
+    "url": "https://tabelog.com/saitama/A1106/A110601/11001054/",
+    "lat": 35.789469788549155,
+    "lng": 139.4583251356937,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "埼玉県所沢市西所沢1-4-14"
+  },
+  {
+    "name": "分上野藪 かねこ",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "埼玉県",
+    "area": "浦和駅",
+    "holiday": null,
+    "url": "https://tabelog.com/saitama/A1101/A110102/11000044/",
+    "lat": 35.861184848564726,
+    "lng": 139.65025898628355,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024
+    ],
+    "address": "埼玉県さいたま市浦和区仲町2-9-11"
+  },
+  {
+    "name": "狭山 翁",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "埼玉県",
+    "area": "下山口駅",
+    "holiday": null,
+    "url": "https://tabelog.com/saitama/A1106/A110601/11000055/",
+    "lat": 35.78650469854504,
+    "lng": 139.43949432567697,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "埼玉県所沢市小手指南1-17-34"
+  },
+  {
+    "name": "杵築 翁達磨",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大分県",
+    "area": "杵築市",
+    "holiday": null,
+    "url": "https://tabelog.com/oita/A4403/A440301/44011389/",
+    "lat": 33.4292473775655,
+    "lng": 131.66261861731783,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "大分県杵築市大字守江2114-25"
+  },
+  {
+    "name": "あたり屋",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "東三国駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270301/27005158/",
+    "lat": 34.742585257951966,
+    "lng": 135.49532093789716,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "大阪府大阪市淀川区東三国5-11-22"
+  },
+  {
+    "name": "いもせ",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "玉造駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270204/27012387/",
+    "lat": 34.67670767800475,
+    "lng": 135.52970301720765,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "大阪府大阪市中央区玉造2-9-2"
+  },
+  {
+    "name": "そば処 とき",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "北新地駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270101/27000217/",
+    "lat": 34.69645703798218,
+    "lng": 135.49820874742923,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "大阪府大阪市北区堂島1-3-4 谷安ビル 1F"
+  },
+  {
+    "name": "そば切り からに",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "福島駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270108/27004511/",
+    "lat": 34.69799921797604,
+    "lng": 135.48198521745616,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "大阪府大阪市福島区鷺洲2-11-26"
+  },
+  {
+    "name": "そば切り 天笑",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "枚方市駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2707/A270702/27000053/",
+    "lat": 34.81445197795436,
+    "lng": 135.64617547851736,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2025
+    ],
+    "address": "大阪府枚方市岡南町10-30"
+  },
+  {
+    "name": "そば切り 岳空",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "谷町六丁目駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270204/27096691/",
+    "lat": 34.673345468003156,
+    "lng": 135.5179881971819,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "大阪府大阪市中央区谷町7-1-54"
+  },
+  {
+    "name": "そば切り 荒凡夫",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "なにわ橋駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270103/27080059/",
+    "lat": 34.69636637798451,
+    "lng": 135.5053191074233,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "大阪府大阪市北区西天満4-1-11 昭栄ビル南館 1F"
+  },
+  {
+    "name": "そば切り 蔦屋",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "豊能郡能勢町",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2706/A270605/27091419/",
+    "lat": 34.9712136677704,
+    "lng": 135.3811370902866,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "大阪府豊能郡能勢町垂水246"
+  },
+  {
+    "name": "そば切り 鴨嘴",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "美章園駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270203/27103579/",
+    "lat": 34.63665821802869,
+    "lng": 135.52496853680643,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2025
+    ],
+    "address": "大阪府大阪市東住吉区北田辺1-4-9"
+  },
+  {
+    "name": "そば切り文目堂",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "谷町六丁目駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270204/27040266/",
+    "lat": 34.6763981580006,
+    "lng": 135.51604554721408,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "大阪府大阪市中央区安堂寺町2-2-26"
+  },
+  {
+    "name": "なにわ翁",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "なにわ橋駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270102/27000029/",
+    "lat": 34.696246687984775,
+    "lng": 135.50593630742168,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "大阪府大阪市北区西天満4-1-18"
+  },
+  {
+    "name": "はやうち",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "四天王寺前夕陽ケ丘駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270203/27049805/",
+    "lat": 34.655610037207836,
+    "lng": 135.51415247584367,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "大阪府大阪市天王寺区四天王寺1-12-16"
+  },
+  {
+    "name": "まき埜",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "福島駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270108/27002682/",
+    "lat": 34.70019183717165,
+    "lng": 135.4894158763113,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2025
+    ],
+    "address": "大阪府大阪市福島区福島6-11-13 シャトー西梅田 1F"
+  },
+  {
+    "name": "ろあん 大阪堂島店",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "北新地駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270101/27089279/",
+    "lat": 34.69676845798201,
+    "lng": 135.4982831974323,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "大阪府大阪市北区堂島1-3-33 新地萬年ビル B1F"
+  },
+  {
+    "name": "乾",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "羽曳野市",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2708/A270801/27019556/",
+    "lat": 34.561091338098315,
+    "lng": 135.59290650599553,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "大阪府羽曳野市野々上2-23-1"
+  },
+  {
+    "name": "北浜 土山人",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "北浜駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270102/27003569/",
+    "lat": 34.689175337183514,
+    "lng": 135.50473107618927,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2025
+    ],
+    "address": "大阪府大阪市中央区伏見町2-4-10"
+  },
+  {
+    "name": "大阪 松下",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "中崎町駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270101/27086760/",
+    "lat": 34.70916315797524,
+    "lng": 135.50174288755505,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "大阪府大阪市北区鶴野町4"
+  },
+  {
+    "name": "守破離 谷町四丁目店",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "谷町四丁目駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270104/27017751/",
+    "lat": 34.68227291799642,
+    "lng": 135.51461397727442,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "大阪府大阪市中央区常盤町1-3-20 安藤ビル １Ｆ"
+  },
+  {
+    "name": "手打そば 乃田",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "郡津駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2707/A270704/27013548/",
+    "lat": 34.79356270797487,
+    "lng": 135.6689012382904,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2025
+    ],
+    "address": "大阪府交野市松塚14-5-104"
+  },
+  {
+    "name": "独活庵",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "堺筋本町駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270106/27013805/",
+    "lat": 34.68197711934391,
+    "lng": 135.50626217571988,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "大阪府大阪市中央区船場中央2-1-4 船場センタービル４号館 Ｂ２Ｆ"
+  },
+  {
+    "name": "瓢亭",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "東梅田駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270101/27000468/",
+    "lat": 34.698989737981606,
+    "lng": 135.50145006745248,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024
+    ],
+    "address": "大阪府大阪市北区曽根崎2-2-7"
+  },
+  {
+    "name": "笑日志",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "北浜駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270102/27067994/",
+    "lat": 34.68779080799124,
+    "lng": 135.50936368733386,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "大阪府大阪市中央区平野町1-1-2"
+  },
+  {
+    "name": "蕎麦 たかま",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "天神橋筋六丁目駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270103/27000530/",
+    "lat": 34.71405015797512,
+    "lng": 135.51111621759784,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2025
+    ],
+    "address": "大阪府大阪市北区天神橋7-12-14 グレーシィ天神橋ビル１号館"
+  },
+  {
+    "name": "蕎麦切りmasa",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "本町駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270106/27053444/",
+    "lat": 34.684508097988505,
+    "lng": 135.49424900731125,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "大阪府大阪市西区靭本町1丁目16-12"
+  },
+  {
+    "name": "蕎麦切り大城",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "鶴ケ丘駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2701/A270203/27051719/",
+    "lat": 34.61667564803829,
+    "lng": 135.5152567866114,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "大阪府大阪市阿倍野区西田辺町2-6-13"
+  },
+  {
+    "name": "蕎麦割烹 蕎麦藤",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "蛍池駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2706/A270601/27126125/",
+    "lat": 34.80155558789998,
+    "lng": 135.44969187852482,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "大阪府豊中市清風荘1-7-17"
+  },
+  {
+    "name": "蕎麦屋 木田",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "桃山台駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2706/A270602/27011284/",
+    "lat": 34.79248378791762,
+    "lng": 135.48699259840703,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "大阪府豊中市東豊中町5-30-25"
+  },
+  {
+    "name": "鴨と醸し 鼓道",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "緑地公園駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2706/A270601/27098528/",
+    "lat": 34.777983337124525,
+    "lng": 135.49662757709203,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "大阪府吹田市千里山西4-37-3 1F"
+  },
+  {
+    "name": "鼓道",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "大阪府",
+    "area": "豊中駅",
+    "holiday": null,
+    "url": "https://tabelog.com/osaka/A2706/A270601/27069195/",
+    "lat": 34.78953463710727,
+    "lng": 135.46546917723057,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "大阪府豊中市本町5-2-2 フォレストパーク 1F"
+  },
+  {
+    "name": "そば切り 百夜月",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "奈良県",
+    "area": "奈良市",
+    "holiday": null,
+    "url": "https://tabelog.com/nara/A2901/A290101/29000692/",
+    "lat": 34.684853308094425,
+    "lng": 135.82750843708118,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "奈良県奈良市中筋町38"
+  },
+  {
+    "name": "一如庵",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "奈良県",
+    "area": "宇陀市",
+    "holiday": null,
+    "url": "https://tabelog.com/nara/A2904/A290403/29000815/",
+    "lat": 34.51992609824844,
+    "lng": 135.9821961053068,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2025
+    ],
+    "address": "奈良県宇陀市榛原自明1362"
+  },
+  {
+    "name": "出雲そば だんだん",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "奈良県",
+    "area": "奈良市",
+    "holiday": null,
+    "url": "https://tabelog.com/nara/A2901/A290101/29001366/",
+    "lat": 34.682450937287136,
+    "lng": 135.81667897590273,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "奈良県奈良市大宮町2-2-34"
+  },
+  {
+    "name": "手打ちそば はやし",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "奈良県",
+    "area": "北葛城郡広陵町",
+    "holiday": null,
+    "url": "https://tabelog.com/nara/A2903/A290301/29000088/",
+    "lat": 34.55412605814412,
+    "lng": 135.72284911583404,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "奈良県北葛城郡広陵町馬見北8-6-6"
+  },
+  {
+    "name": "玄",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "奈良県",
+    "area": "奈良市",
+    "holiday": null,
+    "url": "https://tabelog.com/nara/A2901/A290101/29000052/",
+    "lat": 34.67685559810153,
+    "lng": 135.8338751969959,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2025
+    ],
+    "address": "奈良県奈良市福智院町23-2"
+  },
+  {
+    "name": "そばや哲心",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "宮崎県",
+    "area": "宮崎市",
+    "holiday": null,
+    "url": "https://tabelog.com/miyazaki/A4501/A450101/45000077/",
+    "lat": 31.915954108450507,
+    "lng": 131.42359386219977,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "宮崎県宮崎市橘通東3-4-9"
+  },
+  {
+    "name": "蕎麦處 しみず",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "宮崎県",
+    "area": "宮崎市",
+    "holiday": null,
+    "url": "https://tabelog.com/miyazaki/A4501/A450101/45000675/",
+    "lat": 31.913002008452256,
+    "lng": 131.42320055217021,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2024,
+      2025
+    ],
+    "address": "宮崎県宮崎市橘通東2-6-4"
+  },
+  {
+    "name": "くちいわ",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "富山県",
+    "area": "富山市",
+    "holiday": null,
+    "url": "https://tabelog.com/toyama/A1601/A160101/16010455/",
+    "lat": 36.75628583722523,
+    "lng": 137.22923859702198,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "富山県富山市東岩瀬町135"
+  },
+  {
+    "name": "神通町 田村",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "富山県",
+    "area": "富山市",
+    "holiday": null,
+    "url": "https://tabelog.com/toyama/A1601/A160101/16000581/",
+    "lat": 36.70303407725159,
+    "lng": 137.2058339365005,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "富山県富山市神通町2-1-3"
+  },
+  {
+    "name": "福助",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "富山県",
+    "area": "砺波市",
+    "holiday": null,
+    "url": "https://tabelog.com/toyama/A1605/A160501/16000660/",
+    "lat": 36.649868636398494,
+    "lng": 136.94997989498106,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "富山県砺波市林947-1"
+  },
+  {
+    "name": "達磨",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "富山県",
+    "area": "富山市",
+    "holiday": null,
+    "url": "https://tabelog.com/toyama/A1601/A160101/16000054/",
+    "lat": 36.66878983646626,
+    "lng": 137.2004643949966,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "富山県富山市黒瀬北町1-8-8"
+  },
+  {
+    "name": "あらきそば",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "山形県",
+    "area": "村山市",
+    "holiday": null,
+    "url": "https://tabelog.com/yamagata/A0605/A060502/6000017/",
+    "lat": 38.47014672712228,
+    "lng": 140.32397239216425,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "山形県村山市大久保甲65"
+  },
+  {
+    "name": "そば処 庄司屋 本店",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "山形県",
+    "area": "山形市",
+    "holiday": null,
+    "url": "https://tabelog.com/yamagata/A0601/A060101/6000003/",
+    "lat": 38.242962617267196,
+    "lng": 140.32594681986808,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024
+    ],
+    "address": "山形県山形市幸町14-28"
+  },
+  {
+    "name": "手打ちそば 梅蕎麦",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "山形県",
+    "area": "山形市",
+    "holiday": null,
+    "url": "https://tabelog.com/yamagata/A0601/A060101/6000107/",
+    "lat": 38.241094636468446,
+    "lng": 140.3429940086755,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "山形県山形市東原町3-5-10"
+  },
+  {
+    "name": "竹ふく",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "山形県",
+    "area": "山形市",
+    "holiday": null,
+    "url": "https://tabelog.com/yamagata/A0601/A060101/6000111/",
+    "lat": 38.24490296726329,
+    "lng": 140.31754782989358,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024
+    ],
+    "address": "山形県山形市上町2-3-1"
+  },
+  {
+    "name": "そば くら富",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "岐阜県",
+    "area": "岐阜市",
+    "holiday": null,
+    "url": "https://tabelog.com/gifu/A2101/A210101/21016338/",
+    "lat": 35.41974158792386,
+    "lng": 136.75753982385228,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "岐阜県岐阜市金町2-8"
+  },
+  {
+    "name": "そばきり 萬屋町 助六",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "岐阜県",
+    "area": "郡上市",
+    "holiday": null,
+    "url": "https://tabelog.com/gifu/A2102/A210204/21000612/",
+    "lat": 35.48715279793038,
+    "lng": 136.91242376442466,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "岐阜県関市本町8-27"
+  },
+  {
+    "name": "仲佐",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "岐阜県",
+    "area": "下呂市",
+    "holiday": null,
+    "url": "https://tabelog.com/gifu/A2104/A210403/21000060/",
+    "lat": 35.8050053978345,
+    "lng": 137.2452610974019,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "岐阜県下呂市森918-47"
+  },
+  {
+    "name": "十割蕎麦と岩魚 やまだや",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "岐阜県",
+    "area": "恵那市",
+    "holiday": null,
+    "url": "https://tabelog.com/gifu/A2103/A210302/21010790/",
+    "lat": 35.32647034818133,
+    "lng": 137.37998585247385,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022
+    ],
+    "address": "岐阜県恵那市明智町野志424-1"
+  },
+  {
+    "name": "手打蕎麦 わくり",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "岐阜県",
+    "area": "中津川市",
+    "holiday": null,
+    "url": "https://tabelog.com/gifu/A2103/A210303/21014458/",
+    "lat": 35.50000171811063,
+    "lng": 137.5040535241397,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "岐阜県中津川市太田町2-2-35"
+  },
+  {
+    "name": "胡蝶庵 仙波",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "岐阜県",
+    "area": "岐阜市",
+    "holiday": null,
+    "url": "https://tabelog.com/gifu/A2101/A210101/21000104/",
+    "lat": 35.43402752791061,
+    "lng": 136.7444035640058,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "岐阜県岐阜市日光町3-26"
+  },
+  {
+    "name": "蕎麦正まつい",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "岐阜県",
+    "area": "郡上市",
+    "holiday": null,
+    "url": "https://tabelog.com/gifu/A2102/A210205/21008212/",
+    "lat": 35.7519376369708,
+    "lng": 136.9562888859067,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2024,
+      2025
+    ],
+    "address": "岐阜県郡上市八幡町鍛冶屋町774-2"
+  },
+  {
+    "name": "中国山地蕎麦工房 ふなつ",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "島根県",
+    "area": "松江市",
+    "holiday": null,
+    "url": "https://tabelog.com/shimane/A3201/A320101/32000063/",
+    "lat": 35.47232231670814,
+    "lng": 133.0449593369858,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "島根県松江市外中原町117-6"
+  },
+  {
+    "name": "手打 神代そば",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "島根県",
+    "area": "松江市",
+    "holiday": null,
+    "url": "https://tabelog.com/shimane/A3201/A320101/32000016/",
+    "lat": 35.47932712670479,
+    "lng": 133.04840864705415,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2025
+    ],
+    "address": "島根県松江市奥谷町324-5"
+  },
+  {
+    "name": "献上そば 羽根屋 本店",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "島根県",
+    "area": "出雲市",
+    "holiday": null,
+    "url": "https://tabelog.com/shimane/A3202/A320201/32000003/",
+    "lat": 35.364417426686174,
+    "lng": 132.76082116609507,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "島根県出雲市今市町549"
+  },
+  {
+    "name": "砂屋",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "島根県",
+    "area": "出雲市",
+    "holiday": null,
+    "url": "https://tabelog.com/shimane/A3202/A320201/32004018/",
+    "lat": 35.39612855664245,
+    "lng": 132.6867502864673,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "島根県出雲市大社町杵築南772 出雲杵築屋 2F"
+  },
+  {
+    "name": "純そば 一風庵",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "島根県",
+    "area": "仁多郡奥出雲町",
+    "holiday": null,
+    "url": "https://tabelog.com/shimane/A3202/A320203/32001813/",
+    "lat": 35.174337946910654,
+    "lng": 133.0866079239467,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "島根県仁多郡奥出雲町下横田89-2"
+  },
+  {
+    "name": "サラザン",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "広島県",
+    "area": "福山市",
+    "holiday": null,
+    "url": "https://tabelog.com/hiroshima/A3403/A340308/34013752/",
+    "lat": 34.48345265314626,
+    "lng": 133.36700037050966,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "広島県福山市明治町2-32"
+  },
+  {
+    "name": "蕎麦きり吟",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "広島県",
+    "area": "段原一丁目駅",
+    "holiday": null,
+    "url": "https://tabelog.com/hiroshima/A3401/A340123/34014468/",
+    "lat": 34.39003659721428,
+    "lng": 132.47585634645264,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "広島県広島市南区段原1-7-18"
+  },
+  {
+    "name": "手打ちそば 遊山",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "徳島県",
+    "area": "徳島市",
+    "holiday": null,
+    "url": "https://tabelog.com/tokushima/A3601/A360101/36006466/",
+    "lat": 34.05062551807906,
+    "lng": 134.51442791159533,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "徳島県徳島市八万町上長谷102-1"
+  },
+  {
+    "name": "手打ち蕎麦 いよ翁",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "愛媛県",
+    "area": "伊予郡松前町",
+    "holiday": null,
+    "url": "https://tabelog.com/ehime/A3801/A380103/38007273/",
+    "lat": 33.78306545768528,
+    "lng": 132.74433572013348,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2025
+    ],
+    "address": "愛媛県伊予郡松前町鶴吉5-5"
+  },
+  {
+    "name": "手打蕎麦まろ",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "愛媛県",
+    "area": "松山市",
+    "holiday": null,
+    "url": "https://tabelog.com/ehime/A3801/A380101/38005468/",
+    "lat": 33.84077713685155,
+    "lng": 132.77037806953643,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "愛媛県松山市大街道2-5-9 久保豊ビル1F"
+  },
+  {
+    "name": "西條そば 甲",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "愛媛県",
+    "area": "西条市",
+    "holiday": null,
+    "url": "https://tabelog.com/ehime/A3802/A380202/38001193/",
+    "lat": 33.927688507731645,
+    "lng": 133.1783449312901,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "愛媛県西条市朔日市783-6"
+  },
+  {
+    "name": "七里庵",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "愛知県",
+    "area": "東枇杷島駅",
+    "holiday": null,
+    "url": "https://tabelog.com/aichi/A2301/A230113/23005253/",
+    "lat": 35.19168083730009,
+    "lng": 136.87291448030604,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024
+    ],
+    "address": "愛知県名古屋市西区枇杷島3-19-11"
+  },
+  {
+    "name": "志蕎庵 江月",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "愛知県",
+    "area": "名古屋市",
+    "holiday": null,
+    "url": "https://tabelog.com/aichi/A2301/A230114/23001747/",
+    "lat": 35.191970138145344,
+    "lng": 136.9987548413825,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2021
+    ],
+    "address": "愛知県名古屋市名東区引山3-110"
+  },
+  {
+    "name": "手打ち十割そば 振甫町 縁",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "愛知県",
+    "area": "名古屋市",
+    "holiday": null,
+    "url": "https://tabelog.com/aichi/A2301/A230106/23050138/",
+    "lat": 35.174926937335435,
+    "lng": 136.9505063800824,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "愛知県名古屋市千種区振甫町2-39-1 メゾン振甫"
+  },
+  {
+    "name": "手挽きそば 一心",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "愛知県",
+    "area": "港北駅",
+    "holiday": null,
+    "url": "https://tabelog.com/aichi/A2301/A230112/23004733/",
+    "lat": 35.1151786373488,
+    "lng": 136.873317879533,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "愛知県名古屋市港区須成町3-9-1"
+  },
+  {
+    "name": "玄水",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "愛知県",
+    "area": "栄駅",
+    "holiday": null,
+    "url": "https://tabelog.com/aichi/A2301/A230103/23074368/",
+    "lat": 35.17090183732285,
+    "lng": 136.90296488007507,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "愛知県名古屋市中区錦3-11-15 錦101ビル 1F"
+  },
+  {
+    "name": "蕎麦や 口福",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "愛知県",
+    "area": "豊田市",
+    "holiday": null,
+    "url": "https://tabelog.com/aichi/A2305/A230502/23004844/",
+    "lat": 34.92355243755613,
+    "lng": 137.1422162774089,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "愛知県岡崎市牧御堂町字水洗50-1"
+  },
+  {
+    "name": "そば屋 長森",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "新潟県",
+    "area": "魚沼市",
+    "holiday": null,
+    "url": "https://tabelog.com/niigata/A1504/A150402/15000510/",
+    "lat": 37.107593787544566,
+    "lng": 138.9326239793765,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "新潟県南魚沼市長森415-23"
+  },
+  {
+    "name": "宮野屋",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "新潟県",
+    "area": "南魚沼市",
+    "holiday": null,
+    "url": "https://tabelog.com/niigata/A1504/A150402/15001265/",
+    "lat": 37.124863837542335,
+    "lng": 138.96006005953168,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "新潟県南魚沼市大崎3742"
+  },
+  {
+    "name": "green glass",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "落合駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1321/A132104/13196314/",
+    "lat": 35.71328707866891,
+    "lng": 139.6824465347671,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都新宿区上落合3-28-9"
+  },
+  {
+    "name": "あめこや",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "千歳烏山駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1318/A131813/13040810/",
+    "lat": 35.65517259199121,
+    "lng": 139.6479414575452,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "東京都世田谷区豪徳寺1-46-14 海倖マンション １Ｆ"
+  },
+  {
+    "name": "おそばの甲賀",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "乃木坂駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1307/A130701/13047594/",
+    "lat": 35.660051137910195,
+    "lng": 139.7227796830393,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "東京都港区西麻布2-14-5"
+  },
+  {
+    "name": "そば 法師人",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "桜台駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1321/A132102/13017075/",
+    "lat": 35.7306180690928,
+    "lng": 139.66016224674036,
+    "closed": true,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024
+    ],
+    "address": "東京都練馬区豊玉中2-7-12"
+  },
+  {
+    "name": "そばきり すずき",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "保谷駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1328/A132801/13017457/",
+    "lat": 35.74676540861261,
+    "lng": 139.5724197651824,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022
+    ],
+    "address": "東京都練馬区南大泉4-43-32"
+  },
+  {
+    "name": "そばきり 日曜庵",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "亀有駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1324/A132403/13009588/",
+    "lat": 35.75910955870229,
+    "lng": 139.87861911509242,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "東京都葛飾区柴又7-13-2"
+  },
+  {
+    "name": "そば処 和邑",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "雑司が谷駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1305/A130502/13003972/",
+    "lat": 35.72262317217199,
+    "lng": 139.7125232662627,
+    "closed": true,
+    "firstSelected": false,
+    "years": [
+      2021
+    ],
+    "address": "東京都豊島区雑司が谷3-12-3 川戸ビル １Ｆ"
+  },
+  {
+    "name": "そば工房 玉江",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "大塚駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1323/A132301/13047621/",
+    "lat": 35.732640583924244,
+    "lng": 139.75290972872907,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "東京都文京区本駒込5-34-6 イースト アネックス 1F"
+  },
+  {
+    "name": "つきじ 文化人",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "築地駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1301/A130101/13159030/",
+    "lat": 35.66845103791992,
+    "lng": 139.770081583091,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "東京都中央区築地1-12-16 プレミアム銀座イースト 1F"
+  },
+  {
+    "name": "ふかがわ翁",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "清澄白河駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1312/A131201/13244447/",
+    "lat": 35.68508153791836,
+    "lng": 139.7982944832392,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024
+    ],
+    "address": "東京都江東区常盤2-12-12 RR tokiwa 1F"
+  },
+  {
+    "name": "もりいろ",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "大森町駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1315/A131502/13176833/",
+    "lat": 35.572067837968724,
+    "lng": 139.73107858214482,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都大田区大森西5-10-8 1F"
+  },
+  {
+    "name": "ら すとらあだ",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "中野坂上駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1319/A131903/13141774/",
+    "lat": 35.69581825867935,
+    "lng": 139.6804017245921,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都中野区本町2-41-2"
+  },
+  {
+    "name": "一東菴",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "東十条駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1323/A132304/13143622/",
+    "lat": 35.76310802865206,
+    "lng": 139.7288830552378,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都北区東十条2-16-10"
+  },
+  {
+    "name": "並木藪蕎麦",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "浅草駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1311/A131102/13003650/",
+    "lat": 35.70968491870735,
+    "lng": 139.79595413465117,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2024,
+      2025
+    ],
+    "address": "東京都台東区雷門2-11-9"
+  },
+  {
+    "name": "千寿 竹やぶ",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "千住大橋駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1324/A132402/13003773/",
+    "lat": 35.74447866868568,
+    "lng": 139.79730760500166,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都足立区千住河原町7-12"
+  },
+  {
+    "name": "吟八亭 やざ和",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "亀有駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1324/A132403/13003083/",
+    "lat": 35.76290334868961,
+    "lng": 139.84639479515334,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都葛飾区亀有1-27-8"
+  },
+  {
+    "name": "吾妻橋 やぶそば",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "浅草駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1311/A131102/13007981/",
+    "lat": 35.70804719870925,
+    "lng": 139.7986540746327,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都墨田区吾妻橋1-11-2"
+  },
+  {
+    "name": "土家",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "東村山駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1328/A132806/13061606/",
+    "lat": 35.76231196856788,
+    "lng": 139.46296023541615,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都東村山市野口町4-18-1"
+  },
+  {
+    "name": "宇奈根 山中",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "喜多見駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1318/A131814/13042357/",
+    "lat": 35.62393416870035,
+    "lng": 139.60296604392028,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "東京都世田谷区宇奈根3-7-15"
+  },
+  {
+    "name": "室町 砂場 赤坂店",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "赤坂駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1308/A130801/13002787/",
+    "lat": 35.67116863790741,
+    "lng": 139.7361938831422,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "東京都港区赤坂6-3-5"
+  },
+  {
+    "name": "室町砂場 日本橋本店",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "新日本橋駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1310/A131002/13000316/",
+    "lat": 35.68936143871256,
+    "lng": 139.7717804744628,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "東京都中央区日本橋室町4-1-13 砂場ビル"
+  },
+  {
+    "name": "巽蕎麦 志ま平",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "牛込神楽坂駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1309/A130905/13020236/",
+    "lat": 35.6977720386952,
+    "lng": 139.73403728457424,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2021,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都新宿区納戸町33 ガーデンヒルズ市ヶ谷 1F"
+  },
+  {
+    "name": "布恒更科",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "大森海岸駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1315/A131502/13003331/",
+    "lat": 35.58962184876385,
+    "lng": 139.7339165634819,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2024
+    ],
+    "address": "東京都品川区南大井3-18-8"
+  },
+  {
+    "name": "手打そば もり",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "早稲田駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1305/A130503/13006046/",
+    "lat": 35.7107920378738,
+    "lng": 139.709696383561,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "東京都新宿区高田馬場1-3-10"
+  },
+  {
+    "name": "手打そば 大川や",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "市ケ谷駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1309/A130904/13000259/",
+    "lat": 35.692116337895975,
+    "lng": 139.74204448334967,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024
+    ],
+    "address": "東京都千代田区九段南3-4-2"
+  },
+  {
+    "name": "手打ちそば やっ古",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "学芸大学駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1317/A131702/13204512/",
+    "lat": 35.62732923791883,
+    "lng": 139.6846655827355,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2025
+    ],
+    "address": "東京都目黒区鷹番3-4-13"
+  },
+  {
+    "name": "手打ちそば 根津 鷹匠",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "根津駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1311/A131106/13009812/",
+    "lat": 35.72059847869039,
+    "lng": 139.76444628478345,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "東京都文京区根津2-32-8"
+  },
+  {
+    "name": "手打ちそば 菊谷 巣鴨本店",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "庚申塚駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1322/A132201/13127598/",
+    "lat": 35.738050337863406,
+    "lng": 139.73142898382113,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2024,
+      2025
+    ],
+    "address": "東京都豊島区巣鴨4-14-15"
+  },
+  {
+    "name": "手打ち蕎麦 成冨",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "築地市場駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1313/A131301/13023064/",
+    "lat": 35.66599797872525,
+    "lng": 139.76505244423154,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都中央区銀座8-18-6 二葉ビル １Ｆ"
+  },
+  {
+    "name": "手打ち蕎麦 銀杏",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "西大島駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1312/A131202/13019925/",
+    "lat": 35.69053061872819,
+    "lng": 139.82320114443857,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2024,
+      2025
+    ],
+    "address": "東京都江東区大島2-15-3"
+  },
+  {
+    "name": "手打ち蕎麦と酒 佳蕎庵",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "武蔵境駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1328/A132804/13107701/",
+    "lat": 35.730494838593266,
+    "lng": 139.47924088508333,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "東京都小平市小川町2-1362"
+  },
+  {
+    "name": "手打ち蕎麦切り 匠",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "岩本町駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1310/A131002/13208650/",
+    "lat": 35.69745010870962,
+    "lng": 139.7786726245397,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都千代田区神田佐久間町3-20-3 NINEビル 1F"
+  },
+  {
+    "name": "手打蕎麦 じゆうさん",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "東長崎駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1321/A132101/13025978/",
+    "lat": 35.729919937851285,
+    "lng": 139.67711888377707,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2024,
+      2025
+    ],
+    "address": "東京都中野区江原町3-1-4"
+  },
+  {
+    "name": "手打蕎麦 まるやま",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "代田橋駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1318/A131808/13053742/",
+    "lat": 35.6724052886875,
+    "lng": 139.6592809643704,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2025
+    ],
+    "address": "東京都杉並区和泉1-2-3"
+  },
+  {
+    "name": "手打蕎麦 松永",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "北参道駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1306/A130601/13024514/",
+    "lat": 35.67347312870302,
+    "lng": 139.7101293743455,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2021,
+      2024,
+      2025
+    ],
+    "address": "東京都渋谷区神宮前2-19-12"
+  },
+  {
+    "name": "手打蕎麦 松竹庵 ます川",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "淡路町駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1310/A131002/13068153/",
+    "lat": 35.69679220870663,
+    "lng": 139.76798297454053,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024
+    ],
+    "address": "東京都千代田区神田淡路町2-6"
+  },
+  {
+    "name": "手繰りや 玄治",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "東村山駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1328/A132806/13047436/",
+    "lat": 35.74787279857933,
+    "lng": 139.47012159526528,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "東京都東村山市栄町2-38-2"
+  },
+  {
+    "name": "打心蕎庵",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "下北沢駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1318/A131802/13028732/",
+    "lat": 35.65584328870102,
+    "lng": 139.66870193419652,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都世田谷区代沢3-7-14"
+  },
+  {
+    "name": "新橋ときそば",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "御成門駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1314/A131401/13094312/",
+    "lat": 35.66274141957381,
+    "lng": 139.75439004629624,
+    "closed": true,
+    "firstSelected": false,
+    "years": [
+      2022
+    ],
+    "address": "東京都港区新橋5‐33‐3"
+  },
+  {
+    "name": "木挽町 湯津上屋",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "新富町駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1313/A131301/13019153/",
+    "lat": 35.67203693791793,
+    "lng": 139.7709572831266,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2021,
+      2024,
+      2025
+    ],
+    "address": "東京都中央区銀座1-22-14"
+  },
+  {
+    "name": "本むら庵 荻窪本店",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "荻窪駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1319/A131906/13001095/",
+    "lat": 35.70460012865192,
+    "lng": 139.6117540447289,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2021
+    ],
+    "address": "東京都杉並区上荻2-7-11"
+  },
+  {
+    "name": "東京 土山人",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "池尻大橋駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1317/A131705/13047472/",
+    "lat": 35.65008793790654,
+    "lng": 139.69144188296065,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "東京都目黒区青葉台3-19-8"
+  },
+  {
+    "name": "東白庵かりべ",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "四谷三丁目駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1309/A130905/13131622/",
+    "lat": 35.70044851087803,
+    "lng": 139.7392526229098,
+    "closed": true,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "東京都新宿区若宮町11-7"
+  },
+  {
+    "name": "松庵",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "四谷三丁目駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1309/A130903/13165186/",
+    "lat": 35.688622820873704,
+    "lng": 139.722752037758,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "東京都新宿区荒木町3 北島ビル 1F"
+  },
+  {
+    "name": "松翁",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "神保町駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1310/A131003/13000604/",
+    "lat": 35.69915874870222,
+    "lng": 139.75886240457083,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2024
+    ],
+    "address": "東京都千代田区神田猿楽町2-1-7"
+  },
+  {
+    "name": "根津雙柿庵",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "根津駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1311/A131106/13178315/",
+    "lat": 35.71968465869079,
+    "lng": 139.76387124477466,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022
+    ],
+    "address": "東京都文京区根津2-28-8"
+  },
+  {
+    "name": "汐見",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "早稲田駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1305/A130504/13183623/",
+    "lat": 35.70767751166964,
+    "lng": 139.72631475345105,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "東京都新宿区早稲田鶴巻町556 松下ビル 1F"
+  },
+  {
+    "name": "江戸蕎麦ほそ川",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "両国駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1312/A131201/13002967/",
+    "lat": 35.69672993791088,
+    "lng": 139.798058583357,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2021,
+      2024,
+      2025
+    ],
+    "address": "東京都墨田区亀沢1-6-5"
+  },
+  {
+    "name": "浅草 ひら山",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "田原町駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1311/A131102/13264582/",
+    "lat": 35.71077884474001,
+    "lng": 139.7898182255921,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "東京都台東区西浅草1-3-14"
+  },
+  {
+    "name": "浅草じゅうろく",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "浅草駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1311/A131102/13185027/",
+    "lat": 35.71955503789575,
+    "lng": 139.79605618358897,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都台東区浅草4-37-8 小田井ビル 1F"
+  },
+  {
+    "name": "玄蕎麦 野中",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "中村橋駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1321/A132102/13002725/",
+    "lat": 35.732567198644794,
+    "lng": 139.645147834988,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2025
+    ],
+    "address": "東京都練馬区中村2-5-11"
+  },
+  {
+    "name": "玉笑",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "明治神宮前駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1306/A130601/13129390/",
+    "lat": 35.664448898707015,
+    "lng": 139.7046843042582,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都渋谷区神宮前5-23-3"
+  },
+  {
+    "name": "由庵 矢もり",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "月島駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1313/A131302/13176466/",
+    "lat": 35.66315793792693,
+    "lng": 139.78150268302952,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022
+    ],
+    "address": "東京都中央区月島3-9-7"
+  },
+  {
+    "name": "眠庵",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "淡路町駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1310/A131002/13020841/",
+    "lat": 35.69534162870843,
+    "lng": 139.77073711452397,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2024,
+      2025
+    ],
+    "address": "東京都千代田区神田須田町1-16-4"
+  },
+  {
+    "name": "石臼挽き手打 蕎楽亭",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "牛込神楽坂駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1309/A130905/13000479/",
+    "lat": 35.70078543869502,
+    "lng": 139.73951614460083,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都新宿区神楽坂3-6 神楽坂館 １Ｆ"
+  },
+  {
+    "name": "石臼挽き手打ち蕎麦 高はし",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "荻窪駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1319/A131906/13004378/",
+    "lat": 35.697654837852895,
+    "lng": 139.61782608349276,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024
+    ],
+    "address": "東京都杉並区荻窪2-30-7"
+  },
+  {
+    "name": "神楽坂 大川や",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "神楽坂駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1309/A130905/13197727/",
+    "lat": 35.70366435869223,
+    "lng": 139.73646842463205,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都新宿区神楽坂6-25"
+  },
+  {
+    "name": "神田まつや 本店",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "淡路町駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1310/A131002/13000340/",
+    "lat": 35.69612337870731,
+    "lng": 139.7687973545332,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024
+    ],
+    "address": "東京都千代田区神田須田町1-13"
+  },
+  {
+    "name": "竹ノ下そば",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "原宿駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1306/A130601/13286285/",
+    "lat": 35.6716974387023,
+    "lng": 139.70432968433164,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "東京都渋谷区神宮前1-20-12"
+  },
+  {
+    "name": "紫仙庵",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "武蔵小山駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1317/A131710/13038860/",
+    "lat": 35.62707163792428,
+    "lng": 139.7012338827213,
+    "closed": true,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024
+    ],
+    "address": "東京都目黒区下目黒6-6-3"
+  },
+  {
+    "name": "総本家更科堀井 本店",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "麻布十番駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1307/A130702/13001226/",
+    "lat": 35.656810528720854,
+    "lng": 139.7328899841613,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024
+    ],
+    "address": "東京都港区元麻布3-11-4"
+  },
+  {
+    "name": "蕎や 月心",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "祐天寺駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1317/A131701/13096494/",
+    "lat": 35.63255407872328,
+    "lng": 139.6921697139448,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都目黒区中町2-44-15"
+  },
+  {
+    "name": "蕎亭 大黒屋",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "浅草駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1311/A131102/13003757/",
+    "lat": 35.71883763789618,
+    "lng": 139.7959913835818,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022
+    ],
+    "address": "東京都台東区浅草4-39-2"
+  },
+  {
+    "name": "蕎庵 三たて",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "麻布十番駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1307/A130702/13274939/",
+    "lat": 35.65547130872213,
+    "lng": 139.73421711414684,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "東京都港区麻布十番2-8-12 リレント麻布十番 2F"
+  },
+  {
+    "name": "蕎心",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "根津駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1311/A131106/13187177/",
+    "lat": 35.71693275869339,
+    "lng": 139.76656715474493,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "東京都文京区根津2-11-10"
+  },
+  {
+    "name": "蕎麦 たじま",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "広尾駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1307/A130703/13020154/",
+    "lat": 35.654781637914596,
+    "lng": 139.7260768829838,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2021,
+      2024,
+      2025
+    ],
+    "address": "東京都港区西麻布3-8-6 大伊乃ビル 1F"
+  },
+  {
+    "name": "蕎麦 坐忘",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "西八王子駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1329/A132904/13006022/",
+    "lat": 35.65757303777966,
+    "lng": 139.30795668330506,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都八王子市千人町3-14-11"
+  },
+  {
+    "name": "蕎麦 流石",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "東銀座駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1301/A130101/13002488/",
+    "lat": 35.6716532987233,
+    "lng": 139.77018908428505,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2024,
+      2025
+    ],
+    "address": "東京都中央区銀座2-13-6 東二ビル2F"
+  },
+  {
+    "name": "蕎麦おさめ",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "六本木駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1307/A130701/13229398/",
+    "lat": 35.660997228458925,
+    "lng": 139.72640717279876,
+    "closed": true,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都港区西麻布1-7-2 アデッソ西麻布 2F"
+  },
+  {
+    "name": "蕎麦切 森の",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "本郷三丁目駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1310/A131004/13018364/",
+    "lat": 35.70480020869916,
+    "lng": 139.76051568462665,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "東京都文京区本郷2-25-1 ムトウビル １Ｆ"
+  },
+  {
+    "name": "蕎麦切り 酒 大愚",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "虎ノ門駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1308/A130802/13130565/",
+    "lat": 35.66778134872018,
+    "lng": 139.75269117425822,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都港区西新橋1-19-10"
+  },
+  {
+    "name": "蕎麦小路 さわらび",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "半蔵門駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1308/A130803/13022640/",
+    "lat": 35.682434108707476,
+    "lng": 139.74200589441372,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都千代田区隼町2-10 ２１０半蔵門 １Ｆ"
+  },
+  {
+    "name": "蕎麦懐石 無庵",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "立川北駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1329/A132901/13005984/",
+    "lat": 35.69956843778575,
+    "lng": 139.41081818365717,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "東京都立川市曙町1-28-5"
+  },
+  {
+    "name": "蕎麦懐石 義 恵比寿",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "恵比寿駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1303/A130302/13223526/",
+    "lat": 35.641187037918144,
+    "lng": 139.71011378285766,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022
+    ],
+    "address": "東京都目黒区三田2-3-20 peerless B1F"
+  },
+  {
+    "name": "西荻窪 鞍馬",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "東京都",
+    "area": "西荻窪駅",
+    "holiday": null,
+    "url": "https://tabelog.com/tokyo/A1319/A131907/13000716/",
+    "lat": 35.70301397864909,
+    "lng": 139.59970853472132,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2024
+    ],
+    "address": "東京都杉並区西荻南3-10-1"
+  },
+  {
+    "name": "甜蕎屋 源平",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "栃木県",
+    "area": "日光市",
+    "holiday": null,
+    "url": "https://tabelog.com/tochigi/A0903/A090302/9000065/",
+    "lat": 36.67898351808008,
+    "lng": 139.7593801244676,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "栃木県日光市木和田島2505-4"
+  },
+  {
+    "name": "胡桃亭",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "栃木県",
+    "area": "那須塩原市",
+    "holiday": null,
+    "url": "https://tabelog.com/tochigi/A0905/A090501/9001316/",
+    "lat": 36.846893368043446,
+    "lng": 139.97921947600958,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "栃木県那須塩原市一区町131-18"
+  },
+  {
+    "name": "蕎遊庵",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "栃木県",
+    "area": "足利市",
+    "holiday": null,
+    "url": "https://tabelog.com/tochigi/A0902/A090202/9002813/",
+    "lat": 36.33862380819606,
+    "lng": 139.44480279125017,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022
+    ],
+    "address": "栃木県足利市西宮町2549"
+  },
+  {
+    "name": "そば処 藤村",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "滋賀県",
+    "area": "東近江市",
+    "holiday": null,
+    "url": "https://tabelog.com/shiga/A2503/A250302/25000707/",
+    "lat": 35.13188445793767,
+    "lng": 136.2268135113167,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "滋賀県東近江市長町116"
+  },
+  {
+    "name": "十割手打 そば処 百百百百",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "滋賀県",
+    "area": "彦根市",
+    "holiday": null,
+    "url": "https://tabelog.com/shiga/A2503/A250303/25009845/",
+    "lat": 35.278981797862095,
+    "lng": 136.28286231276323,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "滋賀県彦根市鳥居本町1804"
+  },
+  {
+    "name": "手打ち蕎麦 みたに",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "滋賀県",
+    "area": "長浜市",
+    "holiday": null,
+    "url": "https://tabelog.com/shiga/A2504/A250402/25001491/",
+    "lat": 35.378877067793695,
+    "lng": 136.26730512378316,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "滋賀県長浜市朝日町1-6"
+  },
+  {
+    "name": "手打ち蕎麦 蕎麦屋すみ蔵",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "滋賀県",
+    "area": "大津市",
+    "holiday": null,
+    "url": "https://tabelog.com/shiga/A2501/A250101/25008216/",
+    "lat": 34.961779597943796,
+    "lng": 135.9068055098228,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "滋賀県大津市石山寺1-3-17"
+  },
+  {
+    "name": "皿そば 渚庵",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "滋賀県",
+    "area": "大津市",
+    "holiday": null,
+    "url": "https://tabelog.com/shiga/A2501/A250101/25000579/",
+    "lat": 35.00396721791082,
+    "lng": 135.88739966026253,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "滋賀県大津市におの浜4-4-16"
+  },
+  {
+    "name": "雪花山房",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "熊本県",
+    "area": "熊本市中央区",
+    "holiday": null,
+    "url": "https://tabelog.com/kumamoto/A4301/A430101/43001170/",
+    "lat": 32.80498650765932,
+    "lng": 130.71223066167846,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "熊本県熊本市中央区上通町7-22"
+  },
+  {
+    "name": "手取川 竹やぶ",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "石川県",
+    "area": "能美市",
+    "holiday": null,
+    "url": "https://tabelog.com/ishikawa/A1702/A170203/17001500/",
+    "lat": 36.452292367201416,
+    "lng": 136.54823773442874,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "石川県能美市三ツ屋町イ12"
+  },
+  {
+    "name": "手打蕎麦 こより",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "石川県",
+    "area": "金沢市",
+    "holiday": null,
+    "url": "https://tabelog.com/ishikawa/A1701/A170101/17012178/",
+    "lat": 36.57630723634668,
+    "lng": 136.64058179445487,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "石川県金沢市長田2-20-13"
+  },
+  {
+    "name": "更科藤井",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "石川県",
+    "area": "金沢市",
+    "holiday": null,
+    "url": "https://tabelog.com/ishikawa/A1701/A170101/17006763/",
+    "lat": 36.56054042716708,
+    "lng": 136.65631824544639,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "石川県金沢市柿木畠3-3"
+  },
+  {
+    "name": "草庵",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "石川県",
+    "area": "白山市",
+    "holiday": null,
+    "url": "https://tabelog.com/ishikawa/A1702/A170203/17001320/",
+    "lat": 36.44563236723315,
+    "lng": 136.63461398430093,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2021,
+      2022,
+      2025
+    ],
+    "address": "石川県白山市鶴来日吉町ロ32"
+  },
+  {
+    "name": "オリベ",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "神奈川県",
+    "area": "中郡二宮町",
+    "holiday": null,
+    "url": "https://tabelog.com/kanagawa/A1404/A140408/14007619/",
+    "lat": 35.308078518786225,
+    "lng": 139.2426728909824,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "神奈川県中郡二宮町百合が丘1-1-2"
+  },
+  {
+    "name": "三吉橋 小嶋屋",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "神奈川県",
+    "area": "横浜市",
+    "holiday": null,
+    "url": "https://tabelog.com/kanagawa/A1401/A140306/14000567/",
+    "lat": 35.434341168829256,
+    "lng": 139.62962340198652,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "神奈川県横浜市南区中村町3-188-9"
+  },
+  {
+    "name": "九つ井 本店",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "神奈川県",
+    "area": "横浜市",
+    "holiday": null,
+    "url": "https://tabelog.com/kanagawa/A1401/A140309/14000937/",
+    "lat": 35.36590298883755,
+    "lng": 139.51915812137267,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "神奈川県横浜市栄区田谷町1319"
+  },
+  {
+    "name": "手打そば千花庵",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "神奈川県",
+    "area": "鎌倉市",
+    "holiday": null,
+    "url": "https://tabelog.com/kanagawa/A1404/A140402/14003011/",
+    "lat": 35.32560443887665,
+    "lng": 139.56159215093587,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022
+    ],
+    "address": "神奈川県鎌倉市西御門2-6-13"
+  },
+  {
+    "name": "手打そば風來蕎",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "神奈川県",
+    "area": "たまプラーザ駅",
+    "holiday": null,
+    "url": "https://tabelog.com/kanagawa/A1401/A140201/14062336/",
+    "lat": 35.57671553791155,
+    "lng": 139.56081358231108,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "神奈川県横浜市青葉区新石川3-13-26"
+  },
+  {
+    "name": "手打ち蕎麦切り 海望",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "神奈川県",
+    "area": "横浜市",
+    "holiday": null,
+    "url": "https://tabelog.com/kanagawa/A1401/A140106/14003015/",
+    "lat": 35.42941431884289,
+    "lng": 139.6626263619136,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "神奈川県横浜市中区本牧町2-367"
+  },
+  {
+    "name": "竹やぶ 箱根店",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "神奈川県",
+    "area": "足柄下郡箱根町",
+    "holiday": null,
+    "url": "https://tabelog.com/kanagawa/A1410/A141001/14001257/",
+    "lat": 35.24191780875228,
+    "lng": 139.00417291048126,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "神奈川県足柄下郡箱根町元箱根160-80"
+  },
+  {
+    "name": "蕎房 猪口屋",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "神奈川県",
+    "area": "茅ヶ崎市",
+    "holiday": null,
+    "url": "https://tabelog.com/kanagawa/A1404/A140406/14035065/",
+    "lat": 35.320154921956444,
+    "lng": 139.41554784930145,
+    "closed": true,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024
+    ],
+    "address": "神奈川県茅ヶ崎市東海岸南6-3-18"
+  },
+  {
+    "name": "蕎麦 惠土",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "神奈川県",
+    "area": "三浦郡葉山町",
+    "holiday": null,
+    "url": "https://tabelog.com/kanagawa/A1406/A140602/14004578/",
+    "lat": 35.276357888911974,
+    "lng": 139.57429759042952,
+    "closed": true,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "神奈川県三浦郡葉山町堀内870-7"
+  },
+  {
+    "name": "蕎麦 月読",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "神奈川県",
+    "area": "小田原市",
+    "holiday": null,
+    "url": "https://tabelog.com/kanagawa/A1409/A140901/14038695/",
+    "lat": 35.30447638875749,
+    "lng": 139.14531794101424,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "神奈川県小田原市栢山2222-3"
+  },
+  {
+    "name": "鎌倉 松原庵",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "神奈川県",
+    "area": "由比ケ浜駅",
+    "holiday": null,
+    "url": "https://tabelog.com/kanagawa/A1404/A140402/14008453/",
+    "lat": 35.31139223807375,
+    "lng": 139.54100887964498,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2024
+    ],
+    "address": "神奈川県鎌倉市由比ガ浜4-10-3"
+  },
+  {
+    "name": "あみだそば 福の井",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "福井県",
+    "area": "福井市",
+    "holiday": null,
+    "url": "https://tabelog.com/fukui/A1801/A180101/18007050/",
+    "lat": 36.06119154734581,
+    "lng": 136.22166348070718,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "福井県福井市中央1-2-1 ハピリン 1F"
+  },
+  {
+    "name": "あみだそば 遊歩庵",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "福井県",
+    "area": "福井市",
+    "holiday": null,
+    "url": "https://tabelog.com/fukui/A1801/A180101/18004153/",
+    "lat": 36.06144683654,
+    "lng": 136.22080958954857,
+    "closed": true,
+    "firstSelected": true,
+    "years": [
+      2024
+    ],
+    "address": "福井県福井市中央1-9-1"
+  },
+  {
+    "name": "うるしや",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "福井県",
+    "area": "越前市",
+    "holiday": null,
+    "url": "https://tabelog.com/fukui/A1802/A180202/18007966/",
+    "lat": 35.903691436622424,
+    "lng": 136.16502058799418,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "福井県越前市京町1-4-26"
+  },
+  {
+    "name": "きょうや",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "福井県",
+    "area": "福井市",
+    "holiday": null,
+    "url": "https://tabelog.com/fukui/A1801/A180101/18002814/",
+    "lat": 36.047150797363464,
+    "lng": 136.24910089054612,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "福井県福井市和田中2-936-2"
+  },
+  {
+    "name": "けんぞう蕎麦",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "福井県",
+    "area": "吉田郡永平寺町",
+    "holiday": null,
+    "url": "https://tabelog.com/fukui/A1801/A180103/18000030/",
+    "lat": 36.08940268735215,
+    "lng": 136.29782942093877,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "福井県吉田郡永平寺町松岡春日3-26"
+  },
+  {
+    "name": "そば蔵 谷川",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "福井県",
+    "area": "越前市",
+    "holiday": null,
+    "url": "https://tabelog.com/fukui/A1802/A180202/18000587/",
+    "lat": 35.907164577424,
+    "lng": 136.1599980091946,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "福井県越前市深草2-9-28"
+  },
+  {
+    "name": "亀蔵",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "福井県",
+    "area": "鯖江市",
+    "holiday": null,
+    "url": "https://tabelog.com/fukui/A1802/A180201/18004146/",
+    "lat": 35.94342399741191,
+    "lng": 136.19435526953674,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2025
+    ],
+    "address": "福井県鯖江市東鯖江1-1-3 MM6ﾋﾞﾙ1F"
+  },
+  {
+    "name": "千束そば",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "福井県",
+    "area": "敦賀市",
+    "holiday": null,
+    "url": "https://tabelog.com/fukui/A1803/A180301/18000349/",
+    "lat": 35.65262091755867,
+    "lng": 136.07525779668285,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "福井県敦賀市清水町1-20-8"
+  },
+  {
+    "name": "盛安",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "福井県",
+    "area": "坂井市",
+    "holiday": null,
+    "url": "https://tabelog.com/fukui/A1801/A180102/18000036/",
+    "lat": 36.2157618772238,
+    "lng": 136.14682845232093,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "福井県坂井市三国町北本町3-2-30"
+  },
+  {
+    "name": "蕎麦 やすたけ",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "福井県",
+    "area": "福井市",
+    "holiday": null,
+    "url": "https://tabelog.com/fukui/A1801/A180101/18000999/",
+    "lat": 36.07556433732818,
+    "lng": 136.19500015087104,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2025
+    ],
+    "address": "福井県福井市文京7-9-35"
+  },
+  {
+    "name": "信州そば むらた",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "福岡県",
+    "area": "福岡市",
+    "holiday": null,
+    "url": "https://tabelog.com/fukuoka/A4001/A400101/40000018/",
+    "lat": 33.593724536257334,
+    "lng": 130.41182656869424,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2025
+    ],
+    "address": "福岡県福岡市博多区冷泉町2-9-1"
+  },
+  {
+    "name": "手打そば 一の梅",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "福岡県",
+    "area": "姪浜駅",
+    "holiday": null,
+    "url": "https://tabelog.com/fukuoka/A4001/A400203/40000904/",
+    "lat": 33.58251351704202,
+    "lng": 130.32449586980397,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024
+    ],
+    "address": "福岡県福岡市西区姪浜駅南1-6-9"
+  },
+  {
+    "name": "手打ちそばやぶ金",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "福岡県",
+    "area": "赤坂駅",
+    "holiday": null,
+    "url": "https://tabelog.com/fukuoka/A4001/A400104/40000050/",
+    "lat": 33.58834203625531,
+    "lng": 130.39473176865184,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "福岡県福岡市中央区大名2-1-16"
+  },
+  {
+    "name": "江戸そば 佗介",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "福岡県",
+    "area": "薬院駅",
+    "holiday": null,
+    "url": "https://tabelog.com/fukuoka/A4001/A400104/40005313/",
+    "lat": 33.57910274706953,
+    "lng": 130.40407363971374,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "福岡県福岡市中央区白金1-14-2"
+  },
+  {
+    "name": "蕎喰いまとみ",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "福岡県",
+    "area": "福岡市",
+    "holiday": null,
+    "url": "https://tabelog.com/fukuoka/A4001/A400103/40000112/",
+    "lat": 33.581230475338565,
+    "lng": 130.40514789200626,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2025
+    ],
+    "address": "福岡県福岡市中央区高砂1-22-9"
+  },
+  {
+    "name": "蕎麦おざき",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "福岡県",
+    "area": "薬院大通駅",
+    "holiday": null,
+    "url": "https://tabelog.com/fukuoka/A4001/A400104/40042966/",
+    "lat": 33.58275823625913,
+    "lng": 130.39562936859483,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "福岡県福岡市中央区警固1-1-10 エステートモア警固本通り 1F"
+  },
+  {
+    "name": "蕎麦切り かんべえ",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "福岡県",
+    "area": "六本松駅",
+    "holiday": null,
+    "url": "https://tabelog.com/fukuoka/A4001/A400105/40036259/",
+    "lat": 33.57464523625853,
+    "lng": 130.37755126852554,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "福岡県福岡市中央区梅光園1-1-1"
+  },
+  {
+    "name": "赤間茶屋 あ三五",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "福岡県",
+    "area": "薬院駅",
+    "holiday": null,
+    "url": "https://tabelog.com/fukuoka/A4001/A400104/40003973/",
+    "lat": 33.58012503626353,
+    "lng": 130.40418956856223,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2025
+    ],
+    "address": "福岡県福岡市中央区白金1-4-14"
+  },
+  {
+    "name": "蕎麦切り あなざわ",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "福島県",
+    "area": "郡山市",
+    "holiday": null,
+    "url": "https://tabelog.com/fukushima/A0702/A070201/7000355/",
+    "lat": 37.38563161781491,
+    "lng": 140.33601650120121,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "福島県郡山市静町37-13"
+  },
+  {
+    "name": "蕎麦彩膳 隆仙坊",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "福島県",
+    "area": "郡山市",
+    "holiday": null,
+    "url": "https://tabelog.com/fukushima/A0702/A070201/7001027/",
+    "lat": 37.40015691782012,
+    "lng": 140.38133008131612,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "福島県郡山市清水台2-6-5"
+  },
+  {
+    "name": "いな穂",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "秋田県",
+    "area": "北秋田市",
+    "holiday": null,
+    "url": "https://tabelog.com/akita/A0502/A050202/5007367/",
+    "lat": 40.23111318601892,
+    "lng": 140.37130508991848,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "秋田県北秋田市材木町6-41"
+  },
+  {
+    "name": "手打蕎麦かとう",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "秋田県",
+    "area": "秋田市",
+    "holiday": null,
+    "url": "https://tabelog.com/akita/A0501/A050101/5007255/",
+    "lat": 39.7161545762662,
+    "lng": 140.1207678648925,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "秋田県秋田市中通3-4-60"
+  },
+  {
+    "name": "凡味 そばきり",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "群馬県",
+    "area": "高崎市",
+    "holiday": null,
+    "url": "https://tabelog.com/gunma/A1001/A100102/10000142/",
+    "lat": 36.35044466804912,
+    "lng": 139.00696080167648,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "群馬県高崎市問屋町西1-8-6"
+  },
+  {
+    "name": "手打ちそば 舞鶴",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "群馬県",
+    "area": "高崎市",
+    "holiday": null,
+    "url": "https://tabelog.com/gunma/A1001/A100102/10010351/",
+    "lat": 36.32466000806627,
+    "lng": 139.00936535141435,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "群馬県高崎市通町90-12"
+  },
+  {
+    "name": "にのまえ",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "茨城県",
+    "area": "水戸市",
+    "holiday": null,
+    "url": "https://tabelog.com/ibaraki/A0801/A080101/8002373/",
+    "lat": 36.39334613767627,
+    "lng": 140.45065668993607,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "茨城県水戸市末広町3-7-15"
+  },
+  {
+    "name": "慈久庵",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "茨城県",
+    "area": "常陸太田市",
+    "holiday": null,
+    "url": "https://tabelog.com/ibaraki/A0805/A080502/8000227/",
+    "lat": 36.68233342830445,
+    "lng": 140.47060562400287,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "茨城県常陸太田市天下野町2162"
+  },
+  {
+    "name": "木挽庵",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "茨城県",
+    "area": "ひたちなか市",
+    "holiday": null,
+    "url": "https://tabelog.com/ibaraki/A0801/A080102/8000290/",
+    "lat": 36.41500708849295,
+    "lng": 140.52935791126146,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "茨城県ひたちなか市東石川3069-14"
+  },
+  {
+    "name": "村屋東亭",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "茨城県",
+    "area": "鉾田市",
+    "holiday": null,
+    "url": "https://tabelog.com/ibaraki/A0804/A080403/8000228/",
+    "lat": 36.168615678649395,
+    "lng": 140.52923905877276,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "茨城県鉾田市安房1418"
+  },
+  {
+    "name": "鬼怒川 竹やぶ",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "茨城県",
+    "area": "守谷市",
+    "holiday": null,
+    "url": "https://tabelog.com/ibaraki/A0803/A080301/8000048/",
+    "lat": 35.96576440281032,
+    "lng": 139.95192024525826,
+    "closed": true,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "茨城県守谷市板戸井1917-1"
+  },
+  {
+    "name": "鯨荘 塩町館",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "茨城県",
+    "area": "常陸太田市",
+    "holiday": null,
+    "url": "https://tabelog.com/ibaraki/A0805/A080502/8000966/",
+    "lat": 36.540782818410996,
+    "lng": 140.52284967253647,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "茨城県常陸太田市西一町2325-1"
+  },
+  {
+    "name": "うずら家",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "長野県",
+    "area": "長野市",
+    "holiday": null,
+    "url": "https://tabelog.com/nagano/A2001/A200101/20000191/",
+    "lat": 36.74144211750732,
+    "lng": 138.08543797627186,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "長野県長野市戸隠3229"
+  },
+  {
+    "name": "ささくら",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "長野県",
+    "area": "北佐久郡軽井沢町",
+    "holiday": null,
+    "url": "https://tabelog.com/nagano/A2003/A200301/20000585/",
+    "lat": 36.33903455790873,
+    "lng": 138.5433705418862,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "長野県北佐久郡軽井沢町追分655-3"
+  },
+  {
+    "name": "せきざわ",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "長野県",
+    "area": "上高井郡小布施町",
+    "holiday": null,
+    "url": "https://tabelog.com/nagano/A2001/A200106/20000282/",
+    "lat": 36.70361289760828,
+    "lng": 138.3270276657204,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "長野県上高井郡小布施町中松872-9"
+  },
+  {
+    "name": "そばのさと",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "長野県",
+    "area": "茅野市",
+    "holiday": null,
+    "url": "https://tabelog.com/nagano/A2004/A200403/20000642/",
+    "lat": 35.99904251800138,
+    "lng": 138.15625128872333,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024
+    ],
+    "address": "長野県茅野市塚原2-15-16"
+  },
+  {
+    "name": "そばの実",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "長野県",
+    "area": "長野市",
+    "holiday": null,
+    "url": "https://tabelog.com/nagano/A2001/A200101/20001575/",
+    "lat": 36.74714385750114,
+    "lng": 138.0774322863351,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "長野県長野市戸隠3510-25"
+  },
+  {
+    "name": "そば茶屋 極楽坊",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "長野県",
+    "area": "長野市",
+    "holiday": null,
+    "url": "https://tabelog.com/nagano/A2001/A200101/20001182/",
+    "lat": 36.74882886750137,
+    "lng": 138.08150350634926,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "長野県長野市戸隠3611-5"
+  },
+  {
+    "name": "三城",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "長野県",
+    "area": "松本市",
+    "holiday": null,
+    "url": "https://tabelog.com/nagano/A2002/A200201/20000629/",
+    "lat": 36.235225837792,
+    "lng": 137.96981380123967,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "長野県松本市大手3-3-5"
+  },
+  {
+    "name": "丸富",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "長野県",
+    "area": "駒ヶ根市",
+    "holiday": null,
+    "url": "https://tabelog.com/nagano/A2006/A200602/20000040/",
+    "lat": 35.73144204809077,
+    "lng": 137.90327584619763,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "長野県駒ヶ根市赤穂23-180"
+  },
+  {
+    "name": "石臼挽き蕎麦香房 山の実",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "長野県",
+    "area": "下高井郡山ノ内町",
+    "holiday": null,
+    "url": "https://tabelog.com/nagano/A2001/A200104/20000397/",
+    "lat": 36.785759936791024,
+    "lng": 138.45354739529972,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2025
+    ],
+    "address": "長野県下高井郡山ノ内町夜間瀬11700-315 北志賀ホリデーイン内"
+  },
+  {
+    "name": "磊庵はぎわら",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "長野県",
+    "area": "北佐久郡軽井沢町",
+    "holiday": null,
+    "url": "https://tabelog.com/nagano/A2003/A200302/20000542/",
+    "lat": 36.263793807931904,
+    "lng": 138.46606898118037,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018
+    ],
+    "address": "長野県佐久市岩村田南西ノ久保2426-1"
+  },
+  {
+    "name": "職人館",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "長野県",
+    "area": "佐久市",
+    "holiday": null,
+    "url": "https://tabelog.com/nagano/A2003/A200302/20001680/",
+    "lat": 36.21445686792887,
+    "lng": 138.35816763075766,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2025
+    ],
+    "address": "長野県佐久市春日3250-3"
+  },
+  {
+    "name": "草笛 小諸本店",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "長野県",
+    "area": "小諸市",
+    "holiday": null,
+    "url": "https://tabelog.com/nagano/A2004/A200402/20001360/",
+    "lat": 36.327950097876524,
+    "lng": 138.4201365718606,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024
+    ],
+    "address": "長野県小諸市古城1-1-10"
+  },
+  {
+    "name": "蕎麦 ふじおか",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "長野県",
+    "area": "長野市",
+    "holiday": null,
+    "url": "https://tabelog.com/nagano/A2001/A200101/20000415/",
+    "lat": 36.71638934753729,
+    "lng": 138.12960091598785,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2024,
+      2025
+    ],
+    "address": "長野県長野市上ヶ屋2471-2066"
+  },
+  {
+    "name": "蕎麦倶楽部 佐々木",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "長野県",
+    "area": "松本市",
+    "holiday": null,
+    "url": "https://tabelog.com/nagano/A2002/A200201/20002376/",
+    "lat": 36.23570330779239,
+    "lng": 137.97197570124297,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "長野県松本市大手4丁目8-3"
+  },
+  {
+    "name": "蕎麦旬菜 こすげ",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "長野県",
+    "area": "長野市",
+    "holiday": null,
+    "url": "https://tabelog.com/nagano/A2001/A200101/20016783/",
+    "lat": 36.64650265760013,
+    "lng": 138.18754968524132,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "長野県長野市北石堂町1390-1"
+  },
+  {
+    "name": "軽井沢 川上庵 本店",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "長野県",
+    "area": "北佐久郡軽井沢町",
+    "holiday": null,
+    "url": "https://tabelog.com/nagano/A2003/A200301/20000161/",
+    "lat": 36.35626990792659,
+    "lng": 138.6338255819969,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "長野県北佐久郡軽井沢町軽井沢6-10"
+  },
+  {
+    "name": "野麦",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "長野県",
+    "area": "松本市",
+    "holiday": null,
+    "url": "https://tabelog.com/nagano/A2002/A200201/20000101/",
+    "lat": 36.23356062779331,
+    "lng": 137.97062112122228,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2024,
+      2025
+    ],
+    "address": "長野県松本市中央2-9-11"
+  },
+  {
+    "name": "そばの実 一閑人",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "静岡県",
+    "area": "富士宮市",
+    "holiday": null,
+    "url": "https://tabelog.com/shizuoka/A2204/A220401/22016718/",
+    "lat": 35.33914123774827,
+    "lng": 138.57430498060288,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2025
+    ],
+    "address": "静岡県富士宮市内野1551-42 民宿 峠の茶屋 １Ｆ"
+  },
+  {
+    "name": "ふく田",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "静岡県",
+    "area": "沼津市",
+    "holiday": null,
+    "url": "https://tabelog.com/shizuoka/A2205/A220501/22000081/",
+    "lat": 35.12992323797371,
+    "lng": 138.86494637828588,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022
+    ],
+    "address": "静岡県沼津市岡宮1433-7"
+  },
+  {
+    "name": "手打ち蕎麦 たがた",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "静岡県",
+    "area": "静岡市葵区",
+    "holiday": null,
+    "url": "https://tabelog.com/shizuoka/A2201/A220101/22002324/",
+    "lat": 34.970226337921176,
+    "lng": 138.38152877701162,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2022,
+      2024,
+      2025
+    ],
+    "address": "静岡県静岡市葵区常磐町2丁目6-7"
+  },
+  {
+    "name": "浅草じゅうろく 修善寺はなれ",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "静岡県",
+    "area": "伊豆市",
+    "holiday": null,
+    "url": "https://tabelog.com/shizuoka/A2205/A220504/22037020/",
+    "lat": 34.96843983811094,
+    "lng": 138.9738191765784,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "静岡県伊豆市下白岩61"
+  },
+  {
+    "name": "薮蕎麦 宮本",
+    "category": "soba",
+    "region": "EAST",
+    "prefecture": "静岡県",
+    "area": "島田市",
+    "holiday": null,
+    "url": "https://tabelog.com/shizuoka/A2203/A220302/22000036/",
+    "lat": 34.803651898782114,
+    "lng": 138.22381503660142,
+    "closed": false,
+    "firstSelected": false,
+    "years": [
+      2018,
+      2022,
+      2024,
+      2025
+    ],
+    "address": "静岡県島田市船木253-7"
+  },
+  {
+    "name": "手打そば 時屋",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "高知県",
+    "area": "吾川郡いの町",
+    "holiday": null,
+    "url": "https://tabelog.com/kochi/A3901/A390103/39003162/",
+    "lat": 33.76722728786838,
+    "lng": 133.28768943959264,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "高知県吾川郡いの町中野川29-1"
+  },
+  {
+    "name": "天神房丸新",
+    "category": "soba",
+    "region": "WEST",
+    "prefecture": "鹿児島県",
+    "area": "鹿児島市",
+    "holiday": null,
+    "url": "https://tabelog.com/kagoshima/A4601/A460101/46000046/",
+    "lat": 31.5916662283795,
+    "lng": 130.55388775953375,
+    "closed": false,
+    "firstSelected": true,
+    "years": [
+      2025
+    ],
+    "address": "鹿児島県鹿児島市東千石町8-22"
+  }
+]

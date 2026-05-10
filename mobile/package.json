@@ -1,0 +1,19 @@
+{
+  "name": "hyakumeiten-udonsoba-ios",
+  "version": "1.0.0",
+  "private": true,
+  "description": "iOS wrapper for うどん・そば百名店MAP",
+  "scripts": {
+    "sync:assets": "python3 ../scripts/sync_mobile_assets.py",
+    "ios:sync": "npm run sync:assets && npx cap sync ios",
+    "ios:open": "npx cap open ios"
+  },
+  "dependencies": {
+    "@capacitor/browser": "^7.0.2",
+    "@capacitor/cli": "^7.4.4",
+    "@capacitor/core": "^7.4.4",
+    "@capacitor/filesystem": "^7.1.5",
+    "@capacitor/ios": "^7.4.4",
+    "@capacitor/share": "^7.0.2"
+  }
+}

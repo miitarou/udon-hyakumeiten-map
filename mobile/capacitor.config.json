@@ -1,0 +1,16 @@
+{
+  "appId": "jp.miitarou.hyakumeiten.udonsoba",
+  "appName": "うどん・そば百名店MAP",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "ios": {
+    "contentInset": "automatic"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 800,
+      "backgroundColor": "#121218",
+      "showSpinner": false
+    }
+  }
+}

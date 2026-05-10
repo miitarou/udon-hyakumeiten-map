@@ -69,7 +69,9 @@ open http://localhost:8080
 ├── manifest.webmanifest        # PWAマニフェスト
 ├── sw.js                       # Service Worker
 ├── icon.svg                    # PWAアイコン
+├── privacy.html                # プライバシーポリシー
 ├── data/
+│   ├── data-version.json       # iPhone版向けデータ更新メタ情報
 │   ├── udon.json               # うどん百名店データ（428店）
 │   ├── udon_raw.json           # うどんデータ生成元（ジオコーディング前）
 │   ├── soba.json               # そば百名店データ（266店）
@@ -80,7 +82,14 @@ open http://localhost:8080
 │   ├── build_soba_json.py      # そばデータ年度別マージ・生成スクリプト
 │   ├── geocode_soba.py         # そば店舗 Nominatim ジオコーディング
 │   ├── fetch_tabelog_details.py # 店舗ページ由来の住所・座標・閉店状態取得
+│   ├── generate_data_version.py # iPhone版向けデータメタ情報生成
+│   ├── sync_mobile_assets.py   # Web資産を mobile/www へ同期
 │   └── check_data_quality.py   # 公開データ品質チェック
+├── mobile/                     # Capacitor iOSラッパー
+│   ├── capacitor.config.json   # iOSアプリ設定
+│   ├── package.json            # Capacitor依存とモバイル用npm scripts
+│   ├── vendor/                 # iOS同梱用の固定化済み地図ライブラリ
+│   └── www/                    # Web資産同期先
 ├── LICENSE                     # MIT License
 ├── DATA_LICENSE.md             # データ利用条件
 └── README.md
@@ -130,11 +139,15 @@ Leaflet / Leaflet.markercluster の CDN 読み込みには Subresource Integrity
 本リポジトリではデータ品質を保つために検証スクリプトを提供しています。データを更新した際は、以下の手順で検証を行ってください。
 
 1. `data/udon.json` または `data/soba.json` を更新する
-2. 以下のコマンドで検証スクリプトを実行する
+2. iPhone版向けのデータメタ情報を更新する
+   ```bash
+   python3 scripts/generate_data_version.py
+   ```
+3. 以下のコマンドで検証スクリプトを実行する
    ```bash
    python3 scripts/check_data_quality.py
    ```
-3. エラーが出た場合はデータを修正し、ローカルサーバーで動作確認を行う
+4. エラーが出た場合はデータを修正し、ローカルサーバーで動作確認を行う
 
 主な検証内容:
 
@@ -147,6 +160,24 @@ Leaflet / Leaflet.markercluster の CDN 読み込みには Subresource Integrity
 - HTMLタグ混入
 - `closed` / `firstSelected` のboolean形式
 - 店名 + 都道府県による重複候補
+- `data/data-version.json` の件数・ハッシュ整合
+
+## 📱 iPhone版
+
+同一リポジトリ内の `mobile/` にCapacitorベースのiOSラッパーを置いています。
+Web版の `index.html` / `style.css` / `app.js` / `data/*.json` を正とし、以下でiPhone版の同梱資産へ同期します。
+
+```bash
+cd mobile
+npm run ios:sync
+```
+
+iPhone版では、HTML/CSS/JSはアプリに同梱し、機能変更はApp Storeアップデートで反映します。
+店舗JSONのみ起動時にGitHub Pages上の最新版取得を試み、失敗時は端末キャッシュ、さらに失敗時はアプリ同梱JSONへフォールバックします。
+
+- Bundle ID: `jp.miitarou.hyakumeiten.udonsoba`
+- 表示名: `うどん・そば百名店MAP`
+- 位置情報は現在地周辺の店舗検索にのみ使用し、サーバー送信・保存は行いません。
 
 ## ⚖️ ライセンス
 

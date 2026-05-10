@@ -1,6 +1,7 @@
 # Dependencies
 node_modules/
 package-lock.json
+!mobile/package-lock.json
 
 # OS
 .DS_Store
@@ -14,6 +15,10 @@ Thumbs.db
 nissei-report-intelligence/
 watch-antigravity.sh
 package.json
+!mobile/package.json
+mobile/node_modules/
+mobile/ios/App/Pods/
+mobile/ios/App/DerivedData/
 
 # Raw / intermediate data
 data/restaurants_raw.json
