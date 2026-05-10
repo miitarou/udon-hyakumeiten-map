@@ -84,6 +84,7 @@
             bindEvents();
             updateStats();
             updateLogoForCategory();
+            hideLoadingOverlay();
 
             if (window.innerWidth > 768) {
                 togglePanel(true);
@@ -91,6 +92,7 @@
             console.log('✅ 初期化完了');
         } catch (e) {
             console.error('❌ 初期化エラー:', e);
+            showLoadingError('データまたは地図ライブラリの読み込みに失敗しました。時間をおいて再読み込みしてください。');
         }
     }
 
@@ -136,15 +138,11 @@
             }
         };
 
-        let udonRaw = [];
-        try {
-            udonRaw = await fetchJson('data/udon.json');
-        } catch { udonRaw = []; }
-
-        let sobaRaw = [];
-        try {
-            sobaRaw = await fetchJson('data/soba.json');
-        } catch { sobaRaw = []; }
+        const udonRaw = await fetchJson('data/udon.json');
+        const sobaRaw = await fetchJson('data/soba.json');
+        if (!Array.isArray(udonRaw) || !Array.isArray(sobaRaw)) {
+            throw new Error('Restaurant data should be JSON arrays');
+        }
 
         // category フィールドと years の正規化
         udonRaw.forEach(r => {
@@ -321,7 +319,9 @@
         });
 
         const labelClass = 'marker-label' + (restaurant.closed ? ' marker-label-closed' : '');
-        marker.bindTooltip(escapeHtml(restaurant.name), {
+        const tooltip = document.createElement('span');
+        tooltip.textContent = restaurant.name || '';
+        marker.bindTooltip(tooltip, {
             permanent: true,
             direction: 'right',
             offset: [12, -10],
@@ -1576,6 +1576,18 @@
         const div = document.createElement('div');
         div.textContent = str;
         return div.innerHTML;
+    }
+
+    function hideLoadingOverlay() {
+        const overlay = document.getElementById('loading-overlay');
+        if (overlay) overlay.classList.add('hidden');
+    }
+
+    function showLoadingError(message) {
+        const overlay = document.getElementById('loading-overlay');
+        const loadingText = document.getElementById('loading-text');
+        if (loadingText) loadingText.textContent = message;
+        if (overlay) overlay.classList.add('error');
     }
 
     function toCssClass(value) {

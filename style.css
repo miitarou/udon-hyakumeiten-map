@@ -1505,7 +1505,7 @@ body.panel-resizing * {
     box-shadow: 0 2px 12px var(--soba-glow);
 }
 
-/* 選出回数による強調 (5回以上 = 殿堂) */
+/* 選出回数による強調 (カテゴリ別の選出回数上位10%相当 = 殿堂) */
 .marker-pin.select-high {
     width: 36px;
     height: 36px;
@@ -1879,6 +1879,32 @@ body.panel-resizing * {
     font-size: 14px;
     color: var(--text-secondary);
     letter-spacing: 2px;
+    max-width: min(520px, 86vw);
+    text-align: center;
+    line-height: 1.7;
+}
+
+.loading-overlay.error .loading-spinner {
+    animation: none;
+}
+
+.loading-overlay.error .loading-text {
+    color: var(--primary);
+    letter-spacing: 0;
+}
+
+.noscript-warning {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    text-align: center;
+    line-height: 1.7;
 }
 
 /* === Footer: 免責・出典 === */

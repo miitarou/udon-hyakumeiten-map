@@ -13,6 +13,7 @@ import sys
 import unicodedata
 from collections import defaultdict
 from pathlib import Path
+from urllib.parse import urlparse
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,13 +21,20 @@ DATASETS = (
     ("data/udon.json", "udon"),
     ("data/soba.json", "soba"),
 )
-REQUIRED_FIELDS = ("name", "prefecture", "region", "lat", "lng", "years")
-RECOMMENDED_FIELDS = ("area", "address")
+REQUIRED_FIELDS = ("name", "category", "prefecture", "region", "lat", "lng", "url", "years")
+RECOMMENDED_FIELDS = ("area", "address", "closed", "firstSelected")
 VALID_CATEGORIES = {"udon", "soba"}
+VALID_REGIONS = {
+    "udon": {"EAST", "WEST", "KAGAWA"},
+    "soba": {"EAST", "WEST"},
+}
+ALLOWED_URL_HOSTS = {"tabelog.com"}
+TEXT_FIELDS = ("name", "prefecture", "region", "area", "address")
 MIN_YEAR = 2017
 MAX_YEAR = 2026
 MIN_LAT, MAX_LAT = 20.0, 46.5
 MIN_LNG, MAX_LNG = 122.0, 154.0
+HTML_TAG_RE = re.compile(r"<[^>]+>")
 
 
 def normalize(value: object) -> str:
@@ -70,6 +78,10 @@ def validate_item(item: object, index: int, expected_category: str) -> tuple[lis
     if category is not None and category != expected_category:
         errors.append(f"{name}: category mismatch, expected {expected_category!r}, got {category!r}")
 
+    region = item.get("region")
+    if category in VALID_REGIONS and region not in VALID_REGIONS[category]:
+        errors.append(f"{name}: region {region!r} is not valid for category {category!r}")
+
     lat = item.get("lat")
     lng = item.get("lng")
     if not isinstance(lat, (int, float)) or isinstance(lat, bool):
@@ -93,6 +105,23 @@ def validate_item(item: object, index: int, expected_category: str) -> tuple[lis
     url = item.get("url")
     if url and not (isinstance(url, str) and (url.startswith("http://") or url.startswith("https://"))):
         errors.append(f"{name}: url must start with http:// or https://")
+    elif url:
+        parsed = urlparse(url)
+        hostname = parsed.hostname or ""
+        if parsed.scheme != "https":
+            errors.append(f"{name}: url must use https")
+        if not any(hostname == host or hostname.endswith(f".{host}") for host in ALLOWED_URL_HOSTS):
+            errors.append(f"{name}: url host is not allowed: {hostname}")
+
+    for field in TEXT_FIELDS:
+        value = item.get(field)
+        if isinstance(value, str) and HTML_TAG_RE.search(value):
+            errors.append(f"{name}: field '{field}' appears to contain HTML")
+
+    for field in ("closed", "firstSelected"):
+        value = item.get(field)
+        if value is not None and not isinstance(value, bool):
+            errors.append(f"{name}: {field} must be boolean")
 
     return errors, warnings
 
