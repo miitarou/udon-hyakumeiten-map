@@ -280,6 +280,37 @@ html, body {
     color: var(--text-primary);
 }
 
+.stat-number,
+.results-count strong {
+    display: inline-block;
+    min-width: 2.4ch;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    will-change: transform, filter;
+}
+
+.number-rolling {
+    animation: numberRoll 420ms cubic-bezier(0.2, 0.85, 0.2, 1);
+}
+
+@keyframes numberRoll {
+    0% {
+        transform: translateY(-0.45em) rotateX(65deg);
+        filter: brightness(1.35);
+        opacity: 0.72;
+    }
+    48% {
+        transform: translateY(0.12em) rotateX(-18deg);
+        filter: brightness(1.12);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0) rotateX(0);
+        filter: brightness(1);
+        opacity: 1;
+    }
+}
+
 .stat-item.stat-east .stat-number   { color: var(--east-color); }
 .stat-item.stat-west .stat-number   { color: var(--west-color); }
 .stat-item.stat-kagawa .stat-number { color: var(--kagawa-color); }
@@ -824,6 +855,12 @@ body.panel-resizing * {
 .results-count strong {
     color: var(--primary);
     font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .number-rolling {
+        animation: none;
+    }
 }
 
 /* Sort Select */

@@ -38,6 +38,7 @@
     let fitBoundsTimer = null;
     let tileErrorCount = 0;
     let swRefreshPending = false;
+    const numberAnimationState = new Map();
     const SAVE_STORAGE_KEY = 'hyakumeiten-map-store-states-v1';
     const SAVE_BACKUP_FORMAT = 'udon-hyakumeiten-map.saved-states';
     const SAVE_BACKUP_VERSION = 1;
@@ -1162,15 +1163,42 @@
     function animateNumber(elementId, target) {
         const el = document.getElementById(elementId);
         if (!el) return;
-        const duration = 800;
+        const nextValue = Number(target) || 0;
+        const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+        const currentState = numberAnimationState.get(elementId);
+        if (currentState?.frameId) cancelAnimationFrame(currentState.frameId);
+
+        const previousValue = currentState?.value ?? parseInt(el.textContent.replace(/[^\d-]/g, ''), 10) ?? 0;
+        if (prefersReducedMotion || previousValue === nextValue) {
+            el.textContent = nextValue.toLocaleString('ja-JP');
+            numberAnimationState.set(elementId, { value: nextValue, frameId: null });
+            return;
+        }
+
+        const duration = Math.min(900, Math.max(360, 220 + Math.abs(nextValue - previousValue) * 8));
         const start = performance.now();
+        el.classList.remove('number-rolling');
+        void el.offsetWidth;
+        el.classList.add('number-rolling');
+
         function tick(now) {
             const progress = Math.min((now - start) / duration, 1);
             const eased = 1 - Math.pow(1 - progress, 3);
-            el.textContent = Math.round(target * eased);
-            if (progress < 1) requestAnimationFrame(tick);
+            const value = Math.round(previousValue + (nextValue - previousValue) * eased);
+            el.textContent = value.toLocaleString('ja-JP');
+            numberAnimationState.set(elementId, { value, frameId: null });
+            if (progress < 1) {
+                const frameId = requestAnimationFrame(tick);
+                numberAnimationState.set(elementId, { value, frameId });
+            } else {
+                el.textContent = nextValue.toLocaleString('ja-JP');
+                el.classList.remove('number-rolling');
+                numberAnimationState.set(elementId, { value: nextValue, frameId: null });
+            }
         }
-        requestAnimationFrame(tick);
+
+        const frameId = requestAnimationFrame(tick);
+        numberAnimationState.set(elementId, { value: previousValue, frameId });
     }
 
     function getViewportBounds() {
@@ -1200,8 +1228,8 @@
     function updateVisibleCount() {
         const totalEl = document.getElementById('visible-count');
         const mapEl = document.getElementById('map-visible-count');
-        if (totalEl) totalEl.textContent = filteredRestaurants.length;
-        if (mapEl) mapEl.textContent = visibleRestaurants.length;
+        animateNumber('visible-count', filteredRestaurants.length);
+        animateNumber('map-visible-count', visibleRestaurants.length);
     }
 
     function setSegmentedButtons(selector, activeValue, datasetKey) {
