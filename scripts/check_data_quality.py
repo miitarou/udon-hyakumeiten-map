@@ -21,6 +21,7 @@ DATASETS = (
     ("data/soba.json", "soba"),
 )
 REQUIRED_FIELDS = ("name", "prefecture", "region", "lat", "lng", "years")
+RECOMMENDED_FIELDS = ("area", "address")
 VALID_CATEGORIES = {"udon", "soba"}
 MIN_YEAR = 2017
 MAX_YEAR = 2026
@@ -58,6 +59,10 @@ def validate_item(item: object, index: int, expected_category: str) -> tuple[lis
     for field in REQUIRED_FIELDS:
         if field not in item:
             errors.append(f"{name}: missing required field '{field}'")
+
+    for field in RECOMMENDED_FIELDS:
+        if field not in item or item.get(field) in (None, ""):
+            warnings.append(f"{name}: missing recommended field '{field}'")
 
     category = item.get("category")
     if category is not None and category not in VALID_CATEGORIES:
