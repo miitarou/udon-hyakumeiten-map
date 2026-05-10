@@ -1,106 +1,161 @@
-import json
-import sys
-import os
+#!/usr/bin/env python3
+"""Validate public restaurant JSON data.
 
-def check_file(filepath, category):
-    print(f"Checking {filepath}...")
+This script intentionally uses only the Python standard library so it can run
+in GitHub Actions without dependency setup.
+"""
+
+from __future__ import annotations
+
+import json
+import re
+import sys
+import unicodedata
+from collections import defaultdict
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+DATASETS = (
+    ("data/udon.json", "udon"),
+    ("data/soba.json", "soba"),
+)
+REQUIRED_FIELDS = ("name", "prefecture", "region", "lat", "lng", "years")
+VALID_CATEGORIES = {"udon", "soba"}
+MIN_YEAR = 2017
+MAX_YEAR = 2026
+MIN_LAT, MAX_LAT = 20.0, 46.5
+MIN_LNG, MAX_LNG = 122.0, 154.0
+
+
+def normalize(value: object) -> str:
+    text = unicodedata.normalize("NFKC", str(value or "")).strip().lower()
+    return re.sub(r"\s+", "", text)
+
+
+def load_json(path: Path) -> tuple[list[dict], list[str]]:
     try:
-        with open(filepath, 'r', encoding='utf-8') as f:
+        with path.open("r", encoding="utf-8") as f:
             data = json.load(f)
-    except Exception as e:
-        print(f"  [ERROR] Failed to load {filepath}: {e}")
-        return False, 1, 0, 0
+    except Exception as exc:  # noqa: BLE001 - validation script should report all load failures plainly
+        return [], [f"Failed to load {path}: {exc}"]
 
     if not isinstance(data, list):
-        print(f"  [ERROR] Root JSON should be a list in {filepath}")
-        return False, 1, 0, 0
+        return [], [f"Root JSON should be a list: {path}"]
 
-    total = len(data)
-    errors = 0
-    warnings = 0
-    duplicates = 0
-    
-    seen_keys = set()
-    
-    for i, item in enumerate(data):
-        has_error = False
-        
-        # Check required fields
-        for field in ['name', 'category', 'prefecture', 'lat', 'lng', 'years']:
-            if field not in item:
-                print(f"  [ERROR] Missing required field '{field}' in item {i}: {item.get('name', 'Unknown')}")
-                has_error = True
-        
-        if has_error:
-            errors += 1
-            continue
-            
-        # Check specific types and values
-        if not isinstance(item['lat'], (int, float)) or not isinstance(item['lng'], (int, float)):
-            print(f"  [ERROR] lat/lng not numeric in item {i}: {item['name']}")
-            errors += 1
-            continue
-            
-        if not (20.0 <= item['lat'] <= 46.5):
-            print(f"  [ERROR] lat out of bounds ({item['lat']}) in item {i}: {item['name']}")
-            errors += 1
-            continue
-            
-        if not (122.0 <= item['lng'] <= 154.0):
-            print(f"  [ERROR] lng out of bounds ({item['lng']}) in item {i}: {item['name']}")
-            errors += 1
-            continue
-            
-        if item['category'] != category:
-            print(f"  [ERROR] category mismatch (expected {category}, got {item['category']}) in item {i}: {item['name']}")
-            errors += 1
-            continue
-            
-        if not isinstance(item['years'], list) or not all(isinstance(y, int) and 2017 <= y <= 2026 for y in item['years']):
-            print(f"  [ERROR] years must be a list of integers between 2017-2026 in item {i}: {item['name']}")
-            errors += 1
-            continue
-            
-        url = item.get('url')
-        if url and not (url.startswith('http://') or url.startswith('https://')):
-            print(f"  [ERROR] url must start with http:// or https:// in item {i}: {item['name']}")
-            errors += 1
-            continue
-            
-        # Check for duplicates using name + prefecture
-        key = f"{item['name'].strip()}_{item['prefecture'].strip()}"
-        if key in seen_keys:
-            print(f"  [WARN] Possible duplicate found: {item['name']} ({item['prefecture']})")
-            duplicates += 1
-            warnings += 1
-        else:
-            seen_keys.add(key)
-            
-    print(f"  Summary for {filepath}: Total={total}, Errors={errors}, Warnings={warnings}, Duplicates={duplicates}")
-    return errors == 0, errors, warnings, duplicates
+    return data, []
 
-def main():
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    
-    udon_path = os.path.join(base_dir, 'data', 'udon.json')
-    soba_path = os.path.join(base_dir, 'data', 'soba.json')
-    
-    udon_ok, udon_err, udon_warn, udon_dup = check_file(udon_path, 'udon')
-    soba_ok, soba_err, soba_warn, soba_dup = check_file(soba_path, 'soba')
-    
-    total_err = udon_err + soba_err
-    total_warn = udon_warn + soba_warn
-    
-    print("\n--- Final Summary ---")
-    print(f"Total Errors: {total_err}")
-    print(f"Total Warnings: {total_warn}")
-    
-    if total_err > 0:
-        print("\nData validation FAILED.")
-        sys.exit(1)
+
+def validate_item(item: object, index: int, expected_category: str) -> tuple[list[str], list[str]]:
+    errors: list[str] = []
+    warnings: list[str] = []
+
+    if not isinstance(item, dict):
+        return [f"Item {index} is not an object"], warnings
+
+    name = item.get("name", f"item {index}")
+
+    for field in REQUIRED_FIELDS:
+        if field not in item:
+            errors.append(f"{name}: missing required field '{field}'")
+
+    category = item.get("category")
+    if category is not None and category not in VALID_CATEGORIES:
+        errors.append(f"{name}: category must be one of {sorted(VALID_CATEGORIES)}, got {category!r}")
+    if category is not None and category != expected_category:
+        errors.append(f"{name}: category mismatch, expected {expected_category!r}, got {category!r}")
+
+    lat = item.get("lat")
+    lng = item.get("lng")
+    if not isinstance(lat, (int, float)) or isinstance(lat, bool):
+        errors.append(f"{name}: lat must be numeric")
+    elif not (MIN_LAT <= float(lat) <= MAX_LAT):
+        errors.append(f"{name}: lat out of Japan-ish bounds: {lat}")
+
+    if not isinstance(lng, (int, float)) or isinstance(lng, bool):
+        errors.append(f"{name}: lng must be numeric")
+    elif not (MIN_LNG <= float(lng) <= MAX_LNG):
+        errors.append(f"{name}: lng out of Japan-ish bounds: {lng}")
+
+    years = item.get("years")
+    if not isinstance(years, list) or not years:
+        errors.append(f"{name}: years must be a non-empty list")
     else:
-        print("\nData validation PASSED.")
-        sys.exit(0)
+        invalid_years = [y for y in years if not isinstance(y, int) or isinstance(y, bool) or not (MIN_YEAR <= y <= MAX_YEAR)]
+        if invalid_years:
+            errors.append(f"{name}: years must be integers between {MIN_YEAR} and {MAX_YEAR}: {invalid_years}")
 
-if __name__ == '__main__':
-    main()
+    url = item.get("url")
+    if url and not (isinstance(url, str) and (url.startswith("http://") or url.startswith("https://"))):
+        errors.append(f"{name}: url must start with http:// or https://")
+
+    return errors, warnings
+
+
+def validate_dataset(relative_path: str, expected_category: str) -> tuple[int, int, int]:
+    path = ROOT / relative_path
+    print(f"Checking {relative_path}...")
+
+    data, load_errors = load_json(path)
+    if load_errors:
+        for error in load_errors:
+            print(f"  [ERROR] {error}")
+        return 0, len(load_errors), 0
+
+    errors: list[str] = []
+    warnings: list[str] = []
+    duplicate_candidates: dict[str, list[str]] = defaultdict(list)
+
+    for index, item in enumerate(data):
+        item_errors, item_warnings = validate_item(item, index, expected_category)
+        errors.extend(f"item {index}: {message}" for message in item_errors)
+        warnings.extend(f"item {index}: {message}" for message in item_warnings)
+
+        if isinstance(item, dict):
+            key = f"{normalize(item.get('name'))}|{normalize(item.get('prefecture'))}"
+            if key != "|":
+                duplicate_candidates[key].append(str(item.get("url") or item.get("address") or index))
+
+    for key, values in duplicate_candidates.items():
+        if len(values) > 1:
+            warnings.append(f"duplicate candidate {key}: {', '.join(values)}")
+
+    for error in errors:
+        print(f"  [ERROR] {error}")
+    for warning in warnings:
+        print(f"  [WARN] {warning}")
+
+    duplicate_count = sum(1 for values in duplicate_candidates.values() if len(values) > 1)
+    print(
+        f"  Summary: records={len(data)}, errors={len(errors)}, "
+        f"warnings={len(warnings)}, duplicate_candidates={duplicate_count}"
+    )
+    return len(data), len(errors), len(warnings)
+
+
+def main() -> int:
+    total_records = 0
+    total_errors = 0
+    total_warnings = 0
+
+    for relative_path, expected_category in DATASETS:
+        records, errors, warnings = validate_dataset(relative_path, expected_category)
+        total_records += records
+        total_errors += errors
+        total_warnings += warnings
+
+    print("\nFinal summary")
+    print(f"  total_records={total_records}")
+    print(f"  total_errors={total_errors}")
+    print(f"  total_warnings={total_warnings}")
+
+    if total_errors:
+        print("Data validation FAILED.")
+        return 1
+
+    print("Data validation PASSED.")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

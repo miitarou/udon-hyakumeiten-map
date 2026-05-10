@@ -279,7 +279,7 @@
     function createMarker(restaurant) {
         if (!restaurant.lat || !restaurant.lng) return null;
 
-        const regionClass = restaurant.region.toLowerCase();
+        const regionClass = toCssClass(restaurant.region);
         const categoryClass = restaurant.category === 'soba' ? ' soba' : '';
         const closedClass = restaurant.closed ? ' closed' : '';
         const selectCount = restaurant.years ? restaurant.years.length : 0;
@@ -321,7 +321,7 @@
         });
 
         const labelClass = 'marker-label' + (restaurant.closed ? ' marker-label-closed' : '');
-        marker.bindTooltip(restaurant.name, {
+        marker.bindTooltip(escapeHtml(restaurant.name), {
             permanent: true,
             direction: 'right',
             offset: [12, -10],
@@ -343,7 +343,8 @@
 
     // === Build Popup Content ===
     function buildPopupContent(r) {
-        const regionClass = r.region.toLowerCase();
+        // All restaurant-data-derived text inserted via innerHTML must be escaped.
+        const regionClass = toCssClass(r.region);
         const selectCount = r.years ? r.years.length : 0;
         const isSoba = r.category === 'soba';
 
@@ -377,7 +378,7 @@
         return `
             <div class="popup-inner">
                 <div class="popup-header">
-                    <span class="popup-region-badge ${regionClass}">${r.region}</span>
+                    <span class="popup-region-badge ${regionClass}">${escapeHtml(r.region)}</span>
                     <div class="popup-title-area">
                         <span class="popup-name">${escapeHtml(r.name)}</span>
                         ${countText}
@@ -1574,6 +1575,10 @@
         const div = document.createElement('div');
         div.textContent = str;
         return div.innerHTML;
+    }
+
+    function toCssClass(value) {
+        return String(value || '').toLowerCase().replace(/[^a-z0-9_-]/g, '');
     }
 
     // === Start ===
