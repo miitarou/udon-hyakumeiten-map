@@ -334,7 +334,21 @@ html, body {
     right: 0;
     bottom: 0;
     z-index: 1;
-    background: var(--bg-primary);
+    background: #f4f5f2;
+}
+
+.leaflet-container {
+    background: #f4f5f2;
+}
+
+.leaflet-tile {
+    background: #f4f5f2;
+    backface-visibility: hidden;
+    image-rendering: auto;
+}
+
+.leaflet-tile-pane img {
+    box-shadow: 0 0 0 1px rgba(246, 247, 244, 0.72);
 }
 
 /* === Control Panel === */
