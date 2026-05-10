@@ -26,6 +26,8 @@
     let searchQuery = '';
     let sortMode = 'name';
     let distanceOrigin = null;    // { type: 'current' | 'picked', lat, lng, label, accuracy? }
+    let searchDistanceOrigin = null; // { type: 'search', lat, lng, label }
+    let searchDistanceSortActive = false;
     let radiusKm = 5;
     let radiusPickMode = false;
     let radiusMarker = null;
@@ -463,14 +465,21 @@
             return true;
         });
 
+        updateSearchDistanceOrigin();
         sortRestaurants();
         renderMarkers();
         renderList();
         updateVisibleCount();
+        syncDistanceSortControl();
     }
 
     // === Sort ===
     function sortRestaurants() {
+        if (searchDistanceSortActive && searchDistanceOrigin && !distanceOrigin) {
+            sortByDistance(searchDistanceOrigin);
+            return;
+        }
+
         switch (sortMode) {
             case 'name':
                 filteredRestaurants.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'ja'));
@@ -499,14 +508,18 @@
                 {
                     const origin = getActiveDistanceOrigin();
                     if (!origin) break;
-                    filteredRestaurants.sort((a, b) => {
-                        const da = calcDistance(origin.lat, origin.lng, a.lat, a.lng);
-                        const db = calcDistance(origin.lat, origin.lng, b.lat, b.lng);
-                        return da - db;
-                    });
+                    sortByDistance(origin);
                 }
                 break;
         }
+    }
+
+    function sortByDistance(origin) {
+        filteredRestaurants.sort((a, b) => {
+            const da = calcDistance(origin.lat, origin.lng, a.lat, a.lng);
+            const db = calcDistance(origin.lat, origin.lng, b.lat, b.lng);
+            return da - db;
+        });
     }
 
     // === Haversine 距離計算 (km) ===
@@ -532,7 +545,7 @@
     }
 
     function getActiveDistanceOrigin() {
-        return distanceOrigin;
+        return distanceOrigin || searchDistanceOrigin;
     }
 
     function normalizeSearchText(value) {
@@ -560,6 +573,56 @@
             r.address,
             r.holiday
         ].filter(Boolean).join(' '));
+    }
+
+    function buildLocationSearchTarget(r) {
+        const area = r.area || '';
+        const areaBase = area.replace(/駅$/, '').replace(/（.+?）/g, '');
+        return normalizeSearchText([
+            area,
+            areaBase,
+            r.address
+        ].filter(Boolean).join(' '));
+    }
+
+    function isNameSearchMatch(r, queries) {
+        const name = normalizeSearchText(r.name);
+        return queries.some(q => name === q || name.includes(q));
+    }
+
+    function isLocationSearchMatch(r, queries) {
+        const locationTarget = buildLocationSearchTarget(r);
+        return queries.some(q => locationTarget.includes(q));
+    }
+
+    function updateSearchDistanceOrigin() {
+        searchDistanceOrigin = null;
+        searchDistanceSortActive = false;
+        if (distanceOrigin || !searchQuery || filteredRestaurants.length < 2) return;
+
+        const queries = buildSearchQueries(searchQuery);
+        const nameMatches = filteredRestaurants.filter(r => isNameSearchMatch(r, queries));
+        const exactNameMatches = filteredRestaurants.filter(r => {
+            const name = normalizeSearchText(r.name);
+            return queries.some(q => name === q);
+        });
+        const locationMatches = filteredRestaurants.filter(r =>
+            r.lat != null &&
+            r.lng != null &&
+            isLocationSearchMatch(r, queries)
+        );
+
+        if (exactNameMatches.length > 0) return;
+        if (locationMatches.length < 2) return;
+        if (nameMatches.length > locationMatches.length) return;
+
+        searchDistanceOrigin = {
+            type: 'search',
+            lat: locationMatches.reduce((sum, r) => sum + r.lat, 0) / locationMatches.length,
+            lng: locationMatches.reduce((sum, r) => sum + r.lng, 0) / locationMatches.length,
+            label: '検索結果'
+        };
+        searchDistanceSortActive = true;
     }
 
     // === Local Save State ===
@@ -949,6 +1012,27 @@
             distOption.setAttribute('disabled', 'disabled');
             distOption.textContent = '近い順（起点指定後）';
         }
+    }
+
+    function syncDistanceSortControl() {
+        if (distanceOrigin) {
+            enableDistanceSort(`${distanceOrigin.label}から近い順 ${distanceOrigin.type === 'current' ? '📍' : '📌'}`);
+            return;
+        }
+
+        const sortSelect = document.getElementById('sort-select');
+        const distOption = sortSelect ? sortSelect.querySelector('option[value="distance"]') : null;
+        if (!sortSelect || !distOption) return;
+
+        if (searchDistanceSortActive) {
+            distOption.removeAttribute('disabled');
+            distOption.textContent = '検索結果から近い順';
+            sortSelect.value = 'distance';
+            return;
+        }
+
+        disableDistanceSort();
+        if (sortSelect.value === 'distance') sortSelect.value = sortMode === 'distance' ? 'name' : sortMode;
     }
 
     function updateDistanceControls() {
