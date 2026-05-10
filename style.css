@@ -2084,6 +2084,24 @@ body.panel-resizing * {
     bottom: auto;
 }
 
+@media (max-width: 768px) {
+    .mobile-toggle-btn {
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 36px);
+        z-index: 600;
+    }
+
+    .footer-toggle-btn,
+    .footer-toggle-btn.active {
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 6px);
+        z-index: 599;
+        min-height: 22px;
+        padding: 2px 10px;
+        border-radius: 12px;
+        font-size: 9px;
+        opacity: 0.88;
+    }
+}
+
 /* === 空状態UI（0件） === */
 .empty-state {
     display: flex;
