@@ -144,15 +144,17 @@
                             <button class="filter-btn" data-status="closed" aria-pressed="false">閉店・移転のみ</button>
                         </div>
                     </div>
-                    <!-- 起点からの半径検索 -->
+                    <!-- 距離検索 -->
                     <div class="filter-subsection">
-                        <label class="control-label" for="radius-select">📌 起点から探す</label>
+                        <label class="control-label" for="radius-select">📍 距離で探す</label>
                         <div class="radius-control">
                             <div class="radius-actions">
-                                <button class="filter-btn" id="radius-pick-btn" aria-pressed="false">地図クリックで起点指定</button>
+                                <button class="filter-btn" id="radius-current-btn" aria-pressed="false">現在地を使う</button>
+                                <button class="filter-btn" id="radius-pick-btn" aria-pressed="false">地図で指定</button>
                                 <button class="filter-btn" id="radius-clear-btn" disabled>解除</button>
                             </div>
                             <select id="radius-select" class="pref-select radius-select">
+                                <option value="none">半径指定なし</option>
                                 <option value="1">1km以内</option>
                                 <option value="3">3km以内</option>
                                 <option value="5" selected>5km以内</option>
@@ -187,7 +189,7 @@
                             <option value="count-desc">選出回数 ↓</option>
                             <option value="count-asc">選出回数 ↑</option>
                             <option value="pref">都道府県順</option>
-                            <option value="distance" disabled>近い順（📍取得後）</option>
+                            <option value="distance" disabled>近い順（起点指定後）</option>
                         </select>
                     </div>
                 </div>

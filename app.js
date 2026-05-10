@@ -25,9 +25,7 @@
     let saveFilter = 'all';       // 'all' | 'want' | 'visited' | 'none'
     let searchQuery = '';
     let sortMode = 'name';
-    let userLat = null;
-    let userLng = null;
-    let radiusOrigin = null;      // { lat, lng }
+    let distanceOrigin = null;    // { type: 'current' | 'picked', lat, lng, label, accuracy? }
     let radiusKm = 5;
     let radiusPickMode = false;
     let radiusMarker = null;
@@ -448,9 +446,9 @@
             if (saveFilter === 'want' && currentSavedState !== 'want') return false;
             if (saveFilter === 'visited' && currentSavedState !== 'visited') return false;
             if (saveFilter === 'none' && currentSavedState !== 'none') return false;
-            // Radius search
-            if (radiusOrigin) {
-                const d = calcDistance(radiusOrigin.lat, radiusOrigin.lng, r.lat, r.lng);
+            // Distance radius search
+            if (distanceOrigin && radiusKm !== 'none') {
+                const d = calcDistance(distanceOrigin.lat, distanceOrigin.lng, r.lat, r.lng);
                 if (d > radiusKm) return false;
             }
             // Search
@@ -537,9 +535,7 @@
     }
 
     function getActiveDistanceOrigin() {
-        if (radiusOrigin) return { ...radiusOrigin, label: '起点' };
-        if (userLat !== null && userLng !== null) return { lat: userLat, lng: userLng, label: '現在地' };
-        return null;
+        return distanceOrigin;
     }
 
     // === Local Save State ===
@@ -789,7 +785,6 @@
     }
 
     // === 現在地機能 ===
-    let userLocationMarker = null;
     let userLocationCircle = null;
 
     function locateUser() {
@@ -804,38 +799,13 @@
                 const lng = position.coords.longitude;
                 const accuracy = position.coords.accuracy;
 
-                if (userLocationMarker) map.removeLayer(userLocationMarker);
                 if (userLocationCircle) map.removeLayer(userLocationCircle);
-
-                userLocationMarker = L.circleMarker([lat, lng], {
-                    radius: 8, fillColor: '#4285F4', color: '#ffffff',
-                    weight: 3, fillOpacity: 1
-                }).addTo(map);
-                userLocationMarker.bindPopup(
-                    '<div style="text-align:center;font-family:var(--font-main);">' +
-                    '<strong>📍 現在地</strong><br>' +
-                    `<span style="font-size:12px;color:#999;">精度: 約${Math.round(accuracy)}m</span></div>`
-                );
-
                 userLocationCircle = L.circle([lat, lng], {
                     radius: accuracy, fillColor: '#4285F4', fillOpacity: 0.1,
                     color: '#4285F4', weight: 1, opacity: 0.3
                 }).addTo(map);
 
-                userLat = lat;
-                userLng = lng;
-                map.flyTo([lat, lng], 14, { duration: 1.5 });
-
-                const sortSelect = document.getElementById('sort-select');
-                const distOption = sortSelect ? sortSelect.querySelector('option[value="distance"]') : null;
-                if (distOption) {
-                    distOption.removeAttribute('disabled');
-                    distOption.textContent = radiusOrigin ? '起点から近い順 📌' : '現在地から近い順 📍';
-                }
-
-                if (sortMode === 'distance') applyFilters();
-                else renderList();
-
+                setDistanceOrigin('current', lat, lng, accuracy);
                 btn.classList.remove('locating');
             },
             function (error) {
@@ -854,19 +824,20 @@
     // === 任意地点からの半径検索 ===
     function handleMapClick(e) {
         if (!radiusPickMode) return;
-        setRadiusOrigin(e.latlng.lat, e.latlng.lng);
-        radiusPickMode = false;
-        const pickBtn = document.getElementById('radius-pick-btn');
-        if (pickBtn) {
-            pickBtn.classList.remove('active');
-            pickBtn.setAttribute('aria-pressed', 'false');
-        }
+        setDistanceOrigin('picked', e.latlng.lat, e.latlng.lng);
     }
 
-    function setRadiusOrigin(lat, lng) {
-        radiusOrigin = { lat, lng };
+    function setDistanceOrigin(type, lat, lng, accuracy = null) {
+        const label = type === 'current' ? '現在地' : '指定地点';
+        radiusPickMode = false;
+        if (type !== 'current' && userLocationCircle) {
+            map.removeLayer(userLocationCircle);
+            userLocationCircle = null;
+        }
+        distanceOrigin = { type, lat, lng, label, accuracy };
+        updateDistanceControls();
         updateRadiusOverlay();
-        enableDistanceSort('起点から近い順 📌');
+        enableDistanceSort(`${label}から近い順 ${type === 'current' ? '📍' : '📌'}`);
         sortMode = 'distance';
         const sortSelect = document.getElementById('sort-select');
         if (sortSelect) sortSelect.value = 'distance';
@@ -880,61 +851,61 @@
 
         const clearBtn = document.getElementById('radius-clear-btn');
         const summary = document.getElementById('radius-summary');
-        if (!radiusOrigin) {
+        if (!distanceOrigin) {
             if (clearBtn) clearBtn.disabled = true;
             if (summary) summary.textContent = '起点未指定';
             return;
         }
 
-        radiusMarker = L.circleMarker([radiusOrigin.lat, radiusOrigin.lng], {
-            radius: 7,
-            fillColor: '#E8C547',
+        const isCurrent = distanceOrigin.type === 'current';
+        const fillColor = isCurrent ? '#4285F4' : '#E8C547';
+        const lineColor = isCurrent ? '#4285F4' : '#D4A853';
+
+        radiusMarker = L.circleMarker([distanceOrigin.lat, distanceOrigin.lng], {
+            radius: isCurrent ? 8 : 7,
+            fillColor,
             color: '#ffffff',
             weight: 2,
             fillOpacity: 1
         }).addTo(map);
-        radiusMarker.bindPopup('<strong>検索起点</strong>');
+        radiusMarker.bindPopup(`<strong>${isCurrent ? '📍 現在地' : '📌 検索起点'}</strong>`);
 
-        radiusCircle = L.circle([radiusOrigin.lat, radiusOrigin.lng], {
-            radius: radiusKm * 1000,
-            fillColor: '#E8C547',
-            fillOpacity: 0.08,
-            color: '#D4A853',
-            weight: 2,
-            opacity: 0.65
-        }).addTo(map);
+        if (radiusKm !== 'none') {
+            radiusCircle = L.circle([distanceOrigin.lat, distanceOrigin.lng], {
+                radius: radiusKm * 1000,
+                fillColor,
+                fillOpacity: 0.08,
+                color: lineColor,
+                weight: 2,
+                opacity: 0.65
+            }).addTo(map);
+        }
 
         if (clearBtn) clearBtn.disabled = false;
-        if (summary) summary.textContent = `起点から${radiusKm}km以内`;
+        if (summary) {
+            summary.textContent = radiusKm === 'none'
+                ? `${distanceOrigin.label}から近い順`
+                : `${distanceOrigin.label}から${radiusKm}km以内`;
+        }
     }
 
     function clearRadiusSearch(shouldApply = true) {
-        radiusOrigin = null;
+        distanceOrigin = null;
         radiusPickMode = false;
         if (radiusMarker) map.removeLayer(radiusMarker);
         if (radiusCircle) map.removeLayer(radiusCircle);
+        if (userLocationCircle) map.removeLayer(userLocationCircle);
         radiusMarker = null;
         radiusCircle = null;
+        userLocationCircle = null;
         updateRadiusOverlay();
-        const pickBtn = document.getElementById('radius-pick-btn');
-        if (pickBtn) {
-            pickBtn.classList.remove('active');
-            pickBtn.setAttribute('aria-pressed', 'false');
-        }
-        if (sortMode === 'distance' && userLat === null) {
+        updateDistanceControls();
+        if (sortMode === 'distance') {
             sortMode = 'name';
             const sortSelect = document.getElementById('sort-select');
             if (sortSelect) sortSelect.value = 'name';
         }
-        if (userLat !== null && userLng !== null) enableDistanceSort('現在地から近い順 📍');
-        else {
-            const sortSelect = document.getElementById('sort-select');
-            const distOption = sortSelect ? sortSelect.querySelector('option[value="distance"]') : null;
-            if (distOption) {
-                distOption.setAttribute('disabled', 'disabled');
-                distOption.textContent = '近い順（📍取得後）';
-            }
-        }
+        disableDistanceSort();
         if (shouldApply) applyFilters();
     }
 
@@ -944,6 +915,30 @@
         if (distOption) {
             distOption.removeAttribute('disabled');
             distOption.textContent = label;
+        }
+    }
+
+    function disableDistanceSort() {
+        const sortSelect = document.getElementById('sort-select');
+        const distOption = sortSelect ? sortSelect.querySelector('option[value="distance"]') : null;
+        if (distOption) {
+            distOption.setAttribute('disabled', 'disabled');
+            distOption.textContent = '近い順（起点指定後）';
+        }
+    }
+
+    function updateDistanceControls() {
+        const currentBtn = document.getElementById('radius-current-btn');
+        const pickBtn = document.getElementById('radius-pick-btn');
+        if (currentBtn) {
+            const isActive = !radiusPickMode && distanceOrigin?.type === 'current';
+            currentBtn.classList.toggle('active', isActive);
+            currentBtn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        }
+        if (pickBtn) {
+            const isActive = radiusPickMode || distanceOrigin?.type === 'picked';
+            pickBtn.classList.toggle('active', isActive);
+            pickBtn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
         }
     }
 
@@ -1155,10 +1150,12 @@
         if (radiusPickBtn) {
             radiusPickBtn.addEventListener('click', function () {
                 radiusPickMode = !radiusPickMode;
-                this.classList.toggle('active', radiusPickMode);
-                this.setAttribute('aria-pressed', radiusPickMode ? 'true' : 'false');
+                updateDistanceControls();
             });
         }
+
+        const radiusCurrentBtn = document.getElementById('radius-current-btn');
+        if (radiusCurrentBtn) radiusCurrentBtn.addEventListener('click', () => locateUser());
 
         const radiusClearBtn = document.getElementById('radius-clear-btn');
         if (radiusClearBtn) radiusClearBtn.addEventListener('click', () => clearRadiusSearch());
@@ -1166,9 +1163,9 @@
         const radiusSelect = document.getElementById('radius-select');
         if (radiusSelect) {
             radiusSelect.addEventListener('change', function () {
-                radiusKm = parseFloat(this.value) || 5;
+                radiusKm = this.value === 'none' ? 'none' : (parseFloat(this.value) || 5);
                 updateRadiusOverlay();
-                if (radiusOrigin) applyFilters();
+                if (distanceOrigin) applyFilters();
             });
         }
 
