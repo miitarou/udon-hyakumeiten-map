@@ -164,12 +164,23 @@
         map = L.map('map', {
             center: JAPAN_CENTER,
             zoom: JAPAN_ZOOM,
-            zoomControl: true,
+            zoomControl: false,
             attributionControl: true,
             maxBounds: [[20, 120], [50, 155]],
             minZoom: 5,
             maxZoom: 18
         });
+
+        L.control.zoom({
+            position: 'topright'
+        }).addTo(map);
+
+        L.control.scale({
+            position: 'bottomright',
+            metric: true,
+            imperial: false,
+            maxWidth: 120
+        }).addTo(map);
 
         const baseLayer = L.tileLayer(TILE_URL, {
             attribution: TILE_ATTR,

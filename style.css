@@ -1227,8 +1227,8 @@ body.panel-resizing * {
 
 .leaflet-popup-content {
     margin: 0 !important;
-    width: 280px !important;
-    max-width: 280px !important;
+    width: 320px !important;
+    max-width: min(320px, calc(100vw - 32px)) !important;
     max-height: min(620px, calc(100vh - 180px));
     overflow-y: auto;
     font-family: var(--font-main) !important;
@@ -1594,6 +1594,9 @@ body.panel-resizing * {
 
 .recommendation-card-reason {
     color: #B8C0CC;
+    overflow: visible;
+    white-space: normal;
+    text-overflow: clip;
 }
 
 .recommendation-more-btn {
@@ -1939,6 +1942,30 @@ body.panel-resizing * {
 
 .leaflet-control-zoom a:hover {
     background: var(--bg-tertiary) !important;
+}
+
+.leaflet-control-zoom {
+    margin-top: 14px !important;
+    margin-right: 14px !important;
+    border: 1px solid rgba(48, 54, 61, 0.8) !important;
+    border-radius: 8px !important;
+    overflow: hidden;
+    box-shadow: var(--shadow-md) !important;
+}
+
+.leaflet-control-scale {
+    margin-right: 14px !important;
+    margin-bottom: 16px !important;
+}
+
+.leaflet-control-scale-line {
+    border-color: rgba(232, 197, 71, 0.75) !important;
+    border-top: none !important;
+    background: rgba(13, 17, 23, 0.82) !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-main) !important;
+    font-size: 10px !important;
+    text-shadow: none !important;
 }
 
 .leaflet-control-attribution {
