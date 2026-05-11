@@ -1,6 +1,6 @@
 # iOS App Wrapper
 
-`うどん・そば百名店MAP` のCapacitorベースiOSラッパーです。
+`百名店MAP` のCapacitorベースiOSラッパーです。
 
 ## Commands
 
@@ -16,7 +16,7 @@ npm run ios:open
 ## App Settings
 
 - Bundle ID: `jp.miitarou.hyakumeiten.udonsoba`
-- Display name: `うどん・そば百名店MAP`
+- Display name: `百名店MAP`
 - Location permission: 現在地周辺の店舗検索にのみ使用
 
 ## Data Refresh Policy
@@ -31,8 +31,12 @@ HTML/CSS/JSはリモート差し替えせず、機能変更はApp Storeアップ
 - CocoaPods
 - Node.js / npm
 
-## Pending Local Setup
+## Current Local Setup
 
-- Xcode Componentsで `iOS 26.4` platform / Simulator Runtime のインストール待ち。
-- インストール後に `xcodebuild -workspace mobile/ios/App/App.xcworkspace -scheme App -showdestinations` でビルド先が出ることを確認する。
-- 次に必要であれば、Xcodeの `Signing & Capabilities` でApple Developer ProgramのTeamを選択する。
+- Xcode 26.4.1 / iOS 26.4 Simulator RuntimeでSimulatorビルド確認済み。
+- 実機 `mii-iPhone17` へのDebugビルド、インストール、起動確認済み。
+- Signing Team: `XUQ4K2R5GP`
+
+## App Store Preparation
+
+申請用の説明文、レビュー用メモ、プライバシー回答の下書きは `mobile/APP_STORE_NOTES.md` を参照してください。

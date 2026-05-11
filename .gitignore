@@ -3,6 +3,9 @@ node_modules/
 package-lock.json
 !mobile/package-lock.json
 
+# Build outputs
+build/
+
 # OS
 .DS_Store
 Thumbs.db
