@@ -1211,7 +1211,10 @@ body.panel-resizing * {
     margin: 0 !important;
     width: 280px !important;
     max-width: 280px !important;
+    max-height: min(620px, calc(100vh - 180px));
+    overflow-y: auto;
     font-family: var(--font-main) !important;
+    overscroll-behavior: contain;
 }
 
 .popup-inner {
@@ -1486,6 +1489,10 @@ body.panel-resizing * {
     display: flex;
     flex-direction: column;
     gap: 6px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 2px;
+    overscroll-behavior: contain;
 }
 
 .recommendation-card {
@@ -2093,6 +2100,7 @@ body.panel-resizing * {
     .leaflet-popup-content {
         width: 260px !important;
         max-width: 260px !important;
+        max-height: min(520px, calc(100svh - 180px));
     }
 
     /* フィルタボタンをコンパクトに */
@@ -2183,8 +2191,28 @@ body.panel-resizing * {
 }
 
 .loading-spinner {
-    font-size: 48px;
-    animation: noodleBounce 0.8s ease-in-out infinite;
+    width: 108px;
+    height: 58px;
+    animation: noodleBounce 1.8s ease-in-out infinite;
+}
+
+.loading-icon-pair {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.loading-icon {
+    width: 48px;
+    height: 48px;
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35));
+}
+
+.loading-soba {
+    animation: noodleBounce 1.8s ease-in-out infinite 0.18s;
 }
 
 .loading-text {
@@ -2199,6 +2227,10 @@ body.panel-resizing * {
 }
 
 .loading-overlay.error .loading-spinner {
+    animation: none;
+}
+
+.loading-overlay.error .loading-soba {
     animation: none;
 }
 

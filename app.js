@@ -587,14 +587,18 @@
             }
         }
 
+        updateOpenPopupLayout();
+
         const source = getRestaurantByUrl(sourceUrl);
-        const recommendations = getRecommendations(source, mode, 4);
+        const recommendations = getRecommendations(source, mode, 3);
         if (!source || !recommendations.length) {
             results.innerHTML = '<div class="recommendation-empty">近い候補を表示できませんでした。</div>';
+            updateOpenPopupLayout();
             return;
         }
 
         results.innerHTML = recommendations.map(item => buildRecommendationCard(item)).join('');
+        updateOpenPopupLayout();
     }
 
     function buildRecommendationCard(item) {
@@ -743,6 +747,18 @@
             .sort((a, b) => b.displayScore - a.displayScore)
             .slice(0, 3)
             .map(item => item.label);
+    }
+
+    function updateOpenPopupLayout() {
+        if (!map) return;
+        window.requestAnimationFrame(() => {
+            const popup = map._popup;
+            if (popup && typeof popup.update === 'function') popup.update();
+            window.setTimeout(() => {
+                const latestPopup = map._popup;
+                if (latestPopup && typeof latestPopup.update === 'function') latestPopup.update();
+            }, 80);
+        });
     }
 
     // === Build Popup Content ===
@@ -2172,7 +2188,7 @@
             e.preventDefault();
             e.stopPropagation();
             handleSaveButtonClick(saveBtn);
-        });
+        }, true);
 
         document.addEventListener('click', e => {
             const recommendBtn = e.target.closest('.leaflet-popup .popup-recommend-btn');
@@ -2185,7 +2201,7 @@
             renderRecommendationPanel(shell, control.dataset.recommendMode || 'similar').catch(error => {
                 console.warn('Recommendation rendering failed:', error);
             });
-        });
+        }, true);
 
         document.addEventListener('click', e => {
             const card = e.target.closest('.leaflet-popup .recommendation-card');
@@ -2195,7 +2211,7 @@
             const url = decodeURIComponent(card.dataset.focusUrl || '');
             const restaurant = getRestaurantByUrl(url);
             if (restaurant) focusRestaurant(restaurant);
-        });
+        }, true);
 
         document.addEventListener('click', e => {
             const link = e.target.closest('a[target="_blank"]');
