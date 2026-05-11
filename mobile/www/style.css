@@ -227,6 +227,10 @@ html, body {
 }
 
 .cat-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
     padding: 5px 12px;
     border: none;
     border-radius: 7px;
@@ -238,6 +242,20 @@ html, body {
     cursor: pointer;
     transition: all var(--transition-fast);
     white-space: nowrap;
+}
+
+.cat-icon {
+    display: inline-flex;
+    width: 18px;
+    height: 18px;
+    flex: 0 0 auto;
+    line-height: 0;
+}
+
+.cat-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 .cat-btn:hover {

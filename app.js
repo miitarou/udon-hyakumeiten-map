@@ -79,9 +79,9 @@
         status: 0
     };
     const RECOMMENDATION_MODES = {
-        similar: { label: '似ている' },
-        nearby: { label: '近くで似ている' },
-        expand: { label: '少し広げる' }
+        similar: { label: '味・雰囲気が近い' },
+        nearby: { label: '近場で探す' },
+        expand: { label: '新しい発見' }
     };
     const COMMON_SEARCH_REPLACEMENTS = [
         ['饂飩', 'うどん'],
@@ -801,7 +801,7 @@
                 const minStrength = Math.min(sourceTags.get(item.key) || 0, candidateTags.get(item.key) || 0);
                 return { key: item.key, prefix, label, displayScore, minStrength };
             })
-            .filter(item => item.prefix !== 'status')
+            .filter(item => item.prefix !== 'status' && item.prefix !== 'genre')
             .filter(item => item.minStrength >= (mode === 'expand' ? 0.18 : 0.22))
             .sort((a, b) => b.displayScore - a.displayScore)
             .slice(0, 3)
