@@ -179,8 +179,9 @@
             position: 'topright'
         }).addTo(map);
 
+        const isMobileScaleLayout = window.matchMedia('(max-width: 768px)').matches;
         L.control.scale({
-            position: 'bottomright',
+            position: isMobileScaleLayout ? 'bottomleft' : 'bottomright',
             metric: true,
             imperial: false,
             maxWidth: 120
