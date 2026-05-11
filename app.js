@@ -485,6 +485,7 @@
             closeButton: true,
             autoPan: true
         });
+        marker.on('popupopen', () => bindPopupControls(marker.getPopup()?.getElement()));
 
         const labelClass = 'marker-label'
             + (restaurant.closed ? ' marker-label-closed' : '')
@@ -501,6 +502,63 @@
 
         return marker;
     }
+
+    function bindPopupControls(popupEl) {
+        if (!popupEl) return;
+
+        popupEl.querySelectorAll('.save-btn').forEach(btn => {
+            btn.addEventListener('click', event => {
+                event.preventDefault();
+                event.stopPropagation();
+                handleSaveButtonClick(btn);
+            });
+        });
+
+        popupEl.querySelectorAll('.popup-recommend-btn, .recommendation-tab').forEach(control => {
+            control.addEventListener('click', event => {
+                event.preventDefault();
+                event.stopPropagation();
+                const shell = control.closest('.recommendation-shell');
+                renderRecommendationPanel(shell, control.dataset.recommendMode || 'similar').catch(error => {
+                    console.warn('Recommendation rendering failed:', error);
+                });
+            });
+        });
+
+        bindPopupRecommendationCards(popupEl);
+    }
+
+    function bindPopupRecommendationCards(scope) {
+        if (!scope) return;
+        scope.querySelectorAll('.recommendation-card').forEach(card => bindPopupRecommendationCard(card));
+    }
+
+    function bindPopupRecommendationCard(card) {
+        if (!card || card.dataset.bound === 'true') return;
+        card.dataset.bound = 'true';
+        card.addEventListener('click', event => {
+            event.preventDefault();
+            event.stopPropagation();
+            const url = decodeURIComponent(card.dataset.focusUrl || '');
+            const restaurant = getRestaurantByUrl(url);
+            if (restaurant) focusRestaurant(restaurant);
+        });
+    }
+
+    window.__hyakumeitenOpenRecommendations = function (control, mode = 'similar') {
+        const shell = control && typeof control.closest === 'function'
+            ? control.closest('.recommendation-shell')
+            : document.querySelector('.leaflet-popup .recommendation-shell');
+        renderRecommendationPanel(shell, mode).catch(error => {
+            console.warn('Recommendation rendering failed:', error);
+        });
+    };
+
+    window.__hyakumeitenFocusRecommendation = function (control) {
+        const url = decodeURIComponent(control?.dataset?.focusUrl || '');
+        const restaurant = getRestaurantByUrl(url);
+        if (restaurant) focusRestaurant(restaurant);
+    };
 
     function createClusterIcon(cluster) {
         const count = cluster.getChildCount();
@@ -542,13 +600,13 @@
         if (!r?.url) return '';
         const safeUrl = encodeURIComponent(r.url);
         const tabs = Object.entries(RECOMMENDATION_MODES).map(([mode, config], index) => `
-            <button type="button" class="recommendation-tab ${index === 0 ? 'active' : ''}" data-recommend-mode="${mode}" aria-pressed="${index === 0 ? 'true' : 'false'}">
+            <button type="button" class="recommendation-tab ${index === 0 ? 'active' : ''}" data-recommend-mode="${mode}" aria-pressed="${index === 0 ? 'true' : 'false'}" onclick="window.__hyakumeitenOpenRecommendations?.(this, this.dataset.recommendMode); return false;">
                 ${escapeHtml(config.label)}
             </button>`).join('');
 
         return `
             <div class="recommendation-shell" data-recommend-source="${safeUrl}">
-                <button type="button" class="popup-recommend-btn" data-recommend-mode="similar">
+                <button type="button" class="popup-recommend-btn" data-recommend-mode="similar" onclick="window.__hyakumeitenOpenRecommendations?.(this, this.dataset.recommendMode); return false;">
                     ✨ 近い候補
                 </button>
                 <div class="recommendation-panel" hidden>
@@ -598,6 +656,7 @@
         }
 
         results.innerHTML = recommendations.map(item => buildRecommendationCard(item)).join('');
+        bindPopupRecommendationCards(panel);
         updateOpenPopupLayout();
     }
 
@@ -610,7 +669,7 @@
         const closedBadge = r.closed ? '<span class="recommendation-closed">閉店</span>' : '';
 
         return `
-            <button type="button" class="recommendation-card" data-focus-url="${safeUrl}">
+            <button type="button" class="recommendation-card" data-focus-url="${safeUrl}" onclick="window.__hyakumeitenFocusRecommendation?.(this); return false;">
                 <span class="recommendation-card-main">
                     <span class="recommendation-card-name">${escapeHtml(r.name)}</span>
                     <span class="recommendation-score">${score}</span>
@@ -753,10 +812,10 @@
         if (!map) return;
         window.requestAnimationFrame(() => {
             const popup = map._popup;
-            if (popup && typeof popup.update === 'function') popup.update();
+            if (popup && typeof popup._adjustPan === 'function') popup._adjustPan();
             window.setTimeout(() => {
                 const latestPopup = map._popup;
-                if (latestPopup && typeof latestPopup.update === 'function') latestPopup.update();
+                if (latestPopup && typeof latestPopup._adjustPan === 'function') latestPopup._adjustPan();
             }, 80);
         });
     }
