@@ -30,3 +30,9 @@ HTML/CSS/JSはリモート差し替えせず、機能変更はApp Storeアップ
 - Xcode
 - CocoaPods
 - Node.js / npm
+
+## Pending Local Setup
+
+- Xcode Componentsで `iOS 26.4` platform / Simulator Runtime のインストール待ち。
+- インストール後に `xcodebuild -workspace mobile/ios/App/App.xcworkspace -scheme App -showdestinations` でビルド先が出ることを確認する。
+- 次に必要であれば、Xcodeの `Signing & Capabilities` でApple Developer ProgramのTeamを選択する。

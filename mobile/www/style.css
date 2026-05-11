@@ -2208,6 +2208,12 @@ body.panel-resizing * {
     .leaflet-control-zoom {
         margin-right: 10px !important;
     }
+
+    .leaflet-control-scale {
+        margin-right: calc(92px + env(safe-area-inset-right, 0px)) !important;
+        margin-bottom: calc(24px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+
     /* 店舗リストのモバイル表示 */
     .restaurant-list-section {
         flex: none;

@@ -44,6 +44,8 @@
     let fitBoundsTimer = null;
     let tileErrorCount = 0;
     let swRefreshPending = false;
+    let mobilePanelHeightFrame = null;
+    let mobilePanelPendingHeight = null;
     const numberAnimationState = new Map();
     const SAVE_STORAGE_KEY = 'hyakumeiten-map-store-states-v1';
     const NATIVE_DATA_CACHE_KEY = 'hyakumeiten-map-native-data-v1';
@@ -2122,10 +2124,21 @@
         return Math.max(minHeight, Math.min(maxHeight, height));
     }
 
-    function setMobilePanelHeight(height, persist = false) {
+    function setMobilePanelHeight(height, persist = false, invalidate = true) {
         if (window.innerWidth > 768) return;
         const panelHeight = clampMobilePanelHeight(height);
-        document.documentElement.style.setProperty('--mobile-sheet-height', `${Math.round(panelHeight)}px`);
+        mobilePanelPendingHeight = panelHeight;
+        const applyHeight = () => {
+            const nextHeight = mobilePanelPendingHeight ?? panelHeight;
+            document.documentElement.style.setProperty('--mobile-sheet-height', `${nextHeight.toFixed(1)}px`);
+            mobilePanelHeightFrame = null;
+        };
+        if (persist) {
+            if (mobilePanelHeightFrame) cancelAnimationFrame(mobilePanelHeightFrame);
+            applyHeight();
+        } else if (!mobilePanelHeightFrame) {
+            mobilePanelHeightFrame = requestAnimationFrame(applyHeight);
+        }
         if (persist) {
             try {
                 localStorage.setItem(MOBILE_PANEL_HEIGHT_KEY, String(Math.round(panelHeight)));
@@ -2133,7 +2146,7 @@
                 console.warn('Failed to store mobile panel height:', error);
             }
         }
-        if (map) setTimeout(() => map.invalidateSize(), 80);
+        if (invalidate && map) setTimeout(() => map.invalidateSize(), 80);
     }
 
     function applyStoredMobilePanelHeight() {
@@ -2157,6 +2170,10 @@
         let startY = 0;
         let startHeight = 0;
         let targetHeight = 0;
+        let lastY = 0;
+        let lastTime = 0;
+        let velocity = 0;
+        let dragElement = null;
 
         const endDrag = e => {
             if (!dragging) return;
@@ -2164,33 +2181,65 @@
             handle.classList.remove('dragging');
             panel.classList.remove('panel-dragging');
             document.body.classList.remove('sheet-resizing');
-            if (e.pointerId != null) {
-                try { handle.releasePointerCapture(e.pointerId); } catch (error) { /* pointer may already be released */ }
+            if (e.pointerId != null && dragElement) {
+                try { dragElement.releasePointerCapture(e.pointerId); } catch (error) { /* pointer may already be released */ }
             }
-            setMobilePanelHeight(targetHeight || panel.getBoundingClientRect().height, true);
+            dragElement = null;
+            const totalDragDown = e.clientY - startY;
+            const shouldClose = totalDragDown > 110 || velocity > 0.75;
+            if (shouldClose) {
+                togglePanel(false);
+                return;
+            }
+            setMobilePanelHeight(targetHeight || panel.getBoundingClientRect().height, true, true);
         };
 
-        handle.addEventListener('pointerdown', e => {
+        const startDrag = (e, surface) => {
             if (window.innerWidth > 768 || !panel.classList.contains('panel-open')) return;
             e.preventDefault();
             dragging = true;
+            dragElement = surface;
             startY = e.clientY;
             startHeight = panel.getBoundingClientRect().height;
             targetHeight = startHeight;
+            lastY = e.clientY;
+            lastTime = performance.now();
+            velocity = 0;
             handle.classList.add('dragging');
             panel.classList.add('panel-dragging');
             document.body.classList.add('sheet-resizing');
-            handle.setPointerCapture(e.pointerId);
-        });
+            surface.setPointerCapture(e.pointerId);
+        };
 
-        handle.addEventListener('pointermove', e => {
+        const moveDrag = e => {
             if (!dragging) return;
             e.preventDefault();
+            const now = performance.now();
+            const elapsed = Math.max(1, now - lastTime);
+            velocity = (e.clientY - lastY) / elapsed;
+            lastY = e.clientY;
+            lastTime = now;
             targetHeight = startHeight + startY - e.clientY;
-            setMobilePanelHeight(targetHeight, false);
+            setMobilePanelHeight(targetHeight, false, false);
+        };
+
+        handle.addEventListener('pointerdown', e => {
+            startDrag(e, handle);
         });
-        handle.addEventListener('pointerup', endDrag);
-        handle.addEventListener('pointercancel', endDrag);
+
+        panel.addEventListener('pointerdown', e => {
+            if (e.target === handle || handle.contains(e.target)) return;
+            if (e.target.closest('button, input, select, textarea, a')) return;
+            const rect = panel.getBoundingClientRect();
+            if (e.clientY - rect.top > 84) return;
+            startDrag(e, panel);
+        });
+
+        [handle, panel].forEach(surface => {
+            surface.addEventListener('pointermove', moveDrag);
+            surface.addEventListener('pointerup', endDrag);
+            surface.addEventListener('pointercancel', endDrag);
+        });
 
         handle.addEventListener('keydown', e => {
             if (window.innerWidth > 768 || !panel.classList.contains('panel-open')) return;
@@ -2203,7 +2252,7 @@
                 setMobilePanelHeight(current - 48, true);
             } else if (e.key === 'Home') {
                 e.preventDefault();
-                setMobilePanelHeight(0, true);
+                togglePanel(false);
             } else if (e.key === 'End') {
                 e.preventDefault();
                 setMobilePanelHeight(getMobileViewportHeight(), true);
