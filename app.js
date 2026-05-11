@@ -15,6 +15,10 @@
     let visibleRestaurants = [];
     let udonHallOfFameThreshold = Infinity;
     let sobaHallOfFameThreshold = Infinity;
+    let recommendationTagData = null;
+    let recommendationTagsByUrl = new Map();
+    let recommendationTagDefinitions = {};
+    let recommendationTagLoadPromise = null;
     let map = null;
     let markerClusterGroup = null;
     let markers = new Map();       // url -> marker
@@ -45,6 +49,40 @@
     const SAVE_BACKUP_FORMAT = 'udon-hyakumeiten-map.saved-states';
     const SAVE_BACKUP_VERSION = 1;
     const REMOTE_DATA_BASE_URL = 'https://miitarou.github.io/udon-hyakumeiten-map/data/';
+    const RECOMMENDATION_TAG_PATH = 'data/recommendation_tags.json';
+    const RECOMMENDATION_PREFIX_WEIGHTS = {
+        genre: 1.4,
+        style: 1.2,
+        texture: 1.2,
+        dish: 1.1,
+        lineage: 1.1,
+        scene: 0.8,
+        mood: 0.8,
+        pref: 0.7,
+        macro_area: 0.45,
+        selection: 0.5,
+        region: 0.45,
+        status: 0
+    };
+    const RECOMMENDATION_REASON_PRIORITY = {
+        style: 1.6,
+        texture: 1.55,
+        dish: 1.5,
+        lineage: 1.4,
+        scene: 1.15,
+        mood: 1.1,
+        genre: 1.0,
+        selection: 0.8,
+        pref: 0.65,
+        macro_area: 0.5,
+        region: 0.45,
+        status: 0
+    };
+    const RECOMMENDATION_MODES = {
+        similar: { label: '似ている' },
+        nearby: { label: '近くで似ている' },
+        expand: { label: '少し広げる' }
+    };
     const COMMON_SEARCH_REPLACEMENTS = [
         ['饂飩', 'うどん'],
         ['齊', '斉'],
@@ -189,6 +227,7 @@
         allUdon = udonRaw;
         allSoba = sobaRaw;
         allRestaurants = [...udonRaw, ...sobaRaw];
+        startRecommendationTagLoad(fetchJson);
 
         function calcThreshold(src) {
             const counts = src.map(r => r.years ? r.years.length : 0).filter(c => c > 0).sort((a, b) => b - a);
@@ -271,6 +310,41 @@
             xhr.onerror = () => reject(new Error('XHR error'));
             xhr.send();
         });
+    }
+
+    function startRecommendationTagLoad(fetchJson) {
+        if (!recommendationTagLoadPromise) {
+            recommendationTagLoadPromise = loadRecommendationTags(fetchJson);
+        }
+        return recommendationTagLoadPromise;
+    }
+
+    async function loadRecommendationTags(fetchJson) {
+        const urls = isNativeApp()
+            ? [`${REMOTE_DATA_BASE_URL}recommendation_tags.json?ts=${Date.now()}`, RECOMMENDATION_TAG_PATH]
+            : [RECOMMENDATION_TAG_PATH];
+
+        for (const url of urls) {
+            try {
+                const data = await fetchJson(url);
+                if (!Array.isArray(data?.restaurants)) throw new Error('Recommendation tag data should contain restaurants array');
+                recommendationTagData = data;
+                recommendationTagDefinitions = data.tagDefinitions || {};
+                recommendationTagsByUrl = new Map(
+                    data.restaurants
+                        .filter(item => item?.url && Array.isArray(item.tags))
+                        .map(item => [item.url, item])
+                );
+                console.log(`🔎 推薦タグ読込完了: ${recommendationTagsByUrl.size} 店 / ${Object.keys(recommendationTagDefinitions).length} tags`);
+                return;
+            } catch (error) {
+                console.warn(`Recommendation tag load failed: ${url}`, error);
+            }
+        }
+
+        recommendationTagData = null;
+        recommendationTagDefinitions = {};
+        recommendationTagsByUrl = new Map();
     }
 
     // === 年度ボタンを動的生成 ===
@@ -464,6 +538,213 @@
         return '<span class="hof-badge" title="殿堂入り（カテゴリ上位10%）" aria-label="殿堂入り（カテゴリ上位10%）">👑</span>';
     }
 
+    function buildRecommendationShell(r) {
+        if (!r?.url) return '';
+        const safeUrl = encodeURIComponent(r.url);
+        const tabs = Object.entries(RECOMMENDATION_MODES).map(([mode, config], index) => `
+            <button type="button" class="recommendation-tab ${index === 0 ? 'active' : ''}" data-recommend-mode="${mode}" aria-pressed="${index === 0 ? 'true' : 'false'}">
+                ${escapeHtml(config.label)}
+            </button>`).join('');
+
+        return `
+            <div class="recommendation-shell" data-recommend-source="${safeUrl}">
+                <button type="button" class="popup-recommend-btn" data-recommend-mode="similar">
+                    ✨ 近い候補
+                </button>
+                <div class="recommendation-panel" hidden>
+                    <div class="recommendation-title">
+                        <span>近い候補</span>
+                        <span class="recommendation-note">AI推定タグによる探索補助</span>
+                    </div>
+                    <div class="recommendation-tabs" role="group" aria-label="推薦モード">
+                        ${tabs}
+                    </div>
+                    <div class="recommendation-results" aria-live="polite"></div>
+                </div>
+            </div>`;
+    }
+
+    async function renderRecommendationPanel(shell, mode = 'similar') {
+        if (!shell) return;
+        const sourceUrl = decodeURIComponent(shell.dataset.recommendSource || '');
+        const panel = shell.querySelector('.recommendation-panel');
+        const results = shell.querySelector('.recommendation-results');
+        if (!panel || !results || !sourceUrl) return;
+
+        panel.hidden = false;
+        shell.querySelectorAll('.recommendation-tab').forEach(tab => {
+            const isActive = tab.dataset.recommendMode === mode;
+            tab.classList.toggle('active', isActive);
+            tab.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+
+        results.innerHTML = '<div class="recommendation-empty">候補を計算中です...</div>';
+        if (!recommendationTagsByUrl.has(sourceUrl) && recommendationTagLoadPromise) {
+            try {
+                await recommendationTagLoadPromise;
+            } catch (error) {
+                console.warn('Recommendation tag load did not complete:', error);
+            }
+        }
+
+        const source = getRestaurantByUrl(sourceUrl);
+        const recommendations = getRecommendations(source, mode, 4);
+        if (!source || !recommendations.length) {
+            results.innerHTML = '<div class="recommendation-empty">近い候補を表示できませんでした。</div>';
+            return;
+        }
+
+        results.innerHTML = recommendations.map(item => buildRecommendationCard(item)).join('');
+    }
+
+    function buildRecommendationCard(item) {
+        const r = item.restaurant;
+        const safeUrl = encodeURIComponent(r.url || '');
+        const score = Math.max(1, Math.min(99, Math.round(item.score * 100)));
+        const distance = Number.isFinite(item.distanceKm) ? ` / ${formatDistance(item.distanceKm)}` : '';
+        const reasons = item.reasons.length ? item.reasons.join('、') : '選出履歴や地域傾向';
+        const closedBadge = r.closed ? '<span class="recommendation-closed">閉店</span>' : '';
+
+        return `
+            <button type="button" class="recommendation-card" data-focus-url="${safeUrl}">
+                <span class="recommendation-card-main">
+                    <span class="recommendation-card-name">${escapeHtml(r.name)}</span>
+                    <span class="recommendation-score">${score}</span>
+                </span>
+                <span class="recommendation-card-meta">${escapeHtml(r.prefecture)} ${escapeHtml(r.area || '')}${distance} ${closedBadge}</span>
+                <span class="recommendation-card-reason">共通: ${escapeHtml(reasons)}</span>
+            </button>`;
+    }
+
+    function getRecommendations(source, mode = 'similar', limit = 4) {
+        if (!source?.url || !recommendationTagsByUrl.has(source.url)) return [];
+        const sourceRecord = recommendationTagsByUrl.get(source.url);
+
+        return allRestaurants
+            .filter(candidate => candidate.url !== source.url)
+            .filter(candidate => !candidate.closed)
+            .map(candidate => {
+                const candidateRecord = recommendationTagsByUrl.get(candidate.url);
+                if (!candidateRecord) return null;
+                const scored = scoreRecommendationCandidate(source, sourceRecord, candidate, candidateRecord, mode);
+                return scored && scored.score > 0.02 ? scored : null;
+            })
+            .filter(Boolean)
+            .sort((a, b) => b.score - a.score)
+            .slice(0, limit);
+    }
+
+    function scoreRecommendationCandidate(source, sourceRecord, candidate, candidateRecord, mode) {
+        const sourceTags = buildRecommendationTagMap(sourceRecord);
+        const candidateTags = buildRecommendationTagMap(candidateRecord);
+        if (!sourceTags.size || !candidateTags.size) return null;
+
+        let dot = 0;
+        let normA = 0;
+        let normB = 0;
+        const shared = [];
+
+        sourceTags.forEach((aValue, key) => {
+            const weight = getRecommendationTagWeight(key, mode);
+            normA += (aValue ** 2) * weight;
+        });
+        candidateTags.forEach((bValue, key) => {
+            const weight = getRecommendationTagWeight(key, mode);
+            normB += (bValue ** 2) * weight;
+        });
+        sourceTags.forEach((aValue, key) => {
+            if (!candidateTags.has(key)) return;
+            const weight = getRecommendationTagWeight(key, mode);
+            const contribution = aValue * candidateTags.get(key) * weight;
+            dot += contribution;
+            if (weight > 0) shared.push({ key, contribution });
+        });
+
+        if (!dot || !normA || !normB) return null;
+
+        const similarity = dot / Math.sqrt(normA * normB);
+        const distanceKm = source.lat != null && source.lng != null && candidate.lat != null && candidate.lng != null
+            ? calcDistance(source.lat, source.lng, candidate.lat, candidate.lng)
+            : Infinity;
+        const distanceScore = Number.isFinite(distanceKm) ? 1 / (1 + distanceKm / 18) : 0;
+
+        let score = similarity;
+        if (mode === 'nearby') {
+            score = (similarity * 0.62) + (distanceScore * 0.38);
+        } else if (mode === 'expand') {
+            const sameCategory = source.category === candidate.category;
+            const samePrefecture = source.prefecture === candidate.prefecture;
+            const noveltyFactor = (sameCategory ? 0.94 : 1.08) * (samePrefecture ? 0.96 : 1.03);
+            score = similarity * noveltyFactor;
+        }
+
+        const savedState = getSavedState(candidate);
+        if (savedState === 'visited') score *= 0.72;
+        if (savedState === 'want') score *= 1.08;
+
+        return {
+            restaurant: candidate,
+            score,
+            distanceKm,
+            reasons: buildRecommendationReasons(shared, sourceTags, candidateTags, mode)
+        };
+    }
+
+    function buildRecommendationTagMap(record) {
+        const map = new Map();
+        (record?.tags || []).forEach(tag => {
+            const key = String(tag?.key || '');
+            const prefix = getRecommendationTagPrefix(key);
+            if (!key || prefix === 'status') return;
+            const weight = Number(tag.weight);
+            const confidence = Number(tag.confidence);
+            if (!Number.isFinite(weight) || !Number.isFinite(confidence)) return;
+            map.set(key, Math.max(0, weight) * Math.max(0, confidence));
+        });
+        return map;
+    }
+
+    function getRecommendationTagPrefix(key) {
+        return String(key || '').split('.')[0];
+    }
+
+    function getRecommendationTagWeight(key, mode) {
+        const prefix = getRecommendationTagPrefix(key);
+        const base = RECOMMENDATION_PREFIX_WEIGHTS[prefix] ?? 0.6;
+        if (base <= 0) return 0;
+        return base * getRecommendationModeFactor(prefix, mode);
+    }
+
+    function getRecommendationModeFactor(prefix, mode) {
+        if (mode === 'nearby') {
+            if (prefix === 'pref' || prefix === 'macro_area' || prefix === 'region') return 1.2;
+            if (prefix === 'genre' || prefix === 'style' || prefix === 'texture') return 0.92;
+        }
+        if (mode === 'expand') {
+            if (prefix === 'genre') return 0.58;
+            if (prefix === 'pref') return 0.28;
+            if (prefix === 'macro_area' || prefix === 'region') return 0.72;
+            if (prefix === 'style' || prefix === 'texture' || prefix === 'dish' || prefix === 'lineage') return 1.18;
+        }
+        return 1;
+    }
+
+    function buildRecommendationReasons(shared, sourceTags, candidateTags, mode) {
+        return shared
+            .map(item => {
+                const prefix = getRecommendationTagPrefix(item.key);
+                const label = recommendationTagDefinitions[item.key]?.label || item.key;
+                const displayScore = item.contribution * (RECOMMENDATION_REASON_PRIORITY[prefix] ?? 0.7);
+                const minStrength = Math.min(sourceTags.get(item.key) || 0, candidateTags.get(item.key) || 0);
+                return { key: item.key, prefix, label, displayScore, minStrength };
+            })
+            .filter(item => item.prefix !== 'status')
+            .filter(item => item.minStrength >= (mode === 'expand' ? 0.18 : 0.22))
+            .sort((a, b) => b.displayScore - a.displayScore)
+            .slice(0, 3)
+            .map(item => item.label);
+    }
+
     // === Build Popup Content ===
     function buildPopupContent(r) {
         // All restaurant-data-derived text inserted via innerHTML must be escaped.
@@ -523,6 +804,7 @@
                 ${isSafeUrl(r.url) ? '</a>' : '</span>'}
                 ${mapLinksHtml}
                 ${buildSaveButtons(r, 'popup-save-actions')}
+                ${buildRecommendationShell(r)}
             </div>`;
     }
 
@@ -1890,6 +2172,29 @@
             e.preventDefault();
             e.stopPropagation();
             handleSaveButtonClick(saveBtn);
+        });
+
+        document.addEventListener('click', e => {
+            const recommendBtn = e.target.closest('.leaflet-popup .popup-recommend-btn');
+            const recommendTab = e.target.closest('.leaflet-popup .recommendation-tab');
+            if (!recommendBtn && !recommendTab) return;
+            e.preventDefault();
+            e.stopPropagation();
+            const control = recommendBtn || recommendTab;
+            const shell = control.closest('.recommendation-shell');
+            renderRecommendationPanel(shell, control.dataset.recommendMode || 'similar').catch(error => {
+                console.warn('Recommendation rendering failed:', error);
+            });
+        });
+
+        document.addEventListener('click', e => {
+            const card = e.target.closest('.leaflet-popup .recommendation-card');
+            if (!card) return;
+            e.preventDefault();
+            e.stopPropagation();
+            const url = decodeURIComponent(card.dataset.focusUrl || '');
+            const restaurant = getRestaurantByUrl(url);
+            if (restaurant) focusRestaurant(restaurant);
         });
 
         document.addEventListener('click', e => {

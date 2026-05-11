@@ -1404,6 +1404,166 @@ body.panel-resizing * {
     color: #74B9FF;
 }
 
+/* === 推薦候補（ポップアップ内） === */
+.recommendation-shell {
+    margin-top: 10px;
+}
+
+.popup-recommend-btn {
+    width: 100%;
+    border: 1px solid rgba(232, 197, 71, 0.38);
+    background: linear-gradient(135deg, rgba(232, 197, 71, 0.16), rgba(184, 122, 74, 0.12));
+    color: #F4D66B;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.popup-recommend-btn:hover {
+    border-color: rgba(232, 197, 71, 0.58);
+    color: #FFE083;
+    transform: translateY(-1px);
+}
+
+.recommendation-panel {
+    margin-top: 8px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    background: rgba(16, 18, 25, 0.62);
+}
+
+.recommendation-title {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.recommendation-note {
+    color: var(--text-muted);
+    font-size: 9px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.recommendation-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.recommendation-tab {
+    flex: 1;
+    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-secondary);
+    border-radius: 6px;
+    padding: 6px 4px;
+    font-family: var(--font-main);
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.1;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.recommendation-tab.active {
+    background: rgba(232, 197, 71, 0.18);
+    border-color: rgba(232, 197, 71, 0.48);
+    color: #F4D66B;
+}
+
+.recommendation-results {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.recommendation-card {
+    display: block;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.045);
+    color: var(--text-primary);
+    border-radius: 7px;
+    padding: 8px;
+    font-family: var(--font-main);
+    text-align: left;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.recommendation-card:hover {
+    border-color: rgba(232, 197, 71, 0.35);
+    background: rgba(232, 197, 71, 0.08);
+}
+
+.recommendation-card-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 3px;
+}
+
+.recommendation-card-name {
+    min-width: 0;
+    overflow: hidden;
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.recommendation-score {
+    min-width: 24px;
+    height: 20px;
+    border: 1px solid rgba(232, 197, 71, 0.38);
+    border-radius: 999px;
+    color: #F4D66B;
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 18px;
+    text-align: center;
+}
+
+.recommendation-card-meta,
+.recommendation-card-reason {
+    display: block;
+    overflow: hidden;
+    color: var(--text-secondary);
+    font-size: 10px;
+    line-height: 1.35;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.recommendation-card-reason {
+    color: #B8C0CC;
+}
+
+.recommendation-closed {
+    color: #FF6B6B;
+    font-weight: 700;
+}
+
+.recommendation-empty {
+    color: var(--text-muted);
+    font-size: 11px;
+    line-height: 1.4;
+}
+
 /* === カード内距離表示 === */
 .card-distance {
     font-size: 11px;
