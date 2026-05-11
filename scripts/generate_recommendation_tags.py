@@ -155,11 +155,11 @@ TAG_DEFINITIONS: dict[str, dict[str, str]] = {
 }
 
 COMMON_KEYWORD_RULES = (
-    ("style.handmade", ("手打", "手打ち", "本手打", "純手打", "手造り", "自家製", "石臼挽"), 0.82, 0.86),
+    ("style.handmade", ("手打", "手打ち", "本手打", "純手打", "手造り", "自家製", "石臼挽", "製麺所"), 0.82, 0.86),
     ("style.self_service", ("セルフ",), 0.75, 0.86),
     ("scene.drink_pairing", ("酒", "居酒屋", "蕎麦前", "醸し", "バル"), 0.68, 0.76),
     ("mood.modern", ("JAZZ", "ジャズ", "スタンド", "バル", "cafe", "CAFE", "カフェ"), 0.55, 0.62),
-    ("mood.traditional", ("総本家", "元祖", "本店", "傳", "伝統", "老舗"), 0.56, 0.62),
+    ("mood.traditional", ("総本家", "元祖", "本店", "本陣", "傳", "伝統", "老舗"), 0.56, 0.62),
 )
 
 UDON_KEYWORD_RULES = (
@@ -171,18 +171,19 @@ UDON_KEYWORD_RULES = (
     ("dish.kamatama", ("釜玉",), 0.86, 0.9),
     ("dish.bukkake", ("ぶっかけ",), 0.82, 0.88),
     ("dish.meat_soup", ("肉汁", "肉うどん", "肉 甚三", "肉汁うどん"), 0.76, 0.8),
-    ("dish.miso_nikomi", ("味噌煮込", "味噌煮込み"), 0.86, 0.9),
+    ("dish.miso_nikomi", ("味噌煮込", "味噌煮込み", "味噌"), 0.86, 0.86),
     ("dish.kishimen", ("きしめん",), 0.88, 0.92),
     ("dish.inaniwa", ("稲庭",), 0.88, 0.9),
     ("dish.tempura", ("天ぷら", "天ざる", "天釜", "天丼"), 0.66, 0.72),
+    ("style.kansai_dashi", ("京うどん",), 0.68, 0.72),
 )
 
 SOBA_KEYWORD_RULES = (
     ("dish.juwari", ("十割", "生粉打"), 0.88, 0.9),
     ("dish.duck", ("鴨",), 0.78, 0.82),
     ("dish.tempura", ("天ぷら", "天せいろ", "天ざる"), 0.68, 0.76),
-    ("style.stone_milled", ("石臼", "玄蕎麦", "玄そば", "玄水"), 0.78, 0.78),
-    ("style.edomae_soba", ("藪", "やぶ", "砂場", "更科", "室町", "並木"), 0.85, 0.82),
+    ("style.stone_milled", ("石臼", "手挽き", "玄蕎麦", "玄そば", "玄水"), 0.78, 0.78),
+    ("style.edomae_soba", ("藪", "やぶ", "砂場", "更科", "室町", "並木", "蕎麦切り", "そば切り"), 0.85, 0.82),
     ("lineage.okina", ("翁", "達磨"), 0.72, 0.74),
     ("lineage.yabu", ("藪", "やぶ", "竹やぶ"), 0.74, 0.78),
     ("lineage.sarashina", ("更科",), 0.74, 0.8),
@@ -324,6 +325,13 @@ def build_tags_for_restaurant(
             add_tag(tags, "scene.destination", 0.7, 0.62, "regional_prior", "region:kagawa")
         if prefecture in {"大阪府", "京都府", "兵庫県", "奈良県", "滋賀県", "和歌山県"}:
             add_tag(tags, "style.kansai_dashi", 0.55, 0.52, "regional_prior", "macro_area:kansai")
+        if prefecture == "京都府":
+            add_tag(tags, "style.kansai_dashi", 0.62, 0.62, "regional_prior", "prefecture:kyoto_udon")
+            add_tag(tags, "scene.destination", 0.64, 0.6, "regional_prior", "prefecture:kyoto_udon")
+        if any(keyword in name for keyword in ("製麺所", "食料品店", "セルフ")):
+            add_tag(tags, "style.self_service", 0.74, 0.78, "name_keyword", "name_keyword:production_or_self_service")
+            add_tag(tags, "scene.quick_lunch", 0.62, 0.68, "name_keyword", "name_keyword:production_or_self_service")
+            add_tag(tags, "style.regional_specialty", 0.68, 0.68, "name_keyword", "name_keyword:production_or_self_service")
         if prefecture == "山梨県" or "吉田" in name:
             add_tag(tags, "style.yoshida_udon", 0.82, 0.76, "regional_prior", "prefecture:yamanashi")
             add_tag(tags, "style.regional_specialty", 0.74, 0.72, "regional_prior", "prefecture:yamanashi")
@@ -341,6 +349,9 @@ def build_tags_for_restaurant(
         apply_keyword_rules(tags, name, SOBA_KEYWORD_RULES)
         if prefecture == "東京都":
             add_tag(tags, "style.edomae_soba", 0.58, 0.56, "regional_prior", "prefecture:tokyo")
+        if prefecture in {"京都府", "大阪府", "奈良県", "兵庫県"}:
+            add_tag(tags, "scene.calm_meal", 0.6, 0.6, "regional_prior", "macro_area:kansai_soba")
+            add_tag(tags, "texture.aroma_focused", 0.62, 0.6, "regional_prior", "macro_area:kansai_soba")
         if prefecture == "長野県":
             add_tag(tags, "style.shinshu_soba", 0.86, 0.78, "regional_prior", "prefecture:nagano")
             add_tag(tags, "style.regional_specialty", 0.78, 0.76, "regional_prior", "prefecture:nagano")

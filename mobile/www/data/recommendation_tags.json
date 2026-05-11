@@ -12176,11 +12176,12 @@
         },
         {
           "key": "scene.quick_lunch",
-          "weight": 0.48,
-          "confidence": 0.5,
-          "source": "regional_prior",
+          "weight": 0.62,
+          "confidence": 0.68,
+          "source": "name_keyword",
           "evidence": [
-            "area:station"
+            "area:station",
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -12209,6 +12210,33 @@
           "source": "data",
           "evidence": [
             "closed"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.82,
+          "confidence": 0.86,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:製麺所"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.68,
+          "confidence": 0.68,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -14135,11 +14163,12 @@
         },
         {
           "key": "scene.quick_lunch",
-          "weight": 0.48,
-          "confidence": 0.5,
-          "source": "regional_prior",
+          "weight": 0.62,
+          "confidence": 0.68,
+          "source": "name_keyword",
           "evidence": [
-            "area:station"
+            "area:station",
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -14168,6 +14197,33 @@
           "source": "data",
           "evidence": [
             "closed"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.82,
+          "confidence": 0.86,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:製麺所"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.68,
+          "confidence": 0.68,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -19152,7 +19208,7 @@
         {
           "key": "dish.miso_nikomi",
           "weight": 0.86,
-          "confidence": 0.9,
+          "confidence": 0.86,
           "source": "name_keyword",
           "evidence": [
             "name_keyword:味噌煮込"
@@ -19321,11 +19377,12 @@
         },
         {
           "key": "scene.quick_lunch",
-          "weight": 0.48,
-          "confidence": 0.5,
-          "source": "regional_prior",
+          "weight": 0.62,
+          "confidence": 0.68,
+          "source": "name_keyword",
           "evidence": [
-            "area:station"
+            "area:station",
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -19354,6 +19411,33 @@
           "source": "data",
           "evidence": [
             "closed"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.82,
+          "confidence": 0.86,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:製麺所"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.68,
+          "confidence": 0.68,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -25983,6 +26067,15 @@
           ]
         },
         {
+          "key": "scene.quick_lunch",
+          "weight": 0.62,
+          "confidence": 0.68,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
+          ]
+        },
+        {
           "key": "scene.solo_lunch",
           "weight": 0.48,
           "confidence": 0.5,
@@ -26028,11 +26121,21 @@
           ]
         },
         {
+          "key": "style.handmade",
+          "weight": 0.82,
+          "confidence": 0.86,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:製麺所"
+          ]
+        },
+        {
           "key": "style.regional_specialty",
           "weight": 0.78,
           "confidence": 0.76,
           "source": "regional_prior",
           "evidence": [
+            "name_keyword:production_or_self_service",
             "region:kagawa"
           ]
         },
@@ -26043,6 +26146,15 @@
           "source": "regional_prior",
           "evidence": [
             "region:kagawa"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -26950,6 +27062,15 @@
           ]
         },
         {
+          "key": "scene.quick_lunch",
+          "weight": 0.62,
+          "confidence": 0.68,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
+          ]
+        },
+        {
           "key": "scene.solo_lunch",
           "weight": 0.48,
           "confidence": 0.5,
@@ -26986,11 +27107,21 @@
           ]
         },
         {
+          "key": "style.handmade",
+          "weight": 0.82,
+          "confidence": 0.86,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:製麺所"
+          ]
+        },
+        {
           "key": "style.regional_specialty",
           "weight": 0.78,
           "confidence": 0.76,
           "source": "regional_prior",
           "evidence": [
+            "name_keyword:production_or_self_service",
             "region:kagawa"
           ]
         },
@@ -27001,6 +27132,15 @@
           "source": "regional_prior",
           "evidence": [
             "region:kagawa"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -27183,6 +27323,15 @@
           ]
         },
         {
+          "key": "scene.quick_lunch",
+          "weight": 0.62,
+          "confidence": 0.68,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
+          ]
+        },
+        {
           "key": "scene.solo_lunch",
           "weight": 0.48,
           "confidence": 0.5,
@@ -27219,11 +27368,21 @@
           ]
         },
         {
+          "key": "style.handmade",
+          "weight": 0.82,
+          "confidence": 0.86,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:製麺所"
+          ]
+        },
+        {
           "key": "style.regional_specialty",
           "weight": 0.78,
           "confidence": 0.76,
           "source": "regional_prior",
           "evidence": [
+            "name_keyword:production_or_self_service",
             "region:kagawa"
           ]
         },
@@ -27234,6 +27393,15 @@
           "source": "regional_prior",
           "evidence": [
             "region:kagawa"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -27892,6 +28060,15 @@
           ]
         },
         {
+          "key": "scene.quick_lunch",
+          "weight": 0.62,
+          "confidence": 0.68,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
+          ]
+        },
+        {
           "key": "scene.solo_lunch",
           "weight": 0.48,
           "confidence": 0.5,
@@ -27928,11 +28105,21 @@
           ]
         },
         {
+          "key": "style.handmade",
+          "weight": 0.82,
+          "confidence": 0.86,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:製麺所"
+          ]
+        },
+        {
           "key": "style.regional_specialty",
           "weight": 0.78,
           "confidence": 0.76,
           "source": "regional_prior",
           "evidence": [
+            "name_keyword:production_or_self_service",
             "region:kagawa"
           ]
         },
@@ -27943,6 +28130,15 @@
           "source": "regional_prior",
           "evidence": [
             "region:kagawa"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -29907,6 +30103,15 @@
           ]
         },
         {
+          "key": "scene.quick_lunch",
+          "weight": 0.62,
+          "confidence": 0.68,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
+          ]
+        },
+        {
           "key": "scene.solo_lunch",
           "weight": 0.48,
           "confidence": 0.5,
@@ -29957,6 +30162,7 @@
           "confidence": 0.76,
           "source": "regional_prior",
           "evidence": [
+            "name_keyword:production_or_self_service",
             "region:kagawa"
           ]
         },
@@ -29975,6 +30181,7 @@
           "confidence": 0.86,
           "source": "name_keyword",
           "evidence": [
+            "name_keyword:production_or_self_service",
             "name_keyword:セルフ"
           ]
         },
@@ -30303,6 +30510,15 @@
           ]
         },
         {
+          "key": "scene.quick_lunch",
+          "weight": 0.62,
+          "confidence": 0.68,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
+          ]
+        },
+        {
           "key": "scene.solo_lunch",
           "weight": 0.48,
           "confidence": 0.5,
@@ -30348,11 +30564,21 @@
           ]
         },
         {
+          "key": "style.handmade",
+          "weight": 0.82,
+          "confidence": 0.86,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:製麺所"
+          ]
+        },
+        {
           "key": "style.regional_specialty",
           "weight": 0.78,
           "confidence": 0.76,
           "source": "regional_prior",
           "evidence": [
+            "name_keyword:production_or_self_service",
             "region:kagawa"
           ]
         },
@@ -30363,6 +30589,15 @@
           "source": "regional_prior",
           "evidence": [
             "region:kagawa"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -31085,6 +31320,15 @@
           ]
         },
         {
+          "key": "scene.quick_lunch",
+          "weight": 0.62,
+          "confidence": 0.68,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
+          ]
+        },
+        {
           "key": "scene.solo_lunch",
           "weight": 0.48,
           "confidence": 0.5,
@@ -31121,11 +31365,21 @@
           ]
         },
         {
+          "key": "style.handmade",
+          "weight": 0.82,
+          "confidence": 0.86,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:製麺所"
+          ]
+        },
+        {
           "key": "style.regional_specialty",
           "weight": 0.78,
           "confidence": 0.76,
           "source": "regional_prior",
           "evidence": [
+            "name_keyword:production_or_self_service",
             "region:kagawa"
           ]
         },
@@ -31136,6 +31390,15 @@
           "source": "regional_prior",
           "evidence": [
             "region:kagawa"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -31550,6 +31813,15 @@
           ]
         },
         {
+          "key": "scene.quick_lunch",
+          "weight": 0.62,
+          "confidence": 0.68,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
+          ]
+        },
+        {
           "key": "scene.solo_lunch",
           "weight": 0.48,
           "confidence": 0.5,
@@ -31586,11 +31858,21 @@
           ]
         },
         {
+          "key": "style.handmade",
+          "weight": 0.82,
+          "confidence": 0.86,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:製麺所"
+          ]
+        },
+        {
           "key": "style.regional_specialty",
           "weight": 0.78,
           "confidence": 0.76,
           "source": "regional_prior",
           "evidence": [
+            "name_keyword:production_or_self_service",
             "region:kagawa"
           ]
         },
@@ -31601,6 +31883,15 @@
           "source": "regional_prior",
           "evidence": [
             "region:kagawa"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -33768,6 +34059,15 @@
           ]
         },
         {
+          "key": "scene.quick_lunch",
+          "weight": 0.62,
+          "confidence": 0.68,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
+          ]
+        },
+        {
           "key": "scene.solo_lunch",
           "weight": 0.48,
           "confidence": 0.5,
@@ -33818,6 +34118,7 @@
           "confidence": 0.76,
           "source": "regional_prior",
           "evidence": [
+            "name_keyword:production_or_self_service",
             "region:kagawa"
           ]
         },
@@ -33828,6 +34129,15 @@
           "source": "regional_prior",
           "evidence": [
             "region:kagawa"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -34694,6 +35004,7 @@
           "confidence": 0.62,
           "source": "selection_prior",
           "evidence": [
+            "prefecture:kyoto_udon",
             "selection:3plus"
           ]
         },
@@ -34745,11 +35056,13 @@
         },
         {
           "key": "style.kansai_dashi",
-          "weight": 0.55,
-          "confidence": 0.52,
-          "source": "regional_prior",
+          "weight": 0.68,
+          "confidence": 0.72,
+          "source": "name_keyword",
           "evidence": [
-            "macro_area:kansai"
+            "macro_area:kansai",
+            "name_keyword:京うどん",
+            "prefecture:kyoto_udon"
           ]
         },
         {
@@ -34810,6 +35123,7 @@
           "confidence": 0.62,
           "source": "selection_prior",
           "evidence": [
+            "prefecture:kyoto_udon",
             "selection:3plus"
           ]
         },
@@ -34861,11 +35175,12 @@
         },
         {
           "key": "style.kansai_dashi",
-          "weight": 0.55,
-          "confidence": 0.52,
+          "weight": 0.62,
+          "confidence": 0.62,
           "source": "regional_prior",
           "evidence": [
-            "macro_area:kansai"
+            "macro_area:kansai",
+            "prefecture:kyoto_udon"
           ]
         },
         {
@@ -34926,6 +35241,7 @@
           "confidence": 0.72,
           "source": "selection_prior",
           "evidence": [
+            "prefecture:kyoto_udon",
             "selection:category_top10"
           ]
         },
@@ -34986,11 +35302,12 @@
         },
         {
           "key": "style.kansai_dashi",
-          "weight": 0.55,
-          "confidence": 0.52,
+          "weight": 0.62,
+          "confidence": 0.62,
           "source": "regional_prior",
           "evidence": [
-            "macro_area:kansai"
+            "macro_area:kansai",
+            "prefecture:kyoto_udon"
           ]
         },
         {
@@ -35051,6 +35368,7 @@
           "confidence": 0.62,
           "source": "selection_prior",
           "evidence": [
+            "prefecture:kyoto_udon",
             "selection:3plus"
           ]
         },
@@ -35102,11 +35420,12 @@
         },
         {
           "key": "style.kansai_dashi",
-          "weight": 0.55,
-          "confidence": 0.52,
+          "weight": 0.62,
+          "confidence": 0.62,
           "source": "regional_prior",
           "evidence": [
-            "macro_area:kansai"
+            "macro_area:kansai",
+            "prefecture:kyoto_udon"
           ]
         },
         {
@@ -35167,6 +35486,7 @@
           "confidence": 0.72,
           "source": "selection_prior",
           "evidence": [
+            "prefecture:kyoto_udon",
             "selection:category_top10"
           ]
         },
@@ -35236,11 +35556,12 @@
         },
         {
           "key": "style.kansai_dashi",
-          "weight": 0.55,
-          "confidence": 0.52,
+          "weight": 0.62,
+          "confidence": 0.62,
           "source": "regional_prior",
           "evidence": [
-            "macro_area:kansai"
+            "macro_area:kansai",
+            "prefecture:kyoto_udon"
           ]
         },
         {
@@ -35430,6 +35751,15 @@
           ]
         },
         {
+          "key": "scene.quick_lunch",
+          "weight": 0.62,
+          "confidence": 0.68,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
+          ]
+        },
+        {
           "key": "scene.solo_lunch",
           "weight": 0.48,
           "confidence": 0.5,
@@ -35475,12 +35805,39 @@
           ]
         },
         {
+          "key": "style.handmade",
+          "weight": 0.82,
+          "confidence": 0.86,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:製麺所"
+          ]
+        },
+        {
           "key": "style.kansai_dashi",
           "weight": 0.55,
           "confidence": 0.52,
           "source": "regional_prior",
           "evidence": [
             "macro_area:kansai"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.68,
+          "confidence": 0.68,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -40696,11 +41053,12 @@
         },
         {
           "key": "scene.quick_lunch",
-          "weight": 0.48,
-          "confidence": 0.5,
-          "source": "regional_prior",
+          "weight": 0.62,
+          "confidence": 0.68,
+          "source": "name_keyword",
           "evidence": [
-            "area:station"
+            "area:station",
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -40741,12 +41099,39 @@
           ]
         },
         {
+          "key": "style.handmade",
+          "weight": 0.82,
+          "confidence": 0.86,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:製麺所"
+          ]
+        },
+        {
           "key": "style.kansai_dashi",
           "weight": 0.55,
           "confidence": 0.52,
           "source": "regional_prior",
           "evidence": [
             "macro_area:kansai"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.68,
+          "confidence": 0.68,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -41614,11 +41999,12 @@
         },
         {
           "key": "scene.quick_lunch",
-          "weight": 0.48,
-          "confidence": 0.5,
-          "source": "regional_prior",
+          "weight": 0.62,
+          "confidence": 0.68,
+          "source": "name_keyword",
           "evidence": [
-            "area:station"
+            "area:station",
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -41659,12 +42045,39 @@
           ]
         },
         {
+          "key": "style.handmade",
+          "weight": 0.82,
+          "confidence": 0.86,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:製麺所"
+          ]
+        },
+        {
           "key": "style.kansai_dashi",
           "weight": 0.55,
           "confidence": 0.52,
           "source": "regional_prior",
           "evidence": [
             "macro_area:kansai"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.68,
+          "confidence": 0.68,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -46140,6 +46553,15 @@
           ]
         },
         {
+          "key": "scene.quick_lunch",
+          "weight": 0.62,
+          "confidence": 0.68,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
+          ]
+        },
+        {
           "key": "scene.solo_lunch",
           "weight": 0.48,
           "confidence": 0.5,
@@ -46173,6 +46595,33 @@
           "source": "data",
           "evidence": [
             "closed"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.82,
+          "confidence": 0.86,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:製麺所"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.68,
+          "confidence": 0.68,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:production_or_self_service"
           ]
         },
         {
@@ -47283,11 +47732,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -47350,7 +47800,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -47407,11 +47858,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -47465,7 +47917,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -47522,11 +47975,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -47580,7 +48034,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -47637,11 +48092,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -47668,7 +48124,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -47725,11 +48182,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -47792,7 +48250,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -47849,11 +48308,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -47916,7 +48376,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -47973,11 +48434,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -48040,7 +48502,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -48097,11 +48560,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -48164,7 +48628,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -48221,11 +48686,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -48270,7 +48736,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -48327,11 +48794,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -48385,7 +48853,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -48442,11 +48911,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -48482,7 +48952,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -48539,11 +49010,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -48570,7 +49042,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -48627,11 +49100,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -48685,7 +49159,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -48742,11 +49217,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -48800,7 +49276,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -48954,11 +49431,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -48985,7 +49463,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -49042,11 +49521,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -49091,7 +49571,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -49148,11 +49629,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -49188,7 +49670,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -49245,11 +49728,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -49312,7 +49796,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -49369,11 +49854,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -49427,7 +49913,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -49484,11 +49971,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -49542,7 +50030,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -49608,11 +50097,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -49648,7 +50138,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -49705,11 +50196,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -49754,7 +50246,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -49811,11 +50304,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -49869,7 +50363,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -49944,11 +50439,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -49984,7 +50480,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -50041,11 +50538,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -50099,7 +50597,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -50156,11 +50655,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -50223,7 +50723,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -51045,6 +51546,15 @@
           "source": "data",
           "evidence": [
             "closed"
+          ]
+        },
+        {
+          "key": "style.edomae_soba",
+          "weight": 0.85,
+          "confidence": 0.82,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:蕎麦切り"
           ]
         },
         {
@@ -52121,11 +52631,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -52179,7 +52690,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -52236,11 +52748,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -52294,7 +52807,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -52351,11 +52865,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -52409,7 +52924,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -52466,11 +52982,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -52519,12 +53036,22 @@
           ]
         },
         {
+          "key": "style.edomae_soba",
+          "weight": 0.85,
+          "confidence": 0.82,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:そば切り"
+          ]
+        },
+        {
           "key": "texture.aroma_focused",
           "weight": 0.68,
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -52581,11 +53108,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -52625,12 +53153,22 @@
           ]
         },
         {
+          "key": "style.edomae_soba",
+          "weight": 0.85,
+          "confidence": 0.82,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:そば切り"
+          ]
+        },
+        {
           "key": "texture.aroma_focused",
           "weight": 0.68,
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -52687,11 +53225,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -52749,12 +53288,22 @@
           ]
         },
         {
+          "key": "style.edomae_soba",
+          "weight": 0.85,
+          "confidence": 0.82,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:そば切り"
+          ]
+        },
+        {
           "key": "texture.aroma_focused",
           "weight": 0.68,
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -52811,11 +53360,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -52864,12 +53414,22 @@
           ]
         },
         {
+          "key": "style.edomae_soba",
+          "weight": 0.85,
+          "confidence": 0.82,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:そば切り"
+          ]
+        },
+        {
           "key": "texture.aroma_focused",
           "weight": 0.68,
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -52926,11 +53486,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -52961,12 +53522,22 @@
           ]
         },
         {
+          "key": "style.edomae_soba",
+          "weight": 0.85,
+          "confidence": 0.82,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:そば切り"
+          ]
+        },
+        {
           "key": "texture.aroma_focused",
           "weight": 0.68,
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -53032,11 +53603,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -53076,12 +53648,22 @@
           ]
         },
         {
+          "key": "style.edomae_soba",
+          "weight": 0.85,
+          "confidence": 0.82,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:そば切り"
+          ]
+        },
+        {
           "key": "texture.aroma_focused",
           "weight": 0.68,
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -53138,11 +53720,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -53191,12 +53774,22 @@
           ]
         },
         {
+          "key": "style.edomae_soba",
+          "weight": 0.85,
+          "confidence": 0.82,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:そば切り"
+          ]
+        },
+        {
           "key": "texture.aroma_focused",
           "weight": 0.68,
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -53271,11 +53864,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -53329,7 +53923,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -53386,11 +53981,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -53444,7 +54040,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -53501,11 +54098,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -53550,7 +54148,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -53607,11 +54206,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -53665,7 +54265,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -53722,11 +54323,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -53762,7 +54364,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -53819,11 +54422,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -53868,7 +54472,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -53925,11 +54530,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -53983,7 +54589,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -54040,11 +54647,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -54098,7 +54706,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -54155,11 +54764,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -54231,7 +54841,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -54288,11 +54899,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -54346,7 +54958,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -54403,11 +55016,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -54461,7 +55075,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -54518,11 +55133,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -54576,7 +55192,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -54633,11 +55250,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -54700,7 +55318,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -54757,11 +55376,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -54810,12 +55430,22 @@
           ]
         },
         {
+          "key": "style.edomae_soba",
+          "weight": 0.85,
+          "confidence": 0.82,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:蕎麦切り"
+          ]
+        },
+        {
           "key": "texture.aroma_focused",
           "weight": 0.68,
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -54872,11 +55502,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -54925,12 +55556,22 @@
           ]
         },
         {
+          "key": "style.edomae_soba",
+          "weight": 0.85,
+          "confidence": 0.82,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:蕎麦切り"
+          ]
+        },
+        {
           "key": "texture.aroma_focused",
           "weight": 0.68,
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -54987,11 +55628,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -55045,7 +55687,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -55102,11 +55745,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -55160,7 +55804,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -55226,11 +55871,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -55293,7 +55939,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -55350,11 +55997,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -55408,7 +56056,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -55465,11 +56114,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -55500,12 +56150,22 @@
           ]
         },
         {
+          "key": "style.edomae_soba",
+          "weight": 0.85,
+          "confidence": 0.82,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:そば切り"
+          ]
+        },
+        {
           "key": "texture.aroma_focused",
           "weight": 0.68,
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -55562,11 +56222,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -55593,7 +56254,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -55650,11 +56312,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -55708,7 +56371,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -55765,11 +56429,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -55814,7 +56479,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -55871,11 +56537,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.6,
+          "confidence": 0.6,
+          "source": "regional_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -55920,7 +56587,8 @@
           "confidence": 0.58,
           "source": "model_prior",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "macro_area:kansai_soba"
           ]
         },
         {
@@ -59385,6 +60053,15 @@
           "source": "data",
           "evidence": [
             "closed"
+          ]
+        },
+        {
+          "key": "style.stone_milled",
+          "weight": 0.78,
+          "confidence": 0.78,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:手挽き"
           ]
         },
         {
@@ -64076,10 +64753,11 @@
         },
         {
           "key": "style.edomae_soba",
-          "weight": 0.58,
-          "confidence": 0.56,
-          "source": "regional_prior",
+          "weight": 0.85,
+          "confidence": 0.82,
+          "source": "name_keyword",
           "evidence": [
+            "name_keyword:蕎麦切り",
             "prefecture:tokyo"
           ]
         },
@@ -69238,10 +69916,11 @@
         },
         {
           "key": "style.edomae_soba",
-          "weight": 0.58,
-          "confidence": 0.56,
-          "source": "regional_prior",
+          "weight": 0.85,
+          "confidence": 0.82,
+          "source": "name_keyword",
           "evidence": [
+            "name_keyword:蕎麦切り",
             "prefecture:tokyo"
           ]
         },
@@ -71756,6 +72435,15 @@
           ]
         },
         {
+          "key": "style.edomae_soba",
+          "weight": 0.85,
+          "confidence": 0.82,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:蕎麦切り"
+          ]
+        },
+        {
           "key": "style.handmade",
           "weight": 0.82,
           "confidence": 0.86,
@@ -74241,6 +74929,15 @@
           ]
         },
         {
+          "key": "style.edomae_soba",
+          "weight": 0.85,
+          "confidence": 0.82,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:蕎麦切り"
+          ]
+        },
+        {
           "key": "texture.aroma_focused",
           "weight": 0.68,
           "confidence": 0.58,
@@ -74468,6 +75165,15 @@
           "source": "data",
           "evidence": [
             "closed"
+          ]
+        },
+        {
+          "key": "style.edomae_soba",
+          "weight": 0.85,
+          "confidence": 0.82,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:蕎麦切り"
           ]
         },
         {

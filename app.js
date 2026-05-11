@@ -716,7 +716,7 @@
         const safeUrl = encodeURIComponent(r.url || '');
         const score = item.displayScore ?? Math.max(1, Math.min(99, Math.round(item.score * 100)));
         const distance = Number.isFinite(item.distanceKm) ? ` / ${formatDistance(item.distanceKm)}` : '';
-        const reasons = item.reasons.length ? item.reasons.join('、') : '嗜好タグの近さ';
+        const reasonText = formatRecommendationReason(item.reasons);
         const closedBadge = r.closed ? '<span class="recommendation-closed">閉店</span>' : '';
 
         return `
@@ -726,8 +726,24 @@
                     <span class="recommendation-score" title="AI推定タグによる相性スコア"><span>相性</span><strong>${score}</strong></span>
                 </span>
                 <span class="recommendation-card-meta">${escapeHtml(r.prefecture)} ${escapeHtml(r.area || '')}${distance} ${closedBadge}</span>
-                <span class="recommendation-card-reason">理由: ${escapeHtml(reasons)}</span>
+                <span class="recommendation-card-reason">${escapeHtml(reasonText)}</span>
             </button>`;
+    }
+
+    function formatRecommendationReason(reasons) {
+        if (!reasons?.length) return '嗜好タグの近さから選んだ候補です。';
+        const labels = reasons.slice(0, 3);
+        const joined = labels.join('、');
+        const hasTexture = labels.some(label => /コシ|香り|喉越し|麺/.test(label));
+        const hasStyle = labels.some(label => /讃岐|関西|江戸前|信州|越前|出雲|田舎|石臼|手打|地域色|セルフ/.test(label));
+        const hasDish = labels.some(label => /カレー|釜|ぶっかけ|肉|味噌|きしめん|稲庭|鴨|天ぷら|十割/.test(label));
+        const hasScene = labels.some(label => /昼食|短時間|目的地|酒|蕎麦前|落ち着いた/.test(label));
+        const hasMood = labels.some(label => /伝統|老舗|現代的|個性派|翁|藪|更科|砂場/.test(label));
+        if (hasTexture && (hasStyle || hasDish)) return `麺や味の方向性が近い候補です（${joined}）。`;
+        if (hasScene && (hasStyle || hasTexture || hasDish)) return `使い方や店の方向性が近い候補です（${joined}）。`;
+        if (hasMood || hasScene) return `店の雰囲気や訪れ方が近い候補です（${joined}）。`;
+        if (hasStyle || hasDish) return `料理の系統が近い候補です（${joined}）。`;
+        return `近い特徴を持つ候補です（${joined}）。`;
     }
 
     function getRecommendations(source, mode = 'similar', limit = 4) {

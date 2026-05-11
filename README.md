@@ -76,6 +76,7 @@ open http://localhost:8080
 ├── data/
 │   ├── data-version.json       # iPhone版向けデータ更新メタ情報
 │   ├── recommendation_tags.json # 推薦機能向けの静的タグデータ（探索補助用）
+│   ├── recommendation_golden_set.json # 推薦品質確認用の代表ケース
 │   ├── udon.json               # うどん百名店データ（428店）
 │   ├── udon_raw.json           # うどんデータ生成元（ジオコーディング前）
 │   ├── soba.json               # そば百名店データ（266店）
@@ -87,6 +88,7 @@ open http://localhost:8080
 │   ├── geocode_soba.py         # そば店舗 Nominatim ジオコーディング
 │   ├── fetch_tabelog_details.py # 店舗ページ由来の住所・座標・閉店状態取得
 │   ├── generate_recommendation_tags.py # 推薦タグデータ生成
+│   ├── evaluate_recommendations.py # 推薦ゴールデンセットの結果レポート
 │   ├── generate_data_version.py # iPhone版向けデータメタ情報生成
 │   ├── sync_mobile_assets.py   # Web資産を mobile/www へ同期
 │   └── check_data_quality.py   # 公開データ品質チェック
@@ -176,6 +178,19 @@ Leaflet / Leaflet.markercluster の CDN 読み込みには Subresource Integrity
 - 店名 + 都道府県による重複候補
 - `data/data-version.json` の件数・ハッシュ整合
 - `data/recommendation_tags.json` のURL照合・タグ定義・weight/confidence形式
+- `data/recommendation_golden_set.json` の参照URL・推薦モード整合
+
+推薦品質を確認する場合は、代表ケースに対する現行推薦結果を出力します。
+
+```bash
+python3 scripts/evaluate_recommendations.py
+```
+
+特定ケースだけ確認する場合:
+
+```bash
+python3 scripts/evaluate_recommendations.py --case udon_tokyo_maruka_similar --top 9
+```
 
 ## 📱 iPhone版
 

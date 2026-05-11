@@ -1,0 +1,333 @@
+{
+  "version": 1,
+  "description": "Representative recommendation review cases. This is not a hard correctness oracle; it is a human-maintained golden set for checking whether recommendation changes stay plausible.",
+  "policy": {
+    "topN": 9,
+    "preferredHitTarget": "Preferred candidates should ideally appear in top 3 or top 9, but the evaluator is report-only for now.",
+    "reasonPolicy": "Reasons should emphasize style, texture, dish, mood, scene, or lineage rather than only genre, prefecture, region, or selection count."
+  },
+  "cases": [
+    {
+      "id": "udon_tokyo_maruka_similar",
+      "sourceUrl": "https://tabelog.com/tokyo/A1310/A131003/13000629/",
+      "mode": "similar",
+      "intent": "東京の代表的な讃岐・手打ちうどん系から、麺や店の方向性が近い候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/tokyo/A1304/A130401/13125862/",
+        "https://tabelog.com/tokyo/A1323/A132304/13141130/",
+        "https://tabelog.com/tokyo/A1305/A130503/13049983/",
+        "https://tabelog.com/tokyo/A1310/A131002/13185500/"
+      ],
+      "expectedTags": ["style.sanuki_influenced", "texture.koshi_strong", "scene.destination"],
+      "avoidCategories": ["soba"]
+    },
+    {
+      "id": "udon_tokyo_oniyanma_nearby",
+      "sourceUrl": "https://tabelog.com/tokyo/A1316/A131603/13111869/",
+      "mode": "nearby",
+      "intent": "都内で今行きやすい、短時間利用やうどん体験が近い候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/tokyo/A1314/A131401/13188754/",
+        "https://tabelog.com/tokyo/A1310/A131002/13185500/",
+        "https://tabelog.com/tokyo/A1304/A130401/13125862/"
+      ],
+      "expectedTags": ["scene.quick_lunch", "scene.solo_lunch", "genre.udon"],
+      "avoidCategories": ["soba"]
+    },
+    {
+      "id": "udon_tokyo_kamatake_similar",
+      "sourceUrl": "https://tabelog.com/tokyo/A1311/A131106/13020252/",
+      "mode": "similar",
+      "intent": "釜揚げ・手打ち系の方向性が近い候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/osaka/A2701/A270406/27059480/",
+        "https://tabelog.com/kagawa/A3703/A370302/37000015/",
+        "https://tabelog.com/osaka/A2701/A270101/27015342/"
+      ],
+      "expectedTags": ["dish.kamaage", "style.handmade", "scene.destination"],
+      "avoidCategories": ["soba"]
+    },
+    {
+      "id": "udon_tokyo_misonikomin_similar",
+      "sourceUrl": "https://tabelog.com/tokyo/A1310/A131004/13036030/",
+      "mode": "similar",
+      "intent": "味噌煮込みや名古屋うどん系の個性に寄せた候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/aichi/A2301/A230103/23000374/",
+        "https://tabelog.com/aichi/A2301/A230110/23013430/",
+        "https://tabelog.com/aichi/A2301/A230101/23039141/"
+      ],
+      "expectedTags": ["dish.miso_nikomi", "macro_area.chubu", "genre.udon"],
+      "avoidCategories": ["soba"]
+    },
+    {
+      "id": "udon_osaka_hakuan_similar",
+      "sourceUrl": "https://tabelog.com/osaka/A2701/A270302/27014852/",
+      "mode": "similar",
+      "intent": "大阪の讃岐系・コシ重視の候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/osaka/A2707/A270704/27011240/",
+        "https://tabelog.com/osaka/A2701/A270204/27042400/",
+        "https://tabelog.com/osaka/A2701/A270101/27006684/",
+        "https://tabelog.com/osaka/A2701/A270106/27014646/"
+      ],
+      "expectedTags": ["style.sanuki_influenced", "texture.koshi_strong", "style.kansai_dashi"],
+      "avoidCategories": ["soba"]
+    },
+    {
+      "id": "udon_osaka_ikki_similar",
+      "sourceUrl": "https://tabelog.com/osaka/A2701/A270406/27059480/",
+      "mode": "similar",
+      "intent": "釜揚げ系・大阪うどんの近い候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/tokyo/A1311/A131106/13020252/",
+        "https://tabelog.com/kagawa/A3703/A370302/37000015/",
+        "https://tabelog.com/osaka/A2701/A270101/27015342/"
+      ],
+      "expectedTags": ["dish.kamaage", "style.kansai_dashi", "genre.udon"],
+      "avoidCategories": ["soba"]
+    },
+    {
+      "id": "udon_kyoto_yamamotomenzo_similar",
+      "sourceUrl": "https://tabelog.com/kyoto/A2601/A260301/26002504/",
+      "mode": "similar",
+      "intent": "京都・関西の目的地型うどん候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/kyoto/A2601/A260601/26020260/",
+        "https://tabelog.com/osaka/A2707/A270704/27011240/",
+        "https://tabelog.com/osaka/A2701/A270302/27014852/"
+      ],
+      "expectedTags": ["style.handmade", "style.kansai_dashi", "scene.destination"],
+      "avoidCategories": ["soba"]
+    },
+    {
+      "id": "udon_kagawa_yamagoe_similar",
+      "sourceUrl": "https://tabelog.com/kagawa/A3702/A370202/37000080/",
+      "mode": "similar",
+      "intent": "香川の代表的な讃岐うどん巡り候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/kagawa/A3702/A370202/37000077/",
+        "https://tabelog.com/kagawa/A3702/A370202/37000135/",
+        "https://tabelog.com/kagawa/A3702/A370201/37000016/",
+        "https://tabelog.com/kagawa/A3703/A370303/37000143/"
+      ],
+      "expectedTags": ["style.sanuki_influenced", "texture.koshi_strong", "style.regional_specialty"],
+      "avoidCategories": ["soba"]
+    },
+    {
+      "id": "udon_kagawa_nagata_kamaage_similar",
+      "sourceUrl": "https://tabelog.com/kagawa/A3703/A370302/37000015/",
+      "mode": "similar",
+      "intent": "釜揚げ系の香川うどん候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/tokyo/A1311/A131106/13020252/",
+        "https://tabelog.com/osaka/A2701/A270406/27059480/",
+        "https://tabelog.com/kagawa/A3702/A370201/37000020/"
+      ],
+      "expectedTags": ["dish.kamaage", "style.sanuki_influenced", "style.regional_specialty"],
+      "avoidCategories": ["soba"]
+    },
+    {
+      "id": "udon_aichi_nishiki_similar",
+      "sourceUrl": "https://tabelog.com/aichi/A2301/A230103/23000374/",
+      "mode": "similar",
+      "intent": "名古屋・愛知のうどん候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/aichi/A2301/A230110/23013430/",
+        "https://tabelog.com/aichi/A2301/A230101/23039141/",
+        "https://tabelog.com/tokyo/A1310/A131004/13036030/"
+      ],
+      "expectedTags": ["macro_area.chubu", "genre.udon", "scene.solo_lunch"],
+      "avoidCategories": ["soba"]
+    },
+    {
+      "id": "soba_tokyo_kyorakutei_similar",
+      "sourceUrl": "https://tabelog.com/tokyo/A1309/A130905/13000479/",
+      "mode": "similar",
+      "intent": "東京の手打ち・石臼系そば候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/tokyo/A1306/A130601/13129390/",
+        "https://tabelog.com/tokyo/A1306/A130601/13024514/",
+        "https://tabelog.com/tokyo/A1307/A130703/13020154/",
+        "https://tabelog.com/tokyo/A1323/A132304/13143622/"
+      ],
+      "expectedTags": ["style.stone_milled", "texture.aroma_focused", "style.edomae_soba"],
+      "avoidCategories": ["udon"]
+    },
+    {
+      "id": "soba_tokyo_tamawarai_expand",
+      "sourceUrl": "https://tabelog.com/tokyo/A1306/A130601/13129390/",
+      "mode": "expand",
+      "intent": "東京の有名そばから、少し広げた個性派・目的地型そば候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/tokyo/A1309/A130905/13000479/",
+        "https://tabelog.com/tokyo/A1311/A131102/13185027/",
+        "https://tabelog.com/kanagawa/A1406/A140602/14004578/",
+        "https://tabelog.com/chiba/A1203/A120301/12000067/"
+      ],
+      "expectedTags": ["texture.aroma_focused", "scene.destination", "style.stone_milled"],
+      "avoidCategories": []
+    },
+    {
+      "id": "soba_chiba_takeyabu_similar",
+      "sourceUrl": "https://tabelog.com/chiba/A1203/A120301/12000067/",
+      "mode": "similar",
+      "intent": "竹やぶ・藪系の系譜が近い候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/tokyo/A1324/A132402/13003773/",
+        "https://tabelog.com/kanagawa/A1410/A141001/14001257/",
+        "https://tabelog.com/ibaraki/A0803/A080301/8000048/",
+        "https://tabelog.com/tokyo/A1311/A131102/13007981/"
+      ],
+      "expectedTags": ["lineage.yabu", "style.edomae_soba", "mood.traditional"],
+      "avoidCategories": ["udon"]
+    },
+    {
+      "id": "soba_saitama_okina_similar",
+      "sourceUrl": "https://tabelog.com/saitama/A1106/A110601/11000055/",
+      "mode": "similar",
+      "intent": "翁・達磨系の系譜が近い候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/hokkaido/A0108/A010801/1003486/",
+        "https://tabelog.com/osaka/A2701/A270102/27000029/",
+        "https://tabelog.com/tokyo/A1312/A131201/13244447/",
+        "https://tabelog.com/oita/A4403/A440301/44011389/"
+      ],
+      "expectedTags": ["lineage.okina", "texture.aroma_focused", "scene.destination"],
+      "avoidCategories": ["udon"]
+    },
+    {
+      "id": "soba_kyoto_kanei_similar",
+      "sourceUrl": "https://tabelog.com/kyoto/A2601/A260503/26001676/",
+      "mode": "similar",
+      "intent": "京都・関西の落ち着いた手打ちそば候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/kyoto/A2601/A260503/26000389/",
+        "https://tabelog.com/osaka/A2707/A270704/27013548/",
+        "https://tabelog.com/osaka/A2701/A270103/27000530/",
+        "https://tabelog.com/nara/A2901/A290101/29000052/"
+      ],
+      "expectedTags": ["style.handmade", "scene.calm_meal", "texture.aroma_focused"],
+      "avoidCategories": ["udon"]
+    },
+    {
+      "id": "soba_nagano_uzuraya_similar",
+      "sourceUrl": "https://tabelog.com/nagano/A2001/A200101/20000191/",
+      "mode": "similar",
+      "intent": "信州そば・地域色・目的地型そば候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/nagano/A2001/A200106/20000282/",
+        "https://tabelog.com/nagano/A2001/A200101/20001575/",
+        "https://tabelog.com/gifu/A2104/A210403/21000060/",
+        "https://tabelog.com/gifu/A2103/A210303/21014458/"
+      ],
+      "expectedTags": ["style.shinshu_soba", "style.regional_specialty", "texture.aroma_focused"],
+      "avoidCategories": ["udon"]
+    },
+    {
+      "id": "soba_shizuoka_miyamoto_similar",
+      "sourceUrl": "https://tabelog.com/shizuoka/A2203/A220302/22000036/",
+      "mode": "similar",
+      "intent": "藪・江戸前そば系の候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/chiba/A1203/A120301/12000067/",
+        "https://tabelog.com/tokyo/A1311/A131102/13007981/",
+        "https://tabelog.com/tokyo/A1324/A132402/13003773/"
+      ],
+      "expectedTags": ["lineage.yabu", "style.edomae_soba", "mood.traditional"],
+      "avoidCategories": ["udon"]
+    },
+    {
+      "id": "soba_tokyo_daigu_similar",
+      "sourceUrl": "https://tabelog.com/tokyo/A1308/A130802/13130565/",
+      "mode": "similar",
+      "intent": "酒・蕎麦前寄りの都内そば候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/tokyo/A1309/A130905/13020236/",
+        "https://tabelog.com/tokyo/A1317/A131701/13096494/",
+        "https://tabelog.com/tokyo/A1307/A130703/13020154/"
+      ],
+      "expectedTags": ["scene.drink_pairing", "scene.calm_meal", "texture.aroma_focused"],
+      "avoidCategories": ["udon"]
+    },
+    {
+      "id": "soba_tokyo_juuroku_similar",
+      "sourceUrl": "https://tabelog.com/tokyo/A1311/A131102/13185027/",
+      "mode": "similar",
+      "intent": "浅草の目的地型そばから、東京・近郊の個性派そばを見る",
+      "preferredUrls": [
+        "https://tabelog.com/tokyo/A1309/A130905/13000479/",
+        "https://tabelog.com/tokyo/A1306/A130601/13129390/",
+        "https://tabelog.com/shizuoka/A2205/A220504/22037020/"
+      ],
+      "expectedTags": ["scene.destination", "texture.aroma_focused", "style.edomae_soba"],
+      "avoidCategories": ["udon"]
+    },
+    {
+      "id": "soba_kanagawa_edo_nearby",
+      "sourceUrl": "https://tabelog.com/kanagawa/A1406/A140602/14004578/",
+      "mode": "nearby",
+      "intent": "葉山・神奈川周辺で、遠すぎないそば候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/kanagawa/A1410/A141001/14001257/",
+        "https://tabelog.com/tokyo/A1307/A130703/13020154/",
+        "https://tabelog.com/tokyo/A1306/A130601/13129390/"
+      ],
+      "expectedTags": ["genre.soba", "scene.destination", "texture.aroma_focused"],
+      "avoidCategories": ["udon"]
+    },
+    {
+      "id": "soba_osaka_takama_similar",
+      "sourceUrl": "https://tabelog.com/osaka/A2701/A270103/27000530/",
+      "mode": "similar",
+      "intent": "大阪・関西のそば候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/osaka/A2707/A270704/27013548/",
+        "https://tabelog.com/osaka/A2701/A270102/27000029/",
+        "https://tabelog.com/kyoto/A2601/A260503/26001676/",
+        "https://tabelog.com/nara/A2901/A290101/29000052/"
+      ],
+      "expectedTags": ["texture.aroma_focused", "scene.calm_meal", "macro_area.kansai"],
+      "avoidCategories": ["udon"]
+    },
+    {
+      "id": "udon_osaka_hakuan_expand",
+      "sourceUrl": "https://tabelog.com/osaka/A2701/A270302/27014852/",
+      "mode": "expand",
+      "intent": "讃岐系うどんから、地域やタイプを少し広げた候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/kagawa/A3702/A370202/37000080/",
+        "https://tabelog.com/tokyo/A1310/A131003/13000629/",
+        "https://tabelog.com/kyoto/A2601/A260301/26002504/"
+      ],
+      "expectedTags": ["style.sanuki_influenced", "texture.koshi_strong", "scene.destination"],
+      "avoidCategories": []
+    },
+    {
+      "id": "udon_kagawa_hinode_nearby",
+      "sourceUrl": "https://tabelog.com/kagawa/A3702/A370201/37000016/",
+      "mode": "nearby",
+      "intent": "坂出・中讃エリアで近くの讃岐うどん候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/kagawa/A3702/A370201/37000020/",
+        "https://tabelog.com/kagawa/A3702/A370202/37000135/",
+        "https://tabelog.com/kagawa/A3703/A370302/37000015/"
+      ],
+      "expectedTags": ["style.sanuki_influenced", "style.regional_specialty", "genre.udon"],
+      "avoidCategories": ["soba"]
+    },
+    {
+      "id": "soba_tokyo_kyorakutei_nearby",
+      "sourceUrl": "https://tabelog.com/tokyo/A1309/A130905/13000479/",
+      "mode": "nearby",
+      "intent": "神楽坂周辺から近く、そば体験も近い候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/tokyo/A1309/A130905/13020236/",
+        "https://tabelog.com/tokyo/A1323/A132304/13143622/",
+        "https://tabelog.com/tokyo/A1310/A131003/13000604/"
+      ],
+      "expectedTags": ["genre.soba", "style.edomae_soba", "texture.aroma_focused"],
+      "avoidCategories": ["udon"]
+    }
+  ]
+}

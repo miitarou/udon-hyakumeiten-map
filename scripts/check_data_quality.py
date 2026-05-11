@@ -24,6 +24,7 @@ DATASETS = (
 )
 DATA_VERSION = "data/data-version.json"
 RECOMMENDATION_TAGS = "data/recommendation_tags.json"
+RECOMMENDATION_GOLDEN_SET = "data/recommendation_golden_set.json"
 REQUIRED_FIELDS = ("name", "category", "prefecture", "region", "lat", "lng", "url", "years")
 RECOMMENDED_FIELDS = ("area", "address", "closed", "firstSelected")
 VALID_CATEGORIES = {"udon", "soba"}
@@ -39,6 +40,7 @@ MIN_LAT, MAX_LAT = 20.0, 46.5
 MIN_LNG, MAX_LNG = 122.0, 154.0
 HTML_TAG_RE = re.compile(r"<[^>]+>")
 VALID_TAG_SOURCES = {"data", "name_keyword", "selection_prior", "regional_prior", "model_prior"}
+VALID_RECOMMENDATION_MODES = {"similar", "nearby", "expand"}
 
 
 def sha256(path: Path) -> str:
@@ -338,6 +340,99 @@ def validate_recommendation_tags(known_restaurants: dict[str, dict]) -> tuple[in
     return len(errors), len(warnings)
 
 
+def validate_recommendation_golden_set(known_restaurants: dict[str, dict]) -> tuple[int, int]:
+    path = ROOT / RECOMMENDATION_GOLDEN_SET
+    print(f"Checking {RECOMMENDATION_GOLDEN_SET}...")
+
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        print(f"  [WARN] {RECOMMENDATION_GOLDEN_SET} does not exist")
+        return 0, 1
+    except Exception as exc:  # noqa: BLE001
+        print(f"  [ERROR] Failed to load {RECOMMENDATION_GOLDEN_SET}: {exc}")
+        return 1, 0
+
+    errors: list[str] = []
+    warnings: list[str] = []
+
+    if not isinstance(payload, dict):
+        errors.append("root must be an object")
+        payload = {}
+
+    if payload.get("version") != 1:
+        errors.append("version must be 1")
+
+    cases = payload.get("cases")
+    if not isinstance(cases, list) or not cases:
+        errors.append("cases must be a non-empty list")
+        cases = []
+
+    seen_ids: set[str] = set()
+    for index, case in enumerate(cases):
+        prefix = f"case {index}"
+        if not isinstance(case, dict):
+            errors.append(f"{prefix}: must be an object")
+            continue
+
+        case_id = case.get("id")
+        if not isinstance(case_id, str) or not case_id:
+            errors.append(f"{prefix}: id must be a non-empty string")
+        elif case_id in seen_ids:
+            errors.append(f"{prefix}: duplicate id {case_id}")
+        else:
+            seen_ids.add(case_id)
+            prefix = case_id
+
+        source_url = case.get("sourceUrl")
+        if not isinstance(source_url, str) or source_url not in known_restaurants:
+            errors.append(f"{prefix}: sourceUrl is not present in public restaurant data")
+
+        mode = case.get("mode")
+        if mode not in VALID_RECOMMENDATION_MODES:
+            errors.append(f"{prefix}: mode must be one of {sorted(VALID_RECOMMENDATION_MODES)}")
+
+        if not isinstance(case.get("intent"), str) or not case["intent"]:
+            warnings.append(f"{prefix}: intent should be a non-empty string")
+
+        for field in ("preferredUrls", "avoidUrls"):
+            values = case.get(field, [])
+            if values is None:
+                continue
+            if not isinstance(values, list):
+                errors.append(f"{prefix}: {field} must be a list")
+                continue
+            for url in values:
+                if not isinstance(url, str) or url not in known_restaurants:
+                    errors.append(f"{prefix}: {field} contains unknown url: {url!r}")
+
+        expected_tags = case.get("expectedTags", [])
+        if expected_tags is None:
+            continue
+        if not isinstance(expected_tags, list):
+            errors.append(f"{prefix}: expectedTags must be a list")
+        elif not expected_tags:
+            warnings.append(f"{prefix}: expectedTags is empty")
+        elif not all(isinstance(value, str) and "." in value for value in expected_tags):
+            errors.append(f"{prefix}: expectedTags must contain tag-like strings")
+
+        avoid_categories = case.get("avoidCategories", [])
+        if avoid_categories is not None:
+            if not isinstance(avoid_categories, list):
+                errors.append(f"{prefix}: avoidCategories must be a list")
+            else:
+                invalid_categories = [value for value in avoid_categories if value not in VALID_CATEGORIES]
+                if invalid_categories:
+                    errors.append(f"{prefix}: invalid avoidCategories: {invalid_categories}")
+
+    for error in errors:
+        print(f"  [ERROR] {error}")
+    for warning in warnings:
+        print(f"  [WARN] {warning}")
+    print(f"  Summary: cases={len(cases)}, errors={len(errors)}, warnings={len(warnings)}")
+    return len(errors), len(warnings)
+
+
 def main() -> int:
     total_records = 0
     total_errors = 0
@@ -364,6 +459,10 @@ def main() -> int:
     tag_errors, tag_warnings = validate_recommendation_tags(known_restaurants)
     total_errors += tag_errors
     total_warnings += tag_warnings
+
+    golden_errors, golden_warnings = validate_recommendation_golden_set(known_restaurants)
+    total_errors += golden_errors
+    total_warnings += golden_warnings
 
     print("\nFinal summary")
     print(f"  total_records={total_records}")
