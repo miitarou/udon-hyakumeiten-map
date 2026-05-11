@@ -1556,9 +1556,9 @@ body.panel-resizing * {
     align-items: center;
     justify-content: center;
     gap: 3px;
-    min-width: 48px;
+    min-width: 64px;
     height: 22px;
-    padding: 0 7px;
+    padding: 0 8px;
     border: 1px solid rgba(232, 197, 71, 0.38);
     border-radius: 999px;
     color: #F4D66B;
@@ -1572,7 +1572,7 @@ body.panel-resizing * {
 .recommendation-score span {
     color: rgba(244, 214, 107, 0.78);
     font-family: var(--font-main);
-    font-size: 8px;
+    font-size: 7px;
     font-weight: 700;
 }
 

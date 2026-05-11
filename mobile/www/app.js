@@ -712,47 +712,48 @@
         }
 
         const visibleRecommendations = recommendations.slice(0, normalizedLimit);
+        const visibleReasonCounts = visibleRecommendations.reduce((counts, item) => {
+            const reason = formatRecommendationReason(item.reasons);
+            if (reason) counts.set(reason, (counts.get(reason) || 0) + 1);
+            return counts;
+        }, new Map());
         const moreHtml = recommendations.length > normalizedLimit
             ? `<button type="button" class="recommendation-more-btn" data-recommend-next="${Math.min(RECOMMENDATION_MAX_LIMIT, normalizedLimit + RECOMMENDATION_STEP_LIMIT)}">もっと見る</button>`
             : '';
-        results.innerHTML = visibleRecommendations.map(item => buildRecommendationCard(item)).join('') + moreHtml;
+        results.innerHTML = visibleRecommendations.map(item => buildRecommendationCard(item, visibleReasonCounts)).join('') + moreHtml;
         bindPopupRecommendationCards(panel);
         updateOpenPopupLayout();
     }
 
-    function buildRecommendationCard(item) {
+    function buildRecommendationCard(item, visibleReasonCounts = new Map()) {
         const r = item.restaurant;
         const safeUrl = encodeURIComponent(r.url || '');
         const score = item.displayScore ?? Math.max(1, Math.min(99, Math.round(item.score * 100)));
         const distance = Number.isFinite(item.distanceKm) ? ` / ${formatDistance(item.distanceKm)}` : '';
-        const reasonText = formatRecommendationReason(item.reasons);
+        const rawReasonText = formatRecommendationReason(item.reasons);
+        const reasonText = visibleReasonCounts.get(rawReasonText) === 1 ? rawReasonText : '';
         const closedBadge = r.closed ? '<span class="recommendation-closed">閉店</span>' : '';
+        const reasonHtml = reasonText
+            ? `<span class="recommendation-card-reason">${escapeHtml(reasonText)}</span>`
+            : '';
 
         return `
             <button type="button" class="recommendation-card" data-focus-url="${safeUrl}">
                 <span class="recommendation-card-main">
                     <span class="recommendation-card-name">${escapeHtml(r.name)}</span>
-                    <span class="recommendation-score" title="AI推定タグによる相性スコア"><span>相性</span><strong>${score}</strong></span>
+                    <span class="recommendation-score" title="AI推定タグによる探索補助の相性目安です。店舗評価ではありません。"><span>相性目安</span><strong>${score}</strong></span>
                 </span>
                 <span class="recommendation-card-meta">${escapeHtml(r.prefecture)} ${escapeHtml(r.area || '')}${distance} ${closedBadge}</span>
-                <span class="recommendation-card-reason">${escapeHtml(reasonText)}</span>
+                ${reasonHtml}
             </button>`;
     }
 
     function formatRecommendationReason(reasons) {
-        if (!reasons?.length) return '嗜好タグの近さから選んだ候補です。';
-        const labels = reasons.slice(0, 3);
-        const joined = labels.join('、');
-        const hasTexture = labels.some(label => /コシ|香り|喉越し|麺/.test(label));
-        const hasStyle = labels.some(label => /讃岐|関西|江戸前|信州|越前|出雲|田舎|石臼|手打|地域色|セルフ/.test(label));
-        const hasDish = labels.some(label => /カレー|釜|ぶっかけ|肉|味噌|きしめん|稲庭|鴨|天ぷら|十割/.test(label));
-        const hasScene = labels.some(label => /昼食|短時間|目的地|酒|蕎麦前|落ち着いた/.test(label));
-        const hasMood = labels.some(label => /伝統|老舗|現代的|個性派|翁|藪|更科|砂場/.test(label));
-        if (hasTexture && (hasStyle || hasDish)) return `麺や味の方向性が近い候補です（${joined}）。`;
-        if (hasScene && (hasStyle || hasTexture || hasDish)) return `使い方や店の方向性が近い候補です（${joined}）。`;
-        if (hasMood || hasScene) return `店の雰囲気や訪れ方が近い候補です（${joined}）。`;
-        if (hasStyle || hasDish) return `料理の系統が近い候補です（${joined}）。`;
-        return `近い特徴を持つ候補です（${joined}）。`;
+        if (!reasons?.length) return '';
+        const labels = reasons
+            .filter(label => label && !/^(うどん|そば|東京都|大阪府|京都府|神奈川県|香川県|EAST|WEST|KAGAWA|\d回以上選出)$/.test(label))
+            .slice(0, 3);
+        return labels.length ? labels.join(' / ') : '';
     }
 
     function getRecommendations(source, mode = 'similar', limit = 4) {

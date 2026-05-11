@@ -179,29 +179,24 @@ def build_reasons(
 
 def reason_sentence(reasons: list[str]) -> str:
     if not reasons:
-        return "嗜好タグの近さから選んだ候補です。"
-    labels = reasons[:3]
-    joined = "、".join(labels)
-    has_texture = any(any(token in label for token in ("コシ", "香り", "喉越し", "麺")) for label in labels)
-    has_style = any(
-        any(token in label for token in ("讃岐", "関西", "江戸前", "信州", "越前", "出雲", "田舎", "石臼", "手打", "地域色", "セルフ"))
-        for label in labels
-    )
-    has_dish = any(
-        any(token in label for token in ("カレー", "釜", "ぶっかけ", "肉", "味噌", "きしめん", "稲庭", "鴨", "天ぷら", "十割"))
-        for label in labels
-    )
-    has_scene = any(any(token in label for token in ("昼食", "短時間", "目的地", "酒", "蕎麦前", "落ち着いた")) for label in labels)
-    has_mood = any(any(token in label for token in ("伝統", "老舗", "現代的", "個性派", "翁", "藪", "更科", "砂場")) for label in labels)
-    if has_texture and (has_style or has_dish):
-        return f"麺や味の方向性が近い候補です（{joined}）。"
-    if has_scene and (has_style or has_texture or has_dish):
-        return f"使い方や店の方向性が近い候補です（{joined}）。"
-    if has_mood or has_scene:
-        return f"店の雰囲気や訪れ方が近い候補です（{joined}）。"
-    if has_style or has_dish:
-        return f"料理の系統が近い候補です（{joined}）。"
-    return f"近い特徴を持つ候補です（{joined}）。"
+        return ""
+    generic_labels = {
+        "うどん",
+        "そば",
+        "東京都",
+        "大阪府",
+        "京都府",
+        "神奈川県",
+        "香川県",
+        "EAST",
+        "WEST",
+        "KAGAWA",
+        "3回以上選出",
+        "4回以上選出",
+        "5回以上選出",
+    }
+    labels = [label for label in reasons[:3] if label and label not in generic_labels]
+    return " / ".join(labels[:3])
 
 
 def display_scores(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -333,6 +328,16 @@ def case_status(case: dict[str, Any], recs: list[dict[str, Any]]) -> dict[str, A
             for item in recs[:3]
             if item["restaurant"].get("category") in avoid_categories
         ],
+        "closedHits": [
+            item["restaurant"]["name"]
+            for item in recs[:3]
+            if item["restaurant"].get("closed")
+        ],
+        "reasonMissing": [
+            item["restaurant"]["name"]
+            for item in recs[:3]
+            if not item.get("reasonText")
+        ],
     }
 
 
@@ -349,7 +354,8 @@ def print_markdown_report(
     print()
     print("This report is informational. Review misses manually before changing scoring rules.")
     print()
-    total = top3 = topn = avoid_hits = 0
+    total = top3 = topn = avoid_hits = closed_hits = reason_missing_cases = 0
+    case_rows = []
     for case in cases:
         source = by_url.get(case["sourceUrl"])
         if not source:
@@ -363,6 +369,20 @@ def print_markdown_report(
         top3 += 1 if status["preferredTop3"] else 0
         topn += 1 if status["preferredTopN"] else 0
         avoid_hits += len(status["avoidCategoryHits"])
+        closed_hits += len(status["closedHits"])
+        reason_missing_cases += 1 if status["reasonMissing"] else 0
+        case_rows.append(
+            {
+                "id": case["id"],
+                "mode": case.get("mode", "similar"),
+                "source": source["name"],
+                "top3": len(status["preferredTop3"]),
+                f"top{top}": len(status["preferredTopN"]),
+                "avoid": len(status["avoidCategoryHits"]),
+                "closed": len(status["closedHits"]),
+                "reasonMissing": len(status["reasonMissing"]),
+            }
+        )
 
         print(f"## {case['id']}")
         print()
@@ -375,6 +395,10 @@ def print_markdown_report(
             print(f"- Preferred hit: top3={len(status['preferredTop3'])}, top{top}={len(status['preferredTopN'])}")
         if status["avoidCategoryHits"]:
             print(f"- Avoid-category hits in top3: {', '.join(status['avoidCategoryHits'])}")
+        if status["closedHits"]:
+            print(f"- Closed leakage in top3: {', '.join(status['closedHits'])}")
+        if status["reasonMissing"]:
+            print(f"- Missing/weak reasons in top3: {', '.join(status['reasonMissing'])}")
         print()
         for index, item in enumerate(recs[:top], start=1):
             r = item["restaurant"]
@@ -384,7 +408,10 @@ def print_markdown_report(
                 f"score={item['displayScore']} raw={item['score']:.3f} sim={item['similarity']:.3f} "
                 f"affinity={item['affinityBoost']:.2f} dist={dist}"
             )
-            print(f"   - {item['reasonText']}")
+            if item["reasonText"]:
+                print(f"   - reason: {item['reasonText']}")
+            else:
+                print("   - reason: (specific reason hidden; shared tags were too generic)")
         print()
     print("## Summary")
     print()
@@ -392,6 +419,18 @@ def print_markdown_report(
     print(f"- preferred hit in top3: {top3}/{total}")
     print(f"- preferred hit in top{top}: {topn}/{total}")
     print(f"- avoid-category hits in top3: {avoid_hits}")
+    print(f"- closed leakage in top3: {closed_hits}")
+    print(f"- cases with missing/weak top3 reasons: {reason_missing_cases}/{total}")
+    print()
+    print("## Case Metrics")
+    print()
+    print(f"| Case | Mode | Source | Hit@3 | Hit@{top} | Avoid | Closed | Weak reasons |")
+    print("| --- | --- | --- | ---: | ---: | ---: | ---: | ---: |")
+    for row in case_rows:
+        print(
+            f"| `{row['id']}` | `{row['mode']}` | {row['source']} | "
+            f"{row['top3']} | {row[f'top{top}']} | {row['avoid']} | {row['closed']} | {row['reasonMissing']} |"
+        )
 
 
 def main() -> int:
