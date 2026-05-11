@@ -70,6 +70,8 @@ open http://localhost:8080
 ├── sw.js                       # Service Worker
 ├── icon.svg                    # PWAアイコン
 ├── privacy.html                # プライバシーポリシー
+├── docs/
+│   └── recommendation-tags.md  # 推薦タグとスコアリング設計
 ├── data/
 │   ├── data-version.json       # iPhone版向けデータ更新メタ情報
 │   ├── recommendation_tags.json # 推薦機能向けの静的タグデータ（探索補助用）
@@ -122,6 +124,8 @@ Leaflet / Leaflet.markercluster の CDN 読み込みには Subresource Integrity
 `data/recommendation_tags.json` は、将来の店舗推薦機能に向けた静的タグデータです。
 既存データから確定できるジャンル・地域・選出履歴タグと、店名・地域・選出履歴から控えめに推定した探索補助タグを分けて保持しています。
 推定タグは店舗説明の事実断定ではなく、店舗間の類似度計算に使うための補助情報です。
+
+タグ辞書、`weight` / `confidence`、類似度計算、推薦モードの設計方針は [docs/recommendation-tags.md](docs/recommendation-tags.md) にまとめています。
 
 ### うどん百名店
 - **対象**: 2017〜2024年（全6回分）
