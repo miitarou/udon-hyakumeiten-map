@@ -2199,6 +2199,10 @@ body.panel-resizing * {
         right: 12px;
     }
 
+    .mobile-panel-open .locate-btn {
+        z-index: 480;
+    }
+
     /* ⌘Kバッジはモバイルで非表示 */
     .search-shortcut {
         display: none;
@@ -2212,7 +2216,7 @@ body.panel-resizing * {
     .leaflet-control-scale {
         margin-left: calc(12px + env(safe-area-inset-left, 0px)) !important;
         margin-right: 0 !important;
-        margin-bottom: calc(78px + env(safe-area-inset-bottom, 0px)) !important;
+        margin-bottom: calc(38px + env(safe-area-inset-bottom, 0px)) !important;
     }
 
     /* 店舗リストのモバイル表示 */

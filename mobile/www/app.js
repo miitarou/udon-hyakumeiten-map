@@ -2095,6 +2095,7 @@
         if (forceOpen === true || (!isOpen && forceOpen !== false)) {
             panel.classList.remove('panel-closed');
             panel.classList.add('panel-open');
+            if (isMobile) document.body.classList.add('mobile-panel-open');
             if (mobileBtn) mobileBtn.classList.add('mobile-toggle-hidden');
             if (isMobile) {
                 applyStoredMobilePanelHeight();
@@ -2104,6 +2105,7 @@
         } else {
             panel.classList.remove('panel-open');
             panel.classList.add('panel-closed');
+            if (isMobile) document.body.classList.remove('mobile-panel-open');
             if (mobileBtn) mobileBtn.classList.remove('mobile-toggle-hidden');
             if (isMobile) {
                 if (toggleLabel) toggleLabel.textContent = '🔍 検索・フィルタ';
@@ -2552,9 +2554,25 @@
         const footerToggle = document.getElementById('footer-toggle');
         const appFooter = document.getElementById('app-footer');
         if (footerToggle && appFooter) {
-            footerToggle.addEventListener('click', () => {
-                const isOpen = appFooter.classList.toggle('show');
-                footerToggle.textContent = isOpen ? '✕ 閉じる' : 'ℹ️ 免責・出典';
+            const setFooterOpen = open => {
+                appFooter.classList.toggle('show', open);
+                footerToggle.classList.toggle('active', open);
+                footerToggle.textContent = open ? '✕ 閉じる' : 'ℹ️ 免責・出典';
+                footerToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            };
+            footerToggle.addEventListener('click', e => {
+                e.stopPropagation();
+                setFooterOpen(!appFooter.classList.contains('show'));
+            });
+            appFooter.addEventListener('click', e => {
+                if (e.target.closest('a')) return;
+                e.stopPropagation();
+                setFooterOpen(false);
+            });
+            document.addEventListener('click', e => {
+                if (!appFooter.classList.contains('show')) return;
+                if (appFooter.contains(e.target) || footerToggle.contains(e.target)) return;
+                setFooterOpen(false);
             });
         }
 
