@@ -1,6 +1,6 @@
 {
   "appId": "jp.miitarou.hyakumeiten.udonsoba",
-  "appName": "うどん・そば百名店MAP",
+  "appName": "百名店MAP",
   "webDir": "www",
   "bundledWebRuntime": false,
   "ios": {

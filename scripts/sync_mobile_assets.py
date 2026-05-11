@@ -19,6 +19,7 @@ ROOT_FILES = (
     "app.js",
     "manifest.webmanifest",
     "icon.svg",
+    "icon.png",
     "privacy.html",
 )
 DATA_FILES = (
@@ -51,6 +52,9 @@ def copy_root_files() -> None:
         if not src.exists():
             continue
         dest = WWW / name
+        if src.suffix.lower() in {".png", ".jpg", ".jpeg", ".webp", ".ico"}:
+            shutil.copy2(src, dest)
+            continue
         text = src.read_text(encoding="utf-8")
         if name == "index.html":
             text = transform_index(text)
