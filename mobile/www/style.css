@@ -1954,7 +1954,7 @@ body.panel-resizing * {
 }
 
 .leaflet-control-scale {
-    margin-right: 14px !important;
+    margin-right: 78px !important;
     margin-bottom: 16px !important;
 }
 
@@ -2210,8 +2210,8 @@ body.panel-resizing * {
     }
 
     .leaflet-control-scale {
-        margin-left: calc(10px + env(safe-area-inset-left, 0px)) !important;
-        margin-bottom: calc(24px + env(safe-area-inset-bottom, 0px)) !important;
+        margin-right: calc(12px + env(safe-area-inset-right, 0px)) !important;
+        margin-bottom: calc(142px + env(safe-area-inset-bottom, 0px)) !important;
     }
 
     /* 店舗リストのモバイル表示 */
