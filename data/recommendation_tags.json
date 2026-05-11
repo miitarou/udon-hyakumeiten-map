@@ -386,6 +386,10 @@
       "label": "江戸前そば系",
       "kind": "inferred"
     },
+    "style.hakata_udon": {
+      "label": "博多・福岡うどん系",
+      "kind": "inferred"
+    },
     "style.handmade": {
       "label": "手打ち・自家製寄り",
       "kind": "inferred"
@@ -592,6 +596,96 @@
       "missingNames": []
     },
     {
+      "id": "musashino_udon",
+      "label": "武蔵野うどん・肉汁うどん文脈",
+      "category": "udon",
+      "modes": [
+        "similar",
+        "nearby"
+      ],
+      "boost": 0.1,
+      "urls": [
+        "https://tabelog.com/tokyo/A1305/A130501/13003889/",
+        "https://tabelog.com/tokyo/A1321/A132103/13022818/",
+        "https://tabelog.com/tokyo/A1328/A132804/13087964/",
+        "https://tabelog.com/tokyo/A1329/A132901/13026307/",
+        "https://tabelog.com/tokyo/A1319/A131907/13018776/",
+        "https://tabelog.com/saitama/A1101/A110101/11004286/",
+        "https://tabelog.com/saitama/A1103/A110303/11004160/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "yoshida_udon",
+      "label": "吉田うどん文脈",
+      "category": "udon",
+      "modes": [
+        "similar",
+        "nearby"
+      ],
+      "boost": 0.11,
+      "urls": [
+        "https://tabelog.com/yamanashi/A1903/A190301/19000136/",
+        "https://tabelog.com/yamanashi/A1903/A190301/19000359/",
+        "https://tabelog.com/yamanashi/A1903/A190301/19000357/",
+        "https://tabelog.com/yamanashi/A1903/A190301/19000243/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "inaniwa_udon",
+      "label": "稲庭うどん・喉越しうどん文脈",
+      "category": "udon",
+      "modes": [
+        "similar",
+        "expand"
+      ],
+      "boost": 0.1,
+      "urls": [
+        "https://tabelog.com/tokyo/A1301/A130101/13033146/",
+        "https://tabelog.com/akita/A0501/A050101/5000022/",
+        "https://tabelog.com/tokyo/A1302/A130202/13193074/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "hakata_kyushu_udon",
+      "label": "博多・九州うどん文脈",
+      "category": "udon",
+      "modes": [
+        "similar",
+        "nearby",
+        "expand"
+      ],
+      "boost": 0.09,
+      "urls": [
+        "https://tabelog.com/fukuoka/A4001/A400101/40004342/",
+        "https://tabelog.com/fukuoka/A4001/A400101/40000480/",
+        "https://tabelog.com/fukuoka/A4001/A400104/40034851/",
+        "https://tabelog.com/tokyo/A1303/A130302/13198167/",
+        "https://tabelog.com/miyazaki/A4503/A450302/45004957/",
+        "https://tabelog.com/miyazaki/A4501/A450101/45001975/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "curry_regional_udon",
+      "label": "カレー・変化球うどん文脈",
+      "category": "udon",
+      "modes": [
+        "similar",
+        "expand"
+      ],
+      "boost": 0.09,
+      "urls": [
+        "https://tabelog.com/tokyo/A1316/A131601/13013189/",
+        "https://tabelog.com/aichi/A2301/A230110/23000050/",
+        "https://tabelog.com/toyama/A1601/A160101/16000661/",
+        "https://tabelog.com/tokyo/A1310/A131004/13036030/"
+      ],
+      "missingNames": []
+    },
+    {
       "id": "tokyo_handmade_soba",
       "label": "東京の手打ち・石臼そば文脈",
       "category": "soba",
@@ -727,6 +821,63 @@
         "https://tabelog.com/kanagawa/A1404/A140408/14007619/",
         "https://tabelog.com/kanagawa/A1404/A140406/14035065/",
         "https://tabelog.com/kanagawa/A1410/A141001/14001257/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "chiba_boso_destination_soba",
+      "label": "千葉・房総の目的地型そば文脈",
+      "category": "soba",
+      "modes": [
+        "similar",
+        "nearby"
+      ],
+      "boost": 0.08,
+      "urls": [
+        "https://tabelog.com/chiba/A1207/A120703/12020932/",
+        "https://tabelog.com/chiba/A1203/A120305/12003116/",
+        "https://tabelog.com/chiba/A1203/A120301/12000067/",
+        "https://tabelog.com/ibaraki/A0805/A080502/8000227/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "north_kanto_country_soba",
+      "label": "北関東の田舎そば・目的地そば文脈",
+      "category": "soba",
+      "modes": [
+        "similar",
+        "expand"
+      ],
+      "boost": 0.09,
+      "urls": [
+        "https://tabelog.com/gunma/A1001/A100102/10000142/",
+        "https://tabelog.com/gunma/A1001/A100102/10010351/",
+        "https://tabelog.com/ibaraki/A0805/A080502/8000227/",
+        "https://tabelog.com/ibaraki/A0805/A080502/8000966/",
+        "https://tabelog.com/ibaraki/A0801/A080102/8000290/",
+        "https://tabelog.com/yamagata/A0601/A060101/6000107/",
+        "https://tabelog.com/fukushima/A0702/A070201/7000355/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "chubu_hokuriku_soba",
+      "label": "中部・北陸の石臼手打ちそば文脈",
+      "category": "soba",
+      "modes": [
+        "similar",
+        "expand"
+      ],
+      "boost": 0.08,
+      "urls": [
+        "https://tabelog.com/ishikawa/A1702/A170203/17001320/",
+        "https://tabelog.com/gifu/A2102/A210205/21008212/",
+        "https://tabelog.com/gifu/A2104/A210403/21000060/",
+        "https://tabelog.com/gifu/A2103/A210303/21014458/",
+        "https://tabelog.com/gifu/A2101/A210101/21000104/",
+        "https://tabelog.com/aichi/A2301/A230112/23004733/",
+        "https://tabelog.com/aichi/A2301/A230103/23074368/"
       ],
       "missingNames": []
     }
@@ -11556,6 +11707,15 @@
       "category": "udon",
       "tags": [
         {
+          "key": "dish.curry",
+          "weight": 0.86,
+          "confidence": 0.88,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:こんぴら茶屋"
+          ]
+        },
+        {
           "key": "genre.udon",
           "weight": 1.0,
           "confidence": 1.0,
@@ -14037,12 +14197,39 @@
           ]
         },
         {
+          "key": "style.hakata_udon",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.7,
+          "confidence": 0.68,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
           "key": "texture.koshi_strong",
           "weight": 0.58,
           "confidence": 0.5,
           "source": "model_prior",
           "evidence": [
             "category:udon"
+          ]
+        },
+        {
+          "key": "texture.throat_smooth",
+          "weight": 0.62,
+          "confidence": 0.62,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
           ]
         }
       ]
@@ -19874,6 +20061,15 @@
       "category": "udon",
       "tags": [
         {
+          "key": "dish.inaniwa",
+          "weight": 0.9,
+          "confidence": 0.88,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:佐藤養助"
+          ]
+        },
+        {
           "key": "genre.udon",
           "weight": 1.0,
           "confidence": 1.0,
@@ -19907,6 +20103,15 @@
           "source": "data",
           "evidence": [
             "region"
+          ]
+        },
+        {
+          "key": "scene.calm_meal",
+          "weight": 0.62,
+          "confidence": 0.62,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:佐藤養助"
           ]
         },
         {
@@ -19971,6 +20176,15 @@
           "source": "model_prior",
           "evidence": [
             "category:udon"
+          ]
+        },
+        {
+          "key": "texture.throat_smooth",
+          "weight": 0.72,
+          "confidence": 0.7,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:佐藤養助"
           ]
         }
       ]
@@ -21669,6 +21883,15 @@
       "category": "udon",
       "tags": [
         {
+          "key": "dish.inaniwa",
+          "weight": 0.9,
+          "confidence": 0.88,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:佐藤養助"
+          ]
+        },
+        {
           "key": "genre.udon",
           "weight": 1.0,
           "confidence": 1.0,
@@ -21702,6 +21925,15 @@
           "source": "data",
           "evidence": [
             "region"
+          ]
+        },
+        {
+          "key": "scene.calm_meal",
+          "weight": 0.62,
+          "confidence": 0.62,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:佐藤養助"
           ]
         },
         {
@@ -21756,6 +21988,15 @@
           "source": "model_prior",
           "evidence": [
             "category:udon"
+          ]
+        },
+        {
+          "key": "texture.throat_smooth",
+          "weight": 0.72,
+          "confidence": 0.7,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:佐藤養助"
           ]
         }
       ]
@@ -46315,6 +46556,15 @@
       "category": "udon",
       "tags": [
         {
+          "key": "dish.curry",
+          "weight": 0.86,
+          "confidence": 0.88,
+          "source": "name_keyword",
+          "evidence": [
+            "name_keyword:糸庄"
+          ]
+        },
+        {
           "key": "genre.udon",
           "weight": 1.0,
           "confidence": 1.0,
@@ -47200,12 +47450,39 @@
           ]
         },
         {
+          "key": "style.hakata_udon",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.7,
+          "confidence": 0.68,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
           "key": "texture.koshi_strong",
           "weight": 0.58,
           "confidence": 0.5,
           "source": "model_prior",
           "evidence": [
             "category:udon"
+          ]
+        },
+        {
+          "key": "texture.throat_smooth",
+          "weight": 0.62,
+          "confidence": 0.62,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
           ]
         }
       ]
@@ -47298,12 +47575,39 @@
           ]
         },
         {
+          "key": "style.hakata_udon",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.7,
+          "confidence": 0.68,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
           "key": "texture.koshi_strong",
           "weight": 0.58,
           "confidence": 0.5,
           "source": "model_prior",
           "evidence": [
             "category:udon"
+          ]
+        },
+        {
+          "key": "texture.throat_smooth",
+          "weight": 0.62,
+          "confidence": 0.62,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
           ]
         }
       ]
@@ -47396,12 +47700,39 @@
           ]
         },
         {
+          "key": "style.hakata_udon",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.7,
+          "confidence": 0.68,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
           "key": "texture.koshi_strong",
           "weight": 0.58,
           "confidence": 0.5,
           "source": "model_prior",
           "evidence": [
             "category:udon"
+          ]
+        },
+        {
+          "key": "texture.throat_smooth",
+          "weight": 0.62,
+          "confidence": 0.62,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
           ]
         }
       ]
@@ -47484,12 +47815,39 @@
           ]
         },
         {
+          "key": "style.hakata_udon",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.7,
+          "confidence": 0.68,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
           "key": "texture.koshi_strong",
           "weight": 0.58,
           "confidence": 0.5,
           "source": "model_prior",
           "evidence": [
             "category:udon"
+          ]
+        },
+        {
+          "key": "texture.throat_smooth",
+          "weight": 0.62,
+          "confidence": 0.62,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
           ]
         }
       ]
@@ -47563,12 +47921,39 @@
           ]
         },
         {
+          "key": "style.hakata_udon",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.7,
+          "confidence": 0.68,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
           "key": "texture.koshi_strong",
           "weight": 0.58,
           "confidence": 0.5,
           "source": "model_prior",
           "evidence": [
             "category:udon"
+          ]
+        },
+        {
+          "key": "texture.throat_smooth",
+          "weight": 0.62,
+          "confidence": 0.62,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
           ]
         }
       ]
@@ -47651,12 +48036,39 @@
           ]
         },
         {
+          "key": "style.hakata_udon",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.7,
+          "confidence": 0.68,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
           "key": "texture.koshi_strong",
           "weight": 0.58,
           "confidence": 0.5,
           "source": "model_prior",
           "evidence": [
             "category:udon"
+          ]
+        },
+        {
+          "key": "texture.throat_smooth",
+          "weight": 0.62,
+          "confidence": 0.62,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
           ]
         }
       ]
@@ -47748,12 +48160,39 @@
           ]
         },
         {
+          "key": "style.hakata_udon",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.7,
+          "confidence": 0.68,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
           "key": "texture.koshi_strong",
           "weight": 0.58,
           "confidence": 0.5,
           "source": "model_prior",
           "evidence": [
             "category:udon"
+          ]
+        },
+        {
+          "key": "texture.throat_smooth",
+          "weight": 0.62,
+          "confidence": 0.62,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
           ]
         }
       ]
@@ -47855,12 +48294,39 @@
           ]
         },
         {
+          "key": "style.hakata_udon",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.7,
+          "confidence": 0.68,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
           "key": "texture.koshi_strong",
           "weight": 0.58,
           "confidence": 0.5,
           "source": "model_prior",
           "evidence": [
             "category:udon"
+          ]
+        },
+        {
+          "key": "texture.throat_smooth",
+          "weight": 0.62,
+          "confidence": 0.62,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
           ]
         }
       ]
@@ -47971,12 +48437,39 @@
           ]
         },
         {
+          "key": "style.hakata_udon",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.7,
+          "confidence": 0.68,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
+          ]
+        },
+        {
           "key": "texture.koshi_strong",
           "weight": 0.58,
           "confidence": 0.5,
           "source": "model_prior",
           "evidence": [
             "category:udon"
+          ]
+        },
+        {
+          "key": "texture.throat_smooth",
+          "weight": 0.62,
+          "confidence": 0.62,
+          "source": "regional_prior",
+          "evidence": [
+            "prefecture_or_name:hakata_udon"
           ]
         }
       ]

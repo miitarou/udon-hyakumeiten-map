@@ -328,6 +328,163 @@
       ],
       "expectedTags": ["genre.soba", "style.edomae_soba", "texture.aroma_focused"],
       "avoidCategories": ["udon"]
+    },
+    {
+      "id": "udon_tokyo_uchitate_musashino_similar",
+      "sourceUrl": "https://tabelog.com/tokyo/A1305/A130501/13003889/",
+      "mode": "similar",
+      "intent": "武蔵野うどん系のコシや肉汁・郊外うどん文脈を見る",
+      "preferredUrls": [
+        "https://tabelog.com/tokyo/A1321/A132103/13022818/",
+        "https://tabelog.com/tokyo/A1328/A132804/13087964/",
+        "https://tabelog.com/tokyo/A1329/A132901/13026307/",
+        "https://tabelog.com/saitama/A1101/A110101/11004286/",
+        "https://tabelog.com/saitama/A1103/A110303/11004160/"
+      ],
+      "expectedTags": ["style.musashino_udon", "texture.koshi_strong", "dish.meat_soup"],
+      "avoidCategories": ["soba"]
+    },
+    {
+      "id": "udon_yamanashi_menkyo_yoshida_similar",
+      "sourceUrl": "https://tabelog.com/yamanashi/A1903/A190301/19000136/",
+      "mode": "similar",
+      "intent": "吉田うどん系の地域色と強い麺の候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/yamanashi/A1903/A190301/19000359/",
+        "https://tabelog.com/yamanashi/A1903/A190301/19000357/",
+        "https://tabelog.com/yamanashi/A1903/A190301/19000243/"
+      ],
+      "expectedTags": ["style.yoshida_udon", "style.regional_specialty", "texture.koshi_strong"],
+      "avoidCategories": ["soba"]
+    },
+    {
+      "id": "udon_tokyo_sato_yosuke_inaniwa_similar",
+      "sourceUrl": "https://tabelog.com/tokyo/A1301/A130101/13033146/",
+      "mode": "similar",
+      "intent": "稲庭うどん系の喉越し・上品なうどん候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/akita/A0501/A050101/5000022/",
+        "https://tabelog.com/tokyo/A1302/A130202/13193074/"
+      ],
+      "expectedTags": ["dish.inaniwa", "texture.throat_smooth", "scene.calm_meal"],
+      "avoidCategories": ["soba"]
+    },
+    {
+      "id": "udon_fukuoka_hagakure_hakata_similar",
+      "sourceUrl": "https://tabelog.com/fukuoka/A4001/A400101/40004342/",
+      "mode": "similar",
+      "intent": "博多・福岡のやわらかめで日常使いしやすいうどん候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/fukuoka/A4001/A400101/40000480/",
+        "https://tabelog.com/fukuoka/A4001/A400104/40034851/",
+        "https://tabelog.com/tokyo/A1303/A130302/13198167/"
+      ],
+      "expectedTags": ["style.hakata_udon", "texture.throat_smooth", "scene.solo_lunch"],
+      "avoidCategories": ["soba"]
+    },
+    {
+      "id": "udon_tokyo_konpira_curry_similar",
+      "sourceUrl": "https://tabelog.com/tokyo/A1316/A131601/13013189/",
+      "mode": "similar",
+      "intent": "カレーうどんや地域色の強い変化球うどん候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/aichi/A2301/A230110/23000050/",
+        "https://tabelog.com/toyama/A1601/A160101/16000661/",
+        "https://tabelog.com/tokyo/A1310/A131004/13036030/"
+      ],
+      "expectedTags": ["dish.curry", "style.regional_specialty", "genre.udon"],
+      "avoidCategories": ["soba"]
+    },
+    {
+      "id": "udon_miyazaki_futami_kyushu_similar",
+      "sourceUrl": "https://tabelog.com/miyazaki/A4503/A450302/45004957/",
+      "mode": "similar",
+      "intent": "九州の地域うどん・釜揚げ寄りの候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/miyazaki/A4501/A450101/45001975/",
+        "https://tabelog.com/fukuoka/A4001/A400104/40034851/",
+        "https://tabelog.com/fukuoka/A4001/A400101/40004342/"
+      ],
+      "expectedTags": ["macro_area.kyushu_okinawa", "style.regional_specialty", "genre.udon"],
+      "avoidCategories": ["soba"]
+    },
+    {
+      "id": "soba_kanagawa_oribe_similar",
+      "sourceUrl": "https://tabelog.com/kanagawa/A1404/A140408/14007619/",
+      "mode": "similar",
+      "intent": "神奈川の目的地型そば候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/kanagawa/A1406/A140602/14004578/",
+        "https://tabelog.com/kanagawa/A1404/A140406/14035065/",
+        "https://tabelog.com/kanagawa/A1410/A141001/14001257/"
+      ],
+      "expectedTags": ["scene.destination", "texture.aroma_focused", "genre.soba"],
+      "avoidCategories": ["udon"]
+    },
+    {
+      "id": "soba_chiba_kase_similar",
+      "sourceUrl": "https://tabelog.com/chiba/A1207/A120703/12020932/",
+      "mode": "similar",
+      "intent": "千葉の郊外・目的地型手打ちそば候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/chiba/A1203/A120305/12003116/",
+        "https://tabelog.com/chiba/A1203/A120301/12000067/",
+        "https://tabelog.com/ibaraki/A0805/A080502/8000227/"
+      ],
+      "expectedTags": ["style.handmade", "scene.destination", "texture.aroma_focused"],
+      "avoidCategories": ["udon"]
+    },
+    {
+      "id": "soba_gunma_bonmi_similar",
+      "sourceUrl": "https://tabelog.com/gunma/A1001/A100102/10000142/",
+      "mode": "similar",
+      "intent": "北関東の田舎そば・地域そば候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/gunma/A1001/A100102/10010351/",
+        "https://tabelog.com/ibaraki/A0805/A080502/8000227/",
+        "https://tabelog.com/ibaraki/A0805/A080502/8000966/"
+      ],
+      "expectedTags": ["style.country_soba", "style.regional_specialty", "texture.aroma_focused"],
+      "avoidCategories": ["udon"]
+    },
+    {
+      "id": "soba_ibaraki_jikyuan_similar",
+      "sourceUrl": "https://tabelog.com/ibaraki/A0805/A080502/8000227/",
+      "mode": "similar",
+      "intent": "茨城の目的地型・田舎そば寄りの候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/ibaraki/A0805/A080502/8000966/",
+        "https://tabelog.com/ibaraki/A0801/A080102/8000290/",
+        "https://tabelog.com/gunma/A1001/A100102/10000142/"
+      ],
+      "expectedTags": ["style.country_soba", "scene.destination", "texture.aroma_focused"],
+      "avoidCategories": ["udon"]
+    },
+    {
+      "id": "soba_ishikawa_kusaan_hokuriku_similar",
+      "sourceUrl": "https://tabelog.com/ishikawa/A1702/A170203/17001320/",
+      "mode": "similar",
+      "intent": "北陸・中部の地域そば候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/shimane/A3202/A320203/32001813/",
+        "https://tabelog.com/gifu/A2102/A210205/21008212/",
+        "https://tabelog.com/gifu/A2104/A210403/21000060/"
+      ],
+      "expectedTags": ["style.regional_specialty", "texture.aroma_focused", "genre.soba"],
+      "avoidCategories": ["udon"]
+    },
+    {
+      "id": "soba_aichi_isshin_stonemilled_similar",
+      "sourceUrl": "https://tabelog.com/aichi/A2301/A230112/23004733/",
+      "mode": "similar",
+      "intent": "手挽き・石臼寄りの中部そば候補を見る",
+      "preferredUrls": [
+        "https://tabelog.com/aichi/A2301/A230103/23074368/",
+        "https://tabelog.com/gifu/A2101/A210101/21000104/",
+        "https://tabelog.com/gifu/A2104/A210403/21000060/"
+      ],
+      "expectedTags": ["style.stone_milled", "texture.aroma_focused", "genre.soba"],
+      "avoidCategories": ["udon"]
     }
   ]
 }

@@ -120,6 +120,7 @@ TAG_DEFINITIONS: dict[str, dict[str, str]] = {
     "style.musashino_udon": {"label": "武蔵野うどん系", "kind": "inferred"},
     "style.yoshida_udon": {"label": "吉田うどん系", "kind": "inferred"},
     "style.kansai_dashi": {"label": "関西だし寄り", "kind": "inferred"},
+    "style.hakata_udon": {"label": "博多・福岡うどん系", "kind": "inferred"},
     "style.edomae_soba": {"label": "江戸前そば系", "kind": "inferred"},
     "style.shinshu_soba": {"label": "信州そば系", "kind": "inferred"},
     "style.echizen_soba": {"label": "越前そば系", "kind": "inferred"},
@@ -166,7 +167,7 @@ UDON_KEYWORD_RULES = (
     ("style.sanuki_influenced", ("讃岐", "さぬき", "饂飩", "うどん職人さぬき"), 0.90, 0.84),
     ("style.musashino_udon", ("武蔵野",), 0.90, 0.88),
     ("style.yoshida_udon", ("吉田",), 0.86, 0.78),
-    ("dish.curry", ("カレー", "かれー"), 0.86, 0.88),
+    ("dish.curry", ("カレー", "かれー", "こんぴら茶屋", "糸庄"), 0.86, 0.88),
     ("dish.kamaage", ("釜あげ", "釜揚", "釜たけ", "釜竹", "釜ひろ", "釜喜利", "釜善"), 0.82, 0.84),
     ("dish.kamatama", ("釜玉",), 0.86, 0.9),
     ("dish.bukkake", ("ぶっかけ",), 0.82, 0.88),
@@ -319,6 +320,75 @@ AFFINITY_GROUPS = (
         ),
     },
     {
+        "id": "musashino_udon",
+        "label": "武蔵野うどん・肉汁うどん文脈",
+        "category": "udon",
+        "modes": ("similar", "nearby"),
+        "boost": 0.1,
+        "names": (
+            "うちたて家",
+            "むさしの エン座",
+            "小平うどん 小平本店",
+            "村山 満月うどん",
+            "豚や",
+            "武蔵野うどん 藤原 北与野本店",
+            "田舎うどん てつ",
+        ),
+    },
+    {
+        "id": "yoshida_udon",
+        "label": "吉田うどん文脈",
+        "category": "udon",
+        "modes": ("similar", "nearby"),
+        "boost": 0.11,
+        "names": (
+            "麺許皆伝",
+            "みうらうどん",
+            "桜井うどん",
+            "手打ちうどん ムサシ",
+        ),
+    },
+    {
+        "id": "inaniwa_udon",
+        "label": "稲庭うどん・喉越しうどん文脈",
+        "category": "udon",
+        "modes": ("similar", "expand"),
+        "boost": 0.1,
+        "names": (
+            "銀座 佐藤養助",
+            "佐藤養助 秋田店",
+            "稲庭うどんとめし 金子半之助 コレド室町店",
+        ),
+    },
+    {
+        "id": "hakata_kyushu_udon",
+        "label": "博多・九州うどん文脈",
+        "category": "udon",
+        "modes": ("similar", "nearby", "expand"),
+        "boost": 0.09,
+        "names": (
+            "葉隠うどん",
+            "うどん平",
+            "釜喜利うどん",
+            "博多うどん酒場イチカバチカ 恵比寿店",
+            "ふたみうどん研究所",
+            "釜揚げうどん 織田薪 本店",
+        ),
+    },
+    {
+        "id": "curry_regional_udon",
+        "label": "カレー・変化球うどん文脈",
+        "category": "udon",
+        "modes": ("similar", "expand"),
+        "boost": 0.09,
+        "names": (
+            "こんぴら茶屋",
+            "カレーうどん 鯱乃家",
+            "糸庄 本店",
+            "酒と味噌煮込み 味噌煮込罠",
+        ),
+    },
+    {
         "id": "tokyo_handmade_soba",
         "label": "東京の手打ち・石臼そば文脈",
         "category": "soba",
@@ -427,6 +497,51 @@ AFFINITY_GROUPS = (
             "オリベ",
             "蕎房 猪口屋",
             "竹やぶ 箱根店",
+        ),
+    },
+    {
+        "id": "chiba_boso_destination_soba",
+        "label": "千葉・房総の目的地型そば文脈",
+        "category": "soba",
+        "modes": ("similar", "nearby"),
+        "boost": 0.08,
+        "names": (
+            "手造りそば 打墨庵 加瀬",
+            "流山 すず季",
+            "竹やぶ 柏本店",
+            "慈久庵",
+        ),
+    },
+    {
+        "id": "north_kanto_country_soba",
+        "label": "北関東の田舎そば・目的地そば文脈",
+        "category": "soba",
+        "modes": ("similar", "expand"),
+        "boost": 0.09,
+        "names": (
+            "凡味 そばきり",
+            "手打ちそば 舞鶴",
+            "慈久庵",
+            "鯨荘 塩町館",
+            "木挽庵",
+            "手打ちそば 梅蕎麦",
+            "蕎麦切り あなざわ",
+        ),
+    },
+    {
+        "id": "chubu_hokuriku_soba",
+        "label": "中部・北陸の石臼手打ちそば文脈",
+        "category": "soba",
+        "modes": ("similar", "expand"),
+        "boost": 0.08,
+        "names": (
+            "草庵",
+            "蕎麦正まつい",
+            "仲佐",
+            "手打蕎麦 わくり",
+            "胡蝶庵 仙波",
+            "手挽きそば 一心",
+            "玄水",
         ),
     },
 )
@@ -594,6 +709,14 @@ def build_tags_for_restaurant(
             add_tag(tags, "scene.destination", 0.7, 0.62, "regional_prior", "region:kagawa")
         if prefecture in {"大阪府", "京都府", "兵庫県", "奈良県", "滋賀県", "和歌山県"}:
             add_tag(tags, "style.kansai_dashi", 0.55, 0.52, "regional_prior", "macro_area:kansai")
+        if prefecture == "福岡県" or any(keyword in name for keyword in ("博多", "葉隠うどん", "うどん平")):
+            add_tag(tags, "style.hakata_udon", 0.78, 0.72, "regional_prior", "prefecture_or_name:hakata_udon")
+            add_tag(tags, "texture.throat_smooth", 0.62, 0.62, "regional_prior", "prefecture_or_name:hakata_udon")
+            add_tag(tags, "style.regional_specialty", 0.7, 0.68, "regional_prior", "prefecture_or_name:hakata_udon")
+        if "佐藤養助" in name:
+            add_tag(tags, "dish.inaniwa", 0.9, 0.88, "name_keyword", "name_keyword:佐藤養助")
+            add_tag(tags, "texture.throat_smooth", 0.72, 0.7, "name_keyword", "name_keyword:佐藤養助")
+            add_tag(tags, "scene.calm_meal", 0.62, 0.62, "name_keyword", "name_keyword:佐藤養助")
         if prefecture == "京都府":
             add_tag(tags, "style.kansai_dashi", 0.62, 0.62, "regional_prior", "prefecture:kyoto_udon")
             add_tag(tags, "scene.destination", 0.64, 0.6, "regional_prior", "prefecture:kyoto_udon")

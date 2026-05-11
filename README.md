@@ -180,7 +180,7 @@ Leaflet / Leaflet.markercluster の CDN 読み込みには Subresource Integrity
 - `data/recommendation_tags.json` のURL照合・タグ定義・weight/confidence形式・AI推定相性グループ
 - `data/recommendation_golden_set.json` の参照URL・推薦モード整合
 
-推薦品質を確認する場合は、代表ケースに対する現行推薦結果を出力します。
+推薦品質を確認する場合は、代表ケース（36ケース）に対する現行推薦結果を出力します。
 
 ```bash
 python3 scripts/evaluate_recommendations.py
