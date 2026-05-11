@@ -323,6 +323,50 @@ def validate_recommendation_tags(known_restaurants: dict[str, dict]) -> tuple[in
         if extra:
             errors.append(f"extra recommendation records: {len(extra)}")
 
+    affinity_groups = payload.get("affinityGroups", [])
+    if affinity_groups is not None:
+        if not isinstance(affinity_groups, list):
+            errors.append("affinityGroups must be a list")
+            affinity_groups = []
+        seen_group_ids: set[str] = set()
+        for index, group in enumerate(affinity_groups):
+            group_prefix = f"affinityGroups[{index}]"
+            if not isinstance(group, dict):
+                errors.append(f"{group_prefix}: must be an object")
+                continue
+            group_id = group.get("id")
+            if not isinstance(group_id, str) or not group_id:
+                errors.append(f"{group_prefix}: id must be a non-empty string")
+            elif group_id in seen_group_ids:
+                errors.append(f"{group_prefix}: duplicate id {group_id}")
+            else:
+                seen_group_ids.add(group_id)
+                group_prefix = f"affinityGroups.{group_id}"
+            if not isinstance(group.get("label"), str) or not group["label"]:
+                errors.append(f"{group_prefix}: label must be a non-empty string")
+            if group.get("category") not in VALID_CATEGORIES:
+                errors.append(f"{group_prefix}: category must be one of {sorted(VALID_CATEGORIES)}")
+            boost = group.get("boost")
+            if not isinstance(boost, (int, float)) or isinstance(boost, bool) or not (0 < float(boost) <= 0.2):
+                errors.append(f"{group_prefix}: boost must be a number between 0 and 0.2")
+            modes = group.get("modes")
+            if not isinstance(modes, list) or not modes:
+                errors.append(f"{group_prefix}: modes must be a non-empty list")
+            else:
+                invalid_modes = [value for value in modes if value not in VALID_RECOMMENDATION_MODES]
+                if invalid_modes:
+                    errors.append(f"{group_prefix}: invalid modes: {invalid_modes}")
+            urls = group.get("urls")
+            if not isinstance(urls, list) or len(urls) < 2:
+                errors.append(f"{group_prefix}: urls must contain at least two public restaurant urls")
+            else:
+                for url in urls:
+                    known = known_restaurants.get(url)
+                    if not known:
+                        errors.append(f"{group_prefix}: unknown url: {url!r}")
+                    elif group.get("category") in VALID_CATEGORIES and known.get("category") != group.get("category"):
+                        warnings.append(f"{group_prefix}: url category differs from group category: {url}")
+
     for key, definition in tag_definitions.items():
         if not isinstance(definition, dict):
             errors.append(f"tagDefinitions.{key}: must be an object")

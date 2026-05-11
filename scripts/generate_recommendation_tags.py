@@ -191,6 +191,247 @@ SOBA_KEYWORD_RULES = (
 )
 
 
+# Editorial model priors used as a light pairwise signal on top of tag similarity.
+# These are not facts about the shops. They encode broad exploration contexts such
+# as "Tokyo Sanuki-style udon" or "Yabu/Edomae soba lineage" so the runtime can
+# nudge plausible candidates without hard-coding deterministic recommendations.
+AFFINITY_GROUPS = (
+    {
+        "id": "tokyo_sanuki_udon",
+        "label": "東京の讃岐・手打ちうどん文脈",
+        "category": "udon",
+        "modes": ("similar", "nearby"),
+        "boost": 0.08,
+        "names": (
+            "うどん 丸香",
+            "うどん 慎",
+            "讃岐うどん いわい",
+            "讃岐うどん 蔵之介",
+            "香川 一福 神田店",
+            "手打うどん すみた",
+            "純手打ち讃岐うどん五郎",
+            "切麦や 甚六",
+        ),
+    },
+    {
+        "id": "tokyo_quick_udon",
+        "label": "都内で短時間利用しやすいうどん文脈",
+        "category": "udon",
+        "modes": ("similar", "nearby"),
+        "boost": 0.07,
+        "names": (
+            "おにやんま 五反田本店",
+            "おにやんま 新橋店",
+            "おにやんま 人形町店",
+            "おにやんま 中目黒店",
+            "おにやんま 東品川店",
+            "自家製さぬきうどんと肉 甚三 大門店",
+            "こくわがた",
+            "トウキョウライトブルー ホンゴウスリー",
+        ),
+    },
+    {
+        "id": "kamaage_udon",
+        "label": "釜揚げ・釜系うどん文脈",
+        "category": "udon",
+        "modes": ("similar", "expand"),
+        "boost": 0.1,
+        "names": (
+            "根津 釜竹",
+            "釜あげうどん はつとみ",
+            "難波千日前 釜たけうどん 八重洲北口店",
+            "釜揚うどん一紀",
+            "釜ひろ",
+            "釜あげうどん 長田 in 香の香",
+            "長田うどん",
+            "釜揚げうどん専門店もと",
+        ),
+    },
+    {
+        "id": "nagoya_udon",
+        "label": "名古屋・愛知のうどん文脈",
+        "category": "udon",
+        "modes": ("similar", "nearby"),
+        "boost": 0.09,
+        "names": (
+            "うどん 錦",
+            "めん専門店 味良",
+            "手打うどん かとう",
+            "うどん料理 千",
+            "きしや",
+            "玉川 豊橋広小路本店",
+            "讃州手打ちうどん 我龍",
+            "酒と味噌煮込み 味噌煮込罠",
+        ),
+    },
+    {
+        "id": "osaka_sanuki_udon",
+        "label": "大阪の讃岐・剛麺系うどん文脈",
+        "category": "udon",
+        "modes": ("similar", "nearby"),
+        "boost": 0.08,
+        "names": (
+            "讃岐うどん 白庵",
+            "手造りうどん 楽々",
+            "極楽うどん TKU",
+            "極楽うどん Ah-麺",
+            "たけうちうどん店",
+            "踊るうどん 滝井本店",
+            "讃岐うどん 今雪",
+            "空飛ぶうどん やまぶき家",
+        ),
+    },
+    {
+        "id": "kyoto_kansai_udon",
+        "label": "京都・関西だしうどん文脈",
+        "category": "udon",
+        "modes": ("similar", "expand"),
+        "boost": 0.08,
+        "names": (
+            "山元麺蔵",
+            "本格手打うどん 大河",
+            "京うどん 生蕎麦 岡北",
+            "日の出うどん",
+            "仁王門 うね乃",
+            "道頓堀 今井 本店",
+            "うどん棒 大阪本店",
+        ),
+    },
+    {
+        "id": "kagawa_udon_pilgrimage",
+        "label": "香川の讃岐うどん巡り文脈",
+        "category": "udon",
+        "modes": ("similar", "nearby", "expand"),
+        "boost": 0.09,
+        "names": (
+            "山越うどん",
+            "手打うどん たむら",
+            "中村うどん",
+            "日の出製麺所",
+            "讃岐うどん がもう",
+            "須崎食料品店",
+            "谷川米穀店",
+            "山内うどん店",
+            "純手打うどん よしや",
+            "本格手打うどん おか泉",
+            "竹清 本店",
+            "うどん本陣 山田家 讃岐本店",
+        ),
+    },
+    {
+        "id": "tokyo_handmade_soba",
+        "label": "東京の手打ち・石臼そば文脈",
+        "category": "soba",
+        "modes": ("similar", "nearby"),
+        "boost": 0.08,
+        "names": (
+            "石臼挽き手打 蕎楽亭",
+            "玉笑",
+            "手打蕎麦 松永",
+            "蕎麦 たじま",
+            "手打ち蕎麦 成冨",
+            "一東菴",
+            "手打蕎麦 じゆうさん",
+            "蕎麦 流石",
+            "木挽町 湯津上屋",
+        ),
+    },
+    {
+        "id": "tokyo_soba_drink_pairing",
+        "label": "東京の蕎麦前・酒とそば文脈",
+        "category": "soba",
+        "modes": ("similar", "expand"),
+        "boost": 0.08,
+        "names": (
+            "蕎麦切り 酒 大愚",
+            "眠庵",
+            "浅草じゅうろく",
+            "ら すとらあだ",
+            "神楽坂 大川や",
+            "巽蕎麦 志ま平",
+        ),
+    },
+    {
+        "id": "yabu_edomae_soba",
+        "label": "藪・江戸前そば系譜文脈",
+        "category": "soba",
+        "modes": ("similar", "expand"),
+        "boost": 0.1,
+        "names": (
+            "竹やぶ 柏本店",
+            "千寿 竹やぶ",
+            "竹やぶ 箱根店",
+            "吾妻橋 やぶそば",
+            "並木藪蕎麦",
+            "薮蕎麦 宮本",
+            "江戸蕎麦ほそ川",
+        ),
+    },
+    {
+        "id": "okina_soba",
+        "label": "翁・達磨系のそば文脈",
+        "category": "soba",
+        "modes": ("similar", "expand"),
+        "boost": 0.1,
+        "names": (
+            "狭山 翁",
+            "伊達 翁",
+            "蕎麦 ふじおか",
+            "手打蕎麦 わくり",
+            "玄",
+            "蕎麦 たかま",
+        ),
+    },
+    {
+        "id": "shinshu_soba",
+        "label": "信州そば・目的地型そば文脈",
+        "category": "soba",
+        "modes": ("similar", "expand"),
+        "boost": 0.09,
+        "names": (
+            "うずら家",
+            "せきざわ",
+            "そばの実",
+            "三城",
+            "丸富",
+            "石臼挽き蕎麦香房 山の実",
+            "職人館",
+            "蕎麦 ふじおか",
+        ),
+    },
+    {
+        "id": "kansai_soba",
+        "label": "関西の落ち着いた手打ちそば文脈",
+        "category": "soba",
+        "modes": ("similar", "nearby"),
+        "boost": 0.08,
+        "names": (
+            "手打ち蕎麦 かね井",
+            "おがわ",
+            "まつもと",
+            "蕎麦 たかま",
+            "手打そば 乃田",
+            "そば切り 岳空",
+            "玄",
+            "ろあん松田 篠山店",
+        ),
+    },
+    {
+        "id": "kanagawa_destination_soba",
+        "label": "神奈川の目的地型そば文脈",
+        "category": "soba",
+        "modes": ("similar", "nearby"),
+        "boost": 0.08,
+        "names": (
+            "蕎麦 惠土",
+            "オリベ",
+            "蕎房 猪口屋",
+            "竹やぶ 箱根店",
+        ),
+    },
+)
+
+
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as f:
@@ -269,6 +510,34 @@ def hall_of_fame_threshold(restaurants: list[dict[str, Any]], category: str) -> 
         return 99
     index = max(0, math.ceil(len(counts) * 0.10) - 1)
     return max(1, counts[index])
+
+
+def build_affinity_groups(restaurants: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    by_name = {normalize_text(restaurant.get("name")): restaurant for restaurant in restaurants}
+    groups: list[dict[str, Any]] = []
+    for group in AFFINITY_GROUPS:
+        urls: list[str] = []
+        missing: list[str] = []
+        for name in group["names"]:
+            restaurant = by_name.get(normalize_text(name))
+            if restaurant:
+                urls.append(restaurant["url"])
+            else:
+                missing.append(name)
+        if len(urls) < 2:
+            continue
+        groups.append(
+            {
+                "id": group["id"],
+                "label": group["label"],
+                "category": group["category"],
+                "modes": list(group["modes"]),
+                "boost": group["boost"],
+                "urls": urls,
+                "missingNames": missing,
+            }
+        )
+    return groups
 
 
 def build_tags_for_restaurant(
@@ -386,6 +655,7 @@ def data_version_payload() -> dict[str, Any]:
 def main() -> int:
     restaurants = load_restaurants()
     version = data_version_payload()
+    affinity_groups = build_affinity_groups(restaurants)
     thresholds = {
         "udon": hall_of_fame_threshold(restaurants, "udon"),
         "soba": hall_of_fame_threshold(restaurants, "soba"),
@@ -429,6 +699,7 @@ def main() -> int:
             "minimumConfidenceToOutput": MIN_CONFIDENCE_TO_OUTPUT,
         },
         "tagDefinitions": dict(sorted(TAG_DEFINITIONS.items())),
+        "affinityGroups": affinity_groups,
         "restaurants": records,
     }
 
@@ -437,6 +708,7 @@ def main() -> int:
     inferred_tags = sum(1 for record in records for tag in record["tags"] if tag["source"] != "data")
     print(f"Wrote {OUTPUT.relative_to(ROOT)}")
     print(f"restaurants={len(records)} tags={total_tags} inferred_tags={inferred_tags}")
+    print(f"affinity_groups={len(affinity_groups)}")
     print(f"hall_of_fame_thresholds={thresholds}")
     return 0
 

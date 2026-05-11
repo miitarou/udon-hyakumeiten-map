@@ -439,6 +439,298 @@
       "kind": "inferred"
     }
   },
+  "affinityGroups": [
+    {
+      "id": "tokyo_sanuki_udon",
+      "label": "東京の讃岐・手打ちうどん文脈",
+      "category": "udon",
+      "modes": [
+        "similar",
+        "nearby"
+      ],
+      "boost": 0.08,
+      "urls": [
+        "https://tabelog.com/tokyo/A1310/A131003/13000629/",
+        "https://tabelog.com/tokyo/A1304/A130401/13125862/",
+        "https://tabelog.com/tokyo/A1323/A132304/13141130/",
+        "https://tabelog.com/tokyo/A1305/A130503/13049983/",
+        "https://tabelog.com/tokyo/A1310/A131002/13185500/",
+        "https://tabelog.com/tokyo/A1323/A132305/13003783/",
+        "https://tabelog.com/tokyo/A1312/A131201/13156107/",
+        "https://tabelog.com/tokyo/A1304/A130402/13182646/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "tokyo_quick_udon",
+      "label": "都内で短時間利用しやすいうどん文脈",
+      "category": "udon",
+      "modes": [
+        "similar",
+        "nearby"
+      ],
+      "boost": 0.07,
+      "urls": [
+        "https://tabelog.com/tokyo/A1316/A131603/13111869/",
+        "https://tabelog.com/tokyo/A1301/A130103/13162575/",
+        "https://tabelog.com/tokyo/A1302/A130204/13216456/",
+        "https://tabelog.com/tokyo/A1317/A131701/13199054/",
+        "https://tabelog.com/tokyo/A1315/A131501/13142095/",
+        "https://tabelog.com/tokyo/A1314/A131401/13188754/",
+        "https://tabelog.com/tokyo/A1310/A131004/13136989/",
+        "https://tabelog.com/tokyo/A1310/A131004/13240246/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "kamaage_udon",
+      "label": "釜揚げ・釜系うどん文脈",
+      "category": "udon",
+      "modes": [
+        "similar",
+        "expand"
+      ],
+      "boost": 0.1,
+      "urls": [
+        "https://tabelog.com/tokyo/A1311/A131106/13020252/",
+        "https://tabelog.com/tokyo/A1309/A130905/13095976/",
+        "https://tabelog.com/tokyo/A1302/A130201/13156494/",
+        "https://tabelog.com/osaka/A2701/A270406/27059480/",
+        "https://tabelog.com/osaka/A2701/A270405/27011913/",
+        "https://tabelog.com/kagawa/A3703/A370302/37000015/",
+        "https://tabelog.com/kagawa/A3703/A370302/37000005/",
+        "https://tabelog.com/kanagawa/A1404/A140407/14061080/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "nagoya_udon",
+      "label": "名古屋・愛知のうどん文脈",
+      "category": "udon",
+      "modes": [
+        "similar",
+        "nearby"
+      ],
+      "boost": 0.09,
+      "urls": [
+        "https://tabelog.com/aichi/A2301/A230103/23000374/",
+        "https://tabelog.com/aichi/A2301/A230110/23013430/",
+        "https://tabelog.com/aichi/A2301/A230101/23039141/",
+        "https://tabelog.com/aichi/A2301/A230102/23007583/",
+        "https://tabelog.com/aichi/A2301/A230106/23001708/",
+        "https://tabelog.com/aichi/A2306/A230601/23009617/",
+        "https://tabelog.com/aichi/A2305/A230504/23032890/",
+        "https://tabelog.com/tokyo/A1310/A131004/13036030/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "osaka_sanuki_udon",
+      "label": "大阪の讃岐・剛麺系うどん文脈",
+      "category": "udon",
+      "modes": [
+        "similar",
+        "nearby"
+      ],
+      "boost": 0.08,
+      "urls": [
+        "https://tabelog.com/osaka/A2701/A270302/27014852/",
+        "https://tabelog.com/osaka/A2707/A270704/27011240/",
+        "https://tabelog.com/osaka/A2701/A270204/27042400/",
+        "https://tabelog.com/osaka/A2701/A270306/27075334/",
+        "https://tabelog.com/osaka/A2701/A270101/27006684/",
+        "https://tabelog.com/osaka/A2707/A270701/27004023/",
+        "https://tabelog.com/osaka/A2701/A270101/27067874/",
+        "https://tabelog.com/osaka/A2706/A270601/27069779/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "kyoto_kansai_udon",
+      "label": "京都・関西だしうどん文脈",
+      "category": "udon",
+      "modes": [
+        "similar",
+        "expand"
+      ],
+      "boost": 0.08,
+      "urls": [
+        "https://tabelog.com/kyoto/A2601/A260301/26002504/",
+        "https://tabelog.com/kyoto/A2601/A260601/26020260/",
+        "https://tabelog.com/kyoto/A2601/A260302/26000919/",
+        "https://tabelog.com/kyoto/A2601/A260301/26000815/",
+        "https://tabelog.com/kyoto/A2601/A260301/26023852/",
+        "https://tabelog.com/osaka/A2701/A270202/27001289/",
+        "https://tabelog.com/osaka/A2701/A270101/27003766/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "kagawa_udon_pilgrimage",
+      "label": "香川の讃岐うどん巡り文脈",
+      "category": "udon",
+      "modes": [
+        "similar",
+        "nearby",
+        "expand"
+      ],
+      "boost": 0.09,
+      "urls": [
+        "https://tabelog.com/kagawa/A3702/A370202/37000080/",
+        "https://tabelog.com/kagawa/A3702/A370202/37000077/",
+        "https://tabelog.com/kagawa/A3702/A370202/37000135/",
+        "https://tabelog.com/kagawa/A3702/A370201/37000016/",
+        "https://tabelog.com/kagawa/A3702/A370201/37000019/",
+        "https://tabelog.com/kagawa/A3703/A370303/37000143/",
+        "https://tabelog.com/kagawa/A3703/A370302/37000011/",
+        "https://tabelog.com/kagawa/A3703/A370302/37000007/",
+        "https://tabelog.com/kagawa/A3702/A370202/37004606/",
+        "https://tabelog.com/kagawa/A3702/A370202/37000074/",
+        "https://tabelog.com/kagawa/A3701/A370101/37000051/",
+        "https://tabelog.com/kagawa/A3701/A370101/37000002/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "tokyo_handmade_soba",
+      "label": "東京の手打ち・石臼そば文脈",
+      "category": "soba",
+      "modes": [
+        "similar",
+        "nearby"
+      ],
+      "boost": 0.08,
+      "urls": [
+        "https://tabelog.com/tokyo/A1309/A130905/13000479/",
+        "https://tabelog.com/tokyo/A1306/A130601/13129390/",
+        "https://tabelog.com/tokyo/A1306/A130601/13024514/",
+        "https://tabelog.com/tokyo/A1307/A130703/13020154/",
+        "https://tabelog.com/tokyo/A1313/A131301/13023064/",
+        "https://tabelog.com/tokyo/A1323/A132304/13143622/",
+        "https://tabelog.com/tokyo/A1321/A132101/13025978/",
+        "https://tabelog.com/tokyo/A1301/A130101/13002488/",
+        "https://tabelog.com/tokyo/A1313/A131301/13019153/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "tokyo_soba_drink_pairing",
+      "label": "東京の蕎麦前・酒とそば文脈",
+      "category": "soba",
+      "modes": [
+        "similar",
+        "expand"
+      ],
+      "boost": 0.08,
+      "urls": [
+        "https://tabelog.com/tokyo/A1308/A130802/13130565/",
+        "https://tabelog.com/tokyo/A1310/A131002/13020841/",
+        "https://tabelog.com/tokyo/A1311/A131102/13185027/",
+        "https://tabelog.com/tokyo/A1319/A131903/13141774/",
+        "https://tabelog.com/tokyo/A1309/A130905/13197727/",
+        "https://tabelog.com/tokyo/A1309/A130905/13020236/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "yabu_edomae_soba",
+      "label": "藪・江戸前そば系譜文脈",
+      "category": "soba",
+      "modes": [
+        "similar",
+        "expand"
+      ],
+      "boost": 0.1,
+      "urls": [
+        "https://tabelog.com/chiba/A1203/A120301/12000067/",
+        "https://tabelog.com/tokyo/A1324/A132402/13003773/",
+        "https://tabelog.com/kanagawa/A1410/A141001/14001257/",
+        "https://tabelog.com/tokyo/A1311/A131102/13007981/",
+        "https://tabelog.com/tokyo/A1311/A131102/13003650/",
+        "https://tabelog.com/shizuoka/A2203/A220302/22000036/",
+        "https://tabelog.com/tokyo/A1312/A131201/13002967/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "okina_soba",
+      "label": "翁・達磨系のそば文脈",
+      "category": "soba",
+      "modes": [
+        "similar",
+        "expand"
+      ],
+      "boost": 0.1,
+      "urls": [
+        "https://tabelog.com/saitama/A1106/A110601/11000055/",
+        "https://tabelog.com/hokkaido/A0108/A010801/1003486/",
+        "https://tabelog.com/nagano/A2001/A200101/20000415/",
+        "https://tabelog.com/gifu/A2103/A210303/21014458/",
+        "https://tabelog.com/nara/A2901/A290101/29000052/",
+        "https://tabelog.com/osaka/A2701/A270103/27000530/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "shinshu_soba",
+      "label": "信州そば・目的地型そば文脈",
+      "category": "soba",
+      "modes": [
+        "similar",
+        "expand"
+      ],
+      "boost": 0.09,
+      "urls": [
+        "https://tabelog.com/nagano/A2001/A200101/20000191/",
+        "https://tabelog.com/nagano/A2001/A200106/20000282/",
+        "https://tabelog.com/nagano/A2001/A200101/20001575/",
+        "https://tabelog.com/nagano/A2002/A200201/20000629/",
+        "https://tabelog.com/nagano/A2006/A200602/20000040/",
+        "https://tabelog.com/nagano/A2001/A200104/20000397/",
+        "https://tabelog.com/nagano/A2003/A200302/20001680/",
+        "https://tabelog.com/nagano/A2001/A200101/20000415/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "kansai_soba",
+      "label": "関西の落ち着いた手打ちそば文脈",
+      "category": "soba",
+      "modes": [
+        "similar",
+        "nearby"
+      ],
+      "boost": 0.08,
+      "urls": [
+        "https://tabelog.com/kyoto/A2601/A260503/26001676/",
+        "https://tabelog.com/kyoto/A2601/A260503/26000389/",
+        "https://tabelog.com/kyoto/A2601/A260201/26022778/",
+        "https://tabelog.com/osaka/A2701/A270103/27000530/",
+        "https://tabelog.com/osaka/A2707/A270704/27013548/",
+        "https://tabelog.com/osaka/A2701/A270204/27096691/",
+        "https://tabelog.com/nara/A2901/A290101/29000052/",
+        "https://tabelog.com/hyogo/A2807/A280702/28000070/"
+      ],
+      "missingNames": []
+    },
+    {
+      "id": "kanagawa_destination_soba",
+      "label": "神奈川の目的地型そば文脈",
+      "category": "soba",
+      "modes": [
+        "similar",
+        "nearby"
+      ],
+      "boost": 0.08,
+      "urls": [
+        "https://tabelog.com/kanagawa/A1406/A140602/14004578/",
+        "https://tabelog.com/kanagawa/A1404/A140408/14007619/",
+        "https://tabelog.com/kanagawa/A1404/A140406/14035065/",
+        "https://tabelog.com/kanagawa/A1410/A141001/14001257/"
+      ],
+      "missingNames": []
+    }
+  ],
   "restaurants": [
     {
       "url": "https://tabelog.com/hokkaido/A0101/A010204/1002003/",

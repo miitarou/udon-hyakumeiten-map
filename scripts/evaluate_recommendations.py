@@ -218,12 +218,40 @@ def display_scores(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return output
 
 
+def affinity_index(groups: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+    result: dict[str, list[dict[str, Any]]] = {}
+    for group in groups:
+        urls = group.get("urls")
+        if not isinstance(urls, list) or len(urls) < 2:
+            continue
+        for url in urls:
+            result.setdefault(url, []).append(group)
+    return result
+
+
+def affinity_boost(source_url: str, candidate_url: str, mode: str, index: dict[str, list[dict[str, Any]]]) -> float:
+    boost = 0.0
+    for group in index.get(source_url, []):
+        urls = group.get("urls") or []
+        modes = group.get("modes") or []
+        if candidate_url not in urls:
+            continue
+        if modes and mode not in modes:
+            continue
+        try:
+            boost += float(group.get("boost", 0))
+        except (TypeError, ValueError):
+            continue
+    return min(0.16, boost)
+
+
 def recommendations(
     source: dict[str, Any],
     mode: str,
     restaurants: list[dict[str, Any]],
     tag_records: dict[str, dict[str, Any]],
     tag_definitions: dict[str, dict[str, str]],
+    affinity: dict[str, list[dict[str, Any]]],
     limit: int,
 ) -> list[dict[str, Any]]:
     source_record = tag_records.get(source["url"])
@@ -271,6 +299,9 @@ def recommendations(
             same_prefecture = source["prefecture"] == candidate["prefecture"]
             novelty_factor = (0.94 if same_category else 1.08) * (0.96 if same_prefecture else 1.03)
             score = similarity * novelty_factor
+        boost = affinity_boost(source["url"], candidate["url"], mode, affinity)
+        if boost > 0:
+            score *= 1 + boost
         if score <= 0.02:
             continue
         reasons = build_reasons(shared, source_tags, candidate_tags, tag_definitions, mode)
@@ -279,6 +310,7 @@ def recommendations(
                 "restaurant": candidate,
                 "score": score,
                 "similarity": similarity,
+                "affinityBoost": boost,
                 "distanceKm": dist,
                 "reasons": reasons,
                 "reasonText": reason_sentence(reasons),
@@ -304,7 +336,14 @@ def case_status(case: dict[str, Any], recs: list[dict[str, Any]]) -> dict[str, A
     }
 
 
-def print_markdown_report(cases: list[dict[str, Any]], restaurants: list[dict[str, Any]], tag_records: dict[str, dict[str, Any]], tag_definitions: dict[str, dict[str, str]], top: int) -> None:
+def print_markdown_report(
+    cases: list[dict[str, Any]],
+    restaurants: list[dict[str, Any]],
+    tag_records: dict[str, dict[str, Any]],
+    tag_definitions: dict[str, dict[str, str]],
+    affinity: dict[str, list[dict[str, Any]]],
+    top: int,
+) -> None:
     by_url = {r["url"]: r for r in restaurants}
     print("# Recommendation Golden Set Report")
     print()
@@ -318,7 +357,7 @@ def print_markdown_report(cases: list[dict[str, Any]], restaurants: list[dict[st
             print(f"- ERROR: source not found: {case['sourceUrl']}")
             print()
             continue
-        recs = recommendations(source, case.get("mode", "similar"), restaurants, tag_records, tag_definitions, top)
+        recs = recommendations(source, case.get("mode", "similar"), restaurants, tag_records, tag_definitions, affinity, top)
         status = case_status(case, recs)
         total += 1
         top3 += 1 if status["preferredTop3"] else 0
@@ -342,7 +381,8 @@ def print_markdown_report(cases: list[dict[str, Any]], restaurants: list[dict[st
             dist = f"{item['distanceKm']:.1f}km" if math.isfinite(item["distanceKm"]) else "-"
             print(
                 f"{index}. {r['name']} ({r['prefecture']} / {r.get('area', '')}) "
-                f"score={item['displayScore']} raw={item['score']:.3f} sim={item['similarity']:.3f} dist={dist}"
+                f"score={item['displayScore']} raw={item['score']:.3f} sim={item['similarity']:.3f} "
+                f"affinity={item['affinityBoost']:.2f} dist={dist}"
             )
             print(f"   - {item['reasonText']}")
         print()
@@ -365,12 +405,13 @@ def main() -> int:
     golden = load_json(GOLDEN_SET)
     tag_records = {record["url"]: record for record in tags.get("restaurants", [])}
     tag_definitions = tags.get("tagDefinitions", {})
+    affinity = affinity_index(tags.get("affinityGroups") or [])
     cases = golden.get("cases", [])
     if args.case:
         cases = [case for case in cases if case.get("id") == args.case]
         if not cases:
             raise SystemExit(f"case not found: {args.case}")
-    print_markdown_report(cases, restaurants, tag_records, tag_definitions, max(1, args.top))
+    print_markdown_report(cases, restaurants, tag_records, tag_definitions, affinity, max(1, args.top))
     return 0
 
 

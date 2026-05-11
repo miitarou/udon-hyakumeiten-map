@@ -18,6 +18,8 @@
     let recommendationTagData = null;
     let recommendationTagsByUrl = new Map();
     let recommendationTagDefinitions = {};
+    let recommendationAffinityGroups = [];
+    let recommendationAffinityByUrl = new Map();
     let recommendationTagLoadPromise = null;
     let map = null;
     let markerClusterGroup = null;
@@ -345,6 +347,8 @@
                 if (!Array.isArray(data?.restaurants)) throw new Error('Recommendation tag data should contain restaurants array');
                 recommendationTagData = data;
                 recommendationTagDefinitions = data.tagDefinitions || {};
+                recommendationAffinityGroups = Array.isArray(data.affinityGroups) ? data.affinityGroups : [];
+                recommendationAffinityByUrl = buildRecommendationAffinityIndex(recommendationAffinityGroups);
                 recommendationTagsByUrl = new Map(
                     data.restaurants
                         .filter(item => item?.url && Array.isArray(item.tags))
@@ -359,6 +363,8 @@
 
         recommendationTagData = null;
         recommendationTagDefinitions = {};
+        recommendationAffinityGroups = [];
+        recommendationAffinityByUrl = new Map();
         recommendationTagsByUrl = new Map();
     }
 
@@ -812,6 +818,9 @@
             score = similarity * noveltyFactor;
         }
 
+        const affinityBoost = getRecommendationAffinityBoost(source.url, candidate.url, mode);
+        if (affinityBoost > 0) score *= 1 + affinityBoost;
+
         if (preferenceTags?.size) {
             const preferenceSimilarity = calculateRecommendationMapSimilarity(preferenceTags, candidateTags, mode);
             if (preferenceSimilarity > 0.05) score *= 1 + Math.min(0.1, preferenceSimilarity * 0.12);
@@ -824,7 +833,8 @@
             restaurant: candidate,
             score,
             distanceKm,
-            reasons: buildRecommendationReasons(shared, sourceTags, candidateTags, mode)
+            reasons: buildRecommendationReasons(shared, sourceTags, candidateTags, mode),
+            affinityBoost
         };
     }
 
@@ -882,6 +892,31 @@
             normB += (bValue ** 2) * weight;
         });
         return dot && normA && normB ? dot / Math.sqrt(normA * normB) : 0;
+    }
+
+    function buildRecommendationAffinityIndex(groups) {
+        const index = new Map();
+        groups.forEach(group => {
+            if (!Array.isArray(group?.urls) || group.urls.length < 2) return;
+            group.urls.forEach(url => {
+                const items = index.get(url) || [];
+                items.push(group);
+                index.set(url, items);
+            });
+        });
+        return index;
+    }
+
+    function getRecommendationAffinityBoost(sourceUrl, candidateUrl, mode) {
+        const groups = recommendationAffinityByUrl.get(sourceUrl);
+        if (!groups?.length) return 0;
+        let boost = 0;
+        groups.forEach(group => {
+            if (!Array.isArray(group.urls) || !group.urls.includes(candidateUrl)) return;
+            if (Array.isArray(group.modes) && !group.modes.includes(mode)) return;
+            boost += Number(group.boost) || 0;
+        });
+        return Math.min(0.16, boost);
     }
 
     function buildRecommendationTagMap(record) {
