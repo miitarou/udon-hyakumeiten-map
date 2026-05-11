@@ -712,26 +712,20 @@
         }
 
         const visibleRecommendations = recommendations.slice(0, normalizedLimit);
-        const visibleReasonCounts = visibleRecommendations.reduce((counts, item) => {
-            const reason = formatRecommendationReason(item.reasons);
-            if (reason) counts.set(reason, (counts.get(reason) || 0) + 1);
-            return counts;
-        }, new Map());
         const moreHtml = recommendations.length > normalizedLimit
             ? `<button type="button" class="recommendation-more-btn" data-recommend-next="${Math.min(RECOMMENDATION_MAX_LIMIT, normalizedLimit + RECOMMENDATION_STEP_LIMIT)}">もっと見る</button>`
             : '';
-        results.innerHTML = visibleRecommendations.map(item => buildRecommendationCard(item, visibleReasonCounts)).join('') + moreHtml;
+        results.innerHTML = visibleRecommendations.map(item => buildRecommendationCard(item)).join('') + moreHtml;
         bindPopupRecommendationCards(panel);
         updateOpenPopupLayout();
     }
 
-    function buildRecommendationCard(item, visibleReasonCounts = new Map()) {
+    function buildRecommendationCard(item) {
         const r = item.restaurant;
         const safeUrl = encodeURIComponent(r.url || '');
         const score = item.displayScore ?? Math.max(1, Math.min(99, Math.round(item.score * 100)));
         const distance = Number.isFinite(item.distanceKm) ? ` / ${formatDistance(item.distanceKm)}` : '';
-        const rawReasonText = formatRecommendationReason(item.reasons);
-        const reasonText = visibleReasonCounts.get(rawReasonText) === 1 ? rawReasonText : '';
+        const reasonText = formatRecommendationReason(item.reasons);
         const closedBadge = r.closed ? '<span class="recommendation-closed">閉店</span>' : '';
         const reasonHtml = reasonText
             ? `<span class="recommendation-card-reason">${escapeHtml(reasonText)}</span>`
