@@ -1551,16 +1551,33 @@ body.panel-resizing * {
 }
 
 .recommendation-score {
-    min-width: 24px;
-    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-width: 48px;
+    height: 22px;
+    padding: 0 7px;
     border: 1px solid rgba(232, 197, 71, 0.38);
     border-radius: 999px;
     color: #F4D66B;
     font-family: var(--font-display);
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 800;
-    line-height: 18px;
+    line-height: 1;
     text-align: center;
+}
+
+.recommendation-score span {
+    color: rgba(244, 214, 107, 0.78);
+    font-family: var(--font-main);
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.recommendation-score strong {
+    font-size: 11px;
+    line-height: 1;
 }
 
 .recommendation-card-meta,
@@ -1943,15 +1960,7 @@ body.panel-resizing * {
     }
 
     .header-stats {
-        gap: 8px;
-    }
-
-    .stat-number {
-        font-size: 16px;
-    }
-
-    .stat-label {
-        font-size: 9px;
+        display: none;
     }
 
     /* パネル: 下部ドロワー */

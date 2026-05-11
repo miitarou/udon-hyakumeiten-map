@@ -518,10 +518,11 @@
             control.addEventListener('click', event => {
                 event.preventDefault();
                 event.stopPropagation();
-                const shell = control.closest('.recommendation-shell');
-                renderRecommendationPanel(shell, control.dataset.recommendMode || 'similar').catch(error => {
-                    console.warn('Recommendation rendering failed:', error);
-                });
+                window.__hyakumeitenOpenRecommendations?.(
+                    control,
+                    control.dataset.recommendMode || 'similar',
+                    control.classList.contains('popup-recommend-btn')
+                );
             });
         });
 
@@ -545,10 +546,16 @@
         });
     }
 
-    window.__hyakumeitenOpenRecommendations = function (control, mode = 'similar') {
+    window.__hyakumeitenOpenRecommendations = function (control, mode = 'similar', shouldToggle = false) {
         const shell = control && typeof control.closest === 'function'
             ? control.closest('.recommendation-shell')
             : document.querySelector('.leaflet-popup .recommendation-shell');
+        const panel = shell?.querySelector?.('.recommendation-panel');
+        if (shouldToggle && panel && !panel.hidden) {
+            panel.hidden = true;
+            updateOpenPopupLayout();
+            return;
+        }
         renderRecommendationPanel(shell, mode).catch(error => {
             console.warn('Recommendation rendering failed:', error);
         });
@@ -600,13 +607,13 @@
         if (!r?.url) return '';
         const safeUrl = encodeURIComponent(r.url);
         const tabs = Object.entries(RECOMMENDATION_MODES).map(([mode, config], index) => `
-            <button type="button" class="recommendation-tab ${index === 0 ? 'active' : ''}" data-recommend-mode="${mode}" aria-pressed="${index === 0 ? 'true' : 'false'}" onclick="window.__hyakumeitenOpenRecommendations?.(this, this.dataset.recommendMode); return false;">
+            <button type="button" class="recommendation-tab ${index === 0 ? 'active' : ''}" data-recommend-mode="${mode}" aria-pressed="${index === 0 ? 'true' : 'false'}">
                 ${escapeHtml(config.label)}
             </button>`).join('');
 
         return `
             <div class="recommendation-shell" data-recommend-source="${safeUrl}">
-                <button type="button" class="popup-recommend-btn" data-recommend-mode="similar" onclick="window.__hyakumeitenOpenRecommendations?.(this, this.dataset.recommendMode); return false;">
+                <button type="button" class="popup-recommend-btn" data-recommend-mode="similar">
                     ✨ この店が好きなら
                 </button>
                 <div class="recommendation-panel" hidden>
@@ -669,10 +676,10 @@
         const closedBadge = r.closed ? '<span class="recommendation-closed">閉店</span>' : '';
 
         return `
-            <button type="button" class="recommendation-card" data-focus-url="${safeUrl}" onclick="window.__hyakumeitenFocusRecommendation?.(this); return false;">
+            <button type="button" class="recommendation-card" data-focus-url="${safeUrl}">
                 <span class="recommendation-card-main">
                     <span class="recommendation-card-name">${escapeHtml(r.name)}</span>
-                    <span class="recommendation-score">${score}</span>
+                    <span class="recommendation-score" title="AI推定タグによる相性スコア"><span>相性</span><strong>${score}</strong></span>
                 </span>
                 <span class="recommendation-card-meta">${escapeHtml(r.prefecture)} ${escapeHtml(r.area || '')}${distance} ${closedBadge}</span>
                 <span class="recommendation-card-reason">共通: ${escapeHtml(reasons)}</span>
@@ -2254,19 +2261,20 @@
             const recommendTab = e.target.closest('.leaflet-popup .recommendation-tab');
             if (!recommendBtn && !recommendTab) return;
             e.preventDefault();
-            e.stopPropagation();
+            e.stopImmediatePropagation();
             const control = recommendBtn || recommendTab;
-            const shell = control.closest('.recommendation-shell');
-            renderRecommendationPanel(shell, control.dataset.recommendMode || 'similar').catch(error => {
-                console.warn('Recommendation rendering failed:', error);
-            });
+            window.__hyakumeitenOpenRecommendations?.(
+                control,
+                control.dataset.recommendMode || 'similar',
+                Boolean(recommendBtn)
+            );
         }, true);
 
         document.addEventListener('click', e => {
             const card = e.target.closest('.leaflet-popup .recommendation-card');
             if (!card) return;
             e.preventDefault();
-            e.stopPropagation();
+            e.stopImmediatePropagation();
             const url = decodeURIComponent(card.dataset.focusUrl || '');
             const restaurant = getRestaurantByUrl(url);
             if (restaurant) focusRestaurant(restaurant);
