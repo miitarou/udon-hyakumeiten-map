@@ -1314,9 +1314,9 @@ body.panel-resizing * {
     width: 100%;
     padding: 10px;
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color: white;
+    color: white !important;
     text-align: center;
-    text-decoration: none;
+    text-decoration: none !important;
     font-family: var(--font-main);
     font-size: 13px;
     font-weight: 600;
@@ -1327,6 +1327,7 @@ body.panel-resizing * {
 .popup-link:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 16px var(--primary-glow);
+    color: white !important;
 }
 
 /* そばポップアップリンク */
