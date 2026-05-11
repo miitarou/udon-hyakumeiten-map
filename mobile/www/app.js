@@ -80,7 +80,7 @@
     };
     const RECOMMENDATION_MODES = {
         similar: { label: '味・雰囲気が近い' },
-        nearby: { label: '近場で探す' },
+        nearby: { label: '最寄りで探す' },
         expand: { label: '新しい発見' }
     };
     const COMMON_SEARCH_REPLACEMENTS = [
@@ -607,11 +607,11 @@
         return `
             <div class="recommendation-shell" data-recommend-source="${safeUrl}">
                 <button type="button" class="popup-recommend-btn" data-recommend-mode="similar" onclick="window.__hyakumeitenOpenRecommendations?.(this, this.dataset.recommendMode); return false;">
-                    ✨ 近い候補
+                    ✨ この店が好きなら
                 </button>
                 <div class="recommendation-panel" hidden>
                     <div class="recommendation-title">
-                        <span>近い候補</span>
+                        <span>この店が好きなら</span>
                         <span class="recommendation-note">AI推定タグによる探索補助</span>
                     </div>
                     <div class="recommendation-tabs" role="group" aria-label="推薦モード">
@@ -650,7 +650,7 @@
         const source = getRestaurantByUrl(sourceUrl);
         const recommendations = getRecommendations(source, mode, 3);
         if (!source || !recommendations.length) {
-            results.innerHTML = '<div class="recommendation-empty">近い候補を表示できませんでした。</div>';
+            results.innerHTML = '<div class="recommendation-empty">おすすめ候補を表示できませんでした。</div>';
             updateOpenPopupLayout();
             return;
         }
