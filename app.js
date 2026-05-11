@@ -180,7 +180,7 @@
         }).addTo(map);
 
         L.control.scale({
-            position: 'bottomright',
+            position: 'bottomleft',
             metric: true,
             imperial: false,
             maxWidth: 120

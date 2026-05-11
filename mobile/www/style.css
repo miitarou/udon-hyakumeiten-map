@@ -2210,7 +2210,7 @@ body.panel-resizing * {
     }
 
     .leaflet-control-scale {
-        margin-right: calc(152px + env(safe-area-inset-right, 0px)) !important;
+        margin-left: calc(10px + env(safe-area-inset-left, 0px)) !important;
         margin-bottom: calc(24px + env(safe-area-inset-bottom, 0px)) !important;
     }
 
