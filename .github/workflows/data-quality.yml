@@ -18,7 +18,9 @@ jobs:
           python-version: '3.12'
           
       - name: Run data quality checks
-        run: python3 scripts/check_data_quality.py
+        run: |
+          python3 scripts/generate_external_signals.py --check
+          python3 scripts/check_data_quality.py
 
       - name: Run JavaScript syntax checks
         run: |

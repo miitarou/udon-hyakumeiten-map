@@ -73,10 +73,13 @@ open http://localhost:8080
 ├── privacy.html                # プライバシーポリシー
 ├── docs/
 │   ├── recommendation-tags.md  # 推薦タグとスコアリング設計
+│   ├── external-signals.md     # 外部シグナルPoCと定型生成方針
 │   ├── update-guide.md         # データ更新・検証・iPhone同期手順
 │   └── app-architecture.md     # app.js分割方針とCSP導入方針
 ├── data/
 │   ├── data-version.json       # iPhone版向けデータ更新メタ情報
+│   ├── external_source_registry.json # 外部シグナル用の短い根拠語レビュー台帳
+│   ├── external_signals.json   # 推薦タグへ取り込む定型生成済み外部シグナル
 │   ├── recommendation_tags.json # 推薦機能向けの静的タグデータ（探索補助用）
 │   ├── recommendation_golden_set.json # 推薦品質確認用の代表ケース
 │   ├── udon.json               # うどん百名店データ（428店）
@@ -89,6 +92,7 @@ open http://localhost:8080
 │   ├── build_soba_json.py      # そばデータ年度別マージ・生成スクリプト
 │   ├── geocode_soba.py         # そば店舗 Nominatim ジオコーディング
 │   ├── fetch_tabelog_details.py # 店舗ページ由来の住所・座標・閉店状態取得
+│   ├── generate_external_signals.py # 外部シグナルPoC生成
 │   ├── generate_recommendation_tags.py # 推薦タグデータ生成
 │   ├── evaluate_recommendations.py # 推薦ゴールデンセットの結果レポート
 │   ├── generate_data_version.py # iPhone版向けデータメタ情報生成
@@ -131,6 +135,7 @@ Leaflet / Leaflet.markercluster の CDN 読み込みには Subresource Integrity
 推定タグは店舗説明の事実断定ではなく、店舗間の類似度計算に使うための補助情報です。
 
 タグ辞書、`weight` / `confidence`、類似度計算、推薦モードの設計方針は [docs/recommendation-tags.md](docs/recommendation-tags.md) にまとめています。
+外部シグナルPoCは [docs/external-signals.md](docs/external-signals.md) にまとめています。
 アプリロジックの分割方針とCSP導入方針は [docs/app-architecture.md](docs/app-architecture.md) にまとめています。
 
 ### うどん百名店
@@ -160,6 +165,7 @@ Leaflet / Leaflet.markercluster の CDN 読み込みには Subresource Integrity
 2. iPhone版向けのデータメタ情報と推薦タグを更新する
    ```bash
    python3 scripts/generate_data_version.py
+   python3 scripts/generate_external_signals.py
    python3 scripts/generate_recommendation_tags.py
    ```
 3. 以下のコマンドで検証スクリプトを実行する
@@ -180,6 +186,7 @@ Leaflet / Leaflet.markercluster の CDN 読み込みには Subresource Integrity
 - `closed` / `firstSelected` のboolean形式
 - 店名 + 都道府県による重複候補
 - `data/data-version.json` の件数・ハッシュ整合
+- `data/external_signals.json` の参照URL・タグ定義・短い根拠語形式
 - `data/recommendation_tags.json` のURL照合・タグ定義・weight/confidence形式・AI推定相性グループ
 - `data/recommendation_golden_set.json` の参照URL・推薦モード整合
 

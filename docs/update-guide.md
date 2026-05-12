@@ -17,10 +17,13 @@
 
 ```bash
 python3 scripts/generate_data_version.py
+python3 scripts/generate_external_signals.py
 python3 scripts/generate_recommendation_tags.py
 ```
 
 `data/data-version.json` は、iPhone版が起動時に最新版JSONを確認するためのメタ情報です。店舗JSONの件数やハッシュが変わった場合は必ず更新します。
+
+`data/external_source_registry.json` を変更した場合も、`generate_external_signals.py` を実行してから推薦タグを再生成します。外部シグナルは短い根拠語だけを保持し、口コミ本文・点数・写真・SNS投稿は保存しません。詳しくは [external-signals.md](external-signals.md) を参照してください。
 
 ## 3. 推薦品質を確認する
 
@@ -52,7 +55,7 @@ git diff --check
 - HTMLタグ混入
 - 重複候補
 - `closed` / `firstSelected` の型
-- 推薦タグとゴールデンセットの参照整合
+- 外部シグナル、推薦タグ、ゴールデンセットの参照整合
 
 ## 5. Web版をローカル確認する
 

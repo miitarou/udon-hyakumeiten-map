@@ -1,0 +1,1664 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-12",
+  "method": {
+    "summary": "Deterministic external signal PoC generated from manually reviewed short evidence terms. No external fetch, raw text storage, or runtime LLM/API call.",
+    "sourceConfidence": {
+      "official_site": 0.88,
+      "official_tourism": 0.84,
+      "public_directory": 0.72,
+      "manual_editorial_seed": 0.62
+    },
+    "sample": {
+      "method": "fixed_seed_random_sample_from_hall_of_fame",
+      "seed": 20260512,
+      "sampledAt": "2026-05-12",
+      "hallOfFameThresholds": {
+        "udon": 6,
+        "soba": 4
+      },
+      "sampleSize": 20
+    }
+  },
+  "restaurants": [
+    {
+      "url": "https://tabelog.com/nagano/A2001/A200101/20001575/",
+      "name": "そばの実",
+      "category": "soba",
+      "sourceRefs": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://sobanomi.co.jp/",
+          "sourceTitle": "そばの実 公式サイト",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "scene.destination",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:戸隠",
+            "term:目的地"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.76,
+          "confidence": 0.8,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:信州",
+            "term:戸隠"
+          ]
+        },
+        {
+          "key": "style.shinshu_soba",
+          "weight": 0.86,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:信州",
+            "term:戸隠"
+          ]
+        },
+        {
+          "key": "style.stone_milled",
+          "weight": 0.84,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:石臼"
+          ]
+        },
+        {
+          "key": "texture.aroma_focused",
+          "weight": 0.76,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:石臼",
+            "term:香り"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/tokyo/A1319/A131903/13141774/",
+      "name": "ら すとらあだ",
+      "category": "soba",
+      "sourceRefs": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://hanako.tokyo/shop/118165/",
+          "sourceTitle": "Hanako Web ら すとらあだ",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "scene.calm_meal",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:日本酒",
+            "term:落ち着いた食事",
+            "term:蕎麦会席",
+            "term:蕎麦前"
+          ]
+        },
+        {
+          "key": "scene.drink_pairing",
+          "weight": 0.86,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:日本酒",
+            "term:蕎麦会席",
+            "term:蕎麦前"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:手打ち"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/tokyo/A1323/A132304/13143622/",
+      "name": "一東菴",
+      "category": "soba",
+      "sourceRefs": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://ge7d900.gorp.jp/",
+          "sourceTitle": "ぐるなび 一東菴",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "scene.calm_meal",
+          "weight": 0.72,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:落ち着いた食事",
+            "term:蕎麦前"
+          ]
+        },
+        {
+          "key": "scene.drink_pairing",
+          "weight": 0.86,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:蕎麦前"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:手打ち"
+          ]
+        },
+        {
+          "key": "style.stone_milled",
+          "weight": 0.84,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:石臼"
+          ]
+        },
+        {
+          "key": "texture.aroma_focused",
+          "weight": 0.76,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:石臼",
+            "term:香り"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/gifu/A2104/A210403/21000060/",
+      "name": "仲佐",
+      "category": "soba",
+      "sourceRefs": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.gaultmillau.jp/restaurant/nakasa",
+          "sourceTitle": "Gault & Millau 仲佐",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "scene.calm_meal",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:落ち着いた食事",
+            "term:蕎麦会席",
+            "term:蕎麦料理"
+          ]
+        },
+        {
+          "key": "scene.drink_pairing",
+          "weight": 0.82,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:そばがき",
+            "term:蕎麦会席",
+            "term:蕎麦料理"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/tokyo/A1324/A132403/13003083/",
+      "name": "吟八亭 やざ和",
+      "category": "soba",
+      "sourceRefs": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.gaultmillau.jp/restaurant/ginpachitei-yazawa",
+          "sourceTitle": "Gault & Millau 吟八亭 やざ和",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "mood.traditional",
+          "weight": 0.72,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:伝統"
+          ]
+        },
+        {
+          "key": "scene.calm_meal",
+          "weight": 0.66,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:蕎麦前"
+          ]
+        },
+        {
+          "key": "scene.drink_pairing",
+          "weight": 0.86,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:蕎麦前"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:手打ち"
+          ]
+        },
+        {
+          "key": "style.stone_milled",
+          "weight": 0.84,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:石臼"
+          ]
+        },
+        {
+          "key": "texture.aroma_focused",
+          "weight": 0.76,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:石臼",
+            "term:香り"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/tokyo/A1311/A131102/13007981/",
+      "name": "吾妻橋 やぶそば",
+      "category": "soba",
+      "sourceRefs": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://azumabashi-yabusoba.jp/info/",
+          "sourceTitle": "吾妻橋 やぶそば 公式サイト",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "lineage.yabu",
+          "weight": 0.8,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:藪"
+          ]
+        },
+        {
+          "key": "mood.traditional",
+          "weight": 0.72,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:伝統"
+          ]
+        },
+        {
+          "key": "scene.calm_meal",
+          "weight": 0.72,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:落ち着いた食事",
+            "term:蕎麦前"
+          ]
+        },
+        {
+          "key": "scene.drink_pairing",
+          "weight": 0.86,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:蕎麦前"
+          ]
+        },
+        {
+          "key": "style.edomae_soba",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:江戸前",
+            "term:藪"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/ibaraki/A0805/A080502/8000227/",
+      "name": "慈久庵",
+      "category": "soba",
+      "sourceRefs": [
+        {
+          "sourceType": "official_tourism",
+          "sourceUrl": "https://www.kanko-hitachiota.com/page/page000126.html",
+          "sourceTitle": "常陸太田市観光物産協会 慈久庵",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "scene.destination",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:目的地"
+          ]
+        },
+        {
+          "key": "style.country_soba",
+          "weight": 0.82,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:常陸秋そば",
+            "term:田舎そば"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:手打ち"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.78,
+          "confidence": 0.8,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:常陸秋そば",
+            "term:田舎そば"
+          ]
+        },
+        {
+          "key": "texture.aroma_focused",
+          "weight": 0.72,
+          "confidence": 0.74,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:常陸秋そば",
+            "term:香り"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/tokyo/A1318/A131802/13028732/",
+      "name": "打心蕎庵",
+      "category": "soba",
+      "sourceRefs": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://www.dashinsoan.jp/",
+          "sourceTitle": "打心蕎庵 公式サイト",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "scene.calm_meal",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:落ち着いた食事",
+            "term:蕎麦会席",
+            "term:蕎麦前"
+          ]
+        },
+        {
+          "key": "scene.drink_pairing",
+          "weight": 0.86,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:蕎麦会席",
+            "term:蕎麦前"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:手打ち"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/tokyo/A1306/A130601/13129390/",
+      "name": "玉笑",
+      "category": "soba",
+      "sourceRefs": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://r.gnavi.co.jp/g-interview/entry/1347",
+          "sourceTitle": "ぐるなび みんなのごはん 玉笑紹介記事",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "scene.calm_meal",
+          "weight": 0.72,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:落ち着いた食事"
+          ]
+        },
+        {
+          "key": "style.stone_milled",
+          "weight": 0.86,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:石臼",
+            "term:自家製粉"
+          ]
+        },
+        {
+          "key": "texture.aroma_focused",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:石臼",
+            "term:自家製粉",
+            "term:香り"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/tokyo/A1329/A132901/13005984/",
+      "name": "蕎麦懐石 無庵",
+      "category": "soba",
+      "sourceRefs": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.gaultmillau.jp/restaurant/muan",
+          "sourceTitle": "Gault & Millau 蕎麦懐石 無庵",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "scene.calm_meal",
+          "weight": 0.8,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:落ち着いた食事",
+            "term:蕎麦前",
+            "term:蕎麦懐石"
+          ]
+        },
+        {
+          "key": "scene.drink_pairing",
+          "weight": 0.86,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:蕎麦前",
+            "term:蕎麦懐石"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:手打ち"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/ibaraki/A0805/A080502/8000966/",
+      "name": "鯨荘 塩町館",
+      "category": "soba",
+      "sourceRefs": [
+        {
+          "sourceType": "official_tourism",
+          "sourceUrl": "https://www.kanko-hitachiota.com/data/doc/1486709462_doc_1_0.pdf",
+          "sourceTitle": "常陸太田市 蕎麦の名店ガイド",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "mood.traditional",
+          "weight": 0.7,
+          "confidence": 0.76,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:古民家"
+          ]
+        },
+        {
+          "key": "scene.calm_meal",
+          "weight": 0.66,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:蕎麦前"
+          ]
+        },
+        {
+          "key": "scene.destination",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:古民家",
+            "term:目的地"
+          ]
+        },
+        {
+          "key": "scene.drink_pairing",
+          "weight": 0.86,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:蕎麦前"
+          ]
+        },
+        {
+          "key": "style.country_soba",
+          "weight": 0.82,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:常陸秋そば",
+            "term:田舎そば"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.78,
+          "confidence": 0.8,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:常陸秋そば",
+            "term:田舎そば"
+          ]
+        },
+        {
+          "key": "texture.aroma_focused",
+          "weight": 0.68,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:常陸秋そば"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/osaka/A2701/A270405/27000574/",
+      "name": "うどん ゆきの",
+      "category": "udon",
+      "sourceRefs": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://osaka-info.jp/spot/udon-yukino/",
+          "sourceTitle": "大阪公式観光情報 うどん ゆきの",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "dish.tempura",
+          "weight": 0.74,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:天ぷら"
+          ]
+        },
+        {
+          "key": "scene.calm_meal",
+          "weight": 0.72,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:落ち着いた食事"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:手打ち"
+          ]
+        },
+        {
+          "key": "style.kansai_dashi",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:関西だし"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/osaka/A2701/A270108/27066859/",
+      "name": "うどん 讃く",
+      "category": "udon",
+      "sourceRefs": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.ekiten.jp/shop_88594159/",
+          "sourceTitle": "エキテン うどん 讃く",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "scene.quick_lunch",
+          "weight": 0.72,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:朝うどん",
+            "term:短時間利用"
+          ]
+        },
+        {
+          "key": "scene.solo_lunch",
+          "weight": 0.62,
+          "confidence": 0.68,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:朝うどん",
+            "term:短時間利用"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:手打ち"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.68,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "style.sanuki_influenced",
+          "weight": 0.9,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "texture.koshi_strong",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:コシ",
+            "term:讃岐"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/kagawa/A3703/A370302/37000140/",
+      "name": "三嶋製麺所",
+      "category": "udon",
+      "sourceRefs": [
+        {
+          "sourceType": "official_tourism",
+          "sourceUrl": "https://www.my-kagawa.jp/udon/523/",
+          "sourceTitle": "うどん県旅ネット 三嶋製麺所",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "dish.kamatama",
+          "weight": 0.86,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:釜玉"
+          ]
+        },
+        {
+          "key": "scene.quick_lunch",
+          "weight": 0.72,
+          "confidence": 0.8,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:短時間利用",
+            "term:製麺所"
+          ]
+        },
+        {
+          "key": "scene.solo_lunch",
+          "weight": 0.58,
+          "confidence": 0.68,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:短時間利用"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:地域色",
+            "term:製麺所",
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "style.sanuki_influenced",
+          "weight": 0.9,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.76,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:製麺所"
+          ]
+        },
+        {
+          "key": "texture.koshi_strong",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/kyoto/A2601/A260301/26002504/",
+      "name": "山元麺蔵",
+      "category": "udon",
+      "sourceRefs": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://yamamotomenzou.com/",
+          "sourceTitle": "山元麺蔵 公式サイト",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "scene.calm_meal",
+          "weight": 0.72,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:落ち着いた食事"
+          ]
+        },
+        {
+          "key": "scene.destination",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:目的地"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:手打ち"
+          ]
+        },
+        {
+          "key": "style.kansai_dashi",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:関西だし"
+          ]
+        },
+        {
+          "key": "texture.koshi_strong",
+          "weight": 0.76,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:コシ"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/tokyo/A1321/A132103/13105083/",
+      "name": "手打うどん長谷川",
+      "category": "udon",
+      "sourceRefs": [
+        {
+          "sourceType": "official_tourism",
+          "sourceUrl": "https://www.city.nerima.tokyo.jp/hokenfukushi/hoken/shokuiku/shokuikuouenten/teutiudonhasegawa.html",
+          "sourceTitle": "練馬区公式ホームページ 手打ちうどん長谷川",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "scene.calm_meal",
+          "weight": 0.72,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:日本酒",
+            "term:落ち着いた食事"
+          ]
+        },
+        {
+          "key": "scene.drink_pairing",
+          "weight": 0.72,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:日本酒"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:手打ち"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.68,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "style.sanuki_influenced",
+          "weight": 0.9,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "texture.koshi_strong",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:コシ",
+            "term:讃岐"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/kagawa/A3701/A370101/37000242/",
+      "name": "手打十段 うどんバカ一代",
+      "category": "udon",
+      "sourceRefs": [
+        {
+          "sourceType": "official_tourism",
+          "sourceUrl": "https://www.my-kagawa.jp/udon/570/",
+          "sourceTitle": "うどん県旅ネット 手打十段 うどんバカ一代",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "dish.kamatama",
+          "weight": 0.86,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:釜バター",
+            "term:釜玉"
+          ]
+        },
+        {
+          "key": "mood.modern",
+          "weight": 0.58,
+          "confidence": 0.62,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:釜バター"
+          ]
+        },
+        {
+          "key": "scene.quick_lunch",
+          "weight": 0.72,
+          "confidence": 0.8,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:短時間利用"
+          ]
+        },
+        {
+          "key": "scene.solo_lunch",
+          "weight": 0.58,
+          "confidence": 0.68,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:短時間利用"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:手打ち"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.68,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "style.sanuki_influenced",
+          "weight": 0.9,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "texture.koshi_strong",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:コシ",
+            "term:讃岐"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/kagawa/A3701/A370101/37000051/",
+      "name": "竹清 本店",
+      "category": "udon",
+      "sourceRefs": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://chikuseiudon.com/",
+          "sourceTitle": "竹清 公式サイト",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "dish.tempura",
+          "weight": 0.74,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:天ぷら"
+          ]
+        },
+        {
+          "key": "scene.quick_lunch",
+          "weight": 0.72,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:セルフ",
+            "term:短時間利用"
+          ]
+        },
+        {
+          "key": "scene.solo_lunch",
+          "weight": 0.58,
+          "confidence": 0.68,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:短時間利用"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:手打ち"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.68,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "style.sanuki_influenced",
+          "weight": 0.9,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.84,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:セルフ"
+          ]
+        },
+        {
+          "key": "texture.koshi_strong",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/tokyo/A1305/A130503/13049983/",
+      "name": "讃岐うどん 蔵之介",
+      "category": "udon",
+      "sourceRefs": [
+        {
+          "sourceType": "official_tourism",
+          "sourceUrl": "https://www.pref.kagawa.lg.jp/documents/7607/shutokenkagawagourmetguide1-2026.pdf",
+          "sourceTitle": "香川県 首都圏かがわグルメガイド",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "scene.calm_meal",
+          "weight": 0.72,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:日本酒",
+            "term:落ち着いた食事"
+          ]
+        },
+        {
+          "key": "scene.drink_pairing",
+          "weight": 0.72,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:日本酒"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:手打ち"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.68,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "style.sanuki_influenced",
+          "weight": 0.9,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "texture.koshi_strong",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:コシ",
+            "term:讃岐"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/kagawa/A3703/A370303/37000143/",
+      "name": "須崎食料品店",
+      "category": "udon",
+      "sourceRefs": [
+        {
+          "sourceType": "official_tourism",
+          "sourceUrl": "https://www.my-kagawa.jp/udon/530/",
+          "sourceTitle": "うどん県旅ネット 須崎食料品店",
+          "reviewStatus": "manual_seeded",
+          "lastCheckedAt": "2026-05-12"
+        }
+      ],
+      "signals": [
+        {
+          "key": "dish.kamatama",
+          "weight": 0.86,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:釜玉"
+          ]
+        },
+        {
+          "key": "scene.quick_lunch",
+          "weight": 0.72,
+          "confidence": 0.8,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:短時間利用",
+            "term:製麺所",
+            "term:食料品店"
+          ]
+        },
+        {
+          "key": "scene.solo_lunch",
+          "weight": 0.58,
+          "confidence": 0.68,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:短時間利用"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.68,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:製麺所",
+            "term:讃岐",
+            "term:食料品店"
+          ]
+        },
+        {
+          "key": "style.sanuki_influenced",
+          "weight": 0.9,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.76,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:製麺所",
+            "term:食料品店"
+          ]
+        },
+        {
+          "key": "texture.koshi_strong",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_tourism"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    }
+  ]
+}

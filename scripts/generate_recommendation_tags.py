@@ -24,12 +24,14 @@ DATASETS = (
     ROOT / "data" / "soba.json",
 )
 DATA_VERSION = ROOT / "data" / "data-version.json"
+EXTERNAL_SIGNALS = ROOT / "data" / "external_signals.json"
 OUTPUT = ROOT / "data" / "recommendation_tags.json"
 
 MIN_CONFIDENCE_TO_OUTPUT = 0.45
 
 SOURCE_RANK = {
     "data": 5,
+    "external_signal": 4,
     "name_keyword": 4,
     "selection_prior": 3,
     "regional_prior": 2,
@@ -658,6 +660,7 @@ def build_affinity_groups(restaurants: list[dict[str, Any]]) -> list[dict[str, A
 def build_tags_for_restaurant(
     restaurant: dict[str, Any],
     thresholds: dict[str, int],
+    external_signal_index: dict[str, list[dict[str, Any]]] | None = None,
 ) -> list[dict[str, Any]]:
     tags: dict[str, dict[str, Any]] = {}
     category = restaurant["category"]
@@ -759,6 +762,29 @@ def build_tags_for_restaurant(
         if any(keyword in name for keyword in ("藪", "やぶ", "砂場", "更科", "翁", "達磨", "室町", "並木")):
             add_tag(tags, "mood.traditional", 0.66, 0.66, "name_keyword", "classic_soba_lineage")
 
+    for signal in (external_signal_index or {}).get(restaurant["url"], []):
+        key = signal.get("key")
+        if key not in TAG_DEFINITIONS:
+            continue
+        evidence_terms = []
+        for value in signal.get("evidence") or []:
+            if isinstance(value, str) and value.startswith("term:"):
+                evidence_terms.append(value.replace("term:", "", 1))
+        source_types = [value for value in signal.get("sourceTypes") or [] if isinstance(value, str)]
+        evidence = "external"
+        if source_types:
+            evidence += f":{','.join(sorted(source_types))}"
+        if evidence_terms:
+            evidence += f":{','.join(sorted(evidence_terms)[:3])}"
+        add_tag(
+            tags,
+            key,
+            float(signal.get("weight", 0)),
+            float(signal.get("confidence", 0)),
+            "external_signal",
+            evidence,
+        )
+
     return sorted(tags.values(), key=lambda item: (item["key"], item["source"]))
 
 
@@ -775,9 +801,23 @@ def data_version_payload() -> dict[str, Any]:
     return {"version": 1, "generatedAt": None, "datasets": {}}
 
 
+def external_signal_index() -> dict[str, list[dict[str, Any]]]:
+    if not EXTERNAL_SIGNALS.exists():
+        return {}
+    payload = json.loads(EXTERNAL_SIGNALS.read_text(encoding="utf-8"))
+    result: dict[str, list[dict[str, Any]]] = {}
+    for item in payload.get("restaurants") or []:
+        url = item.get("url")
+        signals = item.get("signals")
+        if isinstance(url, str) and isinstance(signals, list):
+            result[url] = [signal for signal in signals if isinstance(signal, dict)]
+    return result
+
+
 def main() -> int:
     restaurants = load_restaurants()
     version = data_version_payload()
+    ext_index = external_signal_index()
     affinity_groups = build_affinity_groups(restaurants)
     thresholds = {
         "udon": hall_of_fame_threshold(restaurants, "udon"),
@@ -790,7 +830,7 @@ def main() -> int:
 
     records = []
     for restaurant in restaurants:
-        tags = build_tags_for_restaurant(restaurant, thresholds)
+        tags = build_tags_for_restaurant(restaurant, thresholds, ext_index)
         records.append(
             {
                 "url": restaurant["url"],
@@ -806,15 +846,17 @@ def main() -> int:
         "basedOn": {
             "dataVersionGeneratedAt": version.get("generatedAt"),
             "datasetSha256": dataset_hashes,
+            "externalSignalsSha256": sha256(EXTERNAL_SIGNALS) if EXTERNAL_SIGNALS.exists() else None,
         },
         "method": {
-            "summary": "Static recommendation tags generated from existing data plus conservative rule-based priors. Runtime recommendation can use these tags without calling an LLM or external API.",
+            "summary": "Static recommendation tags generated from existing data, conservative rule-based priors, and deterministic external signal hints. Runtime recommendation can use these tags without calling an LLM or external API.",
             "confidencePolicy": {
                 "1.0": "Existing dataset fact",
                 "0.75-0.90": "Direct shop-name keyword or strong regional specialty prior",
                 "0.60-0.74": "Selection-history or category-specific regional prior",
                 "0.45-0.59": "Weak category or station-area prior; suitable for scoring, not strong display copy",
             },
+            "externalSignalPolicy": "External signals are short manually reviewed evidence terms mapped to existing tags. Raw external page text, reviews, ratings, photos, and social posts are not stored.",
             "displayPolicy": "Inferred tags are exploration hints, not factual claims. Avoid displaying low-confidence inferred tags as definitive descriptions.",
         },
         "thresholds": {

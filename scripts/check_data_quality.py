@@ -23,6 +23,7 @@ DATASETS = (
     ("data/soba.json", "soba"),
 )
 DATA_VERSION = "data/data-version.json"
+EXTERNAL_SIGNALS = "data/external_signals.json"
 RECOMMENDATION_TAGS = "data/recommendation_tags.json"
 RECOMMENDATION_GOLDEN_SET = "data/recommendation_golden_set.json"
 REQUIRED_FIELDS = ("name", "category", "prefecture", "region", "lat", "lng", "url", "years")
@@ -39,7 +40,7 @@ MAX_YEAR = 2026
 MIN_LAT, MAX_LAT = 20.0, 46.5
 MIN_LNG, MAX_LNG = 122.0, 154.0
 HTML_TAG_RE = re.compile(r"<[^>]+>")
-VALID_TAG_SOURCES = {"data", "name_keyword", "selection_prior", "regional_prior", "model_prior"}
+VALID_TAG_SOURCES = {"data", "external_signal", "name_keyword", "selection_prior", "regional_prior", "model_prior"}
 VALID_RECOMMENDATION_MODES = {"similar", "nearby", "expand"}
 
 
@@ -384,6 +385,137 @@ def validate_recommendation_tags(known_restaurants: dict[str, dict]) -> tuple[in
     return len(errors), len(warnings)
 
 
+def validate_external_signals(known_restaurants: dict[str, dict]) -> tuple[int, int]:
+    path = ROOT / EXTERNAL_SIGNALS
+    print(f"Checking {EXTERNAL_SIGNALS}...")
+
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        print(f"  [WARN] {EXTERNAL_SIGNALS} does not exist")
+        return 0, 1
+    except Exception as exc:  # noqa: BLE001
+        print(f"  [ERROR] Failed to load {EXTERNAL_SIGNALS}: {exc}")
+        return 1, 0
+
+    try:
+        recommendation_payload = json.loads((ROOT / RECOMMENDATION_TAGS).read_text(encoding="utf-8"))
+        tag_definitions = recommendation_payload.get("tagDefinitions") or {}
+    except Exception:  # noqa: BLE001
+        tag_definitions = {}
+
+    errors: list[str] = []
+    warnings: list[str] = []
+
+    if not isinstance(payload, dict):
+        errors.append("root must be an object")
+        payload = {}
+
+    if payload.get("version") != 1:
+        errors.append("version must be 1")
+
+    restaurants = payload.get("restaurants")
+    if not isinstance(restaurants, list):
+        errors.append("restaurants must be a list")
+        restaurants = []
+
+    seen_urls: set[str] = set()
+    for index, item in enumerate(restaurants):
+        prefix = f"item {index}"
+        if not isinstance(item, dict):
+            errors.append(f"{prefix}: must be an object")
+            continue
+
+        url = item.get("url")
+        if not isinstance(url, str) or not url:
+            errors.append(f"{prefix}: url must be a non-empty string")
+            continue
+        if url in seen_urls:
+            errors.append(f"{prefix}: duplicate url {url}")
+        seen_urls.add(url)
+
+        known = known_restaurants.get(url)
+        if not known:
+            errors.append(f"{prefix}: url is not present in public restaurant data: {url}")
+        else:
+            if item.get("name") != known.get("name"):
+                errors.append(f"{prefix}: name mismatch for {url}")
+            if item.get("category") != known.get("category"):
+                errors.append(f"{prefix}: category mismatch for {url}")
+
+        source_refs = item.get("sourceRefs", [])
+        if not isinstance(source_refs, list) or not source_refs:
+            warnings.append(f"{prefix}: sourceRefs should be a non-empty list")
+        else:
+            for source_index, source_ref in enumerate(source_refs):
+                source_prefix = f"{prefix}.sourceRefs[{source_index}]"
+                if not isinstance(source_ref, dict):
+                    errors.append(f"{source_prefix}: must be an object")
+                    continue
+                source_url = source_ref.get("sourceUrl")
+                if not isinstance(source_url, str) or not source_url.startswith(("http://", "https://")):
+                    errors.append(f"{source_prefix}: sourceUrl must start with http:// or https://")
+                if not isinstance(source_ref.get("sourceType"), str) or not source_ref["sourceType"]:
+                    errors.append(f"{source_prefix}: sourceType must be a non-empty string")
+                if not isinstance(source_ref.get("reviewStatus"), str) or not source_ref["reviewStatus"]:
+                    warnings.append(f"{source_prefix}: reviewStatus should be a non-empty string")
+
+        signals = item.get("signals")
+        if not isinstance(signals, list) or not signals:
+            errors.append(f"{prefix}: signals must be a non-empty list")
+            continue
+
+        seen_keys: set[str] = set()
+        for signal_index, signal in enumerate(signals):
+            signal_prefix = f"{prefix}.signals[{signal_index}]"
+            if not isinstance(signal, dict):
+                errors.append(f"{signal_prefix}: must be an object")
+                continue
+
+            key = signal.get("key")
+            if not isinstance(key, str) or not key:
+                errors.append(f"{signal_prefix}: key must be a non-empty string")
+                continue
+            if key in seen_keys:
+                errors.append(f"{signal_prefix}: duplicate key {key}")
+            seen_keys.add(key)
+            if tag_definitions and key not in tag_definitions:
+                errors.append(f"{signal_prefix}: missing recommendation tag definition for {key}")
+
+            if signal.get("source") != "external_signal":
+                errors.append(f"{signal_prefix}: source must be external_signal")
+
+            for field in ("weight", "confidence"):
+                value = signal.get(field)
+                if not isinstance(value, (int, float)) or isinstance(value, bool) or not (0 <= float(value) <= 1):
+                    errors.append(f"{signal_prefix}: {field} must be a number between 0 and 1")
+
+            source_types = signal.get("sourceTypes")
+            if not isinstance(source_types, list) or not source_types or not all(isinstance(value, str) and value for value in source_types):
+                errors.append(f"{signal_prefix}: sourceTypes must be a non-empty list of strings")
+
+            evidence = signal.get("evidence")
+            if not isinstance(evidence, list) or not evidence or not all(isinstance(value, str) and value for value in evidence):
+                errors.append(f"{signal_prefix}: evidence must be a non-empty list of strings")
+            else:
+                for value in evidence:
+                    if len(value) > 80:
+                        errors.append(f"{signal_prefix}: evidence should be short derived terms, not raw copied text")
+                    if HTML_TAG_RE.search(value):
+                        errors.append(f"{signal_prefix}: evidence appears to contain HTML")
+
+        unmapped_terms = item.get("unmappedTerms", [])
+        if unmapped_terms:
+            warnings.append(f"{prefix}: unmapped external evidence terms: {', '.join(map(str, unmapped_terms))}")
+
+    for error in errors:
+        print(f"  [ERROR] {error}")
+    for warning in warnings:
+        print(f"  [WARN] {warning}")
+    print(f"  Summary: records={len(restaurants)}, errors={len(errors)}, warnings={len(warnings)}")
+    return len(errors), len(warnings)
+
+
 def validate_recommendation_golden_set(known_restaurants: dict[str, dict]) -> tuple[int, int]:
     path = ROOT / RECOMMENDATION_GOLDEN_SET
     print(f"Checking {RECOMMENDATION_GOLDEN_SET}...")
@@ -503,6 +635,10 @@ def main() -> int:
     tag_errors, tag_warnings = validate_recommendation_tags(known_restaurants)
     total_errors += tag_errors
     total_warnings += tag_warnings
+
+    external_errors, external_warnings = validate_external_signals(known_restaurants)
+    total_errors += external_errors
+    total_warnings += external_warnings
 
     golden_errors, golden_warnings = validate_recommendation_golden_set(known_restaurants)
     total_errors += golden_errors

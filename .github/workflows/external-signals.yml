@@ -1,0 +1,32 @@
+name: External Signals PoC
+
+on:
+  workflow_dispatch:
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check generated external signals
+        run: python3 scripts/generate_external_signals.py --check
+
+      - name: Run data quality checks
+        run: python3 scripts/check_data_quality.py
+
+      - name: Build recommendation report
+        run: |
+          mkdir -p build
+          python3 scripts/evaluate_recommendations.py > build/recommendation-report.md
+
+      - name: Upload recommendation report
+        uses: actions/upload-artifact@v4
+        with:
+          name: recommendation-report
+          path: build/recommendation-report.md
