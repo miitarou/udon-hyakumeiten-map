@@ -70,6 +70,7 @@
     /* Spacing */
     --panel-width: 380px;
     --header-height: 60px;
+    --app-top-offset: env(safe-area-inset-top, 0px);
     --mobile-sheet-height: 70dvh;
 
     /* Effects */
@@ -103,7 +104,8 @@ html, body {
     top: 0;
     left: 0;
     right: 0;
-    height: var(--header-height);
+    height: calc(var(--header-height) + var(--app-top-offset));
+    padding-top: var(--app-top-offset);
     background: var(--bg-glass);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
@@ -347,7 +349,7 @@ html, body {
 /* === Map === */
 #map {
     position: fixed;
-    top: var(--header-height);
+    top: calc(var(--header-height) + var(--app-top-offset));
     left: 0;
     right: 0;
     bottom: 0;
@@ -368,10 +370,10 @@ html, body {
 /* === Control Panel === */
 #control-panel {
     position: fixed;
-    top: var(--header-height);
+    top: calc(var(--header-height) + var(--app-top-offset));
     left: 0;
     width: var(--panel-width);
-    height: calc(100vh - var(--header-height));
+    height: calc(100vh - var(--header-height) - var(--app-top-offset));
     background: var(--bg-glass);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
@@ -2122,7 +2124,7 @@ body.panel-resizing * {
         width: 100%;
         height: var(--mobile-sheet-height);
         min-height: min(320px, 42dvh);
-        max-height: calc(100dvh - var(--header-height) - 8px);
+        max-height: calc(100dvh - var(--header-height) - var(--app-top-offset) - 8px);
         border-right: none;
         border-top: 1px solid var(--border-color);
         border-radius: 20px 20px 0 0;
