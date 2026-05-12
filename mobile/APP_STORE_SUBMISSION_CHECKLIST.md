@@ -73,6 +73,9 @@ Xcode Organizerで実施する。
 
 アップロード後、App Store Connect側でビルド処理が完了するまで待つ。
 
+CLIでアップロードする場合は、`mobile/ExportOptions-app-store.plist` を使う。
+ただし初回はエラー時の確認がしやすいので、Xcode Organizerから進める方が安全。
+
 ## 8. Screenshots
 
 最低限、iPhone用スクリーンショットを登録する。

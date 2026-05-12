@@ -26,7 +26,7 @@
 
 ### 🔍 フィルタ・検索
 - **EAST / WEST / KAGAWA 切替** — うどんのみKAGAWA対応（2024年独立カテゴリ）
-- **店名・住所・駅名検索** — リアルタイム検索。かな・カナ、旧字体の一部、軽微な打ち間違いを吸収
+- **店名・地名・駅名検索** — 住所を含む地名検索に対応。かな・カナ、旧字体の一部、軽微な打ち間違いを吸収
 - **都道府県フィルタ** — 全国から絞り込み
 - **選出年フィルタ** — カテゴリに応じて利用可能年度を動的生成
   - うどん：2017 / 2018 / 2019 / 2020 / 2022 / 2024
@@ -72,7 +72,9 @@ open http://localhost:8080
 ├── icon.svg                    # PWAアイコン
 ├── privacy.html                # プライバシーポリシー
 ├── docs/
-│   └── recommendation-tags.md  # 推薦タグとスコアリング設計
+│   ├── recommendation-tags.md  # 推薦タグとスコアリング設計
+│   ├── update-guide.md         # データ更新・検証・iPhone同期手順
+│   └── app-architecture.md     # app.js分割方針とCSP導入方針
 ├── data/
 │   ├── data-version.json       # iPhone版向けデータ更新メタ情報
 │   ├── recommendation_tags.json # 推薦機能向けの静的タグデータ（探索補助用）
@@ -129,6 +131,7 @@ Leaflet / Leaflet.markercluster の CDN 読み込みには Subresource Integrity
 推定タグは店舗説明の事実断定ではなく、店舗間の類似度計算に使うための補助情報です。
 
 タグ辞書、`weight` / `confidence`、類似度計算、推薦モードの設計方針は [docs/recommendation-tags.md](docs/recommendation-tags.md) にまとめています。
+アプリロジックの分割方針とCSP導入方針は [docs/app-architecture.md](docs/app-architecture.md) にまとめています。
 
 ### うどん百名店
 - **対象**: 2017〜2024年（全6回分）
@@ -151,7 +154,7 @@ Leaflet / Leaflet.markercluster の CDN 読み込みには Subresource Integrity
 
 ## 🧪 データ更新・検証
 
-本リポジトリではデータ品質を保つために検証スクリプトを提供しています。データを更新した際は、以下の手順で検証を行ってください。
+本リポジトリではデータ品質を保つために検証スクリプトを提供しています。詳しい更新手順は [docs/update-guide.md](docs/update-guide.md) に分離しています。データを更新した際は、以下の手順で検証を行ってください。
 
 1. `data/udon.json` または `data/soba.json` を更新する
 2. iPhone版向けのデータメタ情報と推薦タグを更新する

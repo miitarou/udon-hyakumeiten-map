@@ -696,7 +696,7 @@ body.panel-resizing * {
 .search-input {
     width: 100%;
     padding: 10px 14px;
-    padding-right: 50px;
+    padding-right: 76px;
     background: var(--bg-tertiary);
     border: 1px solid var(--border-color);
     border-radius: 10px;
@@ -716,8 +716,44 @@ body.panel-resizing * {
     box-shadow: 0 0 0 3px var(--primary-glow);
 }
 
-.search-input:focus + .search-shortcut {
+.search-input:focus ~ .search-shortcut,
+.search-wrapper.has-value .search-shortcut {
     opacity: 0;
+}
+
+.search-input::-webkit-search-decoration,
+.search-input::-webkit-search-cancel-button,
+.search-input::-webkit-search-results-button,
+.search-input::-webkit-search-results-decoration {
+    display: none;
+}
+
+.search-clear-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    z-index: 1;
+    width: 28px;
+    height: 28px;
+    transform: translateY(-50%);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    font-family: var(--font-main);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.search-clear-btn:hover,
+.search-clear-btn:focus-visible {
+    background: rgba(232, 197, 71, 0.18);
+    border-color: rgba(232, 197, 71, 0.45);
+    color: #FFE083;
+    outline: none;
 }
 
 /* ⌘K ショートカットバッジ */
@@ -737,6 +773,66 @@ body.panel-resizing * {
     line-height: 1.4;
     opacity: 1;
     transition: opacity 0.15s ease;
+}
+
+.quick-start-section {
+    padding-top: 0;
+}
+
+.quick-start-title {
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.quick-start-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+}
+
+.quick-start-card {
+    display: flex;
+    min-height: 54px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.045);
+    color: var(--text-secondary);
+    font-family: var(--font-main);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.quick-start-card:hover,
+.quick-start-card:focus-visible {
+    border-color: rgba(232, 197, 71, 0.42);
+    background: rgba(232, 197, 71, 0.1);
+    color: #FFE083;
+    outline: none;
+    transform: translateY(-1px);
+}
+
+.quick-start-icon {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.quick-start-text {
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.quick-start-note {
+    margin: 8px 0 0;
+    color: var(--text-muted);
+    font-size: 10px;
+    line-height: 1.5;
 }
 
 /* Filter Buttons */
@@ -1475,6 +1571,13 @@ body.panel-resizing * {
     font-size: 9px;
     font-weight: 500;
     white-space: nowrap;
+}
+
+.recommendation-disclaimer {
+    margin: -2px 0 8px;
+    color: var(--text-muted);
+    font-size: 9px;
+    line-height: 1.45;
 }
 
 .recommendation-tabs {

@@ -6,6 +6,7 @@
     <title>うどん・そば百名店 MAP 2017-2025 | EAST × WEST × KAGAWA 全年度統合版</title>
     <meta name="description" content="公開情報をもとに個人が整理した、うどん・そば百名店 MAP 2017-2025 非公式参考ツール。年度別選出履歴、エリア別フィルタ、検索付き。">
     <meta name="theme-color" content="#121218">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self' https://unpkg.com; style-src 'self' 'unsafe-inline' https://unpkg.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://cyberjapandata.gsi.go.jp https://*.gsi.go.jp https://*.openstreetmap.org; connect-src 'self' https://miitarou.github.io;">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="icon" href="icon.png" type="image/png">
 
@@ -19,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css?v=6.5">
+    <link rel="stylesheet" href="style.css?v=6.6">
 </head>
 <body>
     <noscript>
@@ -137,11 +138,31 @@
         <div class="panel-content">
             <!-- 検索（常時表示） -->
             <div class="control-section">
-                <label class="control-label" for="search-input">🔍 店名・住所・駅名検索</label>
+                <label class="control-label" for="search-input">🔍 店名・地名・駅名検索</label>
                 <div class="search-wrapper">
-                    <input type="text" id="search-input" class="search-input" placeholder="店名・住所・駅名で検索..." autocomplete="off">
+                    <input type="search" id="search-input" class="search-input" placeholder="店名・地名・駅名で検索..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="search" inputmode="search" aria-autocomplete="none">
+                    <button type="button" id="search-clear-btn" class="search-clear-btn" aria-label="検索語句をクリア" hidden>×</button>
                     <kbd class="search-shortcut">⌘K</kbd>
                 </div>
+            </div>
+
+            <div class="control-section quick-start-section" id="quick-start-section" aria-label="おすすめの使い方">
+                <div class="quick-start-title">まずはここから</div>
+                <div class="quick-start-grid">
+                    <button type="button" class="quick-start-card" data-quick-action="nearby">
+                        <span class="quick-start-icon">📍</span>
+                        <span class="quick-start-text">現在地から探す</span>
+                    </button>
+                    <button type="button" class="quick-start-card" data-quick-action="trip">
+                        <span class="quick-start-icon">🗾</span>
+                        <span class="quick-start-text">旅行先で絞る</span>
+                    </button>
+                    <button type="button" class="quick-start-card" data-quick-action="recommend">
+                        <span class="quick-start-icon">✨</span>
+                        <span class="quick-start-text">好きな店から探す</span>
+                    </button>
+                </div>
+                <p class="quick-start-note">非公式の参考マップです。来店前に公式情報をご確認ください。</p>
             </div>
 
             <!-- 絞り込みフィルタ（折りたたみ可能） -->
@@ -307,6 +328,6 @@
     <!-- Leaflet MarkerCluster JS -->
     <script src="vendor/leaflet.markercluster/leaflet.markercluster.js"></script>
 
-    <script src="app.js?v=6.5"></script>
+    <script src="app.js?v=6.6"></script>
 </body>
 </html>

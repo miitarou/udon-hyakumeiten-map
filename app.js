@@ -665,8 +665,9 @@
                 <div class="recommendation-panel" hidden>
                     <div class="recommendation-title">
                         <span>この店が好きなら</span>
-                        <span class="recommendation-note">AI推定タグによる探索補助</span>
+                        <span class="recommendation-note">AI推定タグ</span>
                     </div>
+                    <p class="recommendation-disclaimer">探索補助の目安です。店舗評価ではありません。</p>
                     <div class="recommendation-tabs" role="group" aria-label="推薦モード">
                         ${tabs}
                     </div>
@@ -1781,6 +1782,7 @@
 
         const searchInput = document.getElementById('search-input');
         if (searchInput) searchInput.value = '';
+        updateSearchClearButton();
         const prefSelect = document.getElementById('pref-select');
         if (prefSelect) prefSelect.value = 'all';
 
@@ -2523,16 +2525,33 @@
         // Search (debounce 200ms)
         let searchTimeout;
         const searchInput = document.getElementById('search-input');
+        const searchClearBtn = document.getElementById('search-clear-btn');
+        updateSearchClearButton();
         if (searchInput) {
             searchInput.addEventListener('input', function () {
                 clearTimeout(searchTimeout);
                 const val = this.value;
+                updateSearchClearButton();
                 searchTimeout = setTimeout(() => {
                     searchQuery = val.trim();
                     applyFilters();
                 }, 200);
             });
         }
+        if (searchClearBtn && searchInput) {
+            searchClearBtn.addEventListener('click', e => {
+                e.preventDefault();
+                clearTimeout(searchTimeout);
+                searchInput.value = '';
+                searchQuery = '';
+                updateSearchClearButton();
+                applyFilters();
+                searchInput.focus();
+            });
+        }
+        document.querySelectorAll('[data-quick-action]').forEach(btn => {
+            btn.addEventListener('click', () => handleQuickStartAction(btn.dataset.quickAction));
+        });
 
         // キーボードショートカット
         document.addEventListener('keydown', e => {
@@ -2600,6 +2619,45 @@
         const div = document.createElement('div');
         div.textContent = str;
         return div.innerHTML;
+    }
+
+    function updateSearchClearButton() {
+        const input = document.getElementById('search-input');
+        const clearBtn = document.getElementById('search-clear-btn');
+        const wrapper = input?.closest('.search-wrapper');
+        const hasValue = Boolean(input?.value);
+        if (clearBtn) clearBtn.hidden = !hasValue;
+        if (wrapper) wrapper.classList.toggle('has-value', hasValue);
+    }
+
+    function expandFilterSection() {
+        const toggle = document.querySelector('#filter-section .section-toggle');
+        const body = document.getElementById('filter-body');
+        if (!toggle || !body) return;
+        toggle.setAttribute('aria-expanded', 'true');
+        body.classList.remove('collapsed');
+        const text = toggle.querySelector('.section-toggle-text');
+        if (text) text.textContent = '閉じる';
+    }
+
+    function handleQuickStartAction(action) {
+        togglePanel(true);
+        if (action === 'nearby') {
+            expandFilterSection();
+            document.getElementById('radius-current-btn')?.click();
+            return;
+        }
+        if (action === 'trip') {
+            expandFilterSection();
+            document.getElementById('pref-select')?.focus();
+            return;
+        }
+        if (action === 'recommend') {
+            const input = document.getElementById('search-input');
+            if (!input) return;
+            input.placeholder = '好きな店名で検索...';
+            input.focus();
+        }
     }
 
     function hideLoadingOverlay() {
