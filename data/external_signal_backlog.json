@@ -24,16 +24,16 @@
   },
   "summary": {
     "totalRestaurants": 694,
-    "coveredRestaurants": 114,
-    "remainingRestaurants": 580,
+    "coveredRestaurants": 147,
+    "remainingRestaurants": 547,
     "remainingByCategory": {
-      "udon": 350,
-      "soba": 230
+      "udon": 342,
+      "soba": 205
     },
     "remainingByPriorityTier": {
       "hall_of_fame_remaining": 3,
-      "high_selection_remaining": 15,
-      "repeat_selection_remaining": 248,
+      "high_selection_remaining": 7,
+      "repeat_selection_remaining": 223,
       "latest_new_remaining": 185,
       "single_selection_remaining": 129
     }
@@ -121,101 +121,6 @@
       "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
     },
     {
-      "url": "https://tabelog.com/tokyo/A1303/A130302/13198167/",
-      "name": "博多うどん酒場イチカバチカ 恵比寿店",
-      "category": "udon",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "恵比寿駅",
-      "selectionCount": 4,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020
-      ],
-      "closed": false,
-      "priorityTier": "high_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1328/A132805/13163619/",
-      "name": "手打ちうどん こげら",
-      "category": "udon",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "東村山市",
-      "selectionCount": 4,
-      "years": [
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "high_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1301/A130101/13033146/",
-      "name": "銀座 佐藤養助",
-      "category": "udon",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "銀座駅",
-      "selectionCount": 4,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020
-      ],
-      "closed": false,
-      "priorityTier": "high_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1302/A130201/13156494/",
-      "name": "難波千日前 釜たけうどん 八重洲北口店",
-      "category": "udon",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "東京駅",
-      "selectionCount": 4,
-      "years": [
-        2017,
-        2018,
-        2020,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "high_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/akita/A0501/A050101/5000022/",
-      "name": "佐藤養助 秋田店",
-      "category": "udon",
-      "prefecture": "秋田県",
-      "region": "EAST",
-      "area": "秋田市",
-      "selectionCount": 4,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020
-      ],
-      "closed": false,
-      "priorityTier": "high_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
       "url": "https://tabelog.com/kagawa/A3702/A370202/37000533/",
       "name": "根ッ子うどん",
       "category": "udon",
@@ -249,25 +154,6 @@
         2020
       ],
       "closed": true,
-      "priorityTier": "high_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/kyoto/A2601/A260301/26000815/",
-      "name": "日の出うどん",
-      "category": "udon",
-      "prefecture": "京都府",
-      "region": "WEST",
-      "area": "蹴上駅",
-      "selectionCount": 4,
-      "years": [
-        2017,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
       "priorityTier": "high_selection_remaining",
       "status": "pending_source_review",
       "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
@@ -330,44 +216,6 @@
       "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
     },
     {
-      "url": "https://tabelog.com/osaka/A2701/A270202/27001289/",
-      "name": "道頓堀 今井 本店",
-      "category": "udon",
-      "prefecture": "大阪府",
-      "region": "WEST",
-      "area": "大阪難波駅",
-      "selectionCount": 4,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020
-      ],
-      "closed": false,
-      "priorityTier": "high_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/miyazaki/A4503/A450302/45004957/",
-      "name": "ふたみうどん研究所",
-      "category": "udon",
-      "prefecture": "宮崎県",
-      "region": "WEST",
-      "area": "都城市",
-      "selectionCount": 4,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020
-      ],
-      "closed": true,
-      "priorityTier": "high_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
       "url": "https://tabelog.com/fukuoka/A4001/A400101/40000480/",
       "name": "うどん平",
       "category": "udon",
@@ -405,78 +253,6 @@
       "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
     },
     {
-      "url": "https://tabelog.com/yamagata/A0601/A060101/6000107/",
-      "name": "手打ちそば 梅蕎麦",
-      "category": "soba",
-      "prefecture": "山形県",
-      "region": "EAST",
-      "area": "山形市",
-      "selectionCount": 3,
-      "years": [
-        2022,
-        2024,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/gifu/A2102/A210205/21008212/",
-      "name": "蕎麦正まつい",
-      "category": "soba",
-      "prefecture": "岐阜県",
-      "region": "EAST",
-      "area": "郡上市",
-      "selectionCount": 3,
-      "years": [
-        2018,
-        2024,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/aichi/A2301/A230103/23074368/",
-      "name": "玄水",
-      "category": "soba",
-      "prefecture": "愛知県",
-      "region": "EAST",
-      "area": "栄駅",
-      "selectionCount": 3,
-      "years": [
-        2022,
-        2024,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1321/A132104/13196314/",
-      "name": "green glass",
-      "category": "soba",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "落合駅",
-      "selectionCount": 3,
-      "years": [
-        2022,
-        2024,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
       "url": "https://tabelog.com/tokyo/A1321/A132102/13017075/",
       "name": "そば 法師人",
       "category": "soba",
@@ -490,186 +266,6 @@
         2024
       ],
       "closed": true,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1315/A131502/13176833/",
-      "name": "もりいろ",
-      "category": "soba",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "大森町駅",
-      "selectionCount": 3,
-      "years": [
-        2022,
-        2024,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1311/A131102/13003650/",
-      "name": "並木藪蕎麦",
-      "category": "soba",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "浅草駅",
-      "selectionCount": 3,
-      "years": [
-        2018,
-        2024,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1322/A132201/13127598/",
-      "name": "手打ちそば 菊谷 巣鴨本店",
-      "category": "soba",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "庚申塚駅",
-      "selectionCount": 3,
-      "years": [
-        2018,
-        2024,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1313/A131301/13023064/",
-      "name": "手打ち蕎麦 成冨",
-      "category": "soba",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "築地市場駅",
-      "selectionCount": 3,
-      "years": [
-        2022,
-        2024,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1312/A131202/13019925/",
-      "name": "手打ち蕎麦 銀杏",
-      "category": "soba",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "西大島駅",
-      "selectionCount": 3,
-      "years": [
-        2018,
-        2024,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1310/A131002/13208650/",
-      "name": "手打ち蕎麦切り 匠",
-      "category": "soba",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "岩本町駅",
-      "selectionCount": 3,
-      "years": [
-        2022,
-        2024,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1321/A132101/13025978/",
-      "name": "手打蕎麦 じゆうさん",
-      "category": "soba",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "東長崎駅",
-      "selectionCount": 3,
-      "years": [
-        2018,
-        2024,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1312/A131201/13002967/",
-      "name": "江戸蕎麦ほそ川",
-      "category": "soba",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "両国駅",
-      "selectionCount": 3,
-      "years": [
-        2021,
-        2024,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1321/A132102/13002725/",
-      "name": "玄蕎麦 野中",
-      "category": "soba",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "中村橋駅",
-      "selectionCount": 3,
-      "years": [
-        2018,
-        2022,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1310/A131002/13020841/",
-      "name": "眠庵",
-      "category": "soba",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "淡路町駅",
-      "selectionCount": 3,
-      "years": [
-        2018,
-        2024,
-        2025
-      ],
-      "closed": false,
       "priorityTier": "repeat_selection_remaining",
       "status": "pending_source_review",
       "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
@@ -693,24 +289,6 @@
       "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
     },
     {
-      "url": "https://tabelog.com/tokyo/A1309/A130905/13197727/",
-      "name": "神楽坂 大川や",
-      "category": "soba",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "神楽坂駅",
-      "selectionCount": 3,
-      "years": [
-        2022,
-        2024,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
       "url": "https://tabelog.com/tokyo/A1317/A131710/13038860/",
       "name": "紫仙庵",
       "category": "soba",
@@ -724,60 +302,6 @@
         2024
       ],
       "closed": true,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1301/A130101/13002488/",
-      "name": "蕎麦 流石",
-      "category": "soba",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "東銀座駅",
-      "selectionCount": 3,
-      "years": [
-        2018,
-        2024,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1307/A130701/13229398/",
-      "name": "蕎麦おさめ",
-      "category": "soba",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "六本木駅",
-      "selectionCount": 3,
-      "years": [
-        2022,
-        2024,
-        2025
-      ],
-      "closed": true,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1308/A130803/13022640/",
-      "name": "蕎麦小路 さわらび",
-      "category": "soba",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "半蔵門駅",
-      "selectionCount": 3,
-      "years": [
-        2022,
-        2024,
-        2025
-      ],
-      "closed": false,
       "priorityTier": "repeat_selection_remaining",
       "status": "pending_source_review",
       "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
@@ -837,24 +361,6 @@
       "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
     },
     {
-      "url": "https://tabelog.com/kanagawa/A1410/A141001/14001257/",
-      "name": "竹やぶ 箱根店",
-      "category": "soba",
-      "prefecture": "神奈川県",
-      "region": "EAST",
-      "area": "足柄下郡箱根町",
-      "selectionCount": 3,
-      "years": [
-        2022,
-        2024,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
       "url": "https://tabelog.com/kanagawa/A1404/A140406/14035065/",
       "name": "蕎房 猪口屋",
       "category": "soba",
@@ -868,42 +374,6 @@
         2024
       ],
       "closed": true,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/fukushima/A0702/A070201/7000355/",
-      "name": "蕎麦切り あなざわ",
-      "category": "soba",
-      "prefecture": "福島県",
-      "region": "EAST",
-      "area": "郡山市",
-      "selectionCount": 3,
-      "years": [
-        2022,
-        2024,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/ibaraki/A0801/A080102/8000290/",
-      "name": "木挽庵",
-      "category": "soba",
-      "prefecture": "茨城県",
-      "region": "EAST",
-      "area": "ひたちなか市",
-      "selectionCount": 3,
-      "years": [
-        2022,
-        2024,
-        2025
-      ],
-      "closed": false,
       "priorityTier": "repeat_selection_remaining",
       "status": "pending_source_review",
       "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
@@ -927,60 +397,6 @@
       "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
     },
     {
-      "url": "https://tabelog.com/nagano/A2006/A200602/20000040/",
-      "name": "丸富",
-      "category": "soba",
-      "prefecture": "長野県",
-      "region": "EAST",
-      "area": "駒ヶ根市",
-      "selectionCount": 3,
-      "years": [
-        2022,
-        2024,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/nagano/A2001/A200104/20000397/",
-      "name": "石臼挽き蕎麦香房 山の実",
-      "category": "soba",
-      "prefecture": "長野県",
-      "region": "EAST",
-      "area": "下高井郡山ノ内町",
-      "selectionCount": 3,
-      "years": [
-        2018,
-        2022,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/nagano/A2003/A200302/20001680/",
-      "name": "職人館",
-      "category": "soba",
-      "prefecture": "長野県",
-      "region": "EAST",
-      "area": "佐久市",
-      "selectionCount": 3,
-      "years": [
-        2018,
-        2022,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
       "url": "https://tabelog.com/nagano/A2001/A200101/20000415/",
       "name": "蕎麦 ふじおか",
       "category": "soba",
@@ -990,24 +406,6 @@
       "selectionCount": 3,
       "years": [
         2018,
-        2024,
-        2025
-      ],
-      "closed": false,
-      "priorityTier": "repeat_selection_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/shizuoka/A2201/A220101/22002324/",
-      "name": "手打ち蕎麦 たがた",
-      "category": "soba",
-      "prefecture": "静岡県",
-      "region": "EAST",
-      "area": "静岡市葵区",
-      "selectionCount": 3,
-      "years": [
-        2022,
         2024,
         2025
       ],

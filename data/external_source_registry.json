@@ -13,7 +13,7 @@
       "udon": 6,
       "soba": 4
     },
-    "sampleSize": 114
+    "sampleSize": 147
   },
   "sources": [
     {
@@ -1892,6 +1892,531 @@
         "讃岐",
         "コシ",
         "短時間利用"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1303/A130302/13198167/",
+      "name": "博多うどん酒場イチカバチカ 恵比寿店",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://fukuoka-kenjinkai.jp/shop/itikabatika/",
+      "sourceTitle": "博多うどん酒場イチカバチカ 恵比寿店 | 東京福岡県人会",
+      "evidenceTerms": [
+        "博多うどん",
+        "うどん居酒屋",
+        "日本酒",
+        "地域色"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1328/A132805/13163619/",
+      "name": "手打ちうどん こげら",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://mokumeshi.tokyo/kogera/",
+      "sourceTitle": "手打ちうどん こげら | 東京・東村山の本格讃岐うどん",
+      "evidenceTerms": [
+        "手打ち",
+        "讃岐",
+        "コシ",
+        "短時間利用"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1301/A130101/13033146/",
+      "name": "銀座 佐藤養助",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://www.sato-yoske.co.jp/shop/ginza/",
+      "sourceTitle": "銀座 佐藤養助 | 佐藤養助商店",
+      "evidenceTerms": [
+        "稲庭",
+        "日本酒",
+        "地域色",
+        "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1302/A130201/13156494/",
+      "name": "難波千日前 釜たけうどん 八重洲北口店",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://www.gransta.jp/mall/gransta_yaekita/kamatakeudon/",
+      "sourceTitle": "難波千日前 釜たけうどん | グランスタ八重北",
+      "evidenceTerms": [
+        "讃岐",
+        "自家製麺",
+        "無化調",
+        "短時間利用"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/akita/A0501/A050101/5000022/",
+      "name": "佐藤養助 秋田店",
+      "category": "udon",
+      "sourceType": "official_tourism",
+      "sourceUrl": "https://www.akita-yulala.jp/restaurant/336",
+      "sourceTitle": "佐藤養助 秋田店 | 秋田市観光・イベント情報総合サイト",
+      "evidenceTerms": [
+        "稲庭",
+        "伝統",
+        "地域色",
+        "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kyoto/A2601/A260301/26000815/",
+      "name": "日の出うどん",
+      "category": "udon",
+      "sourceType": "official_tourism",
+      "sourceUrl": "https://www.kyotokan.jp/read/read-7329/",
+      "sourceTitle": "日の出うどん | 京都館",
+      "evidenceTerms": [
+        "京うどん",
+        "地域色",
+        "目的地"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/osaka/A2701/A270202/27001289/",
+      "name": "道頓堀 今井 本店",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://www.d-imai.com/shops/honten/",
+      "sourceTitle": "道頓堀 今井 本店",
+      "evidenceTerms": [
+        "関西だし",
+        "伝統",
+        "地域色",
+        "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/miyazaki/A4503/A450302/45004957/",
+      "name": "ふたみうどん研究所",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://www.mepo.or.jp/shienjirei/3485.html",
+      "sourceTitle": "ふたみうどん研究所 支援事例 | 都城まちづくり株式会社",
+      "evidenceTerms": [
+        "地域色",
+        "目的地"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/yamagata/A0601/A060101/6000107/",
+      "name": "手打ちそば 梅蕎麦",
+      "category": "soba",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://www.yama-men.com/ホーム/手打-梅そば/",
+      "sourceTitle": "手打 梅蕎麦 | 山形麺どっとこむ",
+      "evidenceTerms": [
+        "十割",
+        "手打ち",
+        "石臼",
+        "伝統",
+        "香り"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/gifu/A2102/A210205/21008212/",
+      "name": "蕎麦正まつい",
+      "category": "soba",
+      "sourceType": "official_site",
+      "sourceUrl": "https://r.goope.jp/matsui/",
+      "sourceTitle": "蕎麦正まつい",
+      "evidenceTerms": [
+        "手打ち",
+        "蕎麦会席",
+        "地域色",
+        "目的地",
+        "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/aichi/A2301/A230103/23074368/",
+      "name": "玄水",
+      "category": "soba",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://www.navitime.co.jp/poi?spot=01328-116201",
+      "sourceTitle": "玄水 | NAVITIME",
+      "evidenceTerms": [
+        "玄蕎麦",
+        "日本酒",
+        "蕎麦前",
+        "香り",
+        "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1321/A132104/13196314/",
+      "name": "green glass",
+      "category": "soba",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://www.tablecheck.com/ja/green-glass",
+      "sourceTitle": "green glass | TableCheck",
+      "evidenceTerms": [
+        "完全予約制",
+        "自家製粉",
+        "手打ち",
+        "日本酒",
+        "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1315/A131502/13176833/",
+      "name": "もりいろ",
+      "category": "soba",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://san-tatsu.jp/spots/7812/",
+      "sourceTitle": "手打ちそば もりいろ | さんたつ",
+      "evidenceTerms": [
+        "香り",
+        "手打ち",
+        "目的地"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1311/A131102/13003650/",
+      "name": "並木藪蕎麦",
+      "category": "soba",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://www.tanseisha.co.jp/works/detail/54854",
+      "sourceTitle": "並木藪蕎麦 | 丹青社",
+      "evidenceTerms": [
+        "藪",
+        "江戸前",
+        "伝統",
+        "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1322/A132201/13127598/",
+      "name": "手打ちそば 菊谷 巣鴨本店",
+      "category": "soba",
+      "sourceType": "official_site",
+      "sourceUrl": "https://teuchisobakikutani.com/",
+      "sourceTitle": "手打ちそば 菊谷",
+      "evidenceTerms": [
+        "手打ち",
+        "蕎麦前",
+        "蕎麦会席",
+        "香り"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1313/A131301/13023064/",
+      "name": "手打ち蕎麦 成冨",
+      "category": "soba",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://news.livedoor.com/article/detail/13956750/",
+      "sourceTitle": "手打ち蕎麦 成冨 紹介記事",
+      "evidenceTerms": [
+        "十割",
+        "江戸前",
+        "香り",
+        "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1312/A131202/13019925/",
+      "name": "手打ち蕎麦 銀杏",
+      "category": "soba",
+      "sourceType": "official_tourism",
+      "sourceUrl": "https://www.menu-tokyo.jp/search/detail.php?lang=jp&lat=35.69047100&lng=139.82321700&shop_id=1600328",
+      "sourceTitle": "手打ち蕎麦 銀杏 | EAT Tokyo",
+      "evidenceTerms": [
+        "手打ち",
+        "天ぷら",
+        "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1310/A131002/13208650/",
+      "name": "手打ち蕎麦切り 匠",
+      "category": "soba",
+      "sourceType": "official_site",
+      "sourceUrl": "https://sobatakumi.com/",
+      "sourceTitle": "手打ち蕎麦切り 匠",
+      "evidenceTerms": [
+        "常陸秋そば",
+        "自家製粉",
+        "十割"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1321/A132101/13025978/",
+      "name": "手打蕎麦 じゆうさん",
+      "category": "soba",
+      "sourceType": "official_site",
+      "sourceUrl": "https://jiyusan.tokyo/menu",
+      "sourceTitle": "手打蕎麦 じゆうさん メニュー",
+      "evidenceTerms": [
+        "十割",
+        "手挽き",
+        "粗挽き",
+        "香り"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1312/A131201/13002967/",
+      "name": "江戸蕎麦ほそ川",
+      "category": "soba",
+      "sourceType": "official_site",
+      "sourceUrl": "https://www.edosoba-hosokawa.jp/index.html",
+      "sourceTitle": "江戸蕎麦ほそ川",
+      "evidenceTerms": [
+        "玄蕎麦",
+        "自家製粉",
+        "十割",
+        "手打ち"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1321/A132102/13002725/",
+      "name": "玄蕎麦 野中",
+      "category": "soba",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://sobaweb.com/magazine/2010512/20100514164301.html",
+      "sourceTitle": "自家製粉は、何のためにするのでしょう | 蕎麦Web",
+      "evidenceTerms": [
+        "手挽き",
+        "石臼",
+        "自家製粉",
+        "地域色"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1310/A131002/13020841/",
+      "name": "眠庵",
+      "category": "soba",
+      "sourceType": "official_tourism",
+      "sourceUrl": "https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/080/309/nemurian.pdf",
+      "sourceTitle": "眠庵 | 静岡県",
+      "evidenceTerms": [
+        "玄蕎麦",
+        "十割",
+        "日本酒",
+        "地域色"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1309/A130905/13197727/",
+      "name": "神楽坂 大川や",
+      "category": "soba",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://r.gnavi.co.jp/e179n54z0000/",
+      "sourceTitle": "手打ちそば 大川や | 楽天ぐるなび",
+      "evidenceTerms": [
+        "手打ち",
+        "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1301/A130101/13002488/",
+      "name": "蕎麦 流石",
+      "category": "soba",
+      "sourceType": "official_site",
+      "sourceUrl": "https://ginza-sasuga.jp/honten/",
+      "sourceTitle": "蕎麦 流石本店",
+      "evidenceTerms": [
+        "十割",
+        "生粉打ち",
+        "手打ち",
+        "江戸前"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1307/A130701/13229398/",
+      "name": "蕎麦おさめ",
+      "category": "soba",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://soba-osame.gorp.jp/",
+      "sourceTitle": "蕎麦おさめ | ぐるなび",
+      "evidenceTerms": [
+        "自家製粉",
+        "古民家",
+        "地域色",
+        "香り"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1308/A130803/13022640/",
+      "name": "蕎麦小路 さわらび",
+      "category": "soba",
+      "sourceType": "official_site",
+      "sourceUrl": "https://www.sawarabi-soba.com/%E3%81%95%E3%82%8F%E3%82%89%E3%81%B3%E7%B4%B9%E4%BB%8B/",
+      "sourceTitle": "蕎麦粉 | 蕎麦小路さわらび",
+      "evidenceTerms": [
+        "香り",
+        "地域色",
+        "目的地"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kanagawa/A1410/A141001/14001257/",
+      "name": "竹やぶ 箱根店",
+      "category": "soba",
+      "sourceType": "official_site",
+      "sourceUrl": "https://takeyabu.co.jp/hakone/",
+      "sourceTitle": "箱根店 | 竹やぶ",
+      "evidenceTerms": [
+        "竹やぶ",
+        "目的地",
+        "香り"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/nagano/A2006/A200602/20000040/",
+      "name": "丸富",
+      "category": "soba",
+      "sourceType": "official_tourism",
+      "sourceUrl": "https://www.inadanikankou.jp/spot/page/id%3D1439",
+      "sourceTitle": "蕎麦と野のもの料理 丸富 | 長野伊那谷観光局",
+      "evidenceTerms": [
+        "玄蕎麦",
+        "自家製粉",
+        "地域色",
+        "目的地",
+        "蕎麦料理"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/nagano/A2001/A200104/20000397/",
+      "name": "石臼挽き蕎麦香房 山の実",
+      "category": "soba",
+      "sourceType": "official_site",
+      "sourceUrl": "https://yamanomi.raku-uru.jp/",
+      "sourceTitle": "山の実オンライン",
+      "evidenceTerms": [
+        "玄蕎麦",
+        "石臼",
+        "十割",
+        "地域色",
+        "目的地"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/nagano/A2003/A200302/20001680/",
+      "name": "職人館",
+      "category": "soba",
+      "sourceType": "official_tourism",
+      "sourceUrl": "https://www.oishii-shinshu.net/shop/saku/saku-city/12982.html",
+      "sourceTitle": "職人館 | おいしい信州ふーどSHOP",
+      "evidenceTerms": [
+        "石臼",
+        "十割",
+        "地域色",
+        "蕎麦料理",
+        "目的地"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/fukushima/A0702/A070201/7000355/",
+      "name": "蕎麦切り あなざわ",
+      "category": "soba",
+      "sourceType": "official_site",
+      "sourceUrl": "https://www.sobakiri-anazawa.jp/",
+      "sourceTitle": "蕎麦切りあなざわ 公式サイト",
+      "evidenceTerms": [
+        "十割",
+        "手打ち",
+        "鴨汁",
+        "目的地"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/ibaraki/A0801/A080102/8000290/",
+      "name": "木挽庵",
+      "category": "soba",
+      "sourceType": "official_site",
+      "sourceUrl": "https://kobikian.com/menu/",
+      "sourceTitle": "木挽庵 お品書き",
+      "evidenceTerms": [
+        "手打ち",
+        "田舎そば",
+        "香り",
+        "地域色"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/shizuoka/A2201/A220101/22002324/",
+      "name": "手打ち蕎麦 たがた",
+      "category": "soba",
+      "sourceType": "official_site",
+      "sourceUrl": "https://sobatagata.official.ec/about",
+      "sourceTitle": "手打ち蕎麦たがたONLINE",
+      "evidenceTerms": [
+        "手打ち",
+        "香り",
+        "地域色",
+        "目的地"
       ],
       "reviewStatus": "reviewed",
       "lastCheckedAt": "2026-05-13"

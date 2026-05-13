@@ -1999,6 +1999,856 @@
       ],
       "outcome": "deferred",
       "notes": "Current related source indicates the moved successor no longer serves udon; external recommendation signal for this udon listing is deferred."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1303/A130302/13198167/",
+      "name": "博多うどん酒場イチカバチカ 恵比寿店",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://fukuoka-kenjinkai.jp/shop/itikabatika/",
+          "sourceTitle": "博多うどん酒場イチカバチカ 恵比寿店 | 東京福岡県人会"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1328/A132805/13163619/",
+      "name": "手打ちうどん こげら",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://mokumeshi.tokyo/kogera/",
+          "sourceTitle": "手打ちうどん こげら | 東京・東村山の本格讃岐うどん"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1301/A130101/13033146/",
+      "name": "銀座 佐藤養助",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://www.sato-yoske.co.jp/shop/ginza/",
+          "sourceTitle": "銀座 佐藤養助 | 佐藤養助商店"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1302/A130201/13156494/",
+      "name": "難波千日前 釜たけうどん 八重洲北口店",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://www.gransta.jp/mall/gransta_yaekita/kamatakeudon/",
+          "sourceTitle": "難波千日前 釜たけうどん | グランスタ八重北"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/akita/A0501/A050101/5000022/",
+      "name": "佐藤養助 秋田店",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_tourism"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_tourism",
+          "sourceUrl": "https://www.akita-yulala.jp/restaurant/336",
+          "sourceTitle": "佐藤養助 秋田店 | 秋田市観光・イベント情報総合サイト"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kyoto/A2601/A260301/26000815/",
+      "name": "日の出うどん",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_tourism"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_tourism",
+          "sourceUrl": "https://www.kyotokan.jp/read/read-7329/",
+          "sourceTitle": "日の出うどん | 京都館"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/osaka/A2701/A270202/27001289/",
+      "name": "道頓堀 今井 本店",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://www.d-imai.com/shops/honten/",
+          "sourceTitle": "道頓堀 今井 本店"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/miyazaki/A4503/A450302/45004957/",
+      "name": "ふたみうどん研究所",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.mepo.or.jp/shienjirei/3485.html",
+          "sourceTitle": "ふたみうどん研究所 支援事例 | 都城まちづくり株式会社"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/hokkaido/A0108/A010801/1003486/",
+      "name": "伊達 翁",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_tourism"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_tourism",
+          "sourceUrl": "https://date-kanko.jp/eat/japanese_food/1048/",
+          "sourceTitle": "そば 伊達翁 | 伊達市観光物産交流協会"
+        }
+      ],
+      "outcome": "deferred",
+      "notes": "同名別店舗の可能性がある観光公式ページを検出したため、同一店舗性が確認できるまで昇格保留。"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/yamagata/A0601/A060101/6000107/",
+      "name": "手打ちそば 梅蕎麦",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.yama-men.com/ホーム/手打-梅そば/",
+          "sourceTitle": "手打 梅蕎麦 | 山形麺どっとこむ"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/gifu/A2102/A210205/21008212/",
+      "name": "蕎麦正まつい",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://r.goope.jp/matsui/",
+          "sourceTitle": "蕎麦正まつい"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/aichi/A2301/A230103/23074368/",
+      "name": "玄水",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.navitime.co.jp/poi?spot=01328-116201",
+          "sourceTitle": "玄水 | NAVITIME"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1321/A132104/13196314/",
+      "name": "green glass",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.tablecheck.com/ja/green-glass",
+          "sourceTitle": "green glass | TableCheck"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1315/A131502/13176833/",
+      "name": "もりいろ",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://san-tatsu.jp/spots/7812/",
+          "sourceTitle": "手打ちそば もりいろ | さんたつ"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1311/A131102/13003650/",
+      "name": "並木藪蕎麦",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.tanseisha.co.jp/works/detail/54854",
+          "sourceTitle": "並木藪蕎麦 | 丹青社"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1322/A132201/13127598/",
+      "name": "手打ちそば 菊谷 巣鴨本店",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://teuchisobakikutani.com/",
+          "sourceTitle": "手打ちそば 菊谷"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1313/A131301/13023064/",
+      "name": "手打ち蕎麦 成冨",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://news.livedoor.com/article/detail/13956750/",
+          "sourceTitle": "手打ち蕎麦 成冨 紹介記事"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1312/A131202/13019925/",
+      "name": "手打ち蕎麦 銀杏",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_tourism"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_tourism",
+          "sourceUrl": "https://www.menu-tokyo.jp/search/detail.php?lang=jp&lat=35.69047100&lng=139.82321700&shop_id=1600328",
+          "sourceTitle": "手打ち蕎麦 銀杏 | EAT Tokyo"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1310/A131002/13208650/",
+      "name": "手打ち蕎麦切り 匠",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://sobatakumi.com/",
+          "sourceTitle": "手打ち蕎麦切り 匠"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1321/A132101/13025978/",
+      "name": "手打蕎麦 じゆうさん",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://jiyusan.tokyo/menu",
+          "sourceTitle": "手打蕎麦 じゆうさん メニュー"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1312/A131201/13002967/",
+      "name": "江戸蕎麦ほそ川",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://www.edosoba-hosokawa.jp/index.html",
+          "sourceTitle": "江戸蕎麦ほそ川"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1321/A132102/13002725/",
+      "name": "玄蕎麦 野中",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://sobaweb.com/magazine/2010512/20100514164301.html",
+          "sourceTitle": "自家製粉は、何のためにするのでしょう | 蕎麦Web"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1310/A131002/13020841/",
+      "name": "眠庵",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_tourism"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_tourism",
+          "sourceUrl": "https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/080/309/nemurian.pdf",
+          "sourceTitle": "眠庵 | 静岡県"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1309/A130905/13197727/",
+      "name": "神楽坂 大川や",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://r.gnavi.co.jp/e179n54z0000/",
+          "sourceTitle": "手打ちそば 大川や | 楽天ぐるなび"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1301/A130101/13002488/",
+      "name": "蕎麦 流石",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://ginza-sasuga.jp/honten/",
+          "sourceTitle": "蕎麦 流石本店"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1307/A130701/13229398/",
+      "name": "蕎麦おさめ",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://soba-osame.gorp.jp/",
+          "sourceTitle": "蕎麦おさめ | ぐるなび"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1308/A130803/13022640/",
+      "name": "蕎麦小路 さわらび",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://www.sawarabi-soba.com/%E3%81%95%E3%82%8F%E3%82%89%E3%81%B3%E7%B4%B9%E4%BB%8B/",
+          "sourceTitle": "蕎麦粉 | 蕎麦小路さわらび"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tochigi/A0905/A090501/9001316/",
+      "name": "胡桃亭",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.enjoytokyo.jp/spot/g_gca9900/",
+          "sourceTitle": "胡桃亭 | レッツエンジョイ東京"
+        }
+      ],
+      "outcome": "deferred",
+      "notes": "検出ソースの地域が現行データの店舗地域と一致せず、同一店舗性に疑義があるため昇格保留。"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kanagawa/A1410/A141001/14001257/",
+      "name": "竹やぶ 箱根店",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://takeyabu.co.jp/hakone/",
+          "sourceTitle": "箱根店 | 竹やぶ"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/nagano/A2006/A200602/20000040/",
+      "name": "丸富",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_tourism"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_tourism",
+          "sourceUrl": "https://www.inadanikankou.jp/spot/page/id%3D1439",
+          "sourceTitle": "蕎麦と野のもの料理 丸富 | 長野伊那谷観光局"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/nagano/A2001/A200104/20000397/",
+      "name": "石臼挽き蕎麦香房 山の実",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://yamanomi.raku-uru.jp/",
+          "sourceTitle": "山の実オンライン"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/nagano/A2003/A200302/20001680/",
+      "name": "職人館",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_tourism"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_tourism",
+          "sourceUrl": "https://www.oishii-shinshu.net/shop/saku/saku-city/12982.html",
+          "sourceTitle": "職人館 | おいしい信州ふーどSHOP"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Subagent-assisted source review; promoted with normalized short evidence terms for external signals."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kagawa/A3702/A370202/37000533/",
+      "name": "根ッ子うどん",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.shikoku-np.co.jp/udon/shop/shop.aspx?id=443&koukai=1",
+          "sourceTitle": "四国新聞 讃岐うどん遍路 根ッ子うどん"
+        }
+      ],
+      "outcome": "deferred",
+      "notes": "閉店情報を確認したため昇格保留。"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kyoto/A2601/A260301/26023852/",
+      "name": "仁王門 うね乃",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://odashi.com/pages/shop",
+          "sourceTitle": "うね乃 店舗案内"
+        }
+      ],
+      "outcome": "deferred",
+      "notes": "親ブランド公式は確認できたが、対象店舗の現行掲載が確認できず昇格保留。"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/hyogo/A2803/A280301/28026561/",
+      "name": "讃歌うどん はんげしょう",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.cocolocala.jp/spots/58091",
+          "sourceTitle": "讃歌うどん はんげしょう | COCOLocala"
+        }
+      ],
+      "outcome": "deferred",
+      "notes": "基本情報中心で、推薦タグに使える特徴語が不足。"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/osaka/A2701/A270102/27027893/",
+      "name": "江戸堀 木田 讃岐うどん",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://www.edoborikida.net/%E3%83%9B%E3%83%BC%E3%83%A0",
+          "sourceTitle": "江戸堀木田"
+        }
+      ],
+      "outcome": "deferred",
+      "notes": "公式サイト上で営業終了/継承の文脈があるため昇格保留。"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/osaka/A2707/A270705/27019261/",
+      "name": "讃岐屋 雅次郎",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.b-mall.ne.jp/CompanyDetail-IYbqCQdqKRdv.html",
+          "sourceTitle": "讃岐屋雅次郎 | ザ・ビジネスモール"
+        }
+      ],
+      "outcome": "deferred",
+      "notes": "事業者基本情報中心で、推薦タグに使える特徴語が不足。"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/fukuoka/A4001/A400101/40000480/",
+      "name": "うどん平",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://travel.navitime.com/ja/area/jp/spot/00011-080084267/",
+          "sourceTitle": "うどん平 | NAVITIME Travel"
+        }
+      ],
+      "outcome": "deferred",
+      "notes": "基本情報中心で、推薦タグに使える特徴語が不足。"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1321/A132102/13017075/",
+      "name": "そば 法師人",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://s-nerima.jp/wp/186255",
+          "sourceTitle": "そば 法師人 | 練馬区商店街連合会"
+        }
+      ],
+      "outcome": "deferred",
+      "notes": "閉店情報を確認したため昇格保留。"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1319/A131906/13004378/",
+      "name": "石臼挽き手打ち蕎麦 高はし",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.lavietaste.com/en/restaurant/13837",
+          "sourceTitle": "石臼挽き手打ち蕎麦 高はし | Lavie Taste"
+        }
+      ],
+      "outcome": "deferred",
+      "notes": "基本情報中心で、推薦タグに使える特徴語が不足。"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1317/A131710/13038860/",
+      "name": "紫仙庵",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://www.shisenan.net/",
+          "sourceTitle": "紫仙庵 蕎麦打ち教室"
+        }
+      ],
+      "outcome": "deferred",
+      "notes": "特徴語はあるが閉店告知があるため昇格保留。"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tochigi/A0903/A090302/9000065/",
+      "name": "甜蕎屋 源平",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://itp.ne.jp/zenkoku/tochigi/nikkoshi/kiwadashima/092764603154070960",
+          "sourceTitle": "甜蕎屋源平 | iタウンページ"
+        }
+      ],
+      "outcome": "deferred",
+      "notes": "基本情報中心で、推薦タグに使える特徴語が不足。"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kanagawa/A1404/A140408/14007619/",
+      "name": "オリベ",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_tourism"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_tourism",
+          "sourceUrl": "https://www.town.ninomiya.kanagawa.jp/ninomiya_life/cmsfiles/contents/0000001/1314/gourmetmap2024.pdf",
+          "sourceTitle": "にのみやグルメMAP 2024"
+        }
+      ],
+      "outcome": "deferred",
+      "notes": "所在地・ジャンル中心で、推薦タグに使える特徴語が不足。"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kanagawa/A1404/A140406/14035065/",
+      "name": "蕎房 猪口屋",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://kaiten-portal.jp/spots/830471",
+          "sourceTitle": "蕎房猪口屋 | 開店ポータル"
+        }
+      ],
+      "outcome": "deferred",
+      "notes": "基本情報中心で、推薦タグに使える特徴語が不足。"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/fukushima/A0702/A070201/7000355/",
+      "name": "蕎麦切り あなざわ",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://www.sobakiri-anazawa.jp/",
+          "sourceTitle": "蕎麦切りあなざわ 公式サイト"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "URL整合を現行データの店舗URLで補正し、公式サイトの特徴語を短い外部シグナルとして昇格。"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/ibaraki/A0801/A080102/8000290/",
+      "name": "木挽庵",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://kobikian.com/menu/",
+          "sourceTitle": "木挽庵 お品書き"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "URL整合を現行データの店舗URLで補正し、公式サイトの特徴語を短い外部シグナルとして昇格。"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/nagano/A2002/A200201/20000629/",
+      "name": "三城",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.zukulabo.net/shop/shop.shtml?s=98",
+          "sourceTitle": "三城 | ずくラボ！"
+        }
+      ],
+      "outcome": "deferred",
+      "notes": "基本情報とメニューの範囲に留まり、推薦タグに使うには特徴語が弱いため昇格保留。"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/nagano/A2001/A200101/20000415/",
+      "name": "蕎麦 ふじおか",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://reponavi.net/soba/s4672065506632585936",
+          "sourceTitle": "蕎麦 ふじおか"
+        }
+      ],
+      "outcome": "deferred",
+      "notes": "基本情報中心または口コミ由来の情報に寄るため特徴根拠として不採用。"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/shizuoka/A2201/A220101/22002324/",
+      "name": "手打ち蕎麦 たがた",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://sobatagata.official.ec/about",
+          "sourceTitle": "手打ち蕎麦たがたONLINE"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "URL整合を現行データの店舗URLで補正し、公式サイトの特徴語を短い外部シグナルとして昇格。"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kyoto/A2601/A260503/26000389/",
+      "name": "おがわ",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://r.gnavi.co.jp/guj51j160000/",
+          "sourceTitle": "そば処 おがわ | ぐるなび"
+        }
+      ],
+      "outcome": "deferred",
+      "notes": "基本情報中心で、推薦タグに使える特徴語が不足。"
     }
   ]
 }

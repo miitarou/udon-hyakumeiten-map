@@ -7,7 +7,7 @@
       "udon.json": "649eb84e28a0e06eae94b4fd199a4be44e1bf547d2e621b1c31934da957412cd",
       "soba.json": "68c5eeecc1360d4428a8cfb2fb465f6943c5ef60fb75682f526afde12c0b6367"
     },
-    "externalSignalsSha256": "c1a640d8777bf4cf17c14b9fdcc2bc9815f074eb158c8d416a94b93b9d9afd5d"
+    "externalSignalsSha256": "be3b3723e5e744a839fe38d901942210d993f73642a8ec7d85f5f711f441a9fc"
   },
   "method": {
     "summary": "Static recommendation tags generated from existing data, conservative rule-based priors, and deterministic external signal hints. Runtime recommendation can use these tags without calling an LLM or external API.",
@@ -14501,6 +14501,15 @@
           ]
         },
         {
+          "key": "scene.calm_meal",
+          "weight": 0.56,
+          "confidence": 0.64,
+          "source": "external_signal",
+          "evidence": [
+            "external:public_directory:うどん居酒屋,日本酒"
+          ]
+        },
+        {
           "key": "scene.destination",
           "weight": 0.66,
           "confidence": 0.62,
@@ -14511,10 +14520,11 @@
         },
         {
           "key": "scene.drink_pairing",
-          "weight": 0.68,
-          "confidence": 0.76,
-          "source": "name_keyword",
+          "weight": 0.76,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
+            "external:public_directory:うどん居酒屋,日本酒",
             "name_keyword:酒"
           ]
         },
@@ -14566,19 +14576,21 @@
         },
         {
           "key": "style.hakata_udon",
-          "weight": 0.78,
+          "weight": 0.86,
           "confidence": 0.72,
-          "source": "regional_prior",
+          "source": "external_signal",
           "evidence": [
+            "external:public_directory:博多うどん",
             "prefecture_or_name:hakata_udon"
           ]
         },
         {
           "key": "style.regional_specialty",
-          "weight": 0.7,
-          "confidence": 0.68,
-          "source": "regional_prior",
+          "weight": 0.74,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
+            "external:public_directory:博多うどん,地域色",
             "prefecture_or_name:hakata_udon"
           ]
         },
@@ -16667,12 +16679,22 @@
           ]
         },
         {
-          "key": "scene.solo_lunch",
-          "weight": 0.48,
-          "confidence": 0.5,
-          "source": "model_prior",
+          "key": "scene.quick_lunch",
+          "weight": 0.72,
+          "confidence": 0.8,
+          "source": "external_signal",
           "evidence": [
-            "category:udon"
+            "external:official_site:短時間利用"
+          ]
+        },
+        {
+          "key": "scene.solo_lunch",
+          "weight": 0.58,
+          "confidence": 0.68,
+          "source": "external_signal",
+          "evidence": [
+            "category:udon",
+            "external:official_site:短時間利用"
           ]
         },
         {
@@ -16704,20 +16726,40 @@
         },
         {
           "key": "style.handmade",
-          "weight": 0.82,
-          "confidence": 0.86,
-          "source": "name_keyword",
+          "weight": 0.84,
+          "confidence": 0.88,
+          "source": "external_signal",
           "evidence": [
+            "external:official_site:手打ち",
             "name_keyword:手打"
           ]
         },
         {
-          "key": "texture.koshi_strong",
-          "weight": 0.58,
-          "confidence": 0.5,
-          "source": "model_prior",
+          "key": "style.regional_specialty",
+          "weight": 0.68,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
-            "category:udon"
+            "external:official_site:讃岐"
+          ]
+        },
+        {
+          "key": "style.sanuki_influenced",
+          "weight": 0.9,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:讃岐"
+          ]
+        },
+        {
+          "key": "texture.koshi_strong",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "evidence": [
+            "category:udon",
+            "external:official_site:コシ,讃岐"
           ]
         }
       ]
@@ -20695,6 +20737,7 @@
           "confidence": 0.88,
           "source": "name_keyword",
           "evidence": [
+            "external:official_site:稲庭",
             "name_keyword:佐藤養助"
           ]
         },
@@ -20736,10 +20779,11 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.62,
-          "confidence": 0.62,
-          "source": "name_keyword",
+          "weight": 0.72,
+          "confidence": 0.78,
+          "source": "external_signal",
           "evidence": [
+            "external:official_site:日本酒,落ち着いた食事",
             "name_keyword:佐藤養助"
           ]
         },
@@ -20750,6 +20794,15 @@
           "source": "selection_prior",
           "evidence": [
             "selection:3plus"
+          ]
+        },
+        {
+          "key": "scene.drink_pairing",
+          "weight": 0.72,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:日本酒"
           ]
         },
         {
@@ -20796,6 +20849,24 @@
           "source": "data",
           "evidence": [
             "closed"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:地域色"
+          ]
+        },
+        {
+          "key": "texture.aroma_focused",
+          "weight": 0.58,
+          "confidence": 0.64,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:稲庭"
           ]
         },
         {
@@ -21056,6 +21127,15 @@
           ]
         },
         {
+          "key": "mood.traditional",
+          "weight": 0.44,
+          "confidence": 0.52,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:無化調"
+          ]
+        },
+        {
           "key": "pref.tokyo",
           "weight": 0.8,
           "confidence": 1.0,
@@ -21084,21 +21164,23 @@
         },
         {
           "key": "scene.quick_lunch",
-          "weight": 0.48,
-          "confidence": 0.5,
-          "source": "regional_prior",
+          "weight": 0.72,
+          "confidence": 0.8,
+          "source": "external_signal",
           "evidence": [
-            "area:station"
+            "area:station",
+            "external:official_site:短時間利用"
           ]
         },
         {
           "key": "scene.solo_lunch",
-          "weight": 0.52,
-          "confidence": 0.56,
-          "source": "regional_prior",
+          "weight": 0.58,
+          "confidence": 0.68,
+          "source": "external_signal",
           "evidence": [
             "area:station",
-            "category:udon"
+            "category:udon",
+            "external:official_site:短時間利用"
           ]
         },
         {
@@ -21129,12 +21211,40 @@
           ]
         },
         {
-          "key": "texture.koshi_strong",
-          "weight": 0.58,
-          "confidence": 0.5,
-          "source": "model_prior",
+          "key": "style.handmade",
+          "weight": 0.76,
+          "confidence": 0.82,
+          "source": "external_signal",
           "evidence": [
-            "category:udon"
+            "external:official_site:自家製麺"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.68,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:讃岐"
+          ]
+        },
+        {
+          "key": "style.sanuki_influenced",
+          "weight": 0.9,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:讃岐"
+          ]
+        },
+        {
+          "key": "texture.koshi_strong",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "evidence": [
+            "category:udon",
+            "external:official_site:讃岐"
           ]
         }
       ]
@@ -22584,6 +22694,7 @@
           "confidence": 0.88,
           "source": "name_keyword",
           "evidence": [
+            "external:official_tourism:稲庭",
             "name_keyword:佐藤養助"
           ]
         },
@@ -22606,6 +22717,15 @@
           ]
         },
         {
+          "key": "mood.traditional",
+          "weight": 0.72,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_tourism:伝統"
+          ]
+        },
+        {
           "key": "pref.akita",
           "weight": 0.8,
           "confidence": 1.0,
@@ -22625,10 +22745,11 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.62,
-          "confidence": 0.62,
-          "source": "name_keyword",
+          "weight": 0.72,
+          "confidence": 0.78,
+          "source": "external_signal",
           "evidence": [
+            "external:official_tourism:落ち着いた食事",
             "name_keyword:佐藤養助"
           ]
         },
@@ -22675,6 +22796,24 @@
           "source": "data",
           "evidence": [
             "closed"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_tourism:地域色"
+          ]
+        },
+        {
+          "key": "texture.aroma_focused",
+          "weight": 0.58,
+          "confidence": 0.64,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_tourism:稲庭"
           ]
         },
         {
@@ -37171,10 +37310,11 @@
         },
         {
           "key": "scene.destination",
-          "weight": 0.66,
-          "confidence": 0.62,
-          "source": "selection_prior",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
           "evidence": [
+            "external:official_tourism:目的地",
             "prefecture:kyoto_udon",
             "selection:3plus"
           ]
@@ -37227,12 +37367,22 @@
         },
         {
           "key": "style.kansai_dashi",
-          "weight": 0.62,
-          "confidence": 0.62,
-          "source": "regional_prior",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
           "evidence": [
+            "external:official_tourism:京うどん",
             "macro_area:kansai",
             "prefecture:kyoto_udon"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_tourism:京うどん,地域色"
           ]
         },
         {
@@ -47029,10 +47179,11 @@
         },
         {
           "key": "mood.traditional",
-          "weight": 0.56,
-          "confidence": 0.62,
-          "source": "name_keyword",
+          "weight": 0.72,
+          "confidence": 0.78,
+          "source": "external_signal",
           "evidence": [
+            "external:official_site:伝統",
             "name_keyword:本店"
           ]
         },
@@ -47052,6 +47203,15 @@
           "source": "data",
           "evidence": [
             "region"
+          ]
+        },
+        {
+          "key": "scene.calm_meal",
+          "weight": 0.72,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:落ち着いた食事"
           ]
         },
         {
@@ -47111,11 +47271,21 @@
         },
         {
           "key": "style.kansai_dashi",
-          "weight": 0.55,
-          "confidence": 0.52,
-          "source": "regional_prior",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
           "evidence": [
+            "external:official_site:関西だし",
             "macro_area:kansai"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:地域色"
           ]
         },
         {
@@ -48245,10 +48415,11 @@
         },
         {
           "key": "scene.destination",
-          "weight": 0.66,
-          "confidence": 0.62,
-          "source": "selection_prior",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
+            "external:public_directory:目的地",
             "selection:3plus"
           ]
         },
@@ -48286,6 +48457,15 @@
           "source": "data",
           "evidence": [
             "closed"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.74,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "external:public_directory:地域色"
           ]
         },
         {
@@ -60258,6 +60438,15 @@
       "category": "soba",
       "tags": [
         {
+          "key": "dish.juwari",
+          "weight": 0.86,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "external:public_directory:十割"
+          ]
+        },
+        {
           "key": "genre.soba",
           "weight": 1.0,
           "confidence": 1.0,
@@ -60273,6 +60462,15 @@
           "source": "data",
           "evidence": [
             "prefecture"
+          ]
+        },
+        {
+          "key": "mood.traditional",
+          "weight": 0.72,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "external:public_directory:伝統"
           ]
         },
         {
@@ -60353,16 +60551,27 @@
           "confidence": 0.86,
           "source": "name_keyword",
           "evidence": [
+            "external:public_directory:手打ち",
             "name_keyword:手打"
           ]
         },
         {
-          "key": "texture.aroma_focused",
-          "weight": 0.68,
-          "confidence": 0.58,
-          "source": "model_prior",
+          "key": "style.stone_milled",
+          "weight": 0.84,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "external:public_directory:石臼"
+          ]
+        },
+        {
+          "key": "texture.aroma_focused",
+          "weight": 0.76,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "category:soba",
+            "external:public_directory:十割,石臼,香り"
           ]
         },
         {
@@ -61202,20 +61411,31 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "external:official_site:落ち着いた食事,蕎麦会席"
           ]
         },
         {
           "key": "scene.destination",
-          "weight": 0.66,
-          "confidence": 0.62,
-          "source": "selection_prior",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
           "evidence": [
+            "external:official_site:目的地",
             "selection:3plus"
+          ]
+        },
+        {
+          "key": "scene.drink_pairing",
+          "weight": 0.82,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:蕎麦会席"
           ]
         },
         {
@@ -61243,6 +61463,24 @@
           "source": "data",
           "evidence": [
             "closed"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:手打ち"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:地域色"
           ]
         },
         {
@@ -62997,11 +63235,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.72,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "external:public_directory:日本酒,落ち着いた食事,蕎麦前"
           ]
         },
         {
@@ -63011,6 +63250,15 @@
           "source": "selection_prior",
           "evidence": [
             "selection:3plus"
+          ]
+        },
+        {
+          "key": "scene.drink_pairing",
+          "weight": 0.86,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "external:public_directory:日本酒,蕎麦前"
           ]
         },
         {
@@ -63064,16 +63312,18 @@
           "confidence": 0.78,
           "source": "name_keyword",
           "evidence": [
+            "external:public_directory:玄蕎麦",
             "name_keyword:玄水"
           ]
         },
         {
           "key": "texture.aroma_focused",
-          "weight": 0.68,
-          "confidence": 0.58,
-          "source": "model_prior",
+          "weight": 0.76,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "external:public_directory:玄蕎麦,香り"
           ]
         },
         {
@@ -63403,20 +63653,31 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.72,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "external:public_directory:完全予約制,日本酒,落ち着いた食事"
           ]
         },
         {
           "key": "scene.destination",
-          "weight": 0.66,
-          "confidence": 0.62,
-          "source": "selection_prior",
+          "weight": 0.62,
+          "confidence": 0.68,
+          "source": "external_signal",
           "evidence": [
+            "external:public_directory:完全予約制",
             "selection:3plus"
+          ]
+        },
+        {
+          "key": "scene.drink_pairing",
+          "weight": 0.72,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "external:public_directory:日本酒"
           ]
         },
         {
@@ -63474,12 +63735,31 @@
           ]
         },
         {
-          "key": "texture.aroma_focused",
-          "weight": 0.68,
-          "confidence": 0.58,
-          "source": "model_prior",
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "external:public_directory:手打ち"
+          ]
+        },
+        {
+          "key": "style.stone_milled",
+          "weight": 0.86,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "external:public_directory:自家製粉"
+          ]
+        },
+        {
+          "key": "texture.aroma_focused",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "category:soba",
+            "external:public_directory:自家製粉"
           ]
         },
         {
@@ -64634,10 +64914,11 @@
         },
         {
           "key": "scene.destination",
-          "weight": 0.66,
-          "confidence": 0.62,
-          "source": "selection_prior",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
+            "external:public_directory:目的地",
             "selection:3plus"
           ]
         },
@@ -64696,12 +64977,22 @@
           ]
         },
         {
-          "key": "texture.aroma_focused",
-          "weight": 0.68,
-          "confidence": 0.58,
-          "source": "model_prior",
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "external:public_directory:手打ち"
+          ]
+        },
+        {
+          "key": "texture.aroma_focused",
+          "weight": 0.72,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "category:soba",
+            "external:public_directory:香り"
           ]
         },
         {
@@ -65067,6 +65358,7 @@
           "confidence": 0.78,
           "source": "name_keyword",
           "evidence": [
+            "external:public_directory:藪",
             "name_keyword:藪"
           ]
         },
@@ -65081,11 +65373,12 @@
         },
         {
           "key": "mood.traditional",
-          "weight": 0.66,
-          "confidence": 0.66,
-          "source": "name_keyword",
+          "weight": 0.72,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
-            "classic_soba_lineage"
+            "classic_soba_lineage",
+            "external:public_directory:伝統"
           ]
         },
         {
@@ -65108,11 +65401,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.72,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "external:public_directory:落ち着いた食事"
           ]
         },
         {
@@ -65175,6 +65469,7 @@
           "confidence": 0.82,
           "source": "name_keyword",
           "evidence": [
+            "external:public_directory:江戸前,藪",
             "name_keyword:藪",
             "prefecture:tokyo"
           ]
@@ -67152,11 +67447,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "external:official_site:蕎麦会席,蕎麦前"
           ]
         },
         {
@@ -67166,6 +67462,15 @@
           "source": "selection_prior",
           "evidence": [
             "selection:3plus"
+          ]
+        },
+        {
+          "key": "scene.drink_pairing",
+          "weight": 0.86,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:蕎麦会席,蕎麦前"
           ]
         },
         {
@@ -67224,20 +67529,22 @@
         },
         {
           "key": "style.handmade",
-          "weight": 0.82,
-          "confidence": 0.86,
-          "source": "name_keyword",
+          "weight": 0.84,
+          "confidence": 0.88,
+          "source": "external_signal",
           "evidence": [
+            "external:official_site:手打ち",
             "name_keyword:手打"
           ]
         },
         {
           "key": "texture.aroma_focused",
-          "weight": 0.68,
-          "confidence": 0.58,
-          "source": "model_prior",
+          "weight": 0.72,
+          "confidence": 0.74,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "external:official_site:香り"
           ]
         },
         {
@@ -67257,6 +67564,15 @@
       "category": "soba",
       "tags": [
         {
+          "key": "dish.juwari",
+          "weight": 0.86,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "external:public_directory:十割"
+          ]
+        },
+        {
           "key": "genre.soba",
           "weight": 1.0,
           "confidence": 1.0,
@@ -67294,11 +67610,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.72,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "external:public_directory:落ち着いた食事"
           ]
         },
         {
@@ -67357,10 +67674,11 @@
         },
         {
           "key": "style.edomae_soba",
-          "weight": 0.58,
-          "confidence": 0.56,
-          "source": "regional_prior",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
+            "external:public_directory:江戸前",
             "prefecture:tokyo"
           ]
         },
@@ -67375,11 +67693,12 @@
         },
         {
           "key": "texture.aroma_focused",
-          "weight": 0.68,
-          "confidence": 0.58,
-          "source": "model_prior",
+          "weight": 0.72,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "external:public_directory:十割,香り"
           ]
         },
         {
@@ -67399,6 +67718,15 @@
       "category": "soba",
       "tags": [
         {
+          "key": "dish.tempura",
+          "weight": 0.74,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_tourism:天ぷら"
+          ]
+        },
+        {
           "key": "genre.soba",
           "weight": 1.0,
           "confidence": 1.0,
@@ -67436,11 +67764,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.72,
+          "confidence": 0.78,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "external:official_tourism:落ち着いた食事"
           ]
         },
         {
@@ -67508,10 +67837,11 @@
         },
         {
           "key": "style.handmade",
-          "weight": 0.82,
-          "confidence": 0.86,
-          "source": "name_keyword",
+          "weight": 0.84,
+          "confidence": 0.84,
+          "source": "external_signal",
           "evidence": [
+            "external:official_tourism:手打ち",
             "name_keyword:手打"
           ]
         },
@@ -67674,6 +68004,15 @@
       "category": "soba",
       "tags": [
         {
+          "key": "dish.juwari",
+          "weight": 0.86,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:十割"
+          ]
+        },
+        {
           "key": "genre.soba",
           "weight": 1.0,
           "confidence": 1.0,
@@ -67773,6 +68112,15 @@
           ]
         },
         {
+          "key": "style.country_soba",
+          "weight": 0.72,
+          "confidence": 0.76,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:常陸秋そば"
+          ]
+        },
+        {
           "key": "style.edomae_soba",
           "weight": 0.85,
           "confidence": 0.82,
@@ -67792,12 +68140,31 @@
           ]
         },
         {
-          "key": "texture.aroma_focused",
-          "weight": 0.68,
-          "confidence": 0.58,
-          "source": "model_prior",
+          "key": "style.regional_specialty",
+          "weight": 0.78,
+          "confidence": 0.8,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "external:official_site:常陸秋そば"
+          ]
+        },
+        {
+          "key": "style.stone_milled",
+          "weight": 0.86,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:自家製粉"
+          ]
+        },
+        {
+          "key": "texture.aroma_focused",
+          "weight": 0.78,
+          "confidence": 0.86,
+          "source": "external_signal",
+          "evidence": [
+            "category:soba",
+            "external:official_site:十割,常陸秋そば,自家製粉"
           ]
         },
         {
@@ -67816,6 +68183,15 @@
       "name": "手打蕎麦 じゆうさん",
       "category": "soba",
       "tags": [
+        {
+          "key": "dish.juwari",
+          "weight": 0.86,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:十割"
+          ]
+        },
         {
           "key": "genre.soba",
           "weight": 1.0,
@@ -67934,12 +68310,22 @@
           ]
         },
         {
-          "key": "texture.aroma_focused",
-          "weight": 0.68,
-          "confidence": 0.58,
-          "source": "model_prior",
+          "key": "style.stone_milled",
+          "weight": 0.82,
+          "confidence": 0.84,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "external:official_site:手挽き,粗挽き"
+          ]
+        },
+        {
+          "key": "texture.aroma_focused",
+          "weight": 0.74,
+          "confidence": 0.8,
+          "source": "external_signal",
+          "evidence": [
+            "category:soba",
+            "external:official_site:十割,手挽き,粗挽き"
           ]
         },
         {
@@ -69784,6 +70170,15 @@
       "category": "soba",
       "tags": [
         {
+          "key": "dish.juwari",
+          "weight": 0.86,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:十割"
+          ]
+        },
+        {
           "key": "genre.soba",
           "weight": 1.0,
           "confidence": 1.0,
@@ -69892,12 +70287,31 @@
           ]
         },
         {
-          "key": "texture.aroma_focused",
-          "weight": 0.68,
-          "confidence": 0.58,
-          "source": "model_prior",
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.88,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "external:official_site:手打ち"
+          ]
+        },
+        {
+          "key": "style.stone_milled",
+          "weight": 0.86,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:玄蕎麦,自家製粉"
+          ]
+        },
+        {
+          "key": "texture.aroma_focused",
+          "weight": 0.78,
+          "confidence": 0.86,
+          "source": "external_signal",
+          "evidence": [
+            "category:soba",
+            "external:official_site:十割,玄蕎麦,自家製粉"
           ]
         },
         {
@@ -70302,21 +70716,32 @@
           ]
         },
         {
-          "key": "style.stone_milled",
-          "weight": 0.78,
-          "confidence": 0.78,
-          "source": "name_keyword",
+          "key": "style.regional_specialty",
+          "weight": 0.74,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
+            "external:public_directory:地域色"
+          ]
+        },
+        {
+          "key": "style.stone_milled",
+          "weight": 0.86,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "external:public_directory:手挽き,石臼,自家製粉",
             "name_keyword:玄蕎麦"
           ]
         },
         {
           "key": "texture.aroma_focused",
-          "weight": 0.68,
-          "confidence": 0.58,
-          "source": "model_prior",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "external:public_directory:手挽き,石臼,自家製粉"
           ]
         },
         {
@@ -70604,6 +71029,15 @@
       "category": "soba",
       "tags": [
         {
+          "key": "dish.juwari",
+          "weight": 0.86,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_tourism:十割"
+          ]
+        },
+        {
           "key": "genre.soba",
           "weight": 1.0,
           "confidence": 1.0,
@@ -70642,10 +71076,11 @@
         {
           "key": "scene.calm_meal",
           "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "confidence": 0.62,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "external:official_tourism:日本酒"
           ]
         },
         {
@@ -70655,6 +71090,15 @@
           "source": "selection_prior",
           "evidence": [
             "selection:3plus"
+          ]
+        },
+        {
+          "key": "scene.drink_pairing",
+          "weight": 0.72,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_tourism:日本酒"
           ]
         },
         {
@@ -70712,12 +71156,31 @@
           ]
         },
         {
-          "key": "texture.aroma_focused",
-          "weight": 0.68,
-          "confidence": 0.58,
-          "source": "model_prior",
+          "key": "style.regional_specialty",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "external:official_tourism:地域色"
+          ]
+        },
+        {
+          "key": "style.stone_milled",
+          "weight": 0.84,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_tourism:玄蕎麦"
+          ]
+        },
+        {
+          "key": "texture.aroma_focused",
+          "weight": 0.76,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "evidence": [
+            "category:soba",
+            "external:official_tourism:十割,玄蕎麦"
           ]
         },
         {
@@ -71098,11 +71561,12 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.72,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "external:public_directory:落ち着いた食事"
           ]
         },
         {
@@ -71166,6 +71630,15 @@
           "source": "regional_prior",
           "evidence": [
             "prefecture:tokyo"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "external:public_directory:手打ち"
           ]
         },
         {
@@ -72586,6 +73059,15 @@
       "category": "soba",
       "tags": [
         {
+          "key": "dish.juwari",
+          "weight": 0.86,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:十割,生粉打ち"
+          ]
+        },
+        {
           "key": "genre.soba",
           "weight": 1.0,
           "confidence": 1.0,
@@ -72686,20 +73168,31 @@
         },
         {
           "key": "style.edomae_soba",
-          "weight": 0.58,
-          "confidence": 0.56,
-          "source": "regional_prior",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
           "evidence": [
+            "external:official_site:江戸前",
             "prefecture:tokyo"
           ]
         },
         {
-          "key": "texture.aroma_focused",
-          "weight": 0.68,
-          "confidence": 0.58,
-          "source": "model_prior",
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.88,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "external:official_site:手打ち,生粉打ち"
+          ]
+        },
+        {
+          "key": "texture.aroma_focused",
+          "weight": 0.7,
+          "confidence": 0.76,
+          "source": "external_signal",
+          "evidence": [
+            "category:soba",
+            "external:official_site:十割,生粉打ち"
           ]
         },
         {
@@ -72737,6 +73230,15 @@
           ]
         },
         {
+          "key": "mood.traditional",
+          "weight": 0.7,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "external:public_directory:古民家"
+          ]
+        },
+        {
           "key": "pref.tokyo",
           "weight": 0.8,
           "confidence": 1.0,
@@ -72769,6 +73271,7 @@
           "confidence": 0.62,
           "source": "selection_prior",
           "evidence": [
+            "external:public_directory:古民家",
             "selection:3plus"
           ]
         },
@@ -72827,12 +73330,31 @@
           ]
         },
         {
-          "key": "texture.aroma_focused",
-          "weight": 0.68,
-          "confidence": 0.58,
-          "source": "model_prior",
+          "key": "style.regional_specialty",
+          "weight": 0.74,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "external:public_directory:地域色"
+          ]
+        },
+        {
+          "key": "style.stone_milled",
+          "weight": 0.86,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "external:public_directory:自家製粉"
+          ]
+        },
+        {
+          "key": "texture.aroma_focused",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "category:soba",
+            "external:public_directory:自家製粉,香り"
           ]
         },
         {
@@ -73176,10 +73698,11 @@
         },
         {
           "key": "scene.destination",
-          "weight": 0.66,
-          "confidence": 0.62,
-          "source": "selection_prior",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
           "evidence": [
+            "external:official_site:目的地",
             "selection:3plus"
           ]
         },
@@ -73238,12 +73761,22 @@
           ]
         },
         {
-          "key": "texture.aroma_focused",
-          "weight": 0.68,
-          "confidence": 0.58,
-          "source": "model_prior",
+          "key": "style.regional_specialty",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "external:official_site:地域色"
+          ]
+        },
+        {
+          "key": "texture.aroma_focused",
+          "weight": 0.72,
+          "confidence": 0.74,
+          "source": "external_signal",
+          "evidence": [
+            "category:soba",
+            "external:official_site:香り"
           ]
         },
         {
@@ -75687,10 +76220,11 @@
         },
         {
           "key": "lineage.yabu",
-          "weight": 0.74,
-          "confidence": 0.78,
-          "source": "name_keyword",
+          "weight": 0.82,
+          "confidence": 0.84,
+          "source": "external_signal",
           "evidence": [
+            "external:official_site:竹やぶ",
             "name_keyword:やぶ"
           ]
         },
@@ -75741,10 +76275,11 @@
         },
         {
           "key": "scene.destination",
-          "weight": 0.66,
-          "confidence": 0.62,
-          "source": "selection_prior",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
           "evidence": [
+            "external:official_site:目的地",
             "selection:3plus"
           ]
         },
@@ -75781,16 +76316,18 @@
           "confidence": 0.82,
           "source": "name_keyword",
           "evidence": [
+            "external:official_site:竹やぶ",
             "name_keyword:やぶ"
           ]
         },
         {
           "key": "texture.aroma_focused",
-          "weight": 0.68,
-          "confidence": 0.58,
-          "source": "model_prior",
+          "weight": 0.72,
+          "confidence": 0.74,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "external:official_site:香り"
           ]
         },
         {
@@ -78297,6 +78834,24 @@
       "category": "soba",
       "tags": [
         {
+          "key": "dish.juwari",
+          "weight": 0.86,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:十割"
+          ]
+        },
+        {
+          "key": "dish.meat_soup",
+          "weight": 0.76,
+          "confidence": 0.8,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:鴨汁"
+          ]
+        },
+        {
           "key": "genre.soba",
           "weight": 1.0,
           "confidence": 1.0,
@@ -78343,10 +78898,11 @@
         },
         {
           "key": "scene.destination",
-          "weight": 0.66,
-          "confidence": 0.62,
-          "source": "selection_prior",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
           "evidence": [
+            "external:official_site:目的地",
             "selection:3plus"
           ]
         },
@@ -78387,12 +78943,22 @@
           ]
         },
         {
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:手打ち"
+          ]
+        },
+        {
           "key": "texture.aroma_focused",
           "weight": 0.68,
-          "confidence": 0.58,
-          "source": "model_prior",
+          "confidence": 0.74,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "external:official_site:十割"
           ]
         },
         {
@@ -79343,20 +79909,40 @@
         },
         {
           "key": "style.country_soba",
-          "weight": 0.62,
-          "confidence": 0.62,
-          "source": "regional_prior",
+          "weight": 0.82,
+          "confidence": 0.84,
+          "source": "external_signal",
           "evidence": [
-            "country_soba_prior"
+            "country_soba_prior",
+            "external:official_site:田舎そば"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:手打ち"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:地域色,田舎そば"
           ]
         },
         {
           "key": "texture.aroma_focused",
-          "weight": 0.68,
-          "confidence": 0.58,
-          "source": "model_prior",
+          "weight": 0.72,
+          "confidence": 0.74,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "external:official_site:香り"
           ]
         },
         {
@@ -80712,20 +81298,31 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.7,
+          "confidence": 0.76,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "external:official_tourism:蕎麦料理"
           ]
         },
         {
           "key": "scene.destination",
-          "weight": 0.66,
-          "confidence": 0.62,
-          "source": "selection_prior",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
           "evidence": [
+            "external:official_tourism:目的地",
             "selection:3plus"
+          ]
+        },
+        {
+          "key": "scene.drink_pairing",
+          "weight": 0.72,
+          "confidence": 0.76,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_tourism:蕎麦料理"
           ]
         },
         {
@@ -80761,6 +81358,7 @@
           "confidence": 0.76,
           "source": "regional_prior",
           "evidence": [
+            "external:official_tourism:地域色",
             "prefecture:nagano"
           ]
         },
@@ -80774,12 +81372,22 @@
           ]
         },
         {
+          "key": "style.stone_milled",
+          "weight": 0.86,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_tourism:玄蕎麦,自家製粉"
+          ]
+        },
+        {
           "key": "texture.aroma_focused",
-          "weight": 0.76,
-          "confidence": 0.72,
-          "source": "regional_prior",
+          "weight": 0.78,
+          "confidence": 0.84,
+          "source": "external_signal",
           "evidence": [
             "category:soba",
+            "external:official_tourism:玄蕎麦,自家製粉",
             "prefecture:nagano"
           ]
         },
@@ -80799,6 +81407,15 @@
       "name": "石臼挽き蕎麦香房 山の実",
       "category": "soba",
       "tags": [
+        {
+          "key": "dish.juwari",
+          "weight": 0.86,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:十割"
+          ]
+        },
         {
           "key": "genre.soba",
           "weight": 1.0,
@@ -80846,10 +81463,11 @@
         },
         {
           "key": "scene.destination",
-          "weight": 0.66,
-          "confidence": 0.62,
-          "source": "selection_prior",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
           "evidence": [
+            "external:official_site:目的地",
             "selection:3plus"
           ]
         },
@@ -80895,6 +81513,7 @@
           "confidence": 0.76,
           "source": "regional_prior",
           "evidence": [
+            "external:official_site:地域色",
             "prefecture:nagano"
           ]
         },
@@ -80909,20 +81528,22 @@
         },
         {
           "key": "style.stone_milled",
-          "weight": 0.78,
-          "confidence": 0.78,
-          "source": "name_keyword",
+          "weight": 0.84,
+          "confidence": 0.88,
+          "source": "external_signal",
           "evidence": [
+            "external:official_site:玄蕎麦,石臼",
             "name_keyword:石臼"
           ]
         },
         {
           "key": "texture.aroma_focused",
           "weight": 0.76,
-          "confidence": 0.72,
-          "source": "regional_prior",
+          "confidence": 0.84,
+          "source": "external_signal",
           "evidence": [
             "category:soba",
+            "external:official_site:十割,玄蕎麦,石臼",
             "prefecture:nagano"
           ]
         },
@@ -81050,6 +81671,15 @@
       "category": "soba",
       "tags": [
         {
+          "key": "dish.juwari",
+          "weight": 0.86,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_tourism:十割"
+          ]
+        },
+        {
           "key": "genre.soba",
           "weight": 1.0,
           "confidence": 1.0,
@@ -81087,20 +81717,31 @@
         },
         {
           "key": "scene.calm_meal",
-          "weight": 0.56,
-          "confidence": 0.56,
-          "source": "model_prior",
+          "weight": 0.7,
+          "confidence": 0.76,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "category:soba",
+            "external:official_tourism:蕎麦料理"
           ]
         },
         {
           "key": "scene.destination",
-          "weight": 0.66,
-          "confidence": 0.62,
-          "source": "selection_prior",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
           "evidence": [
+            "external:official_tourism:目的地",
             "selection:3plus"
+          ]
+        },
+        {
+          "key": "scene.drink_pairing",
+          "weight": 0.72,
+          "confidence": 0.76,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_tourism:蕎麦料理"
           ]
         },
         {
@@ -81136,6 +81777,7 @@
           "confidence": 0.76,
           "source": "regional_prior",
           "evidence": [
+            "external:official_tourism:地域色",
             "prefecture:nagano"
           ]
         },
@@ -81149,12 +81791,22 @@
           ]
         },
         {
+          "key": "style.stone_milled",
+          "weight": 0.84,
+          "confidence": 0.84,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_tourism:石臼"
+          ]
+        },
+        {
           "key": "texture.aroma_focused",
           "weight": 0.76,
-          "confidence": 0.72,
-          "source": "regional_prior",
+          "confidence": 0.84,
+          "source": "external_signal",
           "evidence": [
             "category:soba",
+            "external:official_tourism:十割,石臼",
             "prefecture:nagano"
           ]
         },
@@ -82120,10 +82772,11 @@
         },
         {
           "key": "scene.destination",
-          "weight": 0.66,
-          "confidence": 0.62,
-          "source": "selection_prior",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
           "evidence": [
+            "external:official_site:目的地",
             "selection:3plus"
           ]
         },
@@ -82156,20 +82809,31 @@
         },
         {
           "key": "style.handmade",
-          "weight": 0.82,
-          "confidence": 0.86,
-          "source": "name_keyword",
+          "weight": 0.84,
+          "confidence": 0.88,
+          "source": "external_signal",
           "evidence": [
+            "external:official_site:手打ち",
             "name_keyword:手打"
           ]
         },
         {
-          "key": "texture.aroma_focused",
-          "weight": 0.68,
-          "confidence": 0.58,
-          "source": "model_prior",
+          "key": "style.regional_specialty",
+          "weight": 0.74,
+          "confidence": 0.78,
+          "source": "external_signal",
           "evidence": [
-            "category:soba"
+            "external:official_site:地域色"
+          ]
+        },
+        {
+          "key": "texture.aroma_focused",
+          "weight": 0.72,
+          "confidence": 0.74,
+          "source": "external_signal",
+          "evidence": [
+            "category:soba",
+            "external:official_site:香り"
           ]
         },
         {
