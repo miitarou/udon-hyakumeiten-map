@@ -556,6 +556,16 @@ def validate_external_signal_backlog(known_restaurants: dict[str, dict]) -> tupl
         }
     except Exception:  # noqa: BLE001
         covered_urls = set()
+    try:
+        review_payload = json.loads((ROOT / EXTERNAL_SOURCE_REVIEW_LOG).read_text(encoding="utf-8"))
+        reviewed_urls = {
+            row.get("restaurantUrl")
+            for row in review_payload.get("reviews", [])
+            if isinstance(row, dict) and isinstance(row.get("restaurantUrl"), str)
+        }
+    except Exception:  # noqa: BLE001
+        reviewed_urls = set()
+    completed_urls = covered_urls | reviewed_urls
 
     seen_urls: set[str] = set()
     for index, item in enumerate(restaurants):
@@ -572,8 +582,8 @@ def validate_external_signal_backlog(known_restaurants: dict[str, dict]) -> tupl
             errors.append(f"{prefix}: duplicate url {url}")
         seen_urls.add(url)
 
-        if url in covered_urls:
-            errors.append(f"{prefix}: covered url should not remain in backlog: {url}")
+        if url in completed_urls:
+            errors.append(f"{prefix}: completed url should not remain in backlog: {url}")
 
         known = known_restaurants.get(url)
         if not known:
@@ -596,6 +606,10 @@ def validate_external_signal_backlog(known_restaurants: dict[str, dict]) -> tupl
             errors.append("summary.remainingRestaurants is stale")
         if summary.get("coveredRestaurants") != len(covered_urls):
             errors.append("summary.coveredRestaurants is stale")
+        if summary.get("reviewedRestaurants") != len(reviewed_urls):
+            errors.append("summary.reviewedRestaurants is stale")
+        if summary.get("completedRestaurants") != len(completed_urls):
+            errors.append("summary.completedRestaurants is stale")
     else:
         warnings.append("summary should be an object")
 

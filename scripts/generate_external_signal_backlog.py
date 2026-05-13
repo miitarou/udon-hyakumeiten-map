@@ -21,6 +21,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 DATASETS = (ROOT / "data" / "udon.json", ROOT / "data" / "soba.json")
 REGISTRY = ROOT / "data" / "external_source_registry.json"
+REVIEW_LOG = ROOT / "data" / "external_source_review_log.json"
 OUTPUT = ROOT / "data" / "external_signal_backlog.json"
 HALL_OF_FAME_THRESHOLDS = {
     "udon": 6,
@@ -78,11 +79,21 @@ def generate_payload() -> dict[str, Any]:
         for row in registry.get("sources", [])
         if isinstance(row, dict) and isinstance(row.get("restaurantUrl"), str)
     }
+    try:
+        review_log = load_json(REVIEW_LOG)
+    except FileNotFoundError:
+        review_log = {"reviews": []}
+    reviewed_urls = {
+        row["restaurantUrl"]
+        for row in review_log.get("reviews", [])
+        if isinstance(row, dict) and isinstance(row.get("restaurantUrl"), str)
+    }
+    completed_urls = covered_urls | reviewed_urls
 
     backlog: list[dict[str, Any]] = []
     for restaurant in restaurants:
         url = restaurant.get("url")
-        if not isinstance(url, str) or url in covered_urls:
+        if not isinstance(url, str) or url in completed_urls:
             continue
         years = sorted(restaurant.get("years") or [])
         row = {
@@ -105,6 +116,8 @@ def generate_payload() -> dict[str, Any]:
     summary = {
         "totalRestaurants": len(restaurants),
         "coveredRestaurants": len(covered_urls),
+        "reviewedRestaurants": len(reviewed_urls),
+        "completedRestaurants": len(completed_urls),
         "remainingRestaurants": len(backlog),
         "remainingByCategory": dict(Counter(row["category"] for row in backlog)),
         "remainingByPriorityTier": dict(Counter(row["priorityTier"] for row in backlog)),
