@@ -235,6 +235,138 @@
       "evidenceTerms": ["讃岐", "手打ち", "朝うどん", "短時間利用", "コシ"],
       "reviewStatus": "manual_seeded",
       "lastCheckedAt": "2026-05-12"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kagawa/A3701/A370101/37000026/",
+      "name": "うどん さか枝",
+      "category": "udon",
+      "sourceType": "official_tourism",
+      "sourceUrl": "https://www.my-kagawa.jp/udon/511/",
+      "sourceTitle": "うどん県旅ネット さか枝うどん 本店",
+      "evidenceTerms": ["讃岐", "セルフ", "短時間利用"],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kagawa/A3701/A370101/37001209/",
+      "name": "うどん 一福",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://www.udon-ippuku.jp/",
+      "sourceTitle": "うどん一福 公式サイト",
+      "evidenceTerms": ["讃岐", "コシ", "ぶっかけ", "地域色"],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kagawa/A3701/A370101/37000002/",
+      "name": "うどん本陣 山田家 讃岐本店",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://yamada-ya.com/honten.html",
+      "sourceTitle": "うどん本陣 山田家 讃岐本店 公式サイト",
+      "evidenceTerms": ["讃岐", "目的地", "伝統", "落ち着いた食事"],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kagawa/A3702/A370202/37000135/",
+      "name": "中村うどん",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://www.nakamura-udon.jp/",
+      "sourceTitle": "中村うどん 公式サイト",
+      "evidenceTerms": ["讃岐", "釜玉", "短時間利用"],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kagawa/A3702/A370202/37000080/",
+      "name": "山越うどん",
+      "category": "udon",
+      "sourceType": "official_tourism",
+      "sourceUrl": "https://www.my-kagawa.jp/course/2654/",
+      "sourceTitle": "うどん県旅ネット 映画『UDON』ロケ店めぐり 山越うどん",
+      "evidenceTerms": ["讃岐", "釜玉", "目的地"],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kagawa/A3702/A370202/37000077/",
+      "name": "手打うどん たむら",
+      "category": "udon",
+      "sourceType": "official_tourism",
+      "sourceUrl": "https://www.my-kagawa.jp/udon/537/",
+      "sourceTitle": "うどん県旅ネット 手打うどん 田村",
+      "evidenceTerms": ["手打ち", "讃岐", "コシ", "セルフ", "短時間利用"],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kagawa/A3701/A370101/37001023/",
+      "name": "手打うどん 風月",
+      "category": "udon",
+      "sourceType": "official_tourism",
+      "sourceUrl": "https://www.my-kagawa.jp/udon/564/",
+      "sourceTitle": "うどん県旅ネット 手打うどん 風月",
+      "evidenceTerms": ["手打ち", "讃岐", "天ぷら"],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kagawa/A3702/A370201/37000016/",
+      "name": "日の出製麺所",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://www.hinode.net/",
+      "sourceTitle": "日の出製麺所 公式サイト",
+      "evidenceTerms": ["製麺所", "讃岐", "短時間利用", "目的地"],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kagawa/A3701/A370101/37000134/",
+      "name": "本格手打 もり家",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://mori-ya.jp/",
+      "sourceTitle": "本格手打もり家 公式サイト",
+      "evidenceTerms": ["手打ち", "讃岐", "ぶっかけ", "目的地"],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kagawa/A3702/A370202/37000074/",
+      "name": "本格手打うどん おか泉",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://www.okasen.com/honten/",
+      "sourceTitle": "本格手打うどん おか泉 公式サイト",
+      "evidenceTerms": ["手打ち", "讃岐", "ぶっかけ", "天ぷら", "目的地"],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kagawa/A3702/A370202/37000233/",
+      "name": "本格手打うどん はゆか",
+      "category": "udon",
+      "sourceType": "official_tourism",
+      "sourceUrl": "https://www.my-kagawa.jp/udon/525/",
+      "sourceTitle": "うどん県旅ネット 本格手打うどん はゆか",
+      "evidenceTerms": ["手打ち", "讃岐", "ぶっかけ"],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kagawa/A3702/A370202/37004606/",
+      "name": "純手打うどん よしや",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://www.udon448.com/",
+      "sourceTitle": "純手打うどん よしや 公式サイト",
+      "evidenceTerms": ["純手打", "讃岐", "関西だし", "地域色"],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
     }
   ]
 }

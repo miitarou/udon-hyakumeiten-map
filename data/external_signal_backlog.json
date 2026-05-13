@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-12",
+  "generatedAt": "2026-05-13",
   "policy": {
     "summary": "Work queue for expanding external recommendation signals. Rows are not used by the app until manually reviewed and moved into external_source_registry.json.",
     "allowedSources": [
@@ -24,14 +24,14 @@
   },
   "summary": {
     "totalRestaurants": 694,
-    "coveredRestaurants": 20,
-    "remainingRestaurants": 674,
+    "coveredRestaurants": 32,
+    "remainingRestaurants": 662,
     "remainingByCategory": {
-      "udon": 419,
+      "udon": 407,
       "soba": 255
     },
     "remainingByPriorityTier": {
-      "hall_of_fame_remaining": 78,
+      "hall_of_fame_remaining": 66,
       "high_selection_remaining": 34,
       "repeat_selection_remaining": 248,
       "latest_new_remaining": 185,
@@ -397,264 +397,12 @@
       "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
     },
     {
-      "url": "https://tabelog.com/kagawa/A3701/A370101/37000026/",
-      "name": "うどん さか枝",
-      "category": "udon",
-      "prefecture": "香川県",
-      "region": "KAGAWA",
-      "area": "高松市",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/kagawa/A3701/A370101/37001209/",
-      "name": "うどん 一福",
-      "category": "udon",
-      "prefecture": "香川県",
-      "region": "KAGAWA",
-      "area": "高松市",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/kagawa/A3701/A370101/37000002/",
-      "name": "うどん本陣 山田家 讃岐本店",
-      "category": "udon",
-      "prefecture": "香川県",
-      "region": "KAGAWA",
-      "area": "高松市",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/kagawa/A3702/A370202/37000135/",
-      "name": "中村うどん",
-      "category": "udon",
-      "prefecture": "香川県",
-      "region": "KAGAWA",
-      "area": "丸亀市",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/kagawa/A3702/A370202/37000080/",
-      "name": "山越うどん",
-      "category": "udon",
-      "prefecture": "香川県",
-      "region": "KAGAWA",
-      "area": "綾歌郡綾川町",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/kagawa/A3702/A370202/37000077/",
-      "name": "手打うどん たむら",
-      "category": "udon",
-      "prefecture": "香川県",
-      "region": "KAGAWA",
-      "area": "綾歌郡綾川町",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/kagawa/A3701/A370101/37001023/",
-      "name": "手打うどん 風月",
-      "category": "udon",
-      "prefecture": "香川県",
-      "region": "KAGAWA",
-      "area": "高松市",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
       "url": "https://tabelog.com/kagawa/A3701/A370101/37000874/",
       "name": "手打うどん 麦蔵",
       "category": "udon",
       "prefecture": "香川県",
       "region": "KAGAWA",
       "area": "高松市",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/kagawa/A3702/A370201/37000016/",
-      "name": "日の出製麺所",
-      "category": "udon",
-      "prefecture": "香川県",
-      "region": "KAGAWA",
-      "area": "坂出市",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/kagawa/A3701/A370101/37000134/",
-      "name": "本格手打 もり家",
-      "category": "udon",
-      "prefecture": "香川県",
-      "region": "KAGAWA",
-      "area": "高松市",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/kagawa/A3702/A370202/37000074/",
-      "name": "本格手打うどん おか泉",
-      "category": "udon",
-      "prefecture": "香川県",
-      "region": "KAGAWA",
-      "area": "綾歌郡宇多津町",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/kagawa/A3702/A370202/37000233/",
-      "name": "本格手打うどん はゆか",
-      "category": "udon",
-      "prefecture": "香川県",
-      "region": "KAGAWA",
-      "area": "綾歌郡綾川町",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/kagawa/A3702/A370202/37004606/",
-      "name": "純手打うどん よしや",
-      "category": "udon",
-      "prefecture": "香川県",
-      "region": "KAGAWA",
-      "area": "丸亀市",
       "selectionCount": 6,
       "years": [
         2017,
