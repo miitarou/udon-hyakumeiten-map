@@ -1,5 +1,7 @@
 # 🍜🥢 うどん・そば百名店 MAP 2017-2025
 
+🌐 **Language:** **日本語** | [English](README.en.md) | [中文](README.zh.md)
+
 公開されている「うどん・そば百名店」関連情報をもとに、個人が整理した非公式の参考マップです。
 うどん・そばの店舗を地図上で確認でき、ジャンル切替、年度フィルタ、地域フィルタ、選出回数フィルタに対応しています。
 本サイトは、食べログ、株式会社カカクコム、食べログ百名店とは提携・協賛・承認関係にありません。
@@ -107,7 +109,9 @@ open http://localhost:8080
 │   └── www/                    # Web資産同期先
 ├── LICENSE                     # MIT License
 ├── DATA_LICENSE.md             # データ利用条件
-└── README.md
+├── README.md                   # 日本語README
+├── README.en.md                # English README
+└── README.zh.md                # 中文README
 ```
 
 ## 🛠️ 技術スタック
