@@ -7,7 +7,7 @@
       "udon.json": "649eb84e28a0e06eae94b4fd199a4be44e1bf547d2e621b1c31934da957412cd",
       "soba.json": "68c5eeecc1360d4428a8cfb2fb465f6943c5ef60fb75682f526afde12c0b6367"
     },
-    "externalSignalsSha256": "6d25d77be431b069831e60475a004c0a999dd1c6ecf756abe0e020d98a8042eb"
+    "externalSignalsSha256": "38e7818033aeef971dff0b50eb1b0fefc623af219c8d7916909cc9c6b6385528"
   },
   "method": {
     "summary": "Static recommendation tags generated from existing data, conservative rule-based priors, and deterministic external signal hints. Runtime recommendation can use these tags without calling an LLM or external API.",
@@ -33563,12 +33563,22 @@
           ]
         },
         {
-          "key": "scene.solo_lunch",
-          "weight": 0.48,
-          "confidence": 0.5,
-          "source": "model_prior",
+          "key": "scene.quick_lunch",
+          "weight": 0.72,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
-            "category:udon"
+            "external:public_directory:セルフ,短時間利用"
+          ]
+        },
+        {
+          "key": "scene.solo_lunch",
+          "weight": 0.58,
+          "confidence": 0.68,
+          "source": "external_signal",
+          "evidence": [
+            "category:udon",
+            "external:public_directory:短時間利用"
           ]
         },
         {
@@ -33613,6 +33623,7 @@
           "confidence": 0.86,
           "source": "name_keyword",
           "evidence": [
+            "external:public_directory:手打ち",
             "name_keyword:手打"
           ]
         },
@@ -33622,6 +33633,7 @@
           "confidence": 0.76,
           "source": "regional_prior",
           "evidence": [
+            "external:public_directory:地域色,讃岐",
             "region:kagawa"
           ]
         },
@@ -33631,16 +33643,27 @@
           "confidence": 0.86,
           "source": "regional_prior",
           "evidence": [
+            "external:public_directory:讃岐",
             "region:kagawa"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.84,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "external:public_directory:セルフ"
           ]
         },
         {
           "key": "texture.koshi_strong",
           "weight": 0.78,
           "confidence": 0.72,
-          "source": "regional_prior",
+          "source": "external_signal",
           "evidence": [
             "category:udon",
+            "external:public_directory:コシ,讃岐",
             "region:kagawa"
           ]
         }
@@ -33807,19 +33830,30 @@
           "key": "scene.destination",
           "weight": 0.78,
           "confidence": 0.72,
-          "source": "selection_prior",
+          "source": "external_signal",
           "evidence": [
+            "external:public_directory:目的地",
             "region:kagawa",
             "selection:category_top10"
           ]
         },
         {
-          "key": "scene.solo_lunch",
-          "weight": 0.48,
-          "confidence": 0.5,
-          "source": "model_prior",
+          "key": "scene.quick_lunch",
+          "weight": 0.72,
+          "confidence": 0.72,
+          "source": "external_signal",
           "evidence": [
-            "category:udon"
+            "external:public_directory:セルフ,短時間利用"
+          ]
+        },
+        {
+          "key": "scene.solo_lunch",
+          "weight": 0.58,
+          "confidence": 0.68,
+          "source": "external_signal",
+          "evidence": [
+            "category:udon",
+            "external:public_directory:短時間利用"
           ]
         },
         {
@@ -33864,6 +33898,7 @@
           "confidence": 0.76,
           "source": "regional_prior",
           "evidence": [
+            "external:public_directory:地域色,讃岐",
             "name_keyword:讃岐/さぬき",
             "region:kagawa"
           ]
@@ -33874,8 +33909,18 @@
           "confidence": 0.86,
           "source": "regional_prior",
           "evidence": [
+            "external:public_directory:讃岐",
             "name_keyword:讃岐",
             "region:kagawa"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.84,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "external:public_directory:セルフ"
           ]
         },
         {
@@ -33885,6 +33930,7 @@
           "source": "name_keyword",
           "evidence": [
             "category:udon",
+            "external:public_directory:讃岐",
             "name_keyword:讃岐/さぬき",
             "region:kagawa"
           ]
@@ -33896,6 +33942,15 @@
       "name": "讃岐うどん 上原屋本店",
       "category": "udon",
       "tags": [
+        {
+          "key": "dish.tempura",
+          "weight": 0.74,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:天ぷら"
+          ]
+        },
         {
           "key": "genre.udon",
           "weight": 1.0,
@@ -33952,12 +34007,22 @@
           ]
         },
         {
-          "key": "scene.solo_lunch",
-          "weight": 0.48,
-          "confidence": 0.5,
-          "source": "model_prior",
+          "key": "scene.quick_lunch",
+          "weight": 0.72,
+          "confidence": 0.8,
+          "source": "external_signal",
           "evidence": [
-            "category:udon"
+            "external:official_site:短時間利用"
+          ]
+        },
+        {
+          "key": "scene.solo_lunch",
+          "weight": 0.58,
+          "confidence": 0.68,
+          "source": "external_signal",
+          "evidence": [
+            "category:udon",
+            "external:official_site:短時間利用"
           ]
         },
         {
@@ -33997,11 +34062,21 @@
           ]
         },
         {
+          "key": "style.kansai_dashi",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "evidence": [
+            "external:official_site:関西だし"
+          ]
+        },
+        {
           "key": "style.regional_specialty",
           "weight": 0.78,
           "confidence": 0.76,
           "source": "regional_prior",
           "evidence": [
+            "external:official_site:讃岐",
             "name_keyword:讃岐/さぬき",
             "region:kagawa"
           ]
@@ -34009,9 +34084,10 @@
         {
           "key": "style.sanuki_influenced",
           "weight": 0.9,
-          "confidence": 0.86,
-          "source": "regional_prior",
+          "confidence": 0.88,
+          "source": "external_signal",
           "evidence": [
+            "external:official_site:讃岐",
             "name_keyword:讃岐",
             "region:kagawa"
           ]
@@ -34023,6 +34099,7 @@
           "source": "name_keyword",
           "evidence": [
             "category:udon",
+            "external:official_site:コシ,讃岐",
             "name_keyword:讃岐/さぬき",
             "region:kagawa"
           ]
@@ -34312,10 +34389,20 @@
           "key": "scene.destination",
           "weight": 0.78,
           "confidence": 0.72,
-          "source": "selection_prior",
+          "source": "external_signal",
           "evidence": [
+            "external:public_directory:目的地",
             "region:kagawa",
             "selection:category_top10"
+          ]
+        },
+        {
+          "key": "scene.quick_lunch",
+          "weight": 0.68,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "external:public_directory:製麺所,食料品店"
           ]
         },
         {
@@ -34369,6 +34456,7 @@
           "confidence": 0.76,
           "source": "regional_prior",
           "evidence": [
+            "external:public_directory:地域色,製麺所,讃岐",
             "region:kagawa"
           ]
         },
@@ -34378,16 +34466,27 @@
           "confidence": 0.86,
           "source": "regional_prior",
           "evidence": [
+            "external:public_directory:讃岐",
             "region:kagawa"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.76,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "evidence": [
+            "external:public_directory:製麺所,食料品店"
           ]
         },
         {
           "key": "texture.koshi_strong",
           "weight": 0.78,
           "confidence": 0.72,
-          "source": "regional_prior",
+          "source": "external_signal",
           "evidence": [
             "category:udon",
+            "external:public_directory:コシ,讃岐",
             "region:kagawa"
           ]
         }
@@ -34516,10 +34615,11 @@
       "tags": [
         {
           "key": "dish.kamaage",
-          "weight": 0.82,
-          "confidence": 0.84,
-          "source": "name_keyword",
+          "weight": 0.86,
+          "confidence": 0.88,
+          "source": "external_signal",
           "evidence": [
+            "external:official_site:釜あげ,釜揚げ",
             "name_keyword:釜あげ"
           ]
         },
@@ -34562,9 +34662,10 @@
         {
           "key": "scene.destination",
           "weight": 0.78,
-          "confidence": 0.72,
-          "source": "selection_prior",
+          "confidence": 0.82,
+          "source": "external_signal",
           "evidence": [
+            "external:official_site:目的地",
             "region:kagawa",
             "selection:category_top10"
           ]
@@ -34620,25 +34721,28 @@
           "confidence": 0.76,
           "source": "regional_prior",
           "evidence": [
+            "external:official_site:讃岐",
             "region:kagawa"
           ]
         },
         {
           "key": "style.sanuki_influenced",
           "weight": 0.9,
-          "confidence": 0.86,
-          "source": "regional_prior",
+          "confidence": 0.88,
+          "source": "external_signal",
           "evidence": [
+            "external:official_site:讃岐",
             "region:kagawa"
           ]
         },
         {
           "key": "texture.koshi_strong",
           "weight": 0.78,
-          "confidence": 0.72,
-          "source": "regional_prior",
+          "confidence": 0.82,
+          "source": "external_signal",
           "evidence": [
             "category:udon",
+            "external:official_site:讃岐",
             "region:kagawa"
           ]
         }

@@ -49,6 +49,8 @@ TERM_RULES: dict[str, tuple[tuple[str, float, float], ...]] = {
     "釜玉": (("dish.kamatama", 0.86, 0.9),),
     "釜たま": (("dish.kamatama", 0.86, 0.9),),
     "釜バター": (("dish.kamatama", 0.74, 0.76), ("mood.modern", 0.58, 0.62)),
+    "釜あげ": (("dish.kamaage", 0.86, 0.9),),
+    "釜揚げ": (("dish.kamaage", 0.86, 0.9),),
     "ぶっかけ": (("dish.bukkake", 0.84, 0.88),),
     "天ぷら": (("dish.tempura", 0.74, 0.82),),
     "半熟卵天": (("dish.tempura", 0.8, 0.84),),

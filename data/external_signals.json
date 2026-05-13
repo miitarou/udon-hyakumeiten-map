@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-12",
+  "generatedAt": "2026-05-13",
   "method": {
     "summary": "Deterministic external signal PoC generated from manually reviewed short evidence terms. No external fetch, raw text storage, or runtime LLM/API call.",
     "sourceConfidence": {
@@ -10,14 +10,14 @@
       "manual_editorial_seed": 0.62
     },
     "sample": {
-      "method": "fixed_seed_random_sample_from_hall_of_fame",
+      "method": "incremental_hall_of_fame_source_review",
       "seed": 20260512,
-      "sampledAt": "2026-05-12",
+      "sampledAt": "2026-05-13",
       "hallOfFameThresholds": {
         "udon": 6,
         "soba": 4
       },
-      "sampleSize": 20
+      "sampleSize": 37
     }
   },
   "restaurants": [
@@ -2504,6 +2504,315 @@
       "unmappedTerms": []
     },
     {
+      "url": "https://tabelog.com/kagawa/A3703/A370301/37000152/",
+      "name": "西端手打 上戸",
+      "category": "udon",
+      "sourceRefs": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.shikoku-np.co.jp/udon/shop/704",
+          "sourceTitle": "四国新聞 讃岐うどん遍路 西端手打 上戸",
+          "reviewStatus": "reviewed",
+          "lastCheckedAt": "2026-05-13"
+        }
+      ],
+      "signals": [
+        {
+          "key": "scene.quick_lunch",
+          "weight": 0.72,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:セルフ",
+            "term:短時間利用"
+          ]
+        },
+        {
+          "key": "scene.solo_lunch",
+          "weight": 0.58,
+          "confidence": 0.68,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:短時間利用"
+          ]
+        },
+        {
+          "key": "style.handmade",
+          "weight": 0.84,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:手打ち"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.74,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:地域色",
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "style.sanuki_influenced",
+          "weight": 0.9,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.84,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:セルフ"
+          ]
+        },
+        {
+          "key": "texture.koshi_strong",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:コシ",
+            "term:讃岐"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/kagawa/A3702/A370201/37000019/",
+      "name": "讃岐うどん がもう",
+      "category": "udon",
+      "sourceRefs": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.shikoku-np.co.jp/udon/shop/518",
+          "sourceTitle": "四国新聞 讃岐うどん遍路 がもううどん",
+          "reviewStatus": "reviewed",
+          "lastCheckedAt": "2026-05-13"
+        }
+      ],
+      "signals": [
+        {
+          "key": "scene.destination",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:目的地"
+          ]
+        },
+        {
+          "key": "scene.quick_lunch",
+          "weight": 0.72,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:セルフ",
+            "term:短時間利用"
+          ]
+        },
+        {
+          "key": "scene.solo_lunch",
+          "weight": 0.58,
+          "confidence": 0.68,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:短時間利用"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.74,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:地域色",
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "style.sanuki_influenced",
+          "weight": 0.9,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.84,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:セルフ"
+          ]
+        },
+        {
+          "key": "texture.koshi_strong",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/kagawa/A3701/A370101/37000048/",
+      "name": "讃岐うどん 上原屋本店",
+      "category": "udon",
+      "sourceRefs": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://ueharayahonten.com/index.html",
+          "sourceTitle": "本場讃岐うどん 上原屋本店 公式サイト",
+          "reviewStatus": "reviewed",
+          "lastCheckedAt": "2026-05-13"
+        }
+      ],
+      "signals": [
+        {
+          "key": "dish.tempura",
+          "weight": 0.74,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:天ぷら"
+          ]
+        },
+        {
+          "key": "scene.quick_lunch",
+          "weight": 0.72,
+          "confidence": 0.8,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:短時間利用"
+          ]
+        },
+        {
+          "key": "scene.solo_lunch",
+          "weight": 0.58,
+          "confidence": 0.68,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:短時間利用"
+          ]
+        },
+        {
+          "key": "style.kansai_dashi",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:関西だし"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.68,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "style.sanuki_influenced",
+          "weight": 0.9,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "texture.koshi_strong",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:コシ",
+            "term:讃岐"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
       "url": "https://tabelog.com/tokyo/A1305/A130503/13049983/",
       "name": "讃岐うどん 蔵之介",
       "category": "udon",
@@ -2588,6 +2897,179 @@
           ],
           "evidence": [
             "term:コシ",
+            "term:讃岐"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/kagawa/A3703/A370302/37000011/",
+      "name": "谷川米穀店",
+      "category": "udon",
+      "sourceRefs": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.shikoku-np.co.jp/udon/shop/shop.aspx?id=5",
+          "sourceTitle": "四国新聞 讃岐うどん遍路 谷川米穀店",
+          "reviewStatus": "reviewed",
+          "lastCheckedAt": "2026-05-13"
+        }
+      ],
+      "signals": [
+        {
+          "key": "scene.destination",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:目的地"
+          ]
+        },
+        {
+          "key": "scene.quick_lunch",
+          "weight": 0.68,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:製麺所",
+            "term:食料品店"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.74,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:地域色",
+            "term:製麺所",
+            "term:讃岐",
+            "term:食料品店"
+          ]
+        },
+        {
+          "key": "style.sanuki_influenced",
+          "weight": 0.9,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "style.self_service",
+          "weight": 0.76,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:製麺所",
+            "term:食料品店"
+          ]
+        },
+        {
+          "key": "texture.koshi_strong",
+          "weight": 0.78,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "public_directory"
+          ],
+          "evidence": [
+            "term:コシ",
+            "term:讃岐"
+          ]
+        }
+      ],
+      "unmappedTerms": []
+    },
+    {
+      "url": "https://tabelog.com/kagawa/A3703/A370302/37000015/",
+      "name": "釜あげうどん 長田 in 香の香",
+      "category": "udon",
+      "sourceRefs": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://kanoka.jp/",
+          "sourceTitle": "釜あげうどん 長田 in 香の香 公式サイト",
+          "reviewStatus": "reviewed",
+          "lastCheckedAt": "2026-05-13"
+        }
+      ],
+      "signals": [
+        {
+          "key": "dish.kamaage",
+          "weight": 0.86,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:釜あげ",
+            "term:釜揚げ"
+          ]
+        },
+        {
+          "key": "scene.destination",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:目的地"
+          ]
+        },
+        {
+          "key": "style.regional_specialty",
+          "weight": 0.68,
+          "confidence": 0.72,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "style.sanuki_influenced",
+          "weight": 0.9,
+          "confidence": 0.88,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
+            "term:讃岐"
+          ]
+        },
+        {
+          "key": "texture.koshi_strong",
+          "weight": 0.78,
+          "confidence": 0.82,
+          "source": "external_signal",
+          "sourceTypes": [
+            "official_site"
+          ],
+          "evidence": [
             "term:讃岐"
           ]
         }

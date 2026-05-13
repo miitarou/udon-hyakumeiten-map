@@ -24,14 +24,14 @@
   },
   "summary": {
     "totalRestaurants": 694,
-    "coveredRestaurants": 32,
-    "remainingRestaurants": 662,
+    "coveredRestaurants": 37,
+    "remainingRestaurants": 657,
     "remainingByCategory": {
-      "udon": 407,
+      "udon": 402,
       "soba": 255
     },
     "remainingByPriorityTier": {
-      "hall_of_fame_remaining": 66,
+      "hall_of_fame_remaining": 61,
       "high_selection_remaining": 34,
       "repeat_selection_remaining": 248,
       "latest_new_remaining": 185,
@@ -403,111 +403,6 @@
       "prefecture": "香川県",
       "region": "KAGAWA",
       "area": "高松市",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/kagawa/A3703/A370301/37000152/",
-      "name": "西端手打 上戸",
-      "category": "udon",
-      "prefecture": "香川県",
-      "region": "KAGAWA",
-      "area": "観音寺市",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/kagawa/A3702/A370201/37000019/",
-      "name": "讃岐うどん がもう",
-      "category": "udon",
-      "prefecture": "香川県",
-      "region": "KAGAWA",
-      "area": "坂出市",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/kagawa/A3701/A370101/37000048/",
-      "name": "讃岐うどん 上原屋本店",
-      "category": "udon",
-      "prefecture": "香川県",
-      "region": "KAGAWA",
-      "area": "高松市",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/kagawa/A3703/A370302/37000011/",
-      "name": "谷川米穀店",
-      "category": "udon",
-      "prefecture": "香川県",
-      "region": "KAGAWA",
-      "area": "仲多度郡まんのう町",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/kagawa/A3703/A370302/37000015/",
-      "name": "釜あげうどん 長田 in 香の香",
-      "category": "udon",
-      "prefecture": "香川県",
-      "region": "KAGAWA",
-      "area": "善通寺市",
       "selectionCount": 6,
       "years": [
         2017,
