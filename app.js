@@ -227,6 +227,8 @@
             position: 'topright'
         }).addTo(map);
 
+        createMapLayerControl().addTo(map);
+
         const isMobileScaleLayout = window.matchMedia('(max-width: 768px)').matches;
         L.control.scale({
             position: isMobileScaleLayout ? 'bottomleft' : 'bottomright',
@@ -281,6 +283,59 @@
             link.onerror = () => reject(new Error(`Failed to load ${link.href}`));
             document.head.appendChild(link);
         });
+    }
+
+    function createMapLayerControl() {
+        const Control = L.Control.extend({
+            options: { position: 'topright' },
+            onAdd() {
+                const container = L.DomUtil.create('div', 'leaflet-control-map-layer leaflet-control');
+                const toggle = L.DomUtil.create('button', 'map-layer-toggle', container);
+                toggle.type = 'button';
+                toggle.id = 'map-layer-toggle';
+                toggle.setAttribute('aria-label', '地図表示を切り替え');
+                toggle.setAttribute('title', '地図表示を切り替え');
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.setAttribute('aria-controls', 'map-layer-popover');
+                toggle.textContent = '🗺️';
+
+                const popover = L.DomUtil.create('div', 'map-layer-popover', container);
+                popover.id = 'map-layer-popover';
+                popover.hidden = true;
+                popover.setAttribute('role', 'menu');
+                popover.setAttribute('aria-label', '地図表示');
+
+                const title = L.DomUtil.create('div', 'map-layer-title', popover);
+                title.textContent = '地図表示';
+
+                Object.entries(BASE_MAP_LAYERS).forEach(([id, config]) => {
+                    const button = L.DomUtil.create('button', 'map-layer-option', popover);
+                    button.type = 'button';
+                    button.dataset.mapLayer = id;
+                    button.setAttribute('role', 'menuitemradio');
+                    button.setAttribute('aria-checked', 'false');
+                    button.innerHTML = `<span class="map-layer-option-label">${escapeHtml(config.label)}</span><span class="map-layer-option-check" aria-hidden="true">✓</span>`;
+                });
+
+                const summary = L.DomUtil.create('div', 'map-layer-summary', popover);
+                summary.id = 'map-layer-summary';
+                summary.textContent = 'デフォルトは地理院 淡色です。';
+
+                L.DomEvent.disableClickPropagation(container);
+                L.DomEvent.disableScrollPropagation(container);
+                toggle.addEventListener('click', () => toggleMapLayerPopover());
+                popover.querySelectorAll('.map-layer-option').forEach(button => {
+                    button.addEventListener('click', () => {
+                        void switchBaseLayer(button.dataset.mapLayer, { persist: true, silent: false });
+                        hideMapLayerPopover();
+                    });
+                });
+
+                updateMapLayerControls();
+                return container;
+            }
+        });
+        return new Control();
     }
 
     function loadScriptOnce(id, asset) {
@@ -422,8 +477,30 @@
         if (select && select.value !== activeBaseLayerId) select.value = activeBaseLayerId;
         const summary = document.getElementById('map-layer-summary');
         if (summary) summary.textContent = config.summary;
+        document.querySelectorAll('.map-layer-option[data-map-layer]').forEach(button => {
+            const isActive = button.dataset.mapLayer === activeBaseLayerId;
+            button.classList.toggle('active', isActive);
+            button.setAttribute('aria-checked', String(isActive));
+        });
         const footerSource = document.getElementById('footer-map-source');
         if (footerSource) footerSource.innerHTML = config.footerAttribution;
+    }
+
+    function toggleMapLayerPopover() {
+        const toggle = document.getElementById('map-layer-toggle');
+        const popover = document.getElementById('map-layer-popover');
+        if (!toggle || !popover) return;
+        const willOpen = popover.hidden;
+        popover.hidden = !willOpen;
+        toggle.setAttribute('aria-expanded', String(willOpen));
+    }
+
+    function hideMapLayerPopover() {
+        const toggle = document.getElementById('map-layer-toggle');
+        const popover = document.getElementById('map-layer-popover');
+        if (!toggle || !popover || popover.hidden) return;
+        popover.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
     }
 
     // === Data Loading ===
@@ -2296,6 +2373,7 @@
         const isMobile = window.innerWidth <= 768;
 
         if (forceOpen === true || (!isOpen && forceOpen !== false)) {
+            hideMapLayerPopover();
             panel.classList.remove('panel-closed');
             panel.classList.add('panel-open');
             if (isMobile) document.body.classList.add('mobile-panel-open');
@@ -2534,6 +2612,14 @@
                 void switchBaseLayer(this.value, { persist: true, silent: false });
             });
         }
+
+        document.addEventListener('click', event => {
+            if (!event.target.closest?.('.leaflet-control-map-layer')) hideMapLayerPopover();
+        }, true);
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') hideMapLayerPopover();
+        });
 
         // フィルタ折りたたみ
         document.querySelectorAll('.section-toggle').forEach(toggle => {
