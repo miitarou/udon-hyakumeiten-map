@@ -13,7 +13,7 @@
       "udon": 6,
       "soba": 4
     },
-    "sampleSize": 95
+    "sampleSize": 114
   },
   "sources": [
     {
@@ -1571,6 +1571,327 @@
         "石臼",
         "落ち着いた食事",
         "目的地"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/hokkaido/A0101/A010204/1001950/",
+      "name": "手打ちうどん寺屋",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://sasaru.media/article/media/20220413_001/",
+      "sourceTitle": "SASARU 手打ちうどん寺屋紹介記事",
+      "evidenceTerms": [
+        "讃岐",
+        "手打ち",
+        "コシ",
+        "おでん"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/saitama/A1103/A110303/11033610/",
+      "name": "手打うどん 長谷沼",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://www.koedo.biz/hasenuma/",
+      "sourceTitle": "小江戸川越STYLE 手打うどん 長谷沼",
+      "evidenceTerms": [
+        "讃岐",
+        "手打ち",
+        "無化調",
+        "いりこ",
+        "短時間利用"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1314/A131401/13188754/",
+      "name": "自家製さぬきうどんと肉 甚三 大門店",
+      "category": "udon",
+      "sourceType": "official_tourism",
+      "sourceUrl": "https://www.pref.kagawa.lg.jp/documents/7607/shutokenkagawagourmetguide2-2026.pdf",
+      "sourceTitle": "香川県 首都圏かがわグルメガイド 2026",
+      "evidenceTerms": [
+        "讃岐",
+        "自家製麺",
+        "肉うどん",
+        "地域色",
+        "短時間利用"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1319/A131902/13156851/",
+      "name": "讃岐のおうどん 花は咲く 新中野本店",
+      "category": "udon",
+      "sourceType": "official_tourism",
+      "sourceUrl": "https://www.city.tokyo-nakano.lg.jp/kanko/category-search/hito.files/55.pdf",
+      "sourceTitle": "中野区公式観光 讃岐のおうどん 花は咲く",
+      "evidenceTerms": [
+        "讃岐",
+        "自家製麺",
+        "コシ",
+        "天ぷら",
+        "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kanagawa/A1404/A140407/14061080/",
+      "name": "釜揚げうどん専門店もと",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://udon-moto.com/",
+      "sourceTitle": "釜揚げうどん専門店もと 公式サイト",
+      "evidenceTerms": [
+        "釜揚げ",
+        "手打ち",
+        "唎酒師",
+        "鉄板焼き",
+        "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kagawa/A3703/A370301/37006622/",
+      "name": "カマ喜ri",
+      "category": "udon",
+      "sourceType": "official_tourism",
+      "sourceUrl": "https://kanonji-kanko.jp/udonya-kamakiri/",
+      "sourceTitle": "観音寺市観光協会 うどんや カマ喜ri",
+      "evidenceTerms": [
+        "讃岐",
+        "自家製麺",
+        "カフェ",
+        "目的地",
+        "地域色"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kagawa/A3703/A370303/37008190/",
+      "name": "三好うどん",
+      "category": "udon",
+      "sourceType": "official_tourism",
+      "sourceUrl": "https://www.my-kagawa.jp/udon/3039",
+      "sourceTitle": "うどん県旅ネット 三好うどん",
+      "evidenceTerms": [
+        "讃岐",
+        "一般店",
+        "コシ",
+        "地域色",
+        "目的地"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kagawa/A3701/A370101/37005339/",
+      "name": "宮武うどん",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://www.miyatakeudon.com/",
+      "sourceTitle": "宮武うどん 公式サイト",
+      "evidenceTerms": [
+        "本手打",
+        "讃岐",
+        "ひやあつ",
+        "伝統",
+        "目的地"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kagawa/A3703/A370302/37000007/",
+      "name": "山内うどん店",
+      "category": "udon",
+      "sourceType": "official_tourism",
+      "sourceUrl": "https://www.my-kagawa.jp/udon/549",
+      "sourceTitle": "うどん県旅ネット 純手打うどん やまうちうどん",
+      "evidenceTerms": [
+        "セルフ",
+        "讃岐",
+        "宮武ファミリー",
+        "薪",
+        "目的地"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kagawa/A3701/A370101/37004775/",
+      "name": "本格手打うどん 麺むすび",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://www.shikoku-np.co.jp/udon/shop/530",
+      "sourceTitle": "四国新聞 讃岐うどん遍路 本格手打うどん 麺むすび",
+      "evidenceTerms": [
+        "本格手打",
+        "讃岐",
+        "天ぷら",
+        "落ち着いた食事",
+        "地域色"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kagawa/A3701/A370101/37000033/",
+      "name": "松下製麺所",
+      "category": "udon",
+      "sourceType": "official_tourism",
+      "sourceUrl": "https://www.my-kagawa.jp/udon/518",
+      "sourceTitle": "うどん県旅ネット 松下製麺所",
+      "evidenceTerms": [
+        "製麺所",
+        "讃岐",
+        "セルフ",
+        "短時間利用",
+        "地域色"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/kyoto/A2601/A260302/26000919/",
+      "name": "京うどん 生蕎麦 岡北",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://www.kyoto-navi.com/detail/11033111/",
+      "sourceTitle": "京都ナビ 京うどん・生蕎麦 おかきた",
+      "evidenceTerms": [
+        "京うどん",
+        "自家製麺",
+        "京都素材",
+        "伝統",
+        "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/osaka/A2701/A270102/27094721/",
+      "name": "うどん居酒屋 江戸堀",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://gokurakuudon.com/company-info/udon-izakaya-edobori/?mc_id=649",
+      "sourceTitle": "極楽うどんグループ うどん居酒屋 江戸堀",
+      "evidenceTerms": [
+        "うどん居酒屋",
+        "剛麺",
+        "讃岐",
+        "カレーうどん",
+        "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/toyama/A1601/A160101/16000661/",
+      "name": "糸庄 本店",
+      "category": "udon",
+      "sourceType": "official_tourism",
+      "sourceUrl": "https://www.toyamashi-kankoukyoukai.jp/gourmet/itosho-honten/",
+      "sourceTitle": "富山市観光協会 糸庄 本店",
+      "evidenceTerms": [
+        "もつ煮込みうどん",
+        "煮込みうどん",
+        "地域色",
+        "伝統",
+        "目的地"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/fukuoka/A4001/A400101/40004342/",
+      "name": "葉隠うどん",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://tenjin.keizai.biz/headline/4549/",
+      "sourceTitle": "天神経済新聞 葉隠うどん掲載記事",
+      "evidenceTerms": [
+        "博多うどん",
+        "短時間利用",
+        "地域色",
+        "伝統"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/fukuoka/A4001/A400104/40034851/",
+      "name": "釜喜利うどん",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://www.gltjp.com/ja/directory/item/16785/",
+      "sourceTitle": "GOOD LUCK TRIP 釜喜利うどん",
+      "evidenceTerms": [
+        "うどん居酒屋",
+        "自家製麺",
+        "博多うどん",
+        "日本酒",
+        "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/aichi/A2305/A230502/23008668/",
+      "name": "岡崎 二橋",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://nihashi.shopinfo.jp/",
+      "sourceTitle": "二橋 公式サイト",
+      "evidenceTerms": [
+        "味噌煮込み",
+        "八丁味噌",
+        "完全予約制",
+        "地域色",
+        "目的地"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/aichi/A2306/A230601/23041118/",
+      "name": "讃岐うどん 本格手打 てつ家",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://www.tetsuya-udon.com/",
+      "sourceTitle": "讃岐うどん 本格手打 てつ家 公式サイト",
+      "evidenceTerms": [
+        "本格手打",
+        "讃岐",
+        "いりこ",
+        "コシ",
+        "地域色"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1304/A130402/13182646/",
+      "name": "切麦や 甚六",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://r.goope.jp/jinroku-gyoen/about",
+      "sourceTitle": "切麦や 甚六 公式サイト",
+      "evidenceTerms": [
+        "自家製麺",
+        "無化調",
+        "讃岐",
+        "コシ",
+        "短時間利用"
       ],
       "reviewStatus": "reviewed",
       "lastCheckedAt": "2026-05-13"
