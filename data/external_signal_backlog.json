@@ -24,14 +24,14 @@
   },
   "summary": {
     "totalRestaurants": 694,
-    "coveredRestaurants": 37,
-    "remainingRestaurants": 657,
+    "coveredRestaurants": 47,
+    "remainingRestaurants": 647,
     "remainingByCategory": {
-      "udon": 402,
+      "udon": 392,
       "soba": 255
     },
     "remainingByPriorityTier": {
-      "hall_of_fame_remaining": 61,
+      "hall_of_fame_remaining": 51,
       "high_selection_remaining": 34,
       "repeat_selection_remaining": 248,
       "latest_new_remaining": 185,
@@ -39,111 +39,6 @@
     }
   },
   "restaurants": [
-    {
-      "url": "https://tabelog.com/saitama/A1103/A110302/11004258/",
-      "name": "讃岐うどん 條辺",
-      "category": "udon",
-      "prefecture": "埼玉県",
-      "region": "EAST",
-      "area": "上福岡駅",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/gifu/A2103/A210301/21000027/",
-      "name": "信濃屋",
-      "category": "udon",
-      "prefecture": "岐阜県",
-      "region": "EAST",
-      "area": "多治見市",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/aichi/A2301/A230103/23000374/",
-      "name": "うどん 錦",
-      "category": "udon",
-      "prefecture": "愛知県",
-      "region": "EAST",
-      "area": "栄(名古屋)駅",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/aichi/A2301/A230110/23013430/",
-      "name": "めん専門店 味良",
-      "category": "udon",
-      "prefecture": "愛知県",
-      "region": "EAST",
-      "area": "名古屋市北区",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/aichi/A2301/A230101/23039141/",
-      "name": "手打うどん かとう",
-      "category": "udon",
-      "prefecture": "愛知県",
-      "region": "EAST",
-      "area": "太閤通駅",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
     {
       "url": "https://tabelog.com/aichi/A2305/A230504/23032890/",
       "name": "讃州手打ちうどん 我龍",
@@ -166,117 +61,12 @@
       "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
     },
     {
-      "url": "https://tabelog.com/tokyo/A1310/A131003/13000629/",
-      "name": "うどん 丸香",
-      "category": "udon",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "神保町駅",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1304/A130401/13125862/",
-      "name": "うどん 慎",
-      "category": "udon",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "南新宿駅",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1316/A131603/13111869/",
-      "name": "おにやんま 五反田本店",
-      "category": "udon",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "五反田駅",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1301/A130103/13002602/",
-      "name": "天茶屋 七蔵",
-      "category": "udon",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "新橋駅",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
       "url": "https://tabelog.com/tokyo/A1323/A132305/13003783/",
       "name": "手打うどん すみた",
       "category": "udon",
       "prefecture": "東京都",
       "region": "EAST",
       "area": "赤羽岩淵駅",
-      "selectionCount": 6,
-      "years": [
-        2017,
-        2018,
-        2019,
-        2020,
-        2022,
-        2024
-      ],
-      "closed": false,
-      "priorityTier": "hall_of_fame_remaining",
-      "status": "pending_source_review",
-      "nextAction": "Find one allowed source and register short evidenceTerms in data/external_source_registry.json."
-    },
-    {
-      "url": "https://tabelog.com/tokyo/A1311/A131106/13020252/",
-      "name": "根津 釜竹",
-      "category": "udon",
-      "prefecture": "東京都",
-      "region": "EAST",
-      "area": "根津駅",
       "selectionCount": 6,
       "years": [
         2017,

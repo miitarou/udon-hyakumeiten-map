@@ -13,7 +13,7 @@
       "udon": 6,
       "soba": 4
     },
-    "sampleSize": 37
+    "sampleSize": 47
   },
   "sources": [
     {
@@ -247,6 +247,40 @@
       "lastCheckedAt": "2026-05-13"
     },
     {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1310/A131003/13000629/",
+      "name": "うどん 丸香",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://allabout.co.jp/gm/gc/217404/",
+      "sourceTitle": "All About うどん 丸香紹介記事",
+      "evidenceTerms": [
+        "讃岐",
+        "コシ",
+        "関西だし",
+        "目的地",
+        "短時間利用"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1304/A130401/13125862/",
+      "name": "うどん 慎",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://udonshin.com/",
+      "sourceTitle": "うどん 慎 公式サイト",
+      "evidenceTerms": [
+        "手打ち",
+        "讃岐",
+        "コシ",
+        "ぶっかけ",
+        "天ぷら"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
       "restaurantUrl": "https://tabelog.com/osaka/A2701/A270108/27066859/",
       "name": "うどん 讃く",
       "category": "udon",
@@ -264,6 +298,21 @@
       "lastCheckedAt": "2026-05-12"
     },
     {
+      "restaurantUrl": "https://tabelog.com/aichi/A2301/A230103/23000374/",
+      "name": "うどん 錦",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://norman.jp/ramen/udonnisiki/",
+      "sourceTitle": "NAGOYA STYLE うどん錦紹介ページ",
+      "evidenceTerms": [
+        "カレーうどん",
+        "地域色",
+        "短時間利用"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
       "restaurantUrl": "https://tabelog.com/kagawa/A3701/A370101/37000002/",
       "name": "うどん本陣 山田家 讃岐本店",
       "category": "udon",
@@ -275,6 +324,38 @@
         "目的地",
         "伝統",
         "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1316/A131603/13111869/",
+      "name": "おにやんま 五反田本店",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://www.tokyo--local.com/gourmet/gotanda-lunch/8918/",
+      "sourceTitle": "東京ローカル 五反田おにやんま紹介ページ",
+      "evidenceTerms": [
+        "讃岐",
+        "立ち食い",
+        "短時間利用",
+        "天ぷら"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/aichi/A2301/A230110/23013430/",
+      "name": "めん専門店 味良",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://nagoya.xtone.jp/class/currynikomi.html",
+      "sourceTitle": "名古屋観光サイトSHACHIme 名古屋のカレー煮込みうどん",
+      "evidenceTerms": [
+        "カレー煮込み",
+        "煮込みうどん",
+        "地域色",
+        "短時間利用"
       ],
       "reviewStatus": "reviewed",
       "lastCheckedAt": "2026-05-13"
@@ -312,6 +393,38 @@
       "lastCheckedAt": "2026-05-13"
     },
     {
+      "restaurantUrl": "https://tabelog.com/gifu/A2103/A210301/21000027/",
+      "name": "信濃屋",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://allabout.co.jp/gm/gc/217056/",
+      "sourceTitle": "All About 信濃屋紹介記事",
+      "evidenceTerms": [
+        "ころうどん",
+        "地域色",
+        "目的地",
+        "手打ち"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1301/A130103/13002602/",
+      "name": "天茶屋 七蔵",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://lopi.tokyo/21-01nanakura/",
+      "sourceTitle": "LOPI TOKYO 天茶屋 七蔵紹介ページ",
+      "evidenceTerms": [
+        "稲庭",
+        "地域色",
+        "落ち着いた食事",
+        "短時間利用"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
       "restaurantUrl": "https://tabelog.com/kyoto/A2601/A260301/26002504/",
       "name": "山元麺蔵",
       "category": "udon",
@@ -339,6 +452,23 @@
         "讃岐",
         "釜玉",
         "目的地"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/aichi/A2301/A230101/23039141/",
+      "name": "手打うどん かとう",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://www.udon-kato.com/home",
+      "sourceTitle": "手打うどん かとう 公式サイト",
+      "evidenceTerms": [
+        "手打ち",
+        "讃岐",
+        "コシ",
+        "関西だし",
+        "天ぷら"
       ],
       "reviewStatus": "reviewed",
       "lastCheckedAt": "2026-05-13"
@@ -475,6 +605,22 @@
       "lastCheckedAt": "2026-05-13"
     },
     {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1311/A131106/13020252/",
+      "name": "根津 釜竹",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://kamachiku.com/",
+      "sourceTitle": "根津 釜竹 公式サイト",
+      "evidenceTerms": [
+        "釜揚げ",
+        "日本酒",
+        "落ち着いた食事",
+        "目的地"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
       "restaurantUrl": "https://tabelog.com/kagawa/A3701/A370101/37000051/",
       "name": "竹清 本店",
       "category": "udon",
@@ -553,6 +699,23 @@
         "讃岐",
         "コシ",
         "関西だし",
+        "天ぷら",
+        "短時間利用"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/saitama/A1103/A110302/11004258/",
+      "name": "讃岐うどん 條辺",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "http://www.johbe-udon.com/",
+      "sourceTitle": "讃岐うどん 條辺 公式サイト",
+      "evidenceTerms": [
+        "讃岐",
+        "手打ち",
+        "コシ",
         "天ぷら",
         "短時間利用"
       ],

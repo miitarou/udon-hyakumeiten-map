@@ -52,6 +52,12 @@ TERM_RULES: dict[str, tuple[tuple[str, float, float], ...]] = {
     "釜あげ": (("dish.kamaage", 0.86, 0.9),),
     "釜揚げ": (("dish.kamaage", 0.86, 0.9),),
     "ぶっかけ": (("dish.bukkake", 0.84, 0.88),),
+    "カレーうどん": (("dish.curry", 0.86, 0.88),),
+    "カレー煮込み": (("dish.curry", 0.86, 0.88), ("style.regional_specialty", 0.62, 0.7)),
+    "煮込みうどん": (("style.regional_specialty", 0.64, 0.72),),
+    "味噌煮込み": (("dish.miso_nikomi", 0.86, 0.88), ("style.regional_specialty", 0.68, 0.74)),
+    "ころうどん": (("style.regional_specialty", 0.78, 0.8), ("scene.destination", 0.62, 0.68)),
+    "稲庭": (("dish.inaniwa", 0.88, 0.9), ("texture.aroma_focused", 0.58, 0.64)),
     "天ぷら": (("dish.tempura", 0.74, 0.82),),
     "半熟卵天": (("dish.tempura", 0.8, 0.84),),
     "関西だし": (("style.kansai_dashi", 0.78, 0.82),),
@@ -73,6 +79,7 @@ TERM_RULES: dict[str, tuple[tuple[str, float, float], ...]] = {
     "信州": (("style.shinshu_soba", 0.84, 0.86), ("style.regional_specialty", 0.72, 0.76)),
     "戸隠": (("style.shinshu_soba", 0.86, 0.88), ("style.regional_specialty", 0.76, 0.8), ("scene.destination", 0.7, 0.74)),
     "朝うどん": (("scene.quick_lunch", 0.72, 0.78), ("scene.solo_lunch", 0.62, 0.68)),
+    "立ち食い": (("scene.quick_lunch", 0.74, 0.78), ("scene.solo_lunch", 0.7, 0.76)),
 }
 
 

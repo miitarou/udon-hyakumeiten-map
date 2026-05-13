@@ -382,6 +382,57 @@
       "notes": "Official site found and promoted with short evidence terms."
     },
     {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1310/A131003/13000629/",
+      "name": "うどん 丸香",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://allabout.co.jp/gm/gc/217404/",
+          "sourceTitle": "All About うどん 丸香紹介記事"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1304/A130401/13125862/",
+      "name": "うどん 慎",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://udonshin.com/",
+          "sourceTitle": "うどん 慎 公式サイト"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/aichi/A2301/A230103/23000374/",
+      "name": "うどん 錦",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://norman.jp/ramen/udonnisiki/",
+          "sourceTitle": "NAGOYA STYLE うどん錦紹介ページ"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms."
+    },
+    {
       "restaurantUrl": "https://tabelog.com/kagawa/A3701/A370101/37000002/",
       "name": "うどん本陣 山田家 讃岐本店",
       "checkedAt": "2026-05-13",
@@ -397,6 +448,40 @@
       ],
       "outcome": "promoted",
       "notes": "Official site found and promoted with short evidence terms."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1316/A131603/13111869/",
+      "name": "おにやんま 五反田本店",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.tokyo--local.com/gourmet/gotanda-lunch/8918/",
+          "sourceTitle": "東京ローカル 五反田おにやんま紹介ページ"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/aichi/A2301/A230110/23013430/",
+      "name": "めん専門店 味良",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://nagoya.xtone.jp/class/currynikomi.html",
+          "sourceTitle": "名古屋観光サイトSHACHIme 名古屋のカレー煮込みうどん"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms."
     },
     {
       "restaurantUrl": "https://tabelog.com/kagawa/A3702/A370202/37000135/",
@@ -416,6 +501,40 @@
       "notes": "Official site found and promoted with short evidence terms."
     },
     {
+      "restaurantUrl": "https://tabelog.com/gifu/A2103/A210301/21000027/",
+      "name": "信濃屋",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://allabout.co.jp/gm/gc/217056/",
+          "sourceTitle": "All About 信濃屋紹介記事"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1301/A130103/13002602/",
+      "name": "天茶屋 七蔵",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://lopi.tokyo/21-01nanakura/",
+          "sourceTitle": "LOPI TOKYO 天茶屋 七蔵紹介ページ"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms."
+    },
+    {
       "restaurantUrl": "https://tabelog.com/kagawa/A3702/A370202/37000080/",
       "name": "山越うどん",
       "checkedAt": "2026-05-13",
@@ -431,6 +550,23 @@
       ],
       "outcome": "promoted",
       "notes": "Official tourism source found and promoted with short evidence terms."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/aichi/A2301/A230101/23039141/",
+      "name": "手打うどん かとう",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://www.udon-kato.com/home",
+          "sourceTitle": "手打うどん かとう 公式サイト"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms."
     },
     {
       "restaurantUrl": "https://tabelog.com/kagawa/A3702/A370202/37000077/",
@@ -548,6 +684,23 @@
       "notes": "Official tourism source found and promoted with short evidence terms."
     },
     {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1311/A131106/13020252/",
+      "name": "根津 釜竹",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://kamachiku.com/",
+          "sourceTitle": "根津 釜竹 公式サイト"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms."
+    },
+    {
       "restaurantUrl": "https://tabelog.com/kagawa/A3702/A370202/37004606/",
       "name": "純手打うどん よしや",
       "checkedAt": "2026-05-13",
@@ -614,6 +767,36 @@
       ],
       "outcome": "promoted",
       "notes": "Allowed source found and promoted with short evidence terms."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/saitama/A1103/A110302/11004258/",
+      "name": "讃岐うどん 條辺",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "http://www.johbe-udon.com/",
+          "sourceTitle": "讃岐うどん 條辺 公式サイト"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/aichi/A2305/A230504/23032890/",
+      "name": "讃州手打ちうどん 我龍",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site",
+        "official_tourism",
+        "public_directory"
+      ],
+      "candidateSources": [],
+      "outcome": "deferred",
+      "notes": "Allowed source review attempted, but no source was promoted in this pass."
     },
     {
       "restaurantUrl": "https://tabelog.com/kagawa/A3703/A370302/37000011/",
