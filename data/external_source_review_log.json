@@ -967,6 +967,346 @@
       ],
       "outcome": "promoted",
       "notes": "Allowed source found and promoted with short evidence terms."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/hyogo/A2804/A280403/28003753/",
+      "name": "がいな製麺所",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://www.gaina-japan.com/access/",
+          "sourceTitle": "がいな製麺所 公式サイト"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/hyogo/A2803/A280304/28025306/",
+      "name": "本格さぬきうどん 穂乃香",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_tourism"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_tourism",
+          "sourceUrl": "https://kansai-tourism-amagasaki.jp/pickup/19304/",
+          "sourceTitle": "あまがさき観光局 本格さぬきうどん 穂乃香"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/hyogo/A2803/A280301/28002495/",
+      "name": "本格手打 いわしや 西宮店",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://salt-group.jp/shop/iwashiya/",
+          "sourceTitle": "SALT GROUP 本格手打 いわしや"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/osaka/A2701/A270205/27060219/",
+      "name": "うどん うばら",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://anna-media.jp/shop/103919",
+          "sourceTitle": "anna うどん うばら紹介ページ"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/osaka/A2701/A270101/27015342/",
+      "name": "うどん屋 きすけ",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.osaka2.jp/archives/10001932.html",
+          "sourceTitle": "大阪つーしん うどん屋 きすけ紹介記事"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/osaka/A2701/A270101/27003766/",
+      "name": "うどん棒 大阪本店",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://www.udonbo.co.jp/index.html",
+          "sourceTitle": "うどん棒 公式サイト"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/osaka/A2701/A270101/27006684/",
+      "name": "たけうちうどん店",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.mbs1179.com/toromi/t_scoop/2022/10/23/",
+          "sourceTitle": "MBSラジオ たけうちうどん店紹介記事"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/osaka/A2705/A270501/27013157/",
+      "name": "どとう ぜにや",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.naralunch.com/udon/zeniya.html",
+          "sourceTitle": "奈良ランチ どとう ぜにや紹介記事"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/osaka/A2707/A270704/27011240/",
+      "name": "手造りうどん 楽々",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.hira2.jp/gourmet/rakuraku-20250324.html",
+          "sourceTitle": "枚方つーしん 手造りうどん 楽々紹介記事"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/osaka/A2701/A270306/27075334/",
+      "name": "極楽うどん Ah-麺",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://gokurakuudon.com/company-info/gokuraku-udon-ah-men/",
+          "sourceTitle": "極楽うどんグループ Ah-麺 店舗情報"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/osaka/A2701/A270204/27042400/",
+      "name": "極楽うどん TKU",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://gokurakuudon.com/company-info/gokuraku-udon-tku/",
+          "sourceTitle": "極楽うどんグループ TKU 店舗情報"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/osaka/A2701/A270101/27067874/",
+      "name": "讃岐うどん 今雪",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://www.imayuki.jp/",
+          "sourceTitle": "讃岐うどん 今雪 公式サイト"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/osaka/A2701/A270302/27014852/",
+      "name": "讃岐うどん 白庵",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.enjoytokyo.jp/spot/g_kd7n000/",
+          "sourceTitle": "レッツエンジョイ東京 讃岐うどん 白庵"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/osaka/A2707/A270701/27004023/",
+      "name": "踊るうどん 滝井本店",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.cocolocala.jp/spots/54783",
+          "sourceTitle": "こころから 踊るうどん 滝井本店"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/osaka/A2701/A270406/27059480/",
+      "name": "釜揚うどん一紀",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.hotpepper.jp/strJ001006084/appearance/",
+          "sourceTitle": "ホットペッパーグルメ 釜揚うどん一紀"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1309/A130905/13020236/",
+      "name": "巽蕎麦 志ま平",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://www.lavietaste.com/en/restaurant/7220",
+          "sourceTitle": "La Vie Taste 巽蕎麦 志ま平"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/hokkaido/A0101/A010204/1000649/",
+      "name": "手打蕎麦のたぐと",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "public_directory"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "public_directory",
+          "sourceUrl": "https://zendine.co/taguto-sapporo/jp/",
+          "sourceTitle": "ZenDine 手打蕎麦のたぐと"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/chiba/A1207/A120703/12020932/",
+      "name": "手造りそば 打墨庵 加瀬",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://kase-soba.com/",
+          "sourceTitle": "手造りそば 打墨庵 加瀬 公式サイト"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/chiba/A1203/A120305/12003116/",
+      "name": "流山 すず季",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://ggu6800.gorp.jp/",
+          "sourceTitle": "流山 すず季 ぐるなび公式ページ"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/chiba/A1203/A120301/12000067/",
+      "name": "竹やぶ 柏本店",
+      "checkedAt": "2026-05-13",
+      "searchedSourceTypes": [
+        "official_site"
+      ],
+      "candidateSources": [
+        {
+          "sourceType": "official_site",
+          "sourceUrl": "https://takeyabu.co.jp/kashiwa/",
+          "sourceTitle": "竹やぶ 柏本店 公式サイト"
+        }
+      ],
+      "outcome": "promoted",
+      "notes": "Allowed source found and promoted with short evidence terms in 20-store batch."
     }
   ]
 }
