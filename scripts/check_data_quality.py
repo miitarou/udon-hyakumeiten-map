@@ -25,6 +25,7 @@ DATASETS = (
 DATA_VERSION = "data/data-version.json"
 EXTERNAL_SIGNALS = "data/external_signals.json"
 EXTERNAL_SIGNAL_BACKLOG = "data/external_signal_backlog.json"
+EXTERNAL_SOURCE_REVIEW_LOG = "data/external_source_review_log.json"
 RECOMMENDATION_TAGS = "data/recommendation_tags.json"
 RECOMMENDATION_GOLDEN_SET = "data/recommendation_golden_set.json"
 REQUIRED_FIELDS = ("name", "category", "prefecture", "region", "lat", "lng", "url", "years")
@@ -43,6 +44,7 @@ MIN_LNG, MAX_LNG = 122.0, 154.0
 HTML_TAG_RE = re.compile(r"<[^>]+>")
 VALID_TAG_SOURCES = {"data", "external_signal", "name_keyword", "selection_prior", "regional_prior", "model_prior"}
 VALID_RECOMMENDATION_MODES = {"similar", "nearby", "expand"}
+VALID_EXTERNAL_REVIEW_OUTCOMES = {"promoted", "deferred", "no_allowed_source_found", "needs_follow_up"}
 
 
 def sha256(path: Path) -> str:
@@ -605,6 +607,99 @@ def validate_external_signal_backlog(known_restaurants: dict[str, dict]) -> tupl
     return len(errors), len(warnings)
 
 
+def validate_external_source_review_log(known_restaurants: dict[str, dict]) -> tuple[int, int]:
+    path = ROOT / EXTERNAL_SOURCE_REVIEW_LOG
+    print(f"Checking {EXTERNAL_SOURCE_REVIEW_LOG}...")
+
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        print(f"  [WARN] {EXTERNAL_SOURCE_REVIEW_LOG} does not exist")
+        return 0, 1
+    except Exception as exc:  # noqa: BLE001
+        print(f"  [ERROR] Failed to load {EXTERNAL_SOURCE_REVIEW_LOG}: {exc}")
+        return 1, 0
+
+    errors: list[str] = []
+    warnings: list[str] = []
+
+    if not isinstance(payload, dict):
+        errors.append("root must be an object")
+        payload = {}
+
+    if payload.get("version") != 1:
+        errors.append("version must be 1")
+
+    reviews = payload.get("reviews")
+    if not isinstance(reviews, list):
+        errors.append("reviews must be a list")
+        reviews = []
+
+    seen_keys: set[tuple[str, str]] = set()
+    for index, item in enumerate(reviews):
+        prefix = f"review {index}"
+        if not isinstance(item, dict):
+            errors.append(f"{prefix}: must be an object")
+            continue
+
+        url = item.get("restaurantUrl")
+        if not isinstance(url, str) or not url:
+            errors.append(f"{prefix}: restaurantUrl must be a non-empty string")
+            continue
+        if url not in known_restaurants:
+            errors.append(f"{prefix}: restaurantUrl is not present in public restaurant data: {url}")
+
+        checked_at = item.get("checkedAt")
+        if not isinstance(checked_at, str) or not checked_at:
+            errors.append(f"{prefix}: checkedAt must be a non-empty string")
+
+        key = (url, str(checked_at))
+        if key in seen_keys:
+            warnings.append(f"{prefix}: duplicate restaurantUrl+checkedAt entry")
+        seen_keys.add(key)
+
+        outcome = item.get("outcome")
+        if outcome not in VALID_EXTERNAL_REVIEW_OUTCOMES:
+            errors.append(f"{prefix}: outcome must be one of {sorted(VALID_EXTERNAL_REVIEW_OUTCOMES)}")
+
+        searched_types = item.get("searchedSourceTypes")
+        if not isinstance(searched_types, list) or not searched_types:
+            errors.append(f"{prefix}: searchedSourceTypes must be a non-empty list")
+        elif not all(isinstance(value, str) and value for value in searched_types):
+            errors.append(f"{prefix}: searchedSourceTypes must contain non-empty strings")
+
+        candidates = item.get("candidateSources", [])
+        if not isinstance(candidates, list):
+            errors.append(f"{prefix}: candidateSources must be a list")
+            candidates = []
+        for candidate_index, candidate in enumerate(candidates):
+            candidate_prefix = f"{prefix}.candidateSources[{candidate_index}]"
+            if not isinstance(candidate, dict):
+                errors.append(f"{candidate_prefix}: must be an object")
+                continue
+            source_url = candidate.get("sourceUrl")
+            if not isinstance(source_url, str) or not source_url.startswith(("http://", "https://")):
+                errors.append(f"{candidate_prefix}: sourceUrl must start with http:// or https://")
+            if not isinstance(candidate.get("sourceType"), str) or not candidate["sourceType"]:
+                errors.append(f"{candidate_prefix}: sourceType must be a non-empty string")
+
+        notes = item.get("notes")
+        if notes is not None:
+            if not isinstance(notes, str):
+                errors.append(f"{prefix}: notes must be a string")
+            elif len(notes) > 240:
+                errors.append(f"{prefix}: notes should be short operational notes, not copied page text")
+            elif HTML_TAG_RE.search(notes):
+                errors.append(f"{prefix}: notes appears to contain HTML")
+
+    for error in errors:
+        print(f"  [ERROR] {error}")
+    for warning in warnings:
+        print(f"  [WARN] {warning}")
+    print(f"  Summary: records={len(reviews)}, errors={len(errors)}, warnings={len(warnings)}")
+    return len(errors), len(warnings)
+
+
 def validate_recommendation_golden_set(known_restaurants: dict[str, dict]) -> tuple[int, int]:
     path = ROOT / RECOMMENDATION_GOLDEN_SET
     print(f"Checking {RECOMMENDATION_GOLDEN_SET}...")
@@ -732,6 +827,10 @@ def main() -> int:
     backlog_errors, backlog_warnings = validate_external_signal_backlog(known_restaurants)
     total_errors += backlog_errors
     total_warnings += backlog_warnings
+
+    review_log_errors, review_log_warnings = validate_external_source_review_log(known_restaurants)
+    total_errors += review_log_errors
+    total_warnings += review_log_warnings
 
     golden_errors, golden_warnings = validate_recommendation_golden_set(known_restaurants)
     total_errors += golden_errors

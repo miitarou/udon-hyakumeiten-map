@@ -23,6 +23,10 @@
    - 人間が外部ソースと短い根拠語を確認したレビュー台帳です。
    - ここへ昇格したものだけが `external_signals` として推薦タグに取り込まれます。
 
+補助的に `data/external_source_review_log.json` も使います。
+これは「探したが昇格しなかった」「次回再確認が必要」といった作業履歴を残すためのログで、アプリや推薦計算では使いません。
+`external_source_registry.json` には、レビュー済みで推薦タグ化してよいと判断したソースだけを入れます。
+
 初期PoCでは、殿堂入り相当店舗から固定seedで20店舗を抽出し、`external_source_registry.json` に登録しました。
 
 - seed: `20260512`
@@ -56,6 +60,9 @@ python3 scripts/generate_external_signals.py --check
 3. ページ本文は保存せず、推薦に効く短い根拠語だけを `evidenceTerms` に登録する
 4. `sourceType`, `sourceUrl`, `sourceTitle`, `lastCheckedAt`, `reviewStatus` を記録する
 5. 生成・検証コマンドを実行し、推薦レポートの悪化がないか確認する
+
+昇格しない場合でも、`external_source_review_log.json` に `outcome: "deferred"` または `outcome: "no_allowed_source_found"` として記録します。
+これにより、同じ店舗を何度もゼロから探し直さず、次回は保留理由を踏まえて再確認できます。
 
 ページが閉鎖・移転した場合、既存の推薦は即座には壊れません。
 ただし `sourceUrl` の死活や `lastCheckedAt` の古さを定期的に見直し、古いものは `reviewStatus` を `needs_review` などに変更します。
