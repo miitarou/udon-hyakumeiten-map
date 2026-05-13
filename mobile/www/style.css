@@ -837,6 +837,21 @@ body.panel-resizing * {
     line-height: 1.5;
 }
 
+.map-layer-section {
+    padding-top: 0;
+}
+
+.map-layer-select {
+    max-width: 100%;
+}
+
+.map-layer-summary {
+    margin-top: 7px;
+    color: var(--text-muted);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
 /* Filter Buttons */
 .filter-group {
     display: flex;
@@ -1140,13 +1155,9 @@ body.panel-resizing * {
     flex-shrink: 0;
 }
 
-/* うどん */
-.card-region-dot.east   { background: var(--east-color); }
-.card-region-dot.west   { background: var(--west-color); }
-.card-region-dot.kagawa { background: var(--kagawa-color); }
-/* そば */
-.card-region-dot.soba.east { background: var(--soba-east); }
-.card-region-dot.soba.west { background: var(--soba-primary); }
+/* 店舗カードの色はジャンル識別に限定する。地域はEAST/WEST/KAGAWAバッジで表示する。 */
+.card-region-dot.udon { background: var(--primary); }
+.card-region-dot.soba { background: var(--soba-primary); }
 
 .card-info {
     flex: 1;
@@ -1866,27 +1877,13 @@ body.panel-resizing * {
     position: relative;
 }
 
-/* うどんマーカー */
-.marker-pin.east {
-    background: linear-gradient(135deg, var(--east-color), var(--east-dark));
+/* マーカー色はジャンル識別に限定する。地域はEAST/WEST/KAGAWAバッジで表示する。 */
+.marker-pin.udon {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
 }
 
-.marker-pin.west {
-    background: linear-gradient(135deg, var(--west-color), var(--west-dark));
-}
-
-/* KAGAWAマーカー */
-.marker-pin.kagawa {
-    background: linear-gradient(135deg, var(--kagawa-color), var(--kagawa-dark));
-}
-
-/* そばマーカー */
-.marker-pin.soba.east {
-    background: linear-gradient(135deg, var(--soba-east-light), var(--soba-east-dark));
-}
-
-.marker-pin.soba.west {
-    background: linear-gradient(135deg, var(--soba-light), var(--soba-dark));
+.marker-pin.soba {
+    background: linear-gradient(135deg, var(--soba-light), var(--soba-primary));
 }
 
 /* 選出回数による強調 (3-4回) */
@@ -1895,22 +1892,12 @@ body.panel-resizing * {
     height: 32px;
     box-shadow: 0 2px 12px rgba(212, 168, 83, 0.5);
 }
-.marker-pin.select-mid.east {
-    background: linear-gradient(135deg, var(--east-light), var(--east-color));
-    box-shadow: 0 2px 12px rgba(91, 143, 185, 0.5);
+
+.marker-pin.select-mid.udon {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
 }
-.marker-pin.select-mid.west {
-    background: linear-gradient(135deg, var(--west-light), var(--west-color));
-}
-.marker-pin.select-mid.kagawa {
-    background: linear-gradient(135deg, var(--kagawa-light), var(--kagawa-color));
-    box-shadow: 0 2px 12px var(--kagawa-glow);
-}
-.marker-pin.select-mid.soba.east {
-    background: linear-gradient(135deg, var(--soba-east-light), var(--soba-east));
-    box-shadow: 0 2px 12px var(--soba-east-glow);
-}
-.marker-pin.select-mid.soba.west {
+
+.marker-pin.select-mid.soba {
     background: linear-gradient(135deg, var(--soba-light), var(--soba-primary));
     box-shadow: 0 2px 12px var(--soba-glow);
 }
@@ -1926,22 +1913,11 @@ body.panel-resizing * {
         0 5px 16px rgba(0, 0, 0, 0.45);
     border: 2px solid rgba(232, 197, 71, 0.92);
 }
-.marker-pin.select-high.east {
-    background: linear-gradient(135deg, #8BB8D9, var(--east-color));
-    border-color: rgba(122, 172, 206, 0.8);
-}
-.marker-pin.select-high.west {
+.marker-pin.select-high.udon {
     background: linear-gradient(135deg, #E8C547, var(--primary));
 }
-.marker-pin.select-high.kagawa {
-    background: linear-gradient(135deg, var(--kagawa-light), var(--kagawa-color));
-    border-color: rgba(216, 101, 83, 0.8);
-}
-.marker-pin.select-high.soba.east {
-    background: linear-gradient(135deg, #81ecec, var(--soba-east));
-    border-color: rgba(106, 175, 175, 0.8);
-}
-.marker-pin.select-high.soba.west {
+
+.marker-pin.select-high.soba {
     background: linear-gradient(135deg, var(--soba-light), var(--soba-primary));
     border-color: rgba(157, 191, 138, 0.8);
 }

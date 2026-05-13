@@ -837,6 +837,21 @@ body.panel-resizing * {
     line-height: 1.5;
 }
 
+.map-layer-section {
+    padding-top: 0;
+}
+
+.map-layer-select {
+    max-width: 100%;
+}
+
+.map-layer-summary {
+    margin-top: 7px;
+    color: var(--text-muted);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
 /* Filter Buttons */
 .filter-group {
     display: flex;

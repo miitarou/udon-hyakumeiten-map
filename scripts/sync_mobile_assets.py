@@ -34,8 +34,11 @@ REPLACEMENTS = {
     "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css": "vendor/leaflet/leaflet.css",
     "https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css": "vendor/leaflet.markercluster/MarkerCluster.css",
     "https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css": "vendor/leaflet.markercluster/MarkerCluster.Default.css",
+    "https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css": "vendor/maplibre-gl/maplibre-gl.css",
     "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js": "vendor/leaflet/leaflet.js",
     "https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js": "vendor/leaflet.markercluster/leaflet.markercluster.js",
+    "https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js": "vendor/maplibre-gl/maplibre-gl.js",
+    "https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.1.3/leaflet-maplibre-gl.js": "vendor/maplibre-gl-leaflet/leaflet-maplibre-gl.js",
 }
 
 

@@ -23,6 +23,10 @@
     let recommendationTagLoadPromise = null;
     let map = null;
     let markerClusterGroup = null;
+    let activeBaseLayer = null;
+    let activeBaseLayerId = 'gsi-pale';
+    let baseLayerSwitchToken = 0;
+    let mapLibreAssetsPromise = null;
     let markers = new Map();       // url -> marker
     let activeCategory = 'all';    // 'all' | 'udon' | 'soba'
     let activeRegion = 'all';
@@ -50,6 +54,7 @@
     const SAVE_STORAGE_KEY = 'hyakumeiten-map-store-states-v1';
     const NATIVE_DATA_CACHE_KEY = 'hyakumeiten-map-native-data-v1';
     const MOBILE_PANEL_HEIGHT_KEY = 'hyakumeiten-map-mobile-panel-height-v1';
+    const MAP_LAYER_STORAGE_KEY = 'hyakumeiten-map-base-layer-v1';
     const SAVE_BACKUP_FORMAT = 'udon-hyakumeiten-map.saved-states';
     const SAVE_BACKUP_VERSION = 1;
     const REMOTE_DATA_BASE_URL = 'https://miitarou.github.io/udon-hyakumeiten-map/data/';
@@ -106,9 +111,52 @@
         ['藪', '薮']
     ];
 
-    // === Map Tiles (国土地理院 淡色地図) ===
-    const TILE_URL = 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png';
-    const TILE_ATTR = '<a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>';
+    // === Base Map Layers ===
+    const GSI_ATTRIBUTION = '<a href="https://maps.gsi.go.jp/development/ichiran.html">地理院タイル</a>';
+    const OPENFREEMAP_ATTRIBUTION = '<a href="https://openfreemap.org/">OpenFreeMap</a> | © <a href="https://openmaptiles.org/">OpenMapTiles</a> Data from <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+    const BASE_MAP_LAYERS = {
+        'gsi-pale': {
+            label: '地理院 淡色',
+            summary: '淡い背景で店舗ピンを見やすく表示します。',
+            kind: 'tile',
+            url: 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png',
+            attribution: GSI_ATTRIBUTION,
+            footerAttribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noopener noreferrer">地理院タイル</a>'
+        },
+        'gsi-standard': {
+            label: '地理院 標準',
+            summary: '道路・駅・地名を確認しやすい標準地図です。',
+            kind: 'tile',
+            url: 'https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png',
+            attribution: GSI_ATTRIBUTION,
+            footerAttribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noopener noreferrer">地理院タイル</a>'
+        },
+        'openfreemap-positron': {
+            label: 'OpenFreeMap Positron（試験）',
+            summary: 'モダンで淡い試験レイヤです。表示できない場合は地理院に戻します。',
+            kind: 'maplibre',
+            style: 'https://tiles.openfreemap.org/styles/positron',
+            attribution: OPENFREEMAP_ATTRIBUTION,
+            footerAttribution: '<a href="https://openfreemap.org/" target="_blank" rel="noopener noreferrer">OpenFreeMap</a> ｜ © <a href="https://openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a> / <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>'
+        }
+    };
+    const MAPLIBRE_ASSETS = {
+        css: {
+            web: 'https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css',
+            local: 'vendor/maplibre-gl/maplibre-gl.css',
+            integrity: 'sha384-uTttxo/aOKbdE5RlD/SPzSDoDmNvGlUYPjONi2MN/b7c9HPSvW07OIuyP7uL6jxK'
+        },
+        js: {
+            web: 'https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js',
+            local: 'vendor/maplibre-gl/maplibre-gl.js',
+            integrity: 'sha384-5+cfbwT0iiub6VsQAdn6yz16nr6sDiQoHx6tm4O8OVYXHYOxcffFmCJBL0dgdvGp'
+        },
+        bridge: {
+            web: 'https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.1.3/leaflet-maplibre-gl.js',
+            local: 'vendor/maplibre-gl-leaflet/leaflet-maplibre-gl.js',
+            integrity: 'sha384-LIxE/QjpJKC2A91yD40ZisdYtFbgAjl58jqpo9/MUZNgwhqsTfzwrTlqv6nDdzzB'
+        }
+    };
 
     const JAPAN_CENTER = [36.0, 137.0];
     const JAPAN_ZOOM = 6;
@@ -187,21 +235,8 @@
             maxWidth: 120
         }).addTo(map);
 
-        const baseLayer = L.tileLayer(TILE_URL, {
-            attribution: TILE_ATTR,
-            maxZoom: 18
-        });
-        baseLayer.on('tileerror', () => {
-            tileErrorCount += 1;
-            if (tileErrorCount >= 3) {
-                showOfflineBanner('地図タイルを読み込めません。通信状態を確認してください。店舗リストと保存情報は利用できます。');
-            }
-        });
-        baseLayer.on('tileload', () => {
-            if (tileErrorCount > 0) tileErrorCount -= 1;
-            if (navigator.onLine && tileErrorCount === 0) hideOfflineBanner();
-        });
-        baseLayer.addTo(map);
+        activeBaseLayerId = getStoredBaseLayerId();
+        void switchBaseLayer(activeBaseLayerId, { persist: false, silent: true });
 
         markerClusterGroup = L.markerClusterGroup({
             maxClusterRadius: 50,
@@ -215,6 +250,180 @@
         map.addLayer(markerClusterGroup);
         map.on('click', handleMapClick);
         map.on('moveend zoomend', updateMapViewportState);
+    }
+
+    function getStoredBaseLayerId() {
+        try {
+            const stored = localStorage.getItem(MAP_LAYER_STORAGE_KEY);
+            return BASE_MAP_LAYERS[stored] ? stored : 'gsi-pale';
+        } catch {
+            return 'gsi-pale';
+        }
+    }
+
+    function getRuntimeAssetUrl(asset) {
+        return isNativeApp() ? asset.local : asset.web;
+    }
+
+    function loadStylesheetOnce(id, asset) {
+        const existing = document.getElementById(id);
+        if (existing) return Promise.resolve();
+        return new Promise((resolve, reject) => {
+            const link = document.createElement('link');
+            link.id = id;
+            link.rel = 'stylesheet';
+            link.href = getRuntimeAssetUrl(asset);
+            if (!isNativeApp()) {
+                link.integrity = asset.integrity;
+                link.crossOrigin = 'anonymous';
+            }
+            link.onload = () => resolve();
+            link.onerror = () => reject(new Error(`Failed to load ${link.href}`));
+            document.head.appendChild(link);
+        });
+    }
+
+    function loadScriptOnce(id, asset) {
+        const existing = document.getElementById(id);
+        if (existing) return Promise.resolve();
+        return new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.id = id;
+            script.src = getRuntimeAssetUrl(asset);
+            script.async = false;
+            if (!isNativeApp()) {
+                script.integrity = asset.integrity;
+                script.crossOrigin = 'anonymous';
+            }
+            script.onload = () => resolve();
+            script.onerror = () => reject(new Error(`Failed to load ${script.src}`));
+            document.head.appendChild(script);
+        });
+    }
+
+    function loadMapLibreAssets() {
+        if (window.maplibregl && L.maplibreGL) return Promise.resolve();
+        if (!mapLibreAssetsPromise) {
+            mapLibreAssetsPromise = loadStylesheetOnce('maplibre-gl-css', MAPLIBRE_ASSETS.css)
+                .then(() => loadScriptOnce('maplibre-gl-js', MAPLIBRE_ASSETS.js))
+                .then(() => loadScriptOnce('leaflet-maplibre-gl-js', MAPLIBRE_ASSETS.bridge))
+                .then(() => {
+                    if (!window.maplibregl || !L.maplibreGL) {
+                        throw new Error('MapLibre libraries did not initialize');
+                    }
+                })
+                .catch(error => {
+                    mapLibreAssetsPromise = null;
+                    throw error;
+                });
+        }
+        return mapLibreAssetsPromise;
+    }
+
+    async function createBaseLayer(layerId) {
+        const config = BASE_MAP_LAYERS[layerId] || BASE_MAP_LAYERS['gsi-pale'];
+        if (config.kind === 'maplibre') {
+            await loadMapLibreAssets();
+            return L.maplibreGL({
+                style: config.style,
+                attributionControl: { customAttribution: config.attribution },
+                interactive: false,
+                pane: 'tilePane',
+                maxZoom: 18
+            });
+        }
+        return L.tileLayer(config.url, {
+            attribution: config.attribution,
+            maxZoom: 18
+        });
+    }
+
+    function attachBaseLayerEvents(layer, layerId) {
+        const config = BASE_MAP_LAYERS[layerId] || BASE_MAP_LAYERS['gsi-pale'];
+        tileErrorCount = 0;
+        if (config.kind === 'tile') {
+            layer.on('tileerror', () => {
+                tileErrorCount += 1;
+                if (tileErrorCount >= 3) {
+                    showOfflineBanner('地図タイルを読み込めません。通信状態を確認してください。店舗リストと保存情報は利用できます。');
+                }
+            });
+            layer.on('tileload', () => {
+                if (tileErrorCount > 0) tileErrorCount -= 1;
+                if (navigator.onLine && tileErrorCount === 0) hideOfflineBanner();
+            });
+            return;
+        }
+
+        let loaded = false;
+        window.setTimeout(() => {
+            if (loaded || activeBaseLayer !== layer) return;
+            showOfflineBanner('OpenFreeMapを読み込めません。地理院 淡色に戻しました。');
+            void switchBaseLayer('gsi-pale', { persist: true, silent: true });
+        }, 9000);
+
+        const wireGlEvents = () => {
+            const glMap = layer.getMaplibreMap?.();
+            if (!glMap) return;
+            glMap.once('load', () => {
+                loaded = true;
+                tileErrorCount = 0;
+                if (navigator.onLine) hideOfflineBanner();
+            });
+            glMap.on('error', event => {
+                console.warn('OpenFreeMap layer error:', event?.error || event);
+                if (activeBaseLayer !== layer) return;
+                showOfflineBanner('OpenFreeMapの一部を読み込めません。必要に応じて地理院地図へ切り替えてください。');
+            });
+        };
+        window.setTimeout(wireGlEvents, 0);
+    }
+
+    async function switchBaseLayer(layerId, options = {}) {
+        const nextLayerId = BASE_MAP_LAYERS[layerId] ? layerId : 'gsi-pale';
+        const switchToken = ++baseLayerSwitchToken;
+        let nextLayer;
+        try {
+            nextLayer = await createBaseLayer(nextLayerId);
+        } catch (error) {
+            console.warn('Base layer switch failed:', error);
+            if (nextLayerId !== 'gsi-pale') {
+                showOfflineBanner('試験レイヤを利用できません。地理院 淡色に戻しました。');
+                void switchBaseLayer('gsi-pale', { persist: true, silent: true });
+            }
+            return;
+        }
+        if (switchToken !== baseLayerSwitchToken) return;
+
+        if (activeBaseLayer) {
+            map.removeLayer(activeBaseLayer);
+        }
+        activeBaseLayer = nextLayer;
+        activeBaseLayerId = nextLayerId;
+        attachBaseLayerEvents(nextLayer, nextLayerId);
+        nextLayer.addTo(map);
+        if (markerClusterGroup) markerClusterGroup.bringToFront?.();
+
+        if (options.persist !== false) {
+            try {
+                localStorage.setItem(MAP_LAYER_STORAGE_KEY, activeBaseLayerId);
+            } catch { /* ignore storage failures */ }
+        }
+        updateMapLayerControls();
+        if (!options.silent) {
+            const label = BASE_MAP_LAYERS[activeBaseLayerId].label;
+            showAppBanner(`地図表示を「${label}」に切り替えました。`, null, null, 'info');
+        }
+    }
+
+    function updateMapLayerControls() {
+        const config = BASE_MAP_LAYERS[activeBaseLayerId] || BASE_MAP_LAYERS['gsi-pale'];
+        const select = document.getElementById('map-layer-select');
+        if (select && select.value !== activeBaseLayerId) select.value = activeBaseLayerId;
+        const summary = document.getElementById('map-layer-summary');
+        if (summary) summary.textContent = config.summary;
+        const footerSource = document.getElementById('footer-map-source');
+        if (footerSource) footerSource.innerHTML = config.footerAttribution;
     }
 
     // === Data Loading ===
@@ -2317,6 +2526,14 @@
 
         const locateBtn = document.getElementById('locate-btn');
         if (locateBtn) locateBtn.addEventListener('click', () => locateUser());
+
+        const mapLayerSelect = document.getElementById('map-layer-select');
+        if (mapLayerSelect) {
+            updateMapLayerControls();
+            mapLayerSelect.addEventListener('change', function () {
+                void switchBaseLayer(this.value, { persist: true, silent: false });
+            });
+        }
 
         // フィルタ折りたたみ
         document.querySelectorAll('.section-toggle').forEach(toggle => {
