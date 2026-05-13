@@ -19,6 +19,7 @@ jobs:
           
       - name: Run data quality checks
         run: |
+          python3 scripts/generate_external_signal_backlog.py --check
           python3 scripts/generate_external_signals.py --check
           python3 scripts/check_data_quality.py
 

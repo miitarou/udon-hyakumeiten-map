@@ -11,21 +11,31 @@
 - 生成された `data/external_signals.json` を `data/recommendation_tags.json` に取り込みます。
 - 推薦UIでは、店舗評価ではなく探索補助として扱います。
 
-## 初期PoC
+## 台帳拡張の考え方
 
-初期PoCでは、殿堂入り相当店舗から固定seedで20店舗を抽出しました。
+外部情報は2段階で管理します。
+
+1. `data/external_signal_backlog.json`
+   - 未登録店舗の作業キューです。
+   - 選出回数、カテゴリ、地域から優先順位を付けます。
+   - アプリや推薦計算では使いません。
+2. `data/external_source_registry.json`
+   - 人間が外部ソースと短い根拠語を確認したレビュー台帳です。
+   - ここへ昇格したものだけが `external_signals` として推薦タグに取り込まれます。
+
+初期PoCでは、殿堂入り相当店舗から固定seedで20店舗を抽出し、`external_source_registry.json` に登録しました。
 
 - seed: `20260512`
 - うどん殿堂入りしきい値: 6回以上
 - そば殿堂入りしきい値: 4回以上
 - 対象件数: 20件
 
-外部情報は `data/external_source_registry.json` に登録します。
-このファイルは収集済みの事実データではなく、短い根拠語のレビュー台帳です。
+残り店舗は `external_signal_backlog.json` を見ながら、選出回数上位、殿堂入り相当、推薦ゴールデンセット対象、情報量の多い店舗から順次レビューします。
 
 ## 生成フロー
 
 ```bash
+python3 scripts/generate_external_signal_backlog.py
 python3 scripts/generate_external_signals.py
 python3 scripts/generate_recommendation_tags.py
 python3 scripts/check_data_quality.py
@@ -35,8 +45,20 @@ python3 scripts/evaluate_recommendations.py > build/recommendation-report.md
 `--check` を付けると、生成済みファイルが古くないかだけを確認できます。
 
 ```bash
+python3 scripts/generate_external_signal_backlog.py --check
 python3 scripts/generate_external_signals.py --check
 ```
+
+## 1店舗あたりのレビュー手順
+
+1. `external_signal_backlog.json` から次の対象を選ぶ
+2. 公式サイト、自治体・観光公式ページ、中立的な公開ディレクトリを探す
+3. ページ本文は保存せず、推薦に効く短い根拠語だけを `evidenceTerms` に登録する
+4. `sourceType`, `sourceUrl`, `sourceTitle`, `lastCheckedAt`, `reviewStatus` を記録する
+5. 生成・検証コマンドを実行し、推薦レポートの悪化がないか確認する
+
+ページが閉鎖・移転した場合、既存の推薦は即座には壊れません。
+ただし `sourceUrl` の死活や `lastCheckedAt` の古さを定期的に見直し、古いものは `reviewStatus` を `needs_review` などに変更します。
 
 ## sourceType
 

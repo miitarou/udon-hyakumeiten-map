@@ -78,6 +78,7 @@ open http://localhost:8080
 │   └── app-architecture.md     # app.js分割方針とCSP導入方針
 ├── data/
 │   ├── data-version.json       # iPhone版向けデータ更新メタ情報
+│   ├── external_signal_backlog.json # 外部シグナル拡張用の未登録店舗キュー
 │   ├── external_source_registry.json # 外部シグナル用の短い根拠語レビュー台帳
 │   ├── external_signals.json   # 推薦タグへ取り込む定型生成済み外部シグナル
 │   ├── recommendation_tags.json # 推薦機能向けの静的タグデータ（探索補助用）
@@ -92,6 +93,7 @@ open http://localhost:8080
 │   ├── build_soba_json.py      # そばデータ年度別マージ・生成スクリプト
 │   ├── geocode_soba.py         # そば店舗 Nominatim ジオコーディング
 │   ├── fetch_tabelog_details.py # 店舗ページ由来の住所・座標・閉店状態取得
+│   ├── generate_external_signal_backlog.py # 外部シグナル未登録店舗キュー生成
 │   ├── generate_external_signals.py # 外部シグナルPoC生成
 │   ├── generate_recommendation_tags.py # 推薦タグデータ生成
 │   ├── evaluate_recommendations.py # 推薦ゴールデンセットの結果レポート
@@ -165,6 +167,7 @@ Leaflet / Leaflet.markercluster の CDN 読み込みには Subresource Integrity
 2. iPhone版向けのデータメタ情報と推薦タグを更新する
    ```bash
    python3 scripts/generate_data_version.py
+   python3 scripts/generate_external_signal_backlog.py
    python3 scripts/generate_external_signals.py
    python3 scripts/generate_recommendation_tags.py
    ```
@@ -186,6 +189,7 @@ Leaflet / Leaflet.markercluster の CDN 読み込みには Subresource Integrity
 - `closed` / `firstSelected` のboolean形式
 - 店名 + 都道府県による重複候補
 - `data/data-version.json` の件数・ハッシュ整合
+- `data/external_signal_backlog.json` の未登録店舗キュー整合
 - `data/external_signals.json` の参照URL・タグ定義・短い根拠語形式
 - `data/recommendation_tags.json` のURL照合・タグ定義・weight/confidence形式・AI推定相性グループ
 - `data/recommendation_golden_set.json` の参照URL・推薦モード整合

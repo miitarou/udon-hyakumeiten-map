@@ -24,6 +24,7 @@ DATASETS = (
 )
 DATA_VERSION = "data/data-version.json"
 EXTERNAL_SIGNALS = "data/external_signals.json"
+EXTERNAL_SIGNAL_BACKLOG = "data/external_signal_backlog.json"
 RECOMMENDATION_TAGS = "data/recommendation_tags.json"
 RECOMMENDATION_GOLDEN_SET = "data/recommendation_golden_set.json"
 REQUIRED_FIELDS = ("name", "category", "prefecture", "region", "lat", "lng", "url", "years")
@@ -516,6 +517,94 @@ def validate_external_signals(known_restaurants: dict[str, dict]) -> tuple[int, 
     return len(errors), len(warnings)
 
 
+def validate_external_signal_backlog(known_restaurants: dict[str, dict]) -> tuple[int, int]:
+    path = ROOT / EXTERNAL_SIGNAL_BACKLOG
+    print(f"Checking {EXTERNAL_SIGNAL_BACKLOG}...")
+
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        print(f"  [WARN] {EXTERNAL_SIGNAL_BACKLOG} does not exist")
+        return 0, 1
+    except Exception as exc:  # noqa: BLE001
+        print(f"  [ERROR] Failed to load {EXTERNAL_SIGNAL_BACKLOG}: {exc}")
+        return 1, 0
+
+    errors: list[str] = []
+    warnings: list[str] = []
+
+    if not isinstance(payload, dict):
+        errors.append("root must be an object")
+        payload = {}
+
+    if payload.get("version") != 1:
+        errors.append("version must be 1")
+
+    restaurants = payload.get("restaurants")
+    if not isinstance(restaurants, list):
+        errors.append("restaurants must be a list")
+        restaurants = []
+
+    try:
+        external_payload = json.loads((ROOT / EXTERNAL_SIGNALS).read_text(encoding="utf-8"))
+        covered_urls = {
+            row.get("url")
+            for row in external_payload.get("restaurants", [])
+            if isinstance(row, dict) and isinstance(row.get("url"), str)
+        }
+    except Exception:  # noqa: BLE001
+        covered_urls = set()
+
+    seen_urls: set[str] = set()
+    for index, item in enumerate(restaurants):
+        prefix = f"item {index}"
+        if not isinstance(item, dict):
+            errors.append(f"{prefix}: must be an object")
+            continue
+
+        url = item.get("url")
+        if not isinstance(url, str) or not url:
+            errors.append(f"{prefix}: url must be a non-empty string")
+            continue
+        if url in seen_urls:
+            errors.append(f"{prefix}: duplicate url {url}")
+        seen_urls.add(url)
+
+        if url in covered_urls:
+            errors.append(f"{prefix}: covered url should not remain in backlog: {url}")
+
+        known = known_restaurants.get(url)
+        if not known:
+            errors.append(f"{prefix}: url is not present in public restaurant data: {url}")
+        else:
+            for field in ("name", "category", "prefecture", "region"):
+                if item.get(field) != known.get(field):
+                    errors.append(f"{prefix}: {field} mismatch for {url}")
+            if item.get("selectionCount") != len(known.get("years") or []):
+                errors.append(f"{prefix}: selectionCount mismatch for {url}")
+
+        if item.get("status") != "pending_source_review":
+            warnings.append(f"{prefix}: status should usually be pending_source_review")
+        if not isinstance(item.get("priorityTier"), str) or not item["priorityTier"]:
+            errors.append(f"{prefix}: priorityTier must be a non-empty string")
+
+    summary = payload.get("summary")
+    if isinstance(summary, dict):
+        if summary.get("remainingRestaurants") != len(restaurants):
+            errors.append("summary.remainingRestaurants is stale")
+        if summary.get("coveredRestaurants") != len(covered_urls):
+            errors.append("summary.coveredRestaurants is stale")
+    else:
+        warnings.append("summary should be an object")
+
+    for error in errors:
+        print(f"  [ERROR] {error}")
+    for warning in warnings:
+        print(f"  [WARN] {warning}")
+    print(f"  Summary: records={len(restaurants)}, errors={len(errors)}, warnings={len(warnings)}")
+    return len(errors), len(warnings)
+
+
 def validate_recommendation_golden_set(known_restaurants: dict[str, dict]) -> tuple[int, int]:
     path = ROOT / RECOMMENDATION_GOLDEN_SET
     print(f"Checking {RECOMMENDATION_GOLDEN_SET}...")
@@ -639,6 +728,10 @@ def main() -> int:
     external_errors, external_warnings = validate_external_signals(known_restaurants)
     total_errors += external_errors
     total_warnings += external_warnings
+
+    backlog_errors, backlog_warnings = validate_external_signal_backlog(known_restaurants)
+    total_errors += backlog_errors
+    total_warnings += backlog_warnings
 
     golden_errors, golden_warnings = validate_recommendation_golden_set(known_restaurants)
     total_errors += golden_errors

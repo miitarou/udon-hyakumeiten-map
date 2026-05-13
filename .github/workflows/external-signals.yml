@@ -14,8 +14,10 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Check generated external signals
-        run: python3 scripts/generate_external_signals.py --check
+      - name: Check generated external signal files
+        run: |
+          python3 scripts/generate_external_signal_backlog.py --check
+          python3 scripts/generate_external_signals.py --check
 
       - name: Run data quality checks
         run: python3 scripts/check_data_quality.py
