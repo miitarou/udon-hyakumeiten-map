@@ -13,7 +13,7 @@
       "udon": 6,
       "soba": 4
     },
-    "sampleSize": 47
+    "sampleSize": 55
   },
   "sources": [
     {
@@ -313,6 +313,23 @@
       "lastCheckedAt": "2026-05-13"
     },
     {
+      "restaurantUrl": "https://tabelog.com/hyogo/A2803/A280304/28029478/",
+      "name": "うどん工房悠々",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://www.sunsuntown.com/shop/%E3%81%86%E3%81%A9%E3%82%93%E5%B7%A5%E6%88%BF%E6%82%A0%E3%80%85/",
+      "sourceTitle": "塚口さんさんタウン うどん工房悠々紹介ページ",
+      "evidenceTerms": [
+        "讃岐",
+        "手打ち",
+        "関西だし",
+        "天ぷら",
+        "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
       "restaurantUrl": "https://tabelog.com/kagawa/A3701/A370101/37000002/",
       "name": "うどん本陣 山田家 讃岐本店",
       "category": "udon",
@@ -474,6 +491,23 @@
       "lastCheckedAt": "2026-05-13"
     },
     {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1323/A132305/13003783/",
+      "name": "手打うどん すみた",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://tokyo.itot.jp/akabane/224",
+      "sourceTitle": "itot 赤羽 手打ちうどん すみた紹介ページ",
+      "evidenceTerms": [
+        "手打ち",
+        "讃岐",
+        "コシ",
+        "天ぷら",
+        "目的地"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
       "restaurantUrl": "https://tabelog.com/kagawa/A3702/A370202/37000077/",
       "name": "手打うどん たむら",
       "category": "udon",
@@ -605,6 +639,23 @@
       "lastCheckedAt": "2026-05-13"
     },
     {
+      "restaurantUrl": "https://tabelog.com/kyoto/A2601/A260601/26020260/",
+      "name": "本格手打うどん 大河",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://www.udontaigakyoto.com/",
+      "sourceTitle": "本格手打うどん 大河 公式サイト",
+      "evidenceTerms": [
+        "手打ち",
+        "自家製麺",
+        "関西だし",
+        "天ぷら",
+        "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
       "restaurantUrl": "https://tabelog.com/tokyo/A1311/A131106/13020252/",
       "name": "根津 釜竹",
       "category": "udon",
@@ -654,6 +705,22 @@
       "lastCheckedAt": "2026-05-13"
     },
     {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1312/A131201/13156107/",
+      "name": "純手打ち讃岐うどん五郎",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://www.enjoytokyo.jp/spot/l_20011554/",
+      "sourceTitle": "レッツエンジョイ東京 純手打ち讃岐うどん五郎",
+      "evidenceTerms": [
+        "純手打",
+        "讃岐",
+        "コシ",
+        "短時間利用"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
       "restaurantUrl": "https://tabelog.com/kagawa/A3703/A370301/37000152/",
       "name": "西端手打 上戸",
       "category": "udon",
@@ -667,6 +734,22 @@
         "セルフ",
         "短時間利用",
         "地域色"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1323/A132304/13141130/",
+      "name": "讃岐うどん いわい",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://udon.mu/shop/3388",
+      "sourceTitle": "うどんコレクションスタンプラリー 讃岐うどん いわい",
+      "evidenceTerms": [
+        "讃岐",
+        "手打ち",
+        "コシ",
+        "短時間利用"
       ],
       "reviewStatus": "reviewed",
       "lastCheckedAt": "2026-05-13"
@@ -758,6 +841,38 @@
       "lastCheckedAt": "2026-05-13"
     },
     {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1310/A131004/13036030/",
+      "name": "酒と味噌煮込み 味噌煮込罠",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://visit-chiyoda.tokyo/app/spot/detail/519",
+      "sourceTitle": "千代田区観光協会 味噌煮込罠紹介ページ",
+      "evidenceTerms": [
+        "味噌煮込み",
+        "地域色",
+        "日本酒",
+        "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1309/A130905/13095976/",
+      "name": "釜あげうどん はつとみ",
+      "category": "udon",
+      "sourceType": "public_directory",
+      "sourceUrl": "https://udon.mu/shop/2870",
+      "sourceTitle": "うどんコレクションスタンプラリー 釜あげうどん はつとみ",
+      "evidenceTerms": [
+        "釜あげ",
+        "手打ち",
+        "喉越し",
+        "落ち着いた食事"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
+    },
+    {
       "restaurantUrl": "https://tabelog.com/kagawa/A3703/A370302/37000015/",
       "name": "釜あげうどん 長田 in 香の香",
       "category": "udon",
@@ -789,6 +904,22 @@
       ],
       "reviewStatus": "manual_seeded",
       "lastCheckedAt": "2026-05-12"
+    },
+    {
+      "restaurantUrl": "https://tabelog.com/tokyo/A1310/A131002/13185500/",
+      "name": "香川 一福 神田店",
+      "category": "udon",
+      "sourceType": "official_site",
+      "sourceUrl": "https://kagawa-ippuku.com/",
+      "sourceTitle": "香川一福 公式サイト",
+      "evidenceTerms": [
+        "讃岐",
+        "関西だし",
+        "コシ",
+        "短時間利用"
+      ],
+      "reviewStatus": "reviewed",
+      "lastCheckedAt": "2026-05-13"
     }
   ]
 }
