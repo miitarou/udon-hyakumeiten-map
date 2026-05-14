@@ -26,7 +26,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css?v=7.0">
+    <link rel="stylesheet" href="style.css?v=7.1">
 </head>
 <body>
     <noscript>
@@ -197,24 +197,33 @@
                             <option value="all">すべて</option>
                         </select>
                     </div>
-                    <!-- 選出年（JSで動的生成） -->
                     <div class="filter-subsection">
-                        <label class="control-label">📅 選出年</label>
-                        <div class="filter-group year-filters" id="year-filters">
-                            <!-- JS で生成 -->
-                        </div>
+                        <label class="control-label" for="feature-select">✨ 特徴で探す</label>
+                        <select id="feature-select" class="pref-select feature-select">
+                            <option value="all">選択なし</option>
+                        </select>
+                        <div id="feature-summary" class="feature-summary">AI推定タグと外部シグナルを探索補助として使います。</div>
                     </div>
-                    <!-- 選出回数 -->
-                    <div class="filter-subsection">
-                        <label class="control-label">🏆 選出回数</label>
-                        <div class="filter-group count-filters">
-                            <button class="filter-btn active" data-count-mode="all" aria-pressed="true">指定なし</button>
-                            <button class="filter-btn" data-count-mode="first" aria-pressed="false">最新年度で初登場</button>
-                            <button class="filter-btn" data-count-mode="exact-1" aria-pressed="false">1回のみ</button>
-                            <button class="filter-btn" data-count-mode="min-2" aria-pressed="false">2回以上</button>
-                            <button class="filter-btn" data-count-mode="min-3" aria-pressed="false">3回以上</button>
-                            <button class="filter-btn" data-count-mode="min-4" aria-pressed="false">4回以上</button>
-                            <button class="filter-btn" data-count-mode="hall-of-fame" aria-pressed="false">殿堂入り（カテゴリ上位10%）</button>
+                    <div class="compact-filter-row">
+                        <!-- 選出年（JSで動的生成） -->
+                        <div class="filter-subsection">
+                            <label class="control-label" for="year-select">📅 選出年</label>
+                            <select id="year-select" class="pref-select year-select">
+                                <option value="all">全年度</option>
+                            </select>
+                        </div>
+                        <!-- 選出回数 -->
+                        <div class="filter-subsection">
+                            <label class="control-label" for="count-select">🏆 選出回数</label>
+                            <select id="count-select" class="pref-select count-select">
+                                <option value="all">指定なし</option>
+                                <option value="first">最新年度で初登場</option>
+                                <option value="exact-1">1回のみ</option>
+                                <option value="min-2">2回以上</option>
+                                <option value="min-3">3回以上</option>
+                                <option value="min-4">4回以上</option>
+                                <option value="hall-of-fame">殿堂入り（上位10%）</option>
+                            </select>
                         </div>
                     </div>
                     <!-- 営業状態 -->
@@ -336,6 +345,6 @@
     <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"
         integrity="sha384-eXVCORTRlv4FUUgS/xmOyr66XBVraen8ATNLMESp92FKXLAMiKkerixTiBvXriZr"
         crossorigin="anonymous"></script>
-    <script src="app.js?v=7.0"></script>
+    <script src="app.js?v=7.1"></script>
 </body>
 </html>

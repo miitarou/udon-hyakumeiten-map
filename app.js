@@ -18,6 +18,8 @@
     let recommendationEngineModule = null;
     let recommendationTagData = null;
     let recommendationIndex = null;
+    let recommendationTagsByUrl = new Map();
+    let recommendationTagLoadFailed = false;
     let recommendationTagLoadPromise = null;
     let map = null;
     let markerClusterGroup = null;
@@ -31,6 +33,7 @@
     let activePrefecture = 'all';
     let activeYear = 'all';
     let countFilterMode = 'all';  // 'all' | 'first' | 'exact-1' | 'min-N' | 'hall-of-fame'
+    let activeFeatureFilter = 'all';
     let activeStatus = 'all';     // 'all' | 'open' | 'closed'
     let saveFilter = 'all';       // 'all' | 'want' | 'visited' | 'none'
     let searchQuery = '';
@@ -66,6 +69,78 @@
         nearby: { label: '最寄りで探す' },
         expand: { label: '新しい発見' }
     };
+    const FEATURE_FILTERS = [
+        {
+            id: 'drink-pairing',
+            label: 'お酒と楽しむ',
+            summary: '蕎麦前、鴨、落ち着いた食事向きの特徴を重視します。',
+            minScore: 1.0,
+            tags: ['scene.drink_pairing', 'scene.calm_meal', 'dish.duck', 'mood.traditional']
+        },
+        {
+            id: 'aroma',
+            label: '香りを楽しむ',
+            summary: '香り重視、石臼、十割そば系の特徴を重視します。',
+            minScore: 1.2,
+            tags: ['texture.aroma_focused', 'style.stone_milled', 'dish.juwari']
+        },
+        {
+            id: 'koshi',
+            label: 'コシ強め',
+            summary: 'コシ重視、讃岐系、吉田うどん系の特徴を重視します。',
+            minScore: 1.2,
+            tags: ['texture.koshi_strong', 'style.sanuki_influenced', 'style.yoshida_udon']
+        },
+        {
+            id: 'handmade',
+            label: '手打ち・自家製',
+            summary: '手打ち、自家製、麺そのものを楽しむ特徴を重視します。',
+            minScore: 1.0,
+            tags: ['style.handmade', 'texture.throat_smooth', 'texture.aroma_focused']
+        },
+        {
+            id: 'destination',
+            label: '旅先で行きたい',
+            summary: '目的地型、地域色、名店感のある特徴を重視します。',
+            minScore: 1.2,
+            tags: ['scene.destination', 'style.regional_specialty', 'mood.traditional']
+        },
+        {
+            id: 'quick-solo',
+            label: 'ひとり・短時間',
+            summary: '一人昼食、短時間利用、セルフ寄りの特徴を重視します。',
+            minScore: 0.65,
+            tags: ['scene.solo_lunch', 'scene.quick_lunch', 'style.self_service']
+        },
+        {
+            id: 'tempura',
+            label: '天ぷらも楽しむ',
+            summary: '天ぷら系の特徴を持つ店舗を優先します。',
+            minScore: 0.65,
+            tags: ['dish.tempura']
+        },
+        {
+            id: 'curry',
+            label: 'カレー系',
+            summary: 'カレーうどんなど、カレー系の特徴を持つ店舗を優先します。',
+            minScore: 0.65,
+            tags: ['dish.curry']
+        },
+        {
+            id: 'traditional',
+            label: '老舗・伝統感',
+            summary: '伝統、老舗感、江戸前・藪・更科などの文脈を重視します。',
+            minScore: 0.65,
+            tags: ['mood.traditional', 'style.edomae_soba', 'lineage.yabu', 'lineage.sarashina', 'lineage.sunaba']
+        },
+        {
+            id: 'unique',
+            label: '個性派',
+            summary: '現代的、地域色、カレー、味噌煮込みなど個性の強い特徴を重視します。',
+            minScore: 0.8,
+            tags: ['mood.modern', 'style.regional_specialty', 'dish.curry', 'dish.miso_nikomi', 'style.musashino_udon']
+        }
+    ];
     const COMMON_SEARCH_REPLACEMENTS = [
         ['饂飩', 'うどん'],
         ['齊', '斉'],
@@ -164,6 +239,7 @@
             await loadData();
             rebuildYearButtons();
             populateFilters();
+            populateFeatureFilter();
             applyFilters();
             bindEvents();
             updateStats();
@@ -614,7 +690,13 @@
                 if (!Array.isArray(data?.restaurants)) throw new Error('Recommendation tag data should contain restaurants array');
                 recommendationTagData = data;
                 recommendationIndex = null;
+                recommendationTagLoadFailed = false;
+                recommendationTagsByUrl = new Map(data.restaurants
+                    .filter(item => item?.url && Array.isArray(item.tags))
+                    .map(item => [item.url, item]));
+                populateFeatureFilter();
                 console.log(`🔎 推薦タグデータ読込完了: ${data.restaurants.length} 店`);
+                if (activeFeatureFilter !== 'all') applyFilters();
                 return;
             } catch (error) {
                 console.warn(`Recommendation tag load failed: ${url}`, error);
@@ -623,6 +705,9 @@
 
         recommendationTagData = null;
         recommendationIndex = null;
+        recommendationTagLoadFailed = true;
+        recommendationTagsByUrl = new Map();
+        updateFeatureSummary();
     }
 
     async function ensureRecommendationIndex() {
@@ -635,7 +720,7 @@
         return recommendationIndex;
     }
 
-    // === 年度ボタンを動的生成 ===
+    // === 年度セレクトを動的生成 ===
     function getAvailableYears() {
         if (activeCategory === 'udon') return UDON_YEARS;
         if (activeCategory === 'soba') return SOBA_YEARS;
@@ -645,8 +730,8 @@
     }
 
     function rebuildYearButtons() {
-        const container = document.getElementById('year-filters');
-        if (!container) return;
+        const select = document.getElementById('year-select');
+        if (!select) return;
 
         const years = getAvailableYears();
         // 現在の activeYear が新しいリストに含まれていなければリセット
@@ -654,43 +739,65 @@
             activeYear = 'all';
         }
 
-        container.innerHTML = '';
-
-        const allBtn = document.createElement('button');
-        allBtn.className = 'filter-btn' + (activeYear === 'all' ? ' active' : '');
-        allBtn.dataset.year = 'all';
-        allBtn.setAttribute('aria-pressed', activeYear === 'all' ? 'true' : 'false');
-        allBtn.textContent = '全年度';
-        container.appendChild(allBtn);
+        select.innerHTML = '';
+        const allOption = document.createElement('option');
+        allOption.value = 'all';
+        allOption.textContent = '全年度';
+        select.appendChild(allOption);
 
         [...years].sort((a, b) => b - a).forEach(y => {
-            const btn = document.createElement('button');
-            const ys = String(y);
-            btn.className = 'filter-btn year-filter-btn' + (activeYear === ys ? ' active' : '');
-            btn.dataset.year = ys;
-            btn.setAttribute('aria-pressed', activeYear === ys ? 'true' : 'false');
-            btn.textContent = ys;
-            container.appendChild(btn);
+            const option = document.createElement('option');
+            option.value = String(y);
+            option.textContent = String(y);
+            select.appendChild(option);
         });
 
-        bindYearFilterEvents();
+        select.value = activeYear;
     }
 
     function bindYearFilterEvents() {
-        const container = document.getElementById('year-filters');
-        if (!container) return;
-        container.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                container.querySelectorAll('.filter-btn').forEach(b => {
-                    b.classList.remove('active');
-                    b.setAttribute('aria-pressed', 'false');
-                });
-                this.classList.add('active');
-                this.setAttribute('aria-pressed', 'true');
-                activeYear = this.dataset.year;
-                applyFilters();
-            });
+        const select = document.getElementById('year-select');
+        if (!select) return;
+        select.addEventListener('change', function () {
+            activeYear = this.value || 'all';
+            applyFilters();
         });
+    }
+
+    function populateFeatureFilter() {
+        const select = document.getElementById('feature-select');
+        if (!select) return;
+        select.innerHTML = '<option value="all">選択なし</option>';
+        FEATURE_FILTERS.forEach(feature => {
+            const option = document.createElement('option');
+            option.value = feature.id;
+            option.textContent = feature.label;
+            select.appendChild(option);
+        });
+        select.value = activeFeatureFilter;
+        updateFeatureSummary();
+    }
+
+    function getActiveFeatureConfig() {
+        return FEATURE_FILTERS.find(feature => feature.id === activeFeatureFilter) || null;
+    }
+
+    function updateFeatureSummary() {
+        const summary = document.getElementById('feature-summary');
+        const select = document.getElementById('feature-select');
+        if (!summary) return;
+        const feature = getActiveFeatureConfig();
+        if (!feature) {
+            summary.textContent = 'AI推定タグと外部シグナルを探索補助として使います。';
+        } else if (recommendationTagLoadFailed) {
+            summary.textContent = '特徴データを読み込めませんでした。通常の条件で表示します。';
+        } else if (!recommendationTagsByUrl.size) {
+            summary.textContent = '特徴データを読み込み中です。';
+        } else {
+            const matchCount = getCategorySource().filter(r => getFeatureScore(r) >= (feature.minScore || 0.2)).length;
+            summary.textContent = `${feature.summary}（該当 ${matchCount}件）`;
+        }
+        if (select) select.classList.toggle('loading', Boolean(feature && !recommendationTagsByUrl.size));
     }
 
     // === ロゴアイコン・タイトルをカテゴリに合わせて更新 ===
@@ -1164,6 +1271,34 @@
         return true;
     }
 
+    function getTagItemStrength(tag) {
+        const weight = Number(tag?.weight);
+        const confidence = Number(tag?.confidence);
+        if (!Number.isFinite(weight) || !Number.isFinite(confidence)) return 0;
+        const hasExternalEvidence = tag.source === 'external_signal'
+            || (Array.isArray(tag.evidence) && tag.evidence.some(item => String(item || '').startsWith('external')));
+        return Math.max(0, weight) * Math.max(0, confidence) * (hasExternalEvidence ? 1.18 : 1);
+    }
+
+    function getFeatureScore(r) {
+        const feature = getActiveFeatureConfig();
+        if (!feature || !recommendationTagsByUrl.size) return 0;
+        const record = recommendationTagsByUrl.get(r.url);
+        if (!record?.tags?.length) return 0;
+        const tagSet = new Set(feature.tags);
+        return record.tags.reduce((sum, tag) => {
+            const key = String(tag?.key || '');
+            return tagSet.has(key) ? sum + getTagItemStrength(tag) : sum;
+        }, 0);
+    }
+
+    function matchesFeatureFilter(r) {
+        if (activeFeatureFilter === 'all') return true;
+        if (!recommendationTagsByUrl.size) return true;
+        const feature = getActiveFeatureConfig();
+        return getFeatureScore(r) >= (feature?.minScore || 0.2);
+    }
+
     function applyFilters() {
         const src = getCategorySource();
 
@@ -1179,6 +1314,8 @@
             }
             // Selection count
             if (!matchesCountFilter(r, src)) return false;
+            // Feature tags
+            if (!matchesFeatureFilter(r)) return false;
             // Business status
             if (activeStatus === 'open' && r.closed) return false;
             if (activeStatus === 'closed' && !r.closed) return false;
@@ -1209,6 +1346,21 @@
 
     // === Sort ===
     function sortRestaurants() {
+        if (activeFeatureFilter !== 'all' && recommendationTagsByUrl.size) {
+            filteredRestaurants.sort((a, b) => {
+                const diff = getFeatureScore(b) - getFeatureScore(a);
+                if (Math.abs(diff) > 0.0001) return diff;
+                if (sortMode === 'distance') {
+                    const origin = getActiveDistanceOrigin();
+                    if (origin) return calcDistance(origin.lat, origin.lng, a.lat, a.lng) - calcDistance(origin.lat, origin.lng, b.lat, b.lng);
+                }
+                const ca = a.years ? a.years.length : 0;
+                const cb = b.years ? b.years.length : 0;
+                return cb - ca || (a.name || '').localeCompare(b.name || '', 'ja');
+            });
+            return;
+        }
+
         if (searchDistanceSortActive && searchDistanceOrigin && !distanceOrigin) {
             sortByDistance(searchDistanceOrigin);
             return;
@@ -1813,6 +1965,7 @@
         activePrefecture = 'all';
         activeYear = 'all';
         countFilterMode = 'all';
+        activeFeatureFilter = 'all';
         activeStatus = 'all';
         saveFilter = 'all';
         clearRadiusSearch(false);
@@ -1823,6 +1976,13 @@
         updateSearchClearButton();
         const prefSelect = document.getElementById('pref-select');
         if (prefSelect) prefSelect.value = 'all';
+        const yearSelect = document.getElementById('year-select');
+        if (yearSelect) yearSelect.value = 'all';
+        const countSelect = document.getElementById('count-select');
+        if (countSelect) countSelect.value = 'all';
+        const featureSelect = document.getElementById('feature-select');
+        if (featureSelect) featureSelect.value = 'all';
+        updateFeatureSummary();
 
         document.querySelectorAll('.filter-btn').forEach(btn => {
             const isDefault = btn.dataset.filter === 'all' ||
@@ -2338,6 +2498,7 @@
 
                 rebuildYearButtons();
                 populateFilters();
+                updateFeatureSummary();
                 updateStats();
                 updateLogoForCategory();
 
@@ -2445,18 +2606,32 @@
             });
         }
 
-        // Count filter
-        document.querySelectorAll('.count-filters .filter-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                document.querySelectorAll('.count-filters .filter-btn').forEach(b => {
-                    b.classList.remove('active'); b.setAttribute('aria-pressed', 'false');
-                });
-                this.classList.add('active');
-                this.setAttribute('aria-pressed', 'true');
-                countFilterMode = this.dataset.countMode || 'all';
+        bindYearFilterEvents();
+
+        const featureSelect = document.getElementById('feature-select');
+        if (featureSelect) {
+            featureSelect.addEventListener('change', async function () {
+                activeFeatureFilter = this.value || 'all';
+                updateFeatureSummary();
+                if (activeFeatureFilter !== 'all' && recommendationTagLoadPromise) {
+                    try {
+                        await recommendationTagLoadPromise;
+                    } catch (error) {
+                        console.warn('Feature filter tag load failed:', error);
+                    }
+                }
+                updateFeatureSummary();
                 applyFilters();
             });
-        });
+        }
+
+        const countSelect = document.getElementById('count-select');
+        if (countSelect) {
+            countSelect.addEventListener('change', function () {
+                countFilterMode = this.value || 'all';
+                applyFilters();
+            });
+        }
 
         // Business status filter
         document.querySelectorAll('.status-filters .filter-btn').forEach(btn => {

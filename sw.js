@@ -1,9 +1,9 @@
-const CACHE_NAME = 'hyakumeiten-map-v30';
+const CACHE_NAME = 'hyakumeiten-map-v31';
 const APP_SHELL = [
   './',
   './index.html',
-  './style.css?v=7.0',
-  './app.js?v=7.0',
+  './style.css?v=7.1',
+  './app.js?v=7.1',
   './recommendation-engine.js?v=1',
   './manifest.webmanifest',
   './icon.svg',

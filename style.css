@@ -749,6 +749,12 @@ body.sheet-resizing {
     gap: 6px;
 }
 
+.compact-filter-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
 .control-label {
     font-size: 12px;
     font-weight: 500;
@@ -1043,6 +1049,18 @@ body.panel-resizing * {
     color: var(--text-primary);
 }
 
+.feature-summary {
+    min-height: 18px;
+    color: var(--text-muted);
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+.feature-select.loading {
+    color: var(--primary-light);
+    border-color: rgba(232, 197, 71, 0.45);
+}
+
 .radius-control {
     display: flex;
     flex-direction: column;
@@ -1148,15 +1166,6 @@ body.panel-resizing * {
 }
 
 /* Year Filter Button Colors */
-.year-filter-btn[data-year="2017"].active { background: #636e72; border-color: #636e72; box-shadow: 0 2px 12px rgba(99,110,114,0.4); }
-.year-filter-btn[data-year="2018"].active { background: #6c5ce7; border-color: #6c5ce7; box-shadow: 0 2px 12px rgba(108,92,231,0.4); }
-.year-filter-btn[data-year="2019"].active { background: #00b894; border-color: #00b894; box-shadow: 0 2px 12px rgba(0,184,148,0.4); }
-.year-filter-btn[data-year="2020"].active { background: #0984e3; border-color: #0984e3; box-shadow: 0 2px 12px rgba(9,132,227,0.4); }
-.year-filter-btn[data-year="2021"].active { background: #e17055; border-color: #e17055; box-shadow: 0 2px 12px rgba(225,112,85,0.4); }
-.year-filter-btn[data-year="2022"].active { background: #d4a017; border-color: #d4a017; box-shadow: 0 2px 12px rgba(212,160,23,0.4); }
-.year-filter-btn[data-year="2024"].active { background: var(--primary); border-color: var(--primary); box-shadow: 0 2px 12px var(--primary-glow); }
-.year-filter-btn[data-year="2025"].active { background: #00cec9; border-color: #00cec9; box-shadow: 0 2px 12px rgba(0,206,201,0.4); }
-
 /* Count Badge (リストカード内) */
 .count-badge {
     display: inline-flex;
@@ -2376,6 +2385,11 @@ body.panel-resizing * {
     /* セレクトボックス */
     .pref-select {
         font-size: 16px;
+    }
+
+    .compact-filter-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
     }
 
     /* 現在地ボタンのモバイル位置調整 */
