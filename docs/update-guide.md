@@ -50,6 +50,7 @@ node --check sw.js
 git diff --check
 python3 scripts/check_size_budget.py
 python3 scripts/check_external_signal_age.py
+python3 scripts/check_web_version_bumps.py
 ```
 
 主な検証対象は以下です。
@@ -65,6 +66,7 @@ python3 scripts/check_external_signal_age.py
 - 外部シグナル、推薦タグ、ゴールデンセットの参照整合
 - JS/CSS/主要JSONのサイズ予算（report-only）
 - 外部シグナルの `lastCheckedAt` 鮮度（report-only）
+- Web配信資産の `?v=` とService Workerキャッシュ名の更新漏れ
 
 ## 5. Web版をローカル確認する
 
@@ -107,7 +109,7 @@ python3 scripts/bump_web_version.py
 例:
 
 ```js
-const CACHE_NAME = 'hyakumeiten-map-v32';
+const CACHE_NAME = 'hyakumeiten-map-v33';
 ```
 
 古いService Workerが残ると、ユーザーに旧JS/CSSが表示されることがあります。更新通知とリロード導線が動くことも確認します。

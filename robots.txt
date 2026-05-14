@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://miitarou.github.io/udon-hyakumeiten-map/sitemap.xml

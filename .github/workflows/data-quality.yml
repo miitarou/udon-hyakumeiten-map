@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -35,3 +37,4 @@ jobs:
           git diff --check
           python3 scripts/check_size_budget.py
           python3 scripts/check_external_signal_age.py
+          python3 scripts/check_web_version_bumps.py --base "${{ github.event.pull_request.base.sha || github.event.before }}"

@@ -77,6 +77,8 @@ open http://localhost:8080
 ├── icon.svg                    # PWAアイコン
 ├── icons/                      # PWA用の複数サイズPNGアイコン
 ├── og-image.png                # OGP / SNS共有用画像
+├── robots.txt                  # クローラー向け許可設定
+├── sitemap.xml                 # サイトマップ
 ├── privacy.html                # プライバシーポリシー
 ├── docs/
 │   ├── recommendation-tags.md  # 推薦タグとスコアリング設計
@@ -106,6 +108,7 @@ open http://localhost:8080
 │   ├── evaluate_recommendations.py # 推薦ゴールデンセットの結果レポート
 │   ├── check_size_budget.py    # JS/CSS/JSONサイズ予算のreport-only確認
 │   ├── check_external_signal_age.py # 外部シグナル鮮度のreport-only確認
+│   ├── check_web_version_bumps.py # Web資産バージョン更新漏れ確認
 │   ├── bump_web_version.py     # Web資産とService Workerの軽量バージョン更新
 │   ├── generate_data_version.py # iPhone版向けデータメタ情報生成
 │   ├── sync_mobile_assets.py   # Web資産を mobile/www へ同期
@@ -194,6 +197,7 @@ Leaflet / Leaflet.markercluster / 動的MapLibre読み込みには Subresource I
    git diff --check
    python3 scripts/check_size_budget.py
    python3 scripts/check_external_signal_age.py
+   python3 scripts/check_web_version_bumps.py
    ```
 4. エラーが出た場合はデータを修正し、ローカルサーバーで動作確認を行う
 

@@ -233,6 +233,7 @@
             initMap();
             loadSavedStates();
             await loadData();
+            injectStructuredData();
             rebuildYearButtons();
             populateFilters();
             populateFeatureFilter();
@@ -525,6 +526,7 @@
             button.setAttribute('aria-checked', String(isActive));
         });
         const footerSource = document.getElementById('footer-map-source');
+        // Safe by policy: footerAttribution is fixed local configuration, never external or restaurant-data input.
         if (footerSource) footerSource.innerHTML = config.footerAttribution;
     }
 
@@ -589,6 +591,72 @@
         sobaHallOfFameThreshold = calcThreshold(allSoba);
 
         console.log(`📊 データ読込完了: うどん ${allUdon.length} 店 (殿堂閾値:${udonHallOfFameThreshold}) / そば ${allSoba.length} 店 (殿堂閾値:${sobaHallOfFameThreshold})`);
+    }
+
+    function injectStructuredData() {
+        const existing = document.getElementById('structured-data-restaurants');
+        if (existing) existing.remove();
+        if (!Array.isArray(allRestaurants) || !allRestaurants.length) return;
+
+        const representativeRestaurants = allRestaurants
+            .filter(r => !r.closed && isHallOfFameRestaurant(r))
+            .sort((a, b) => {
+                const countDiff = (b.years?.length || 0) - (a.years?.length || 0);
+                if (countDiff) return countDiff;
+                return String(a.name || '').localeCompare(String(b.name || ''), 'ja');
+            })
+            .slice(0, 40);
+
+        if (!representativeRestaurants.length) return;
+
+        const itemList = {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'うどん・そば百名店 MAP 2017-2025',
+            description: '公開情報をもとに個人が整理した、うどん・そば百名店の非公式参考マップです。',
+            url: 'https://miitarou.github.io/udon-hyakumeiten-map/',
+            numberOfItems: representativeRestaurants.length,
+            itemListElement: representativeRestaurants.map((r, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                item: compactStructuredData({
+                    '@type': 'Restaurant',
+                    name: r.name,
+                    url: isSafeUrl(r.url) ? r.url : undefined,
+                    servesCuisine: r.category === 'soba' ? 'そば' : 'うどん',
+                    address: compactStructuredData({
+                        '@type': 'PostalAddress',
+                        addressCountry: 'JP',
+                        addressRegion: r.prefecture,
+                        streetAddress: r.address
+                    }),
+                    geo: compactStructuredData({
+                        '@type': 'GeoCoordinates',
+                        latitude: typeof r.lat === 'number' ? r.lat : undefined,
+                        longitude: typeof r.lng === 'number' ? r.lng : undefined
+                    })
+                })
+            }))
+        };
+
+        const script = document.createElement('script');
+        script.id = 'structured-data-restaurants';
+        script.type = 'application/ld+json';
+        script.nonce = 'hyakumeiten-jsonld';
+        script.textContent = JSON.stringify(compactStructuredData(itemList));
+        document.head.appendChild(script);
+    }
+
+    function compactStructuredData(value) {
+        if (Array.isArray(value)) {
+            return value.map(compactStructuredData).filter(v => v !== undefined);
+        }
+        if (!value || typeof value !== 'object') return value === '' ? undefined : value;
+        const entries = Object.entries(value)
+            .map(([key, val]) => [key, compactStructuredData(val)])
+            .filter(([, val]) => val !== undefined && val !== null && val !== '');
+        if (!entries.length) return undefined;
+        return Object.fromEntries(entries);
     }
 
     async function loadRestaurantDataSets(fetchJson) {
