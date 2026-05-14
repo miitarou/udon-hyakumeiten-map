@@ -90,6 +90,9 @@
         region: 0,
         status: 0
     };
+    const RECOMMENDATION_EXTERNAL_SIGNAL_SCORE_BOOST = 1.06;
+    const RECOMMENDATION_EXTERNAL_REASON_BOOST = 1.5;
+    const RECOMMENDATION_MODEL_REASON_PENALTY = 0.72;
     const RECOMMENDATION_PRIMARY_REASON_PREFIXES = new Set(['style', 'texture', 'dish', 'mood', 'scene', 'lineage']);
     const RECOMMENDATION_MODES = {
         similar: { label: '味・雰囲気が近い' },
@@ -227,6 +230,8 @@
             position: 'topright'
         }).addTo(map);
 
+        createMapLayerControl().addTo(map);
+
         const isMobileScaleLayout = window.matchMedia('(max-width: 768px)').matches;
         L.control.scale({
             position: isMobileScaleLayout ? 'bottomleft' : 'bottomright',
@@ -281,6 +286,59 @@
             link.onerror = () => reject(new Error(`Failed to load ${link.href}`));
             document.head.appendChild(link);
         });
+    }
+
+    function createMapLayerControl() {
+        const Control = L.Control.extend({
+            options: { position: 'topright' },
+            onAdd() {
+                const container = L.DomUtil.create('div', 'leaflet-control-map-layer leaflet-control');
+                const toggle = L.DomUtil.create('button', 'map-layer-toggle', container);
+                toggle.type = 'button';
+                toggle.id = 'map-layer-toggle';
+                toggle.setAttribute('aria-label', '地図表示を切り替え');
+                toggle.setAttribute('title', '地図表示を切り替え');
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.setAttribute('aria-controls', 'map-layer-popover');
+                toggle.textContent = '🗺️';
+
+                const popover = L.DomUtil.create('div', 'map-layer-popover', container);
+                popover.id = 'map-layer-popover';
+                popover.hidden = true;
+                popover.setAttribute('role', 'menu');
+                popover.setAttribute('aria-label', '地図表示');
+
+                const title = L.DomUtil.create('div', 'map-layer-title', popover);
+                title.textContent = '地図表示';
+
+                Object.entries(BASE_MAP_LAYERS).forEach(([id, config]) => {
+                    const button = L.DomUtil.create('button', 'map-layer-option', popover);
+                    button.type = 'button';
+                    button.dataset.mapLayer = id;
+                    button.setAttribute('role', 'menuitemradio');
+                    button.setAttribute('aria-checked', 'false');
+                    button.innerHTML = `<span class="map-layer-option-label">${escapeHtml(config.label)}</span><span class="map-layer-option-check" aria-hidden="true">✓</span>`;
+                });
+
+                const summary = L.DomUtil.create('div', 'map-layer-summary', popover);
+                summary.id = 'map-layer-summary';
+                summary.textContent = 'デフォルトは地理院 淡色です。';
+
+                L.DomEvent.disableClickPropagation(container);
+                L.DomEvent.disableScrollPropagation(container);
+                toggle.addEventListener('click', () => toggleMapLayerPopover());
+                popover.querySelectorAll('.map-layer-option').forEach(button => {
+                    button.addEventListener('click', () => {
+                        void switchBaseLayer(button.dataset.mapLayer, { persist: true, silent: false });
+                        hideMapLayerPopover();
+                    });
+                });
+
+                updateMapLayerControls();
+                return container;
+            }
+        });
+        return new Control();
     }
 
     function loadScriptOnce(id, asset) {
@@ -422,8 +480,30 @@
         if (select && select.value !== activeBaseLayerId) select.value = activeBaseLayerId;
         const summary = document.getElementById('map-layer-summary');
         if (summary) summary.textContent = config.summary;
+        document.querySelectorAll('.map-layer-option[data-map-layer]').forEach(button => {
+            const isActive = button.dataset.mapLayer === activeBaseLayerId;
+            button.classList.toggle('active', isActive);
+            button.setAttribute('aria-checked', String(isActive));
+        });
         const footerSource = document.getElementById('footer-map-source');
         if (footerSource) footerSource.innerHTML = config.footerAttribution;
+    }
+
+    function toggleMapLayerPopover() {
+        const toggle = document.getElementById('map-layer-toggle');
+        const popover = document.getElementById('map-layer-popover');
+        if (!toggle || !popover) return;
+        const willOpen = popover.hidden;
+        popover.hidden = !willOpen;
+        toggle.setAttribute('aria-expanded', String(willOpen));
+    }
+
+    function hideMapLayerPopover() {
+        const toggle = document.getElementById('map-layer-toggle');
+        const popover = document.getElementById('map-layer-popover');
+        if (!toggle || !popover || popover.hidden) return;
+        popover.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
     }
 
     // === Data Loading ===
@@ -989,20 +1069,34 @@
         let normB = 0;
         const shared = [];
 
-        sourceTags.forEach((aValue, key) => {
+        sourceTags.forEach((aTag, key) => {
             const weight = getRecommendationTagWeight(key, mode);
+            const aValue = getRecommendationTagStrength(aTag);
             normA += (aValue ** 2) * weight;
         });
-        candidateTags.forEach((bValue, key) => {
+        candidateTags.forEach((bTag, key) => {
             const weight = getRecommendationTagWeight(key, mode);
+            const bValue = getRecommendationTagStrength(bTag);
             normB += (bValue ** 2) * weight;
         });
-        sourceTags.forEach((aValue, key) => {
+        sourceTags.forEach((aTag, key) => {
             if (!candidateTags.has(key)) return;
             const weight = getRecommendationTagWeight(key, mode);
-            const contribution = aValue * candidateTags.get(key) * weight;
+            const bTag = candidateTags.get(key);
+            const aValue = getRecommendationTagStrength(aTag);
+            const bValue = getRecommendationTagStrength(bTag);
+            const contribution = aValue * bValue * weight;
             dot += contribution;
-            if (weight > 0) shared.push({ key, contribution });
+            if (weight > 0) {
+                shared.push({
+                    key,
+                    contribution,
+                    sourceSource: getRecommendationTagSource(aTag),
+                    candidateSource: getRecommendationTagSource(bTag),
+                    sourceHasExternal: hasRecommendationExternalEvidence(aTag),
+                    candidateHasExternal: hasRecommendationExternalEvidence(bTag)
+                });
+            }
         });
 
         if (!dot || !normA || !normB) return null;
@@ -1071,10 +1165,10 @@
             if (!record) return;
             const tagMap = buildRecommendationTagMap(record);
             let used = false;
-            tagMap.forEach((value, key) => {
+            tagMap.forEach((tagItem, key) => {
                 const prefix = getRecommendationTagPrefix(key);
                 if (!RECOMMENDATION_PRIMARY_REASON_PREFIXES.has(prefix) && prefix !== 'genre') return;
-                aggregate.set(key, (aggregate.get(key) || 0) + value);
+                aggregate.set(key, (aggregate.get(key) || 0) + getRecommendationTagStrength(tagItem));
                 used = true;
             });
             if (used) count += 1;
@@ -1089,13 +1183,15 @@
         let dot = 0;
         let normA = 0;
         let normB = 0;
-        aTags.forEach((aValue, key) => {
+        aTags.forEach((aTag, key) => {
             const weight = getRecommendationTagWeight(key, mode);
+            const aValue = getRecommendationTagStrength(aTag);
             normA += (aValue ** 2) * weight;
-            if (bTags.has(key)) dot += aValue * bTags.get(key) * weight;
+            if (bTags.has(key)) dot += aValue * getRecommendationTagStrength(bTags.get(key)) * weight;
         });
-        bTags.forEach((bValue, key) => {
+        bTags.forEach((bTag, key) => {
             const weight = getRecommendationTagWeight(key, mode);
+            const bValue = getRecommendationTagStrength(bTag);
             normB += (bValue ** 2) * weight;
         });
         return dot && normA && normB ? dot / Math.sqrt(normA * normB) : 0;
@@ -1135,9 +1231,34 @@
             const weight = Number(tag.weight);
             const confidence = Number(tag.confidence);
             if (!Number.isFinite(weight) || !Number.isFinite(confidence)) return;
-            map.set(key, Math.max(0, weight) * Math.max(0, confidence));
+            const source = String(tag.source || '');
+            const hasExternalEvidence = source === 'external_signal' || (Array.isArray(tag.evidence) && tag.evidence.some(item => String(item || '').startsWith('external')));
+            const baseStrength = Math.max(0, weight) * Math.max(0, confidence);
+            const sourceBoost = hasExternalEvidence && RECOMMENDATION_PRIMARY_REASON_PREFIXES.has(prefix)
+                ? RECOMMENDATION_EXTERNAL_SIGNAL_SCORE_BOOST
+                : 1;
+            map.set(key, {
+                strength: baseStrength * sourceBoost,
+                source,
+                hasExternalEvidence,
+                rawStrength: baseStrength
+            });
         });
         return map;
+    }
+
+    function getRecommendationTagStrength(tagItem) {
+        if (typeof tagItem === 'number') return tagItem;
+        const value = Number(tagItem?.strength);
+        return Number.isFinite(value) ? value : 0;
+    }
+
+    function getRecommendationTagSource(tagItem) {
+        return typeof tagItem === 'object' && tagItem ? String(tagItem.source || '') : '';
+    }
+
+    function hasRecommendationExternalEvidence(tagItem) {
+        return Boolean(typeof tagItem === 'object' && tagItem && tagItem.hasExternalEvidence);
     }
 
     function getRecommendationTagPrefix(key) {
@@ -1173,9 +1294,15 @@
             .map(item => {
                 const prefix = getRecommendationTagPrefix(item.key);
                 const label = recommendationTagDefinitions[item.key]?.label || item.key;
-                const displayScore = item.contribution * (RECOMMENDATION_REASON_PRIORITY[prefix] ?? 0.7);
-                const minStrength = Math.min(sourceTags.get(item.key) || 0, candidateTags.get(item.key) || 0);
-                return { key: item.key, prefix, label, displayScore, minStrength };
+                const sourceTag = sourceTags.get(item.key);
+                const candidateTag = candidateTags.get(item.key);
+                const hasExternalSignal = item.sourceHasExternal || item.candidateHasExternal;
+                const isModelOnly = item.sourceSource === 'model_prior' && item.candidateSource === 'model_prior';
+                let displayScore = item.contribution * (RECOMMENDATION_REASON_PRIORITY[prefix] ?? 0.7);
+                if (hasExternalSignal) displayScore *= RECOMMENDATION_EXTERNAL_REASON_BOOST;
+                if (isModelOnly) displayScore *= RECOMMENDATION_MODEL_REASON_PENALTY;
+                const minStrength = Math.min(getRecommendationTagStrength(sourceTag), getRecommendationTagStrength(candidateTag));
+                return { key: item.key, prefix, label, displayScore, minStrength, hasExternalSignal, isModelOnly };
             })
             .filter(item => item.prefix !== 'status')
             .filter(item => item.displayScore > 0)
@@ -2296,6 +2423,7 @@
         const isMobile = window.innerWidth <= 768;
 
         if (forceOpen === true || (!isOpen && forceOpen !== false)) {
+            hideMapLayerPopover();
             panel.classList.remove('panel-closed');
             panel.classList.add('panel-open');
             if (isMobile) document.body.classList.add('mobile-panel-open');
@@ -2534,6 +2662,14 @@
                 void switchBaseLayer(this.value, { persist: true, silent: false });
             });
         }
+
+        document.addEventListener('click', event => {
+            if (!event.target.closest?.('.leaflet-control-map-layer')) hideMapLayerPopover();
+        }, true);
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') hideMapLayerPopover();
+        });
 
         // フィルタ折りたたみ
         document.querySelectorAll('.section-toggle').forEach(toggle => {
