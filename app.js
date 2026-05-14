@@ -15,11 +15,8 @@
     let visibleRestaurants = [];
     let udonHallOfFameThreshold = Infinity;
     let sobaHallOfFameThreshold = Infinity;
-    let recommendationTagData = null;
-    let recommendationTagsByUrl = new Map();
-    let recommendationTagDefinitions = {};
-    let recommendationAffinityGroups = [];
-    let recommendationAffinityByUrl = new Map();
+    let recommendationEngineModule = null;
+    let recommendationIndex = null;
     let recommendationTagLoadPromise = null;
     let map = null;
     let markerClusterGroup = null;
@@ -59,41 +56,10 @@
     const SAVE_BACKUP_VERSION = 1;
     const REMOTE_DATA_BASE_URL = 'https://miitarou.github.io/udon-hyakumeiten-map/data/';
     const RECOMMENDATION_TAG_PATH = 'data/recommendation_tags.json';
+    const RECOMMENDATION_ENGINE_PATH = './recommendation-engine.js?v=1';
     const RECOMMENDATION_INITIAL_LIMIT = 3;
     const RECOMMENDATION_STEP_LIMIT = 3;
     const RECOMMENDATION_MAX_LIMIT = 9;
-    const RECOMMENDATION_PREFIX_WEIGHTS = {
-        genre: 0.9,
-        style: 1.45,
-        texture: 1.45,
-        dish: 1.35,
-        lineage: 1.3,
-        scene: 1.08,
-        mood: 1.15,
-        pref: 0.42,
-        macro_area: 0.32,
-        selection: 0.34,
-        region: 0.25,
-        status: 0
-    };
-    const RECOMMENDATION_REASON_PRIORITY = {
-        style: 1.6,
-        texture: 1.55,
-        dish: 1.5,
-        lineage: 1.4,
-        scene: 1.15,
-        mood: 1.1,
-        genre: 0,
-        selection: 0.55,
-        pref: 0,
-        macro_area: 0,
-        region: 0,
-        status: 0
-    };
-    const RECOMMENDATION_EXTERNAL_SIGNAL_SCORE_BOOST = 1.06;
-    const RECOMMENDATION_EXTERNAL_REASON_BOOST = 1.5;
-    const RECOMMENDATION_MODEL_REASON_PENALTY = 0.72;
-    const RECOMMENDATION_PRIMARY_REASON_PREFIXES = new Set(['style', 'texture', 'dish', 'mood', 'scene', 'lineage']);
     const RECOMMENDATION_MODES = {
         similar: { label: '味・雰囲気が近い' },
         nearby: { label: '最寄りで探す' },
@@ -300,7 +266,7 @@
                 toggle.setAttribute('title', '地図表示を切り替え');
                 toggle.setAttribute('aria-expanded', 'false');
                 toggle.setAttribute('aria-controls', 'map-layer-popover');
-                toggle.textContent = '🗺️';
+                toggle.innerHTML = '<span class="map-layer-toggle-icon" aria-hidden="true">🗺️</span><span class="map-layer-toggle-text">地図</span>';
 
                 const popover = L.DomUtil.create('div', 'map-layer-popover', container);
                 popover.id = 'map-layer-popover';
@@ -330,7 +296,7 @@
                 popover.querySelectorAll('.map-layer-option').forEach(button => {
                     button.addEventListener('click', () => {
                         void switchBaseLayer(button.dataset.mapLayer, { persist: true, silent: false });
-                        hideMapLayerPopover();
+                        hideMapLayerPopover({ restoreFocus: true });
                     });
                 });
 
@@ -498,12 +464,13 @@
         toggle.setAttribute('aria-expanded', String(willOpen));
     }
 
-    function hideMapLayerPopover() {
+    function hideMapLayerPopover(options = {}) {
         const toggle = document.getElementById('map-layer-toggle');
         const popover = document.getElementById('map-layer-popover');
         if (!toggle || !popover || popover.hidden) return;
         popover.hidden = true;
         toggle.setAttribute('aria-expanded', 'false');
+        if (options.restoreFocus) toggle.focus({ preventScroll: true });
     }
 
     // === Data Loading ===
@@ -628,6 +595,13 @@
         return recommendationTagLoadPromise;
     }
 
+    async function loadRecommendationEngineModule() {
+        if (!recommendationEngineModule) {
+            recommendationEngineModule = await import(RECOMMENDATION_ENGINE_PATH);
+        }
+        return recommendationEngineModule;
+    }
+
     async function loadRecommendationTags(fetchJson) {
         const urls = isNativeApp()
             ? [`${REMOTE_DATA_BASE_URL}recommendation_tags.json?ts=${Date.now()}`, RECOMMENDATION_TAG_PATH]
@@ -637,27 +611,16 @@
             try {
                 const data = await fetchJson(url);
                 if (!Array.isArray(data?.restaurants)) throw new Error('Recommendation tag data should contain restaurants array');
-                recommendationTagData = data;
-                recommendationTagDefinitions = data.tagDefinitions || {};
-                recommendationAffinityGroups = Array.isArray(data.affinityGroups) ? data.affinityGroups : [];
-                recommendationAffinityByUrl = buildRecommendationAffinityIndex(recommendationAffinityGroups);
-                recommendationTagsByUrl = new Map(
-                    data.restaurants
-                        .filter(item => item?.url && Array.isArray(item.tags))
-                        .map(item => [item.url, item])
-                );
-                console.log(`🔎 推薦タグ読込完了: ${recommendationTagsByUrl.size} 店 / ${Object.keys(recommendationTagDefinitions).length} tags`);
+                const engine = await loadRecommendationEngineModule();
+                recommendationIndex = engine.createRecommendationIndex(data);
+                console.log(`🔎 推薦タグ読込完了: ${recommendationIndex.tagsByUrl.size} 店 / ${Object.keys(recommendationIndex.tagDefinitions).length} tags`);
                 return;
             } catch (error) {
                 console.warn(`Recommendation tag load failed: ${url}`, error);
             }
         }
 
-        recommendationTagData = null;
-        recommendationTagDefinitions = {};
-        recommendationAffinityGroups = [];
-        recommendationAffinityByUrl = new Map();
-        recommendationTagsByUrl = new Map();
+        recommendationIndex = null;
     }
 
     // === 年度ボタンを動的生成 ===
@@ -982,7 +945,7 @@
         });
 
         results.innerHTML = '<div class="recommendation-empty">候補を計算中です...</div>';
-        if (!recommendationTagsByUrl.has(sourceUrl) && recommendationTagLoadPromise) {
+        if (!recommendationIndex?.tagsByUrl?.has(sourceUrl) && recommendationTagLoadPromise) {
             try {
                 await recommendationTagLoadPromise;
             } catch (error) {
@@ -993,7 +956,17 @@
         updateOpenPopupLayout();
 
         const source = getRestaurantByUrl(sourceUrl);
-        const recommendations = getRecommendations(source, mode, RECOMMENDATION_MAX_LIMIT);
+        const recommendations = source && recommendationEngineModule && recommendationIndex
+            ? recommendationEngineModule.getRecommendations({
+                source,
+                restaurants: allRestaurants,
+                index: recommendationIndex,
+                mode,
+                limit: RECOMMENDATION_MAX_LIMIT,
+                savedStates,
+                calcDistance
+            })
+            : [];
         if (!source || !recommendations.length) {
             results.innerHTML = '<div class="recommendation-empty">おすすめ候補を表示できませんでした。</div>';
             updateOpenPopupLayout();
@@ -1014,7 +987,7 @@
         const safeUrl = encodeURIComponent(r.url || '');
         const score = item.displayScore ?? Math.max(1, Math.min(99, Math.round(item.score * 100)));
         const distance = Number.isFinite(item.distanceKm) ? ` / ${formatDistance(item.distanceKm)}` : '';
-        const reasonText = formatRecommendationReason(item.reasons);
+        const reasonText = item.reasonText || '';
         const closedBadge = r.closed ? '<span class="recommendation-closed">閉店</span>' : '';
         const reasonHtml = reasonText
             ? `<span class="recommendation-card-reason">${escapeHtml(reasonText)}</span>`
@@ -1029,293 +1002,6 @@
                 <span class="recommendation-card-meta">${escapeHtml(r.prefecture)} ${escapeHtml(r.area || '')}${distance} ${closedBadge}</span>
                 ${reasonHtml}
             </button>`;
-    }
-
-    function formatRecommendationReason(reasons) {
-        if (!reasons?.length) return '';
-        const labels = reasons
-            .filter(label => label && !/^(うどん|そば|東京都|大阪府|京都府|神奈川県|香川県|EAST|WEST|KAGAWA|\d回以上選出)$/.test(label))
-            .slice(0, 3);
-        return labels.length ? labels.join(' / ') : '';
-    }
-
-    function getRecommendations(source, mode = 'similar', limit = 4) {
-        if (!source?.url || !recommendationTagsByUrl.has(source.url)) return [];
-        const sourceRecord = recommendationTagsByUrl.get(source.url);
-        const preferenceTags = buildSavedPreferenceTagMap(source.url);
-
-        const recommendations = allRestaurants
-            .filter(candidate => candidate.url !== source.url)
-            .filter(candidate => !candidate.closed)
-            .map(candidate => {
-                const candidateRecord = recommendationTagsByUrl.get(candidate.url);
-                if (!candidateRecord) return null;
-                const scored = scoreRecommendationCandidate(source, sourceRecord, candidate, candidateRecord, mode, preferenceTags);
-                return scored && scored.score > 0.02 ? scored : null;
-            })
-            .filter(Boolean)
-            .sort((a, b) => b.score - a.score)
-            .slice(0, limit);
-        return normalizeRecommendationDisplayScores(recommendations);
-    }
-
-    function scoreRecommendationCandidate(source, sourceRecord, candidate, candidateRecord, mode, preferenceTags = null) {
-        const sourceTags = buildRecommendationTagMap(sourceRecord);
-        const candidateTags = buildRecommendationTagMap(candidateRecord);
-        if (!sourceTags.size || !candidateTags.size) return null;
-
-        let dot = 0;
-        let normA = 0;
-        let normB = 0;
-        const shared = [];
-
-        sourceTags.forEach((aTag, key) => {
-            const weight = getRecommendationTagWeight(key, mode);
-            const aValue = getRecommendationTagStrength(aTag);
-            normA += (aValue ** 2) * weight;
-        });
-        candidateTags.forEach((bTag, key) => {
-            const weight = getRecommendationTagWeight(key, mode);
-            const bValue = getRecommendationTagStrength(bTag);
-            normB += (bValue ** 2) * weight;
-        });
-        sourceTags.forEach((aTag, key) => {
-            if (!candidateTags.has(key)) return;
-            const weight = getRecommendationTagWeight(key, mode);
-            const bTag = candidateTags.get(key);
-            const aValue = getRecommendationTagStrength(aTag);
-            const bValue = getRecommendationTagStrength(bTag);
-            const contribution = aValue * bValue * weight;
-            dot += contribution;
-            if (weight > 0) {
-                shared.push({
-                    key,
-                    contribution,
-                    sourceSource: getRecommendationTagSource(aTag),
-                    candidateSource: getRecommendationTagSource(bTag),
-                    sourceHasExternal: hasRecommendationExternalEvidence(aTag),
-                    candidateHasExternal: hasRecommendationExternalEvidence(bTag)
-                });
-            }
-        });
-
-        if (!dot || !normA || !normB) return null;
-
-        const similarity = dot / Math.sqrt(normA * normB);
-        if (mode === 'nearby' && similarity < 0.18) return null;
-
-        const distanceKm = source.lat != null && source.lng != null && candidate.lat != null && candidate.lng != null
-            ? calcDistance(source.lat, source.lng, candidate.lat, candidate.lng)
-            : Infinity;
-        const distanceScore = Number.isFinite(distanceKm) ? 1 / (1 + distanceKm / 18) : 0;
-
-        let score = similarity;
-        if (mode === 'nearby') {
-            score = (similarity * 0.5) + (distanceScore * 0.5);
-        } else if (mode === 'expand') {
-            const sameCategory = source.category === candidate.category;
-            const samePrefecture = source.prefecture === candidate.prefecture;
-            const noveltyFactor = (sameCategory ? 0.94 : 1.08) * (samePrefecture ? 0.96 : 1.03);
-            score = similarity * noveltyFactor;
-        }
-
-        const affinityBoost = getRecommendationAffinityBoost(source.url, candidate.url, mode);
-        if (affinityBoost > 0) score *= 1 + affinityBoost;
-
-        if (preferenceTags?.size) {
-            const preferenceSimilarity = calculateRecommendationMapSimilarity(preferenceTags, candidateTags, mode);
-            if (preferenceSimilarity > 0.05) score *= 1 + Math.min(0.1, preferenceSimilarity * 0.12);
-        }
-
-        const savedState = getSavedState(candidate);
-        if (savedState === 'want') score *= 1.08;
-
-        return {
-            restaurant: candidate,
-            score,
-            distanceKm,
-            reasons: buildRecommendationReasons(shared, sourceTags, candidateTags, mode),
-            affinityBoost
-        };
-    }
-
-    function normalizeRecommendationDisplayScores(items) {
-        if (!items.length) return items;
-        const max = Math.max(...items.map(item => item.score));
-        const min = Math.min(...items.map(item => item.score));
-        const spread = max - min;
-        return items.map((item, index) => {
-            const rankScore = Math.max(72, 96 - (index * 4));
-            const valueScore = spread > 0.03
-                ? 72 + (((item.score - min) / spread) * 24)
-                : rankScore;
-            return {
-                ...item,
-                displayScore: Math.round(Math.max(72, Math.min(96, (valueScore * 0.62) + (rankScore * 0.38))))
-            };
-        });
-    }
-
-    function buildSavedPreferenceTagMap(excludedUrl = '') {
-        const aggregate = new Map();
-        let count = 0;
-        Object.entries(savedStates).forEach(([url, state]) => {
-            if (state !== 'want' || url === excludedUrl) return;
-            const record = recommendationTagsByUrl.get(url);
-            if (!record) return;
-            const tagMap = buildRecommendationTagMap(record);
-            let used = false;
-            tagMap.forEach((tagItem, key) => {
-                const prefix = getRecommendationTagPrefix(key);
-                if (!RECOMMENDATION_PRIMARY_REASON_PREFIXES.has(prefix) && prefix !== 'genre') return;
-                aggregate.set(key, (aggregate.get(key) || 0) + getRecommendationTagStrength(tagItem));
-                used = true;
-            });
-            if (used) count += 1;
-        });
-        if (!count) return new Map();
-        aggregate.forEach((value, key) => aggregate.set(key, value / count));
-        return aggregate;
-    }
-
-    function calculateRecommendationMapSimilarity(aTags, bTags, mode = 'similar') {
-        if (!aTags?.size || !bTags?.size) return 0;
-        let dot = 0;
-        let normA = 0;
-        let normB = 0;
-        aTags.forEach((aTag, key) => {
-            const weight = getRecommendationTagWeight(key, mode);
-            const aValue = getRecommendationTagStrength(aTag);
-            normA += (aValue ** 2) * weight;
-            if (bTags.has(key)) dot += aValue * getRecommendationTagStrength(bTags.get(key)) * weight;
-        });
-        bTags.forEach((bTag, key) => {
-            const weight = getRecommendationTagWeight(key, mode);
-            const bValue = getRecommendationTagStrength(bTag);
-            normB += (bValue ** 2) * weight;
-        });
-        return dot && normA && normB ? dot / Math.sqrt(normA * normB) : 0;
-    }
-
-    function buildRecommendationAffinityIndex(groups) {
-        const index = new Map();
-        groups.forEach(group => {
-            if (!Array.isArray(group?.urls) || group.urls.length < 2) return;
-            group.urls.forEach(url => {
-                const items = index.get(url) || [];
-                items.push(group);
-                index.set(url, items);
-            });
-        });
-        return index;
-    }
-
-    function getRecommendationAffinityBoost(sourceUrl, candidateUrl, mode) {
-        const groups = recommendationAffinityByUrl.get(sourceUrl);
-        if (!groups?.length) return 0;
-        let boost = 0;
-        groups.forEach(group => {
-            if (!Array.isArray(group.urls) || !group.urls.includes(candidateUrl)) return;
-            if (Array.isArray(group.modes) && !group.modes.includes(mode)) return;
-            boost += Number(group.boost) || 0;
-        });
-        return Math.min(0.16, boost);
-    }
-
-    function buildRecommendationTagMap(record) {
-        const map = new Map();
-        (record?.tags || []).forEach(tag => {
-            const key = String(tag?.key || '');
-            const prefix = getRecommendationTagPrefix(key);
-            if (!key || prefix === 'status') return;
-            const weight = Number(tag.weight);
-            const confidence = Number(tag.confidence);
-            if (!Number.isFinite(weight) || !Number.isFinite(confidence)) return;
-            const source = String(tag.source || '');
-            const hasExternalEvidence = source === 'external_signal' || (Array.isArray(tag.evidence) && tag.evidence.some(item => String(item || '').startsWith('external')));
-            const baseStrength = Math.max(0, weight) * Math.max(0, confidence);
-            const sourceBoost = hasExternalEvidence && RECOMMENDATION_PRIMARY_REASON_PREFIXES.has(prefix)
-                ? RECOMMENDATION_EXTERNAL_SIGNAL_SCORE_BOOST
-                : 1;
-            map.set(key, {
-                strength: baseStrength * sourceBoost,
-                source,
-                hasExternalEvidence,
-                rawStrength: baseStrength
-            });
-        });
-        return map;
-    }
-
-    function getRecommendationTagStrength(tagItem) {
-        if (typeof tagItem === 'number') return tagItem;
-        const value = Number(tagItem?.strength);
-        return Number.isFinite(value) ? value : 0;
-    }
-
-    function getRecommendationTagSource(tagItem) {
-        return typeof tagItem === 'object' && tagItem ? String(tagItem.source || '') : '';
-    }
-
-    function hasRecommendationExternalEvidence(tagItem) {
-        return Boolean(typeof tagItem === 'object' && tagItem && tagItem.hasExternalEvidence);
-    }
-
-    function getRecommendationTagPrefix(key) {
-        return String(key || '').split('.')[0];
-    }
-
-    function getRecommendationTagWeight(key, mode) {
-        const prefix = getRecommendationTagPrefix(key);
-        const base = RECOMMENDATION_PREFIX_WEIGHTS[prefix] ?? 0.6;
-        if (base <= 0) return 0;
-        return base * getRecommendationModeFactor(prefix, mode);
-    }
-
-    function getRecommendationModeFactor(prefix, mode) {
-        if (mode === 'nearby') {
-            if (prefix === 'pref' || prefix === 'macro_area') return 1.12;
-            if (prefix === 'region') return 0.85;
-            if (prefix === 'genre') return 0.82;
-            if (prefix === 'style' || prefix === 'texture' || prefix === 'dish') return 1.04;
-        }
-        if (mode === 'expand') {
-            if (prefix === 'genre') return 0.58;
-            if (prefix === 'pref') return 0.22;
-            if (prefix === 'macro_area' || prefix === 'region') return 0.58;
-            if (prefix === 'style' || prefix === 'texture' || prefix === 'dish' || prefix === 'lineage') return 1.22;
-            if (prefix === 'scene' || prefix === 'mood') return 1.12;
-        }
-        return 1;
-    }
-
-    function buildRecommendationReasons(shared, sourceTags, candidateTags, mode) {
-        const reasonItems = shared
-            .map(item => {
-                const prefix = getRecommendationTagPrefix(item.key);
-                const label = recommendationTagDefinitions[item.key]?.label || item.key;
-                const sourceTag = sourceTags.get(item.key);
-                const candidateTag = candidateTags.get(item.key);
-                const hasExternalSignal = item.sourceHasExternal || item.candidateHasExternal;
-                const isModelOnly = item.sourceSource === 'model_prior' && item.candidateSource === 'model_prior';
-                let displayScore = item.contribution * (RECOMMENDATION_REASON_PRIORITY[prefix] ?? 0.7);
-                if (hasExternalSignal) displayScore *= RECOMMENDATION_EXTERNAL_REASON_BOOST;
-                if (isModelOnly) displayScore *= RECOMMENDATION_MODEL_REASON_PENALTY;
-                const minStrength = Math.min(getRecommendationTagStrength(sourceTag), getRecommendationTagStrength(candidateTag));
-                return { key: item.key, prefix, label, displayScore, minStrength, hasExternalSignal, isModelOnly };
-            })
-            .filter(item => item.prefix !== 'status')
-            .filter(item => item.displayScore > 0)
-            .sort((a, b) => b.displayScore - a.displayScore);
-        const primaryReasons = reasonItems
-            .filter(item => RECOMMENDATION_PRIMARY_REASON_PREFIXES.has(item.prefix))
-            .filter(item => item.minStrength >= (mode === 'expand' ? 0.22 : 0.28))
-            .slice(0, 3);
-        const fallbackReasons = primaryReasons.length ? [] : reasonItems
-            .filter(item => item.prefix === 'selection')
-            .filter(item => item.minStrength >= 0.45)
-            .slice(0, Math.max(0, 3 - primaryReasons.length));
-        return [...primaryReasons, ...fallbackReasons].slice(0, 3).map(item => item.label);
     }
 
     function updateOpenPopupLayout() {
@@ -2668,7 +2354,7 @@
         }, true);
 
         document.addEventListener('keydown', event => {
-            if (event.key === 'Escape') hideMapLayerPopover();
+            if (event.key === 'Escape') hideMapLayerPopover({ restoreFocus: true });
         });
 
         // フィルタ折りたたみ

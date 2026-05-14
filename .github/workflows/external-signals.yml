@@ -22,10 +22,13 @@ jobs:
       - name: Run data quality checks
         run: python3 scripts/check_data_quality.py
 
+      - name: Run external signal freshness report
+        run: python3 scripts/check_external_signal_age.py
+
       - name: Build recommendation report
         run: |
           mkdir -p build
-          python3 scripts/evaluate_recommendations.py > build/recommendation-report.md
+          python3 scripts/evaluate_recommendations.py --compare-external > build/recommendation-report.md
 
       - name: Upload recommendation report
         uses: actions/upload-artifact@v4

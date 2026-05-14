@@ -69,6 +69,7 @@ open http://localhost:8080
 ├── index.html                  # メインHTML
 ├── style.css                   # スタイルシート (ダークモード + グラスモーフィズム)
 ├── app.js                      # アプリケーションロジック
+├── recommendation-engine.js    # 推薦スコア・理由生成のES Module
 ├── manifest.webmanifest        # PWAマニフェスト
 ├── sw.js                       # Service Worker
 ├── icon.svg                    # PWAアイコン
@@ -99,6 +100,8 @@ open http://localhost:8080
 │   ├── generate_external_signals.py # 外部シグナルPoC生成
 │   ├── generate_recommendation_tags.py # 推薦タグデータ生成
 │   ├── evaluate_recommendations.py # 推薦ゴールデンセットの結果レポート
+│   ├── check_size_budget.py    # JS/CSS/JSONサイズ予算のreport-only確認
+│   ├── check_external_signal_age.py # 外部シグナル鮮度のreport-only確認
 │   ├── generate_data_version.py # iPhone版向けデータメタ情報生成
 │   ├── sync_mobile_assets.py   # Web資産を mobile/www へ同期
 │   └── check_data_quality.py   # 公開データ品質チェック
@@ -120,11 +123,12 @@ open http://localhost:8080
 |---------|------|
 | 地図描画 | [Leaflet.js](https://leafletjs.com/) v1.9.4 |
 | クラスタリング | [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster) |
-| 地図タイル | [地理院タイル（淡色地図）](https://maps.gsi.go.jp/development/ichiran.html)　出典：国土地理院 |
+| 地図タイル | [地理院タイル（淡色・標準）](https://maps.gsi.go.jp/development/ichiran.html) / [OpenFreeMap Positron（試験）](https://openfreemap.org/) |
 | フォント | [Noto Sans JP](https://fonts.google.com/noto/specimen/Noto+Sans+JP), [Outfit](https://fonts.google.com/specimen/Outfit) |
 | ホスティング | [GitHub Pages](https://pages.github.com/) |
 
-Leaflet / Leaflet.markercluster の CDN 読み込みには Subresource Integrity (SRI) を設定しています。
+デフォルトは地理院 淡色です。OpenFreeMap Positron は試験レイヤとして追加しており、表示できない場合は地理院レイヤへ戻せるようにしています。
+Leaflet / Leaflet.markercluster / 動的MapLibre読み込みには Subresource Integrity (SRI) を設定しています。
 
 ## 📊 データについて
 
@@ -178,6 +182,12 @@ Leaflet / Leaflet.markercluster の CDN 読み込みには Subresource Integrity
 3. 以下のコマンドで検証スクリプトを実行する
    ```bash
    python3 scripts/check_data_quality.py
+   node --check app.js
+   node --input-type=module --check < recommendation-engine.js
+   node --check sw.js
+   git diff --check
+   python3 scripts/check_size_budget.py
+   python3 scripts/check_external_signal_age.py
    ```
 4. エラーが出た場合はデータを修正し、ローカルサーバーで動作確認を行う
 
@@ -197,11 +207,15 @@ Leaflet / Leaflet.markercluster の CDN 読み込みには Subresource Integrity
 - `data/external_signals.json` の参照URL・タグ定義・短い根拠語形式
 - `data/recommendation_tags.json` のURL照合・タグ定義・weight/confidence形式・AI推定相性グループ
 - `data/recommendation_golden_set.json` の参照URL・推薦モード整合
+- JS構文、空白・改行事故
+- JS/CSS/主要JSONのサイズ予算（report-only）
+- 外部シグナルの `lastCheckedAt` 鮮度（report-only）
 
 推薦品質を確認する場合は、代表ケース（36ケース）に対する現行推薦結果を出力します。
 
 ```bash
 python3 scripts/evaluate_recommendations.py
+python3 scripts/evaluate_recommendations.py --compare-external > build/recommendation-report.md
 ```
 
 特定ケースだけ確認する場合:

@@ -26,4 +26,11 @@ jobs:
       - name: Run JavaScript syntax checks
         run: |
           node --check app.js
+          node --input-type=module --check < recommendation-engine.js
           node --check sw.js
+
+      - name: Run repository hygiene checks
+        run: |
+          git diff --check
+          python3 scripts/check_size_budget.py
+          python3 scripts/check_external_signal_age.py

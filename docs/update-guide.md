@@ -32,18 +32,23 @@ python3 scripts/generate_recommendation_tags.py
 
 ```bash
 python3 scripts/evaluate_recommendations.py
+python3 scripts/evaluate_recommendations.py --compare-external > build/recommendation-report.md
 python3 scripts/evaluate_recommendations.py --case udon_tokyo_maruka_similar --top 9
 ```
 
 このレポートは正解判定ではなく、代表ケースで推薦結果が大きく退行していないかを見るためのものです。
+`--compare-external` は、外部シグナル補正あり/なしの差分も併記する開発者向けレポートです。
 
 ## 4. データ品質チェックを実行する
 
 ```bash
 python3 scripts/check_data_quality.py
 node --check app.js
+node --input-type=module --check < recommendation-engine.js
 node --check sw.js
 git diff --check
+python3 scripts/check_size_budget.py
+python3 scripts/check_external_signal_age.py
 ```
 
 主な検証対象は以下です。
@@ -57,6 +62,8 @@ git diff --check
 - 重複候補
 - `closed` / `firstSelected` の型
 - 外部シグナル、推薦タグ、ゴールデンセットの参照整合
+- JS/CSS/主要JSONのサイズ予算（report-only）
+- 外部シグナルの `lastCheckedAt` 鮮度（report-only）
 
 ## 5. Web版をローカル確認する
 
