@@ -5,10 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>うどん・そば百名店 MAP 2017-2025 | EAST × WEST × KAGAWA 全年度統合版</title>
     <meta name="description" content="公開情報をもとに個人が整理した、うどん・そば百名店 MAP 2017-2025 非公式参考ツール。年度別選出履歴、エリア別フィルタ、検索付き。">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="うどん・そば百名店 MAP">
+    <meta property="og:title" content="うどん・そば百名店 MAP 2017-2025">
+    <meta property="og:description" content="公開情報をもとに個人が整理した非公式参考マップ。年度・地域・特徴・現在地から、うどん・そば百名店を探せます。">
+    <meta property="og:url" content="https://miitarou.github.io/udon-hyakumeiten-map/">
+    <meta property="og:image" content="https://miitarou.github.io/udon-hyakumeiten-map/og-image.png">
+    <meta property="og:locale" content="ja_JP">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="うどん・そば百名店 MAP 2017-2025">
+    <meta name="twitter:description" content="年度・地域・特徴・現在地から、うどん・そば百名店を探せる非公式参考マップ。">
+    <meta name="twitter:image" content="https://miitarou.github.io/udon-hyakumeiten-map/og-image.png">
     <meta name="theme-color" content="#121218">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self' https://unpkg.com; style-src 'self' 'unsafe-inline' https://unpkg.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://cyberjapandata.gsi.go.jp https://*.gsi.go.jp https://*.openstreetmap.org https://tiles.openfreemap.org; connect-src 'self' https://miitarou.github.io https://tiles.openfreemap.org; worker-src 'self' blob:; child-src 'self' blob:;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self' 'nonce-hyakumeiten-jsonld' https://unpkg.com; style-src 'self' 'unsafe-inline' https://unpkg.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://cyberjapandata.gsi.go.jp https://*.gsi.go.jp https://*.openstreetmap.org https://tiles.openfreemap.org; connect-src 'self' https://miitarou.github.io https://tiles.openfreemap.org; worker-src 'self' blob:; child-src 'self' blob:;">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="icon" href="icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
@@ -20,7 +32,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css?v=6.9">
+    <link rel="stylesheet" href="style.css?v=7.4">
 </head>
 <body>
     <noscript>
@@ -191,24 +203,33 @@
                             <option value="all">すべて</option>
                         </select>
                     </div>
-                    <!-- 選出年（JSで動的生成） -->
                     <div class="filter-subsection">
-                        <label class="control-label">📅 選出年</label>
-                        <div class="filter-group year-filters" id="year-filters">
-                            <!-- JS で生成 -->
-                        </div>
+                        <label class="control-label" for="feature-select">✨ 特徴で探す</label>
+                        <select id="feature-select" class="pref-select feature-select">
+                            <option value="all">選択なし</option>
+                        </select>
+                        <div id="feature-summary" class="feature-summary">AI推定タグと外部シグナルを探索補助として使います。</div>
                     </div>
-                    <!-- 選出回数 -->
-                    <div class="filter-subsection">
-                        <label class="control-label">🏆 選出回数</label>
-                        <div class="filter-group count-filters">
-                            <button class="filter-btn active" data-count-mode="all" aria-pressed="true">指定なし</button>
-                            <button class="filter-btn" data-count-mode="first" aria-pressed="false">最新年度で初登場</button>
-                            <button class="filter-btn" data-count-mode="exact-1" aria-pressed="false">1回のみ</button>
-                            <button class="filter-btn" data-count-mode="min-2" aria-pressed="false">2回以上</button>
-                            <button class="filter-btn" data-count-mode="min-3" aria-pressed="false">3回以上</button>
-                            <button class="filter-btn" data-count-mode="min-4" aria-pressed="false">4回以上</button>
-                            <button class="filter-btn" data-count-mode="hall-of-fame" aria-pressed="false">殿堂入り（カテゴリ上位10%）</button>
+                    <div class="compact-filter-row">
+                        <!-- 選出年（JSで動的生成） -->
+                        <div class="filter-subsection">
+                            <label class="control-label" for="year-select">📅 選出年</label>
+                            <select id="year-select" class="pref-select year-select">
+                                <option value="all">全年度</option>
+                            </select>
+                        </div>
+                        <!-- 選出回数 -->
+                        <div class="filter-subsection">
+                            <label class="control-label" for="count-select">🏆 選出回数</label>
+                            <select id="count-select" class="pref-select count-select">
+                                <option value="all">指定なし</option>
+                                <option value="first">最新年度で初登場</option>
+                                <option value="exact-1">1回のみ</option>
+                                <option value="min-2">2回以上</option>
+                                <option value="min-3">3回以上</option>
+                                <option value="min-4">4回以上</option>
+                                <option value="hall-of-fame">殿堂入り（上位10%）</option>
+                            </select>
                         </div>
                     </div>
                     <!-- 営業状態 -->
@@ -326,6 +347,7 @@
     <script src="vendor/leaflet/leaflet.js"></script>
     <!-- Leaflet MarkerCluster JS -->
     <script src="vendor/leaflet.markercluster/leaflet.markercluster.js"></script>
-    <script src="app.js?v=6.9"></script>
+    <script src="search.js?v=1"></script>
+    <script src="app.js?v=7.4"></script>
 </body>
 </html>

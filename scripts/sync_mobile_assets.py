@@ -16,10 +16,16 @@ VENDOR = MOBILE / "vendor"
 ROOT_FILES = (
     "index.html",
     "style.css",
+    "search.js",
     "app.js",
+    "recommendation-engine.js",
+    "sw.js",
     "manifest.webmanifest",
     "icon.png",
+    "og-image.png",
     "privacy.html",
+    "robots.txt",
+    "sitemap.xml",
 )
 DATA_FILES = (
     "data-version.json",
@@ -76,6 +82,13 @@ def copy_data_files() -> None:
         shutil.copy2(ROOT / "data" / name, WWW / "data" / name)
 
 
+def copy_icon_files() -> None:
+    src = ROOT / "icons"
+    if not src.exists():
+        return
+    shutil.copytree(src, WWW / "icons", dirs_exist_ok=True)
+
+
 def copy_vendor_files() -> None:
     if not VENDOR.exists():
         raise FileNotFoundError("mobile/vendor is missing. Run the vendor download step first.")
@@ -86,6 +99,7 @@ def main() -> int:
     clean_www()
     copy_root_files()
     copy_data_files()
+    copy_icon_files()
     copy_vendor_files()
     print(f"Synced web assets to {WWW.relative_to(ROOT)}")
     return 0

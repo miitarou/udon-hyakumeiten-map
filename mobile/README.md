@@ -36,6 +36,7 @@ HTML/CSS/JSはリモート差し替えせず、機能変更はApp Storeアップ
 - Xcode 26.4.1 / iOS 26.4 Simulator RuntimeでSimulatorビルド確認済み。
 - 実機 `mii-iPhone17` へのDebugビルド、インストール、起動確認済み。
 - Signing Team: `XUQ4K2R5GP`
+- 次回更新用のローカル確認: Version `1.1` / Build `3` でRelease汎用iOSビルド成功。
 
 ## App Store Preparation
 

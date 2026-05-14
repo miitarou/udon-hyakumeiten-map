@@ -4,10 +4,16 @@
 
 - Display name: 百名店MAP
 - Bundle ID: `jp.miitarou.hyakumeiten.udonsoba`
-- Version: `1.0`
+- Current update version: `1.1`
+- Build number: `3`
 - Category intent: Food & Drink / Travel reference map
 - Support URL: `https://github.com/miitarou/udon-hyakumeiten-map/issues`
 - Privacy Policy URL: `https://miitarou.github.io/udon-hyakumeiten-map/privacy.html`
+
+## What's New Draft
+
+地図レイヤ切替、特徴で探すフィルタ、検索操作、店舗推薦表示を改善しました。
+また、表示崩れや距離検索後の推薦遷移を調整し、安定性を向上しました。
 
 ## App Store Listing Draft
 

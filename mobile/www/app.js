@@ -15,12 +15,13 @@
     let visibleRestaurants = [];
     let udonHallOfFameThreshold = Infinity;
     let sobaHallOfFameThreshold = Infinity;
+    let recommendationEngineModule = null;
     let recommendationTagData = null;
+    let recommendationIndex = null;
     let recommendationTagsByUrl = new Map();
-    let recommendationTagDefinitions = {};
-    let recommendationAffinityGroups = [];
-    let recommendationAffinityByUrl = new Map();
+    let recommendationTagLoadFailed = false;
     let recommendationTagLoadPromise = null;
+    let appFetchJson = null;
     let map = null;
     let markerClusterGroup = null;
     let activeBaseLayer = null;
@@ -33,6 +34,7 @@
     let activePrefecture = 'all';
     let activeYear = 'all';
     let countFilterMode = 'all';  // 'all' | 'first' | 'exact-1' | 'min-N' | 'hall-of-fame'
+    let activeFeatureFilter = 'all';
     let activeStatus = 'all';     // 'all' | 'open' | 'closed'
     let saveFilter = 'all';       // 'all' | 'want' | 'visited' | 'none'
     let searchQuery = '';
@@ -59,60 +61,96 @@
     const SAVE_BACKUP_VERSION = 1;
     const REMOTE_DATA_BASE_URL = 'https://miitarou.github.io/udon-hyakumeiten-map/data/';
     const RECOMMENDATION_TAG_PATH = 'data/recommendation_tags.json';
+    const RECOMMENDATION_ENGINE_PATH = './recommendation-engine.js?v=1';
     const RECOMMENDATION_INITIAL_LIMIT = 3;
     const RECOMMENDATION_STEP_LIMIT = 3;
     const RECOMMENDATION_MAX_LIMIT = 9;
-    const RECOMMENDATION_PREFIX_WEIGHTS = {
-        genre: 0.9,
-        style: 1.45,
-        texture: 1.45,
-        dish: 1.35,
-        lineage: 1.3,
-        scene: 1.08,
-        mood: 1.15,
-        pref: 0.42,
-        macro_area: 0.32,
-        selection: 0.34,
-        region: 0.25,
-        status: 0
-    };
-    const RECOMMENDATION_REASON_PRIORITY = {
-        style: 1.6,
-        texture: 1.55,
-        dish: 1.5,
-        lineage: 1.4,
-        scene: 1.15,
-        mood: 1.1,
-        genre: 0,
-        selection: 0.55,
-        pref: 0,
-        macro_area: 0,
-        region: 0,
-        status: 0
-    };
-    const RECOMMENDATION_EXTERNAL_SIGNAL_SCORE_BOOST = 1.06;
-    const RECOMMENDATION_EXTERNAL_REASON_BOOST = 1.5;
-    const RECOMMENDATION_MODEL_REASON_PENALTY = 0.72;
-    const RECOMMENDATION_PRIMARY_REASON_PREFIXES = new Set(['style', 'texture', 'dish', 'mood', 'scene', 'lineage']);
     const RECOMMENDATION_MODES = {
         similar: { label: '味・雰囲気が近い' },
         nearby: { label: '最寄りで探す' },
         expand: { label: '新しい発見' }
     };
-    const COMMON_SEARCH_REPLACEMENTS = [
-        ['饂飩', 'うどん'],
-        ['齊', '斉'],
-        ['齋', '斉'],
-        ['斎', '斉'],
-        ['邊', '辺'],
-        ['邉', '辺'],
-        ['廣', '広'],
-        ['國', '国'],
-        ['櫻', '桜'],
-        ['萬', '万'],
-        ['壽', '寿'],
-        ['藪', '薮']
+    const FEATURE_FILTERS = [
+        {
+            id: 'drink-pairing',
+            label: 'お酒と楽しむ',
+            summary: '蕎麦前、鴨、落ち着いた食事向きの特徴を重視します。',
+            minScore: 1.0,
+            tags: ['scene.drink_pairing', 'scene.calm_meal', 'dish.duck', 'mood.traditional']
+        },
+        {
+            id: 'aroma',
+            label: '香りを楽しむ',
+            summary: '香り重視、石臼、十割そば系の特徴を重視します。',
+            minScore: 1.2,
+            tags: ['texture.aroma_focused', 'style.stone_milled', 'dish.juwari']
+        },
+        {
+            id: 'koshi',
+            label: 'コシ強め',
+            summary: 'コシ重視、讃岐系、吉田うどん系の特徴を重視します。',
+            minScore: 1.2,
+            tags: ['texture.koshi_strong', 'style.sanuki_influenced', 'style.yoshida_udon']
+        },
+        {
+            id: 'handmade',
+            label: '手打ち・自家製',
+            summary: '手打ち、自家製、麺そのものを楽しむ特徴を重視します。',
+            minScore: 1.0,
+            tags: ['style.handmade', 'texture.throat_smooth', 'texture.aroma_focused']
+        },
+        {
+            id: 'destination',
+            label: '旅先で行きたい',
+            summary: '目的地型、地域色、名店感のある特徴を重視します。',
+            minScore: 1.2,
+            tags: ['scene.destination', 'style.regional_specialty', 'mood.traditional']
+        },
+        {
+            id: 'quick-solo',
+            label: 'ひとり・短時間',
+            summary: '一人昼食、短時間利用、セルフ寄りの特徴を重視します。',
+            minScore: 0.65,
+            tags: ['scene.solo_lunch', 'scene.quick_lunch', 'style.self_service']
+        },
+        {
+            id: 'tempura',
+            label: '天ぷらも楽しむ',
+            summary: '天ぷら系の特徴を持つ店舗を優先します。',
+            minScore: 0.65,
+            tags: ['dish.tempura']
+        },
+        {
+            id: 'curry',
+            label: 'カレー系',
+            summary: 'カレーうどんなど、カレー系の特徴を持つ店舗を優先します。',
+            minScore: 0.65,
+            tags: ['dish.curry']
+        },
+        {
+            id: 'traditional',
+            label: '老舗・伝統感',
+            summary: '伝統、老舗感、江戸前・藪・更科などの文脈を重視します。',
+            minScore: 0.65,
+            tags: ['mood.traditional', 'style.edomae_soba', 'lineage.yabu', 'lineage.sarashina', 'lineage.sunaba']
+        },
+        {
+            id: 'unique',
+            label: '個性派',
+            summary: '現代的、地域色、カレー、味噌煮込みなど個性の強い特徴を重視します。',
+            minScore: 0.8,
+            tags: ['mood.modern', 'style.regional_specialty', 'dish.curry', 'dish.miso_nikomi', 'style.musashino_udon']
+        }
     ];
+    const SearchUtils = window.HyakumeitenSearch;
+    if (!SearchUtils) throw new Error('search.js must be loaded before app.js');
+    const {
+        normalizeSearchText,
+        buildSearchQueries,
+        isNameSearchMatch,
+        isLocationSearchMatch,
+        isSearchMatch
+    } = SearchUtils;
 
     // === Base Map Layers ===
     const GSI_ATTRIBUTION = '<a href="https://maps.gsi.go.jp/development/ichiran.html">地理院タイル</a>';
@@ -195,8 +233,10 @@
             initMap();
             loadSavedStates();
             await loadData();
+            injectStructuredData();
             rebuildYearButtons();
             populateFilters();
+            populateFeatureFilter();
             applyFilters();
             bindEvents();
             updateStats();
@@ -300,7 +340,7 @@
                 toggle.setAttribute('title', '地図表示を切り替え');
                 toggle.setAttribute('aria-expanded', 'false');
                 toggle.setAttribute('aria-controls', 'map-layer-popover');
-                toggle.textContent = '🗺️';
+                toggle.innerHTML = '<span class="map-layer-toggle-icon" aria-hidden="true">🗺️</span><span class="map-layer-toggle-text">地図</span>';
 
                 const popover = L.DomUtil.create('div', 'map-layer-popover', container);
                 popover.id = 'map-layer-popover';
@@ -330,7 +370,7 @@
                 popover.querySelectorAll('.map-layer-option').forEach(button => {
                     button.addEventListener('click', () => {
                         void switchBaseLayer(button.dataset.mapLayer, { persist: true, silent: false });
-                        hideMapLayerPopover();
+                        hideMapLayerPopover({ restoreFocus: true });
                     });
                 });
 
@@ -486,6 +526,7 @@
             button.setAttribute('aria-checked', String(isActive));
         });
         const footerSource = document.getElementById('footer-map-source');
+        // Safe by policy: footerAttribution is fixed local configuration, never external or restaurant-data input.
         if (footerSource) footerSource.innerHTML = config.footerAttribution;
     }
 
@@ -498,25 +539,29 @@
         toggle.setAttribute('aria-expanded', String(willOpen));
     }
 
-    function hideMapLayerPopover() {
+    function hideMapLayerPopover(options = {}) {
         const toggle = document.getElementById('map-layer-toggle');
         const popover = document.getElementById('map-layer-popover');
         if (!toggle || !popover || popover.hidden) return;
         popover.hidden = true;
         toggle.setAttribute('aria-expanded', 'false');
+        if (options.restoreFocus) toggle.focus({ preventScroll: true });
     }
 
     // === Data Loading ===
+    async function fetchJsonWithFallback(url) {
+        try {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            return await res.json();
+        } catch {
+            return await loadDataXHR(url);
+        }
+    }
+
     async function loadData() {
-        const fetchJson = async (url) => {
-            try {
-                const res = await fetch(url);
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                return await res.json();
-            } catch {
-                return await loadDataXHR(url);
-            }
-        };
+        const fetchJson = fetchJsonWithFallback;
+        appFetchJson = fetchJson;
 
         const { udonRaw, sobaRaw } = await loadRestaurantDataSets(fetchJson);
         if (!Array.isArray(udonRaw) || !Array.isArray(sobaRaw)) {
@@ -536,7 +581,6 @@
         allUdon = udonRaw;
         allSoba = sobaRaw;
         allRestaurants = [...udonRaw, ...sobaRaw];
-        startRecommendationTagLoad(fetchJson);
 
         function calcThreshold(src) {
             const counts = src.map(r => r.years ? r.years.length : 0).filter(c => c > 0).sort((a, b) => b - a);
@@ -547,6 +591,72 @@
         sobaHallOfFameThreshold = calcThreshold(allSoba);
 
         console.log(`📊 データ読込完了: うどん ${allUdon.length} 店 (殿堂閾値:${udonHallOfFameThreshold}) / そば ${allSoba.length} 店 (殿堂閾値:${sobaHallOfFameThreshold})`);
+    }
+
+    function injectStructuredData() {
+        const existing = document.getElementById('structured-data-restaurants');
+        if (existing) existing.remove();
+        if (!Array.isArray(allRestaurants) || !allRestaurants.length) return;
+
+        const representativeRestaurants = allRestaurants
+            .filter(r => !r.closed && isHallOfFameRestaurant(r))
+            .sort((a, b) => {
+                const countDiff = (b.years?.length || 0) - (a.years?.length || 0);
+                if (countDiff) return countDiff;
+                return String(a.name || '').localeCompare(String(b.name || ''), 'ja');
+            })
+            .slice(0, 40);
+
+        if (!representativeRestaurants.length) return;
+
+        const itemList = {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'うどん・そば百名店 MAP 2017-2025',
+            description: '公開情報をもとに個人が整理した、うどん・そば百名店の非公式参考マップです。',
+            url: 'https://miitarou.github.io/udon-hyakumeiten-map/',
+            numberOfItems: representativeRestaurants.length,
+            itemListElement: representativeRestaurants.map((r, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                item: compactStructuredData({
+                    '@type': 'Restaurant',
+                    name: r.name,
+                    url: isSafeUrl(r.url) ? r.url : undefined,
+                    servesCuisine: r.category === 'soba' ? 'そば' : 'うどん',
+                    address: compactStructuredData({
+                        '@type': 'PostalAddress',
+                        addressCountry: 'JP',
+                        addressRegion: r.prefecture,
+                        streetAddress: r.address
+                    }),
+                    geo: compactStructuredData({
+                        '@type': 'GeoCoordinates',
+                        latitude: typeof r.lat === 'number' ? r.lat : undefined,
+                        longitude: typeof r.lng === 'number' ? r.lng : undefined
+                    })
+                })
+            }))
+        };
+
+        const script = document.createElement('script');
+        script.id = 'structured-data-restaurants';
+        script.type = 'application/ld+json';
+        script.nonce = 'hyakumeiten-jsonld';
+        script.textContent = JSON.stringify(compactStructuredData(itemList));
+        document.head.appendChild(script);
+    }
+
+    function compactStructuredData(value) {
+        if (Array.isArray(value)) {
+            return value.map(compactStructuredData).filter(v => v !== undefined);
+        }
+        if (!value || typeof value !== 'object') return value === '' ? undefined : value;
+        const entries = Object.entries(value)
+            .map(([key, val]) => [key, compactStructuredData(val)])
+            .filter(([, val]) => val !== undefined && val !== null && val !== '');
+        if (!entries.length) return undefined;
+        return Object.fromEntries(entries);
     }
 
     async function loadRestaurantDataSets(fetchJson) {
@@ -621,11 +731,23 @@
         });
     }
 
-    function startRecommendationTagLoad(fetchJson) {
+    function startRecommendationTagLoad(fetchJson = appFetchJson || fetchJsonWithFallback) {
+        if (recommendationTagData) return Promise.resolve(true);
         if (!recommendationTagLoadPromise) {
-            recommendationTagLoadPromise = loadRecommendationTags(fetchJson);
+            recommendationTagLoadFailed = false;
+            updateFeatureSummary();
+            recommendationTagLoadPromise = loadRecommendationTags(fetchJson).finally(() => {
+                if (!recommendationTagData) recommendationTagLoadPromise = null;
+            });
         }
         return recommendationTagLoadPromise;
+    }
+
+    async function loadRecommendationEngineModule() {
+        if (!recommendationEngineModule) {
+            recommendationEngineModule = await import(RECOMMENDATION_ENGINE_PATH);
+        }
+        return recommendationEngineModule;
     }
 
     async function loadRecommendationTags(fetchJson) {
@@ -638,29 +760,39 @@
                 const data = await fetchJson(url);
                 if (!Array.isArray(data?.restaurants)) throw new Error('Recommendation tag data should contain restaurants array');
                 recommendationTagData = data;
-                recommendationTagDefinitions = data.tagDefinitions || {};
-                recommendationAffinityGroups = Array.isArray(data.affinityGroups) ? data.affinityGroups : [];
-                recommendationAffinityByUrl = buildRecommendationAffinityIndex(recommendationAffinityGroups);
-                recommendationTagsByUrl = new Map(
-                    data.restaurants
-                        .filter(item => item?.url && Array.isArray(item.tags))
-                        .map(item => [item.url, item])
-                );
-                console.log(`🔎 推薦タグ読込完了: ${recommendationTagsByUrl.size} 店 / ${Object.keys(recommendationTagDefinitions).length} tags`);
-                return;
+                recommendationIndex = null;
+                recommendationTagLoadFailed = false;
+                recommendationTagsByUrl = new Map(data.restaurants
+                    .filter(item => item?.url && Array.isArray(item.tags))
+                    .map(item => [item.url, item]));
+                populateFeatureFilter();
+                console.log(`🔎 推薦タグデータ読込完了: ${data.restaurants.length} 店`);
+                if (activeFeatureFilter !== 'all') applyFilters();
+                return true;
             } catch (error) {
                 console.warn(`Recommendation tag load failed: ${url}`, error);
             }
         }
 
         recommendationTagData = null;
-        recommendationTagDefinitions = {};
-        recommendationAffinityGroups = [];
-        recommendationAffinityByUrl = new Map();
+        recommendationIndex = null;
+        recommendationTagLoadFailed = true;
         recommendationTagsByUrl = new Map();
+        updateFeatureSummary();
+        return false;
     }
 
-    // === 年度ボタンを動的生成 ===
+    async function ensureRecommendationIndex() {
+        if (recommendationIndex) return recommendationIndex;
+        if (!recommendationTagData) return null;
+
+        const engine = await loadRecommendationEngineModule();
+        recommendationIndex = engine.createRecommendationIndex(recommendationTagData);
+        console.log(`🔎 推薦エンジン初期化完了: ${recommendationIndex.tagsByUrl.size} 店 / ${Object.keys(recommendationIndex.tagDefinitions).length} tags`);
+        return recommendationIndex;
+    }
+
+    // === 年度セレクトを動的生成 ===
     function getAvailableYears() {
         if (activeCategory === 'udon') return UDON_YEARS;
         if (activeCategory === 'soba') return SOBA_YEARS;
@@ -670,8 +802,8 @@
     }
 
     function rebuildYearButtons() {
-        const container = document.getElementById('year-filters');
-        if (!container) return;
+        const select = document.getElementById('year-select');
+        if (!select) return;
 
         const years = getAvailableYears();
         // 現在の activeYear が新しいリストに含まれていなければリセット
@@ -679,43 +811,65 @@
             activeYear = 'all';
         }
 
-        container.innerHTML = '';
-
-        const allBtn = document.createElement('button');
-        allBtn.className = 'filter-btn' + (activeYear === 'all' ? ' active' : '');
-        allBtn.dataset.year = 'all';
-        allBtn.setAttribute('aria-pressed', activeYear === 'all' ? 'true' : 'false');
-        allBtn.textContent = '全年度';
-        container.appendChild(allBtn);
+        select.innerHTML = '';
+        const allOption = document.createElement('option');
+        allOption.value = 'all';
+        allOption.textContent = '全年度';
+        select.appendChild(allOption);
 
         [...years].sort((a, b) => b - a).forEach(y => {
-            const btn = document.createElement('button');
-            const ys = String(y);
-            btn.className = 'filter-btn year-filter-btn' + (activeYear === ys ? ' active' : '');
-            btn.dataset.year = ys;
-            btn.setAttribute('aria-pressed', activeYear === ys ? 'true' : 'false');
-            btn.textContent = ys;
-            container.appendChild(btn);
+            const option = document.createElement('option');
+            option.value = String(y);
+            option.textContent = String(y);
+            select.appendChild(option);
         });
 
-        bindYearFilterEvents();
+        select.value = activeYear;
     }
 
     function bindYearFilterEvents() {
-        const container = document.getElementById('year-filters');
-        if (!container) return;
-        container.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                container.querySelectorAll('.filter-btn').forEach(b => {
-                    b.classList.remove('active');
-                    b.setAttribute('aria-pressed', 'false');
-                });
-                this.classList.add('active');
-                this.setAttribute('aria-pressed', 'true');
-                activeYear = this.dataset.year;
-                applyFilters();
-            });
+        const select = document.getElementById('year-select');
+        if (!select) return;
+        select.addEventListener('change', function () {
+            activeYear = this.value || 'all';
+            applyFilters();
         });
+    }
+
+    function populateFeatureFilter() {
+        const select = document.getElementById('feature-select');
+        if (!select) return;
+        select.innerHTML = '<option value="all">選択なし</option>';
+        FEATURE_FILTERS.forEach(feature => {
+            const option = document.createElement('option');
+            option.value = feature.id;
+            option.textContent = feature.label;
+            select.appendChild(option);
+        });
+        select.value = activeFeatureFilter;
+        updateFeatureSummary();
+    }
+
+    function getActiveFeatureConfig() {
+        return FEATURE_FILTERS.find(feature => feature.id === activeFeatureFilter) || null;
+    }
+
+    function updateFeatureSummary() {
+        const summary = document.getElementById('feature-summary');
+        const select = document.getElementById('feature-select');
+        if (!summary) return;
+        const feature = getActiveFeatureConfig();
+        if (!feature) {
+            summary.textContent = 'AI推定タグと外部シグナルを探索補助として使います。';
+        } else if (recommendationTagLoadFailed) {
+            summary.textContent = '特徴データを読み込めませんでした。通常の条件で表示します。';
+        } else if (!recommendationTagsByUrl.size) {
+            summary.textContent = '特徴データを読み込み中です。';
+        } else {
+            const matchCount = getCategorySource().filter(r => getFeatureScore(r) >= (feature.minScore || 0.2)).length;
+            summary.textContent = `${feature.summary}（該当 ${matchCount}件）`;
+        }
+        if (select) select.classList.toggle('loading', Boolean(feature && !recommendationTagsByUrl.size));
     }
 
     // === ロゴアイコン・タイトルをカテゴリに合わせて更新 ===
@@ -859,7 +1013,7 @@
             event.stopPropagation();
             const url = decodeURIComponent(card.dataset.focusUrl || '');
             const restaurant = getRestaurantByUrl(url);
-            if (restaurant) focusRestaurant(restaurant);
+            if (restaurant) focusRestaurant(restaurant, { fromRecommendation: true });
         });
     }
 
@@ -898,7 +1052,7 @@
     window.__hyakumeitenFocusRecommendation = function (control) {
         const url = decodeURIComponent(control?.dataset?.focusUrl || '');
         const restaurant = getRestaurantByUrl(url);
-        if (restaurant) focusRestaurant(restaurant);
+        if (restaurant) focusRestaurant(restaurant, { fromRecommendation: true });
     };
 
     function createClusterIcon(cluster) {
@@ -982,18 +1136,35 @@
         });
 
         results.innerHTML = '<div class="recommendation-empty">候補を計算中です...</div>';
-        if (!recommendationTagsByUrl.has(sourceUrl) && recommendationTagLoadPromise) {
+        if (!recommendationTagData) {
             try {
-                await recommendationTagLoadPromise;
+                await startRecommendationTagLoad();
             } catch (error) {
                 console.warn('Recommendation tag load did not complete:', error);
             }
         }
 
+        let index = null;
+        try {
+            index = await ensureRecommendationIndex();
+        } catch (error) {
+            console.warn('Recommendation engine initialization failed:', error);
+        }
+
         updateOpenPopupLayout();
 
         const source = getRestaurantByUrl(sourceUrl);
-        const recommendations = getRecommendations(source, mode, RECOMMENDATION_MAX_LIMIT);
+        const recommendations = source && recommendationEngineModule && index
+            ? recommendationEngineModule.getRecommendations({
+                source,
+                restaurants: allRestaurants,
+                index,
+                mode,
+                limit: RECOMMENDATION_MAX_LIMIT,
+                savedStates,
+                calcDistance
+            })
+            : [];
         if (!source || !recommendations.length) {
             results.innerHTML = '<div class="recommendation-empty">おすすめ候補を表示できませんでした。</div>';
             updateOpenPopupLayout();
@@ -1014,7 +1185,7 @@
         const safeUrl = encodeURIComponent(r.url || '');
         const score = item.displayScore ?? Math.max(1, Math.min(99, Math.round(item.score * 100)));
         const distance = Number.isFinite(item.distanceKm) ? ` / ${formatDistance(item.distanceKm)}` : '';
-        const reasonText = formatRecommendationReason(item.reasons);
+        const reasonText = item.reasonText || '';
         const closedBadge = r.closed ? '<span class="recommendation-closed">閉店</span>' : '';
         const reasonHtml = reasonText
             ? `<span class="recommendation-card-reason">${escapeHtml(reasonText)}</span>`
@@ -1029,293 +1200,6 @@
                 <span class="recommendation-card-meta">${escapeHtml(r.prefecture)} ${escapeHtml(r.area || '')}${distance} ${closedBadge}</span>
                 ${reasonHtml}
             </button>`;
-    }
-
-    function formatRecommendationReason(reasons) {
-        if (!reasons?.length) return '';
-        const labels = reasons
-            .filter(label => label && !/^(うどん|そば|東京都|大阪府|京都府|神奈川県|香川県|EAST|WEST|KAGAWA|\d回以上選出)$/.test(label))
-            .slice(0, 3);
-        return labels.length ? labels.join(' / ') : '';
-    }
-
-    function getRecommendations(source, mode = 'similar', limit = 4) {
-        if (!source?.url || !recommendationTagsByUrl.has(source.url)) return [];
-        const sourceRecord = recommendationTagsByUrl.get(source.url);
-        const preferenceTags = buildSavedPreferenceTagMap(source.url);
-
-        const recommendations = allRestaurants
-            .filter(candidate => candidate.url !== source.url)
-            .filter(candidate => !candidate.closed)
-            .map(candidate => {
-                const candidateRecord = recommendationTagsByUrl.get(candidate.url);
-                if (!candidateRecord) return null;
-                const scored = scoreRecommendationCandidate(source, sourceRecord, candidate, candidateRecord, mode, preferenceTags);
-                return scored && scored.score > 0.02 ? scored : null;
-            })
-            .filter(Boolean)
-            .sort((a, b) => b.score - a.score)
-            .slice(0, limit);
-        return normalizeRecommendationDisplayScores(recommendations);
-    }
-
-    function scoreRecommendationCandidate(source, sourceRecord, candidate, candidateRecord, mode, preferenceTags = null) {
-        const sourceTags = buildRecommendationTagMap(sourceRecord);
-        const candidateTags = buildRecommendationTagMap(candidateRecord);
-        if (!sourceTags.size || !candidateTags.size) return null;
-
-        let dot = 0;
-        let normA = 0;
-        let normB = 0;
-        const shared = [];
-
-        sourceTags.forEach((aTag, key) => {
-            const weight = getRecommendationTagWeight(key, mode);
-            const aValue = getRecommendationTagStrength(aTag);
-            normA += (aValue ** 2) * weight;
-        });
-        candidateTags.forEach((bTag, key) => {
-            const weight = getRecommendationTagWeight(key, mode);
-            const bValue = getRecommendationTagStrength(bTag);
-            normB += (bValue ** 2) * weight;
-        });
-        sourceTags.forEach((aTag, key) => {
-            if (!candidateTags.has(key)) return;
-            const weight = getRecommendationTagWeight(key, mode);
-            const bTag = candidateTags.get(key);
-            const aValue = getRecommendationTagStrength(aTag);
-            const bValue = getRecommendationTagStrength(bTag);
-            const contribution = aValue * bValue * weight;
-            dot += contribution;
-            if (weight > 0) {
-                shared.push({
-                    key,
-                    contribution,
-                    sourceSource: getRecommendationTagSource(aTag),
-                    candidateSource: getRecommendationTagSource(bTag),
-                    sourceHasExternal: hasRecommendationExternalEvidence(aTag),
-                    candidateHasExternal: hasRecommendationExternalEvidence(bTag)
-                });
-            }
-        });
-
-        if (!dot || !normA || !normB) return null;
-
-        const similarity = dot / Math.sqrt(normA * normB);
-        if (mode === 'nearby' && similarity < 0.18) return null;
-
-        const distanceKm = source.lat != null && source.lng != null && candidate.lat != null && candidate.lng != null
-            ? calcDistance(source.lat, source.lng, candidate.lat, candidate.lng)
-            : Infinity;
-        const distanceScore = Number.isFinite(distanceKm) ? 1 / (1 + distanceKm / 18) : 0;
-
-        let score = similarity;
-        if (mode === 'nearby') {
-            score = (similarity * 0.5) + (distanceScore * 0.5);
-        } else if (mode === 'expand') {
-            const sameCategory = source.category === candidate.category;
-            const samePrefecture = source.prefecture === candidate.prefecture;
-            const noveltyFactor = (sameCategory ? 0.94 : 1.08) * (samePrefecture ? 0.96 : 1.03);
-            score = similarity * noveltyFactor;
-        }
-
-        const affinityBoost = getRecommendationAffinityBoost(source.url, candidate.url, mode);
-        if (affinityBoost > 0) score *= 1 + affinityBoost;
-
-        if (preferenceTags?.size) {
-            const preferenceSimilarity = calculateRecommendationMapSimilarity(preferenceTags, candidateTags, mode);
-            if (preferenceSimilarity > 0.05) score *= 1 + Math.min(0.1, preferenceSimilarity * 0.12);
-        }
-
-        const savedState = getSavedState(candidate);
-        if (savedState === 'want') score *= 1.08;
-
-        return {
-            restaurant: candidate,
-            score,
-            distanceKm,
-            reasons: buildRecommendationReasons(shared, sourceTags, candidateTags, mode),
-            affinityBoost
-        };
-    }
-
-    function normalizeRecommendationDisplayScores(items) {
-        if (!items.length) return items;
-        const max = Math.max(...items.map(item => item.score));
-        const min = Math.min(...items.map(item => item.score));
-        const spread = max - min;
-        return items.map((item, index) => {
-            const rankScore = Math.max(72, 96 - (index * 4));
-            const valueScore = spread > 0.03
-                ? 72 + (((item.score - min) / spread) * 24)
-                : rankScore;
-            return {
-                ...item,
-                displayScore: Math.round(Math.max(72, Math.min(96, (valueScore * 0.62) + (rankScore * 0.38))))
-            };
-        });
-    }
-
-    function buildSavedPreferenceTagMap(excludedUrl = '') {
-        const aggregate = new Map();
-        let count = 0;
-        Object.entries(savedStates).forEach(([url, state]) => {
-            if (state !== 'want' || url === excludedUrl) return;
-            const record = recommendationTagsByUrl.get(url);
-            if (!record) return;
-            const tagMap = buildRecommendationTagMap(record);
-            let used = false;
-            tagMap.forEach((tagItem, key) => {
-                const prefix = getRecommendationTagPrefix(key);
-                if (!RECOMMENDATION_PRIMARY_REASON_PREFIXES.has(prefix) && prefix !== 'genre') return;
-                aggregate.set(key, (aggregate.get(key) || 0) + getRecommendationTagStrength(tagItem));
-                used = true;
-            });
-            if (used) count += 1;
-        });
-        if (!count) return new Map();
-        aggregate.forEach((value, key) => aggregate.set(key, value / count));
-        return aggregate;
-    }
-
-    function calculateRecommendationMapSimilarity(aTags, bTags, mode = 'similar') {
-        if (!aTags?.size || !bTags?.size) return 0;
-        let dot = 0;
-        let normA = 0;
-        let normB = 0;
-        aTags.forEach((aTag, key) => {
-            const weight = getRecommendationTagWeight(key, mode);
-            const aValue = getRecommendationTagStrength(aTag);
-            normA += (aValue ** 2) * weight;
-            if (bTags.has(key)) dot += aValue * getRecommendationTagStrength(bTags.get(key)) * weight;
-        });
-        bTags.forEach((bTag, key) => {
-            const weight = getRecommendationTagWeight(key, mode);
-            const bValue = getRecommendationTagStrength(bTag);
-            normB += (bValue ** 2) * weight;
-        });
-        return dot && normA && normB ? dot / Math.sqrt(normA * normB) : 0;
-    }
-
-    function buildRecommendationAffinityIndex(groups) {
-        const index = new Map();
-        groups.forEach(group => {
-            if (!Array.isArray(group?.urls) || group.urls.length < 2) return;
-            group.urls.forEach(url => {
-                const items = index.get(url) || [];
-                items.push(group);
-                index.set(url, items);
-            });
-        });
-        return index;
-    }
-
-    function getRecommendationAffinityBoost(sourceUrl, candidateUrl, mode) {
-        const groups = recommendationAffinityByUrl.get(sourceUrl);
-        if (!groups?.length) return 0;
-        let boost = 0;
-        groups.forEach(group => {
-            if (!Array.isArray(group.urls) || !group.urls.includes(candidateUrl)) return;
-            if (Array.isArray(group.modes) && !group.modes.includes(mode)) return;
-            boost += Number(group.boost) || 0;
-        });
-        return Math.min(0.16, boost);
-    }
-
-    function buildRecommendationTagMap(record) {
-        const map = new Map();
-        (record?.tags || []).forEach(tag => {
-            const key = String(tag?.key || '');
-            const prefix = getRecommendationTagPrefix(key);
-            if (!key || prefix === 'status') return;
-            const weight = Number(tag.weight);
-            const confidence = Number(tag.confidence);
-            if (!Number.isFinite(weight) || !Number.isFinite(confidence)) return;
-            const source = String(tag.source || '');
-            const hasExternalEvidence = source === 'external_signal' || (Array.isArray(tag.evidence) && tag.evidence.some(item => String(item || '').startsWith('external')));
-            const baseStrength = Math.max(0, weight) * Math.max(0, confidence);
-            const sourceBoost = hasExternalEvidence && RECOMMENDATION_PRIMARY_REASON_PREFIXES.has(prefix)
-                ? RECOMMENDATION_EXTERNAL_SIGNAL_SCORE_BOOST
-                : 1;
-            map.set(key, {
-                strength: baseStrength * sourceBoost,
-                source,
-                hasExternalEvidence,
-                rawStrength: baseStrength
-            });
-        });
-        return map;
-    }
-
-    function getRecommendationTagStrength(tagItem) {
-        if (typeof tagItem === 'number') return tagItem;
-        const value = Number(tagItem?.strength);
-        return Number.isFinite(value) ? value : 0;
-    }
-
-    function getRecommendationTagSource(tagItem) {
-        return typeof tagItem === 'object' && tagItem ? String(tagItem.source || '') : '';
-    }
-
-    function hasRecommendationExternalEvidence(tagItem) {
-        return Boolean(typeof tagItem === 'object' && tagItem && tagItem.hasExternalEvidence);
-    }
-
-    function getRecommendationTagPrefix(key) {
-        return String(key || '').split('.')[0];
-    }
-
-    function getRecommendationTagWeight(key, mode) {
-        const prefix = getRecommendationTagPrefix(key);
-        const base = RECOMMENDATION_PREFIX_WEIGHTS[prefix] ?? 0.6;
-        if (base <= 0) return 0;
-        return base * getRecommendationModeFactor(prefix, mode);
-    }
-
-    function getRecommendationModeFactor(prefix, mode) {
-        if (mode === 'nearby') {
-            if (prefix === 'pref' || prefix === 'macro_area') return 1.12;
-            if (prefix === 'region') return 0.85;
-            if (prefix === 'genre') return 0.82;
-            if (prefix === 'style' || prefix === 'texture' || prefix === 'dish') return 1.04;
-        }
-        if (mode === 'expand') {
-            if (prefix === 'genre') return 0.58;
-            if (prefix === 'pref') return 0.22;
-            if (prefix === 'macro_area' || prefix === 'region') return 0.58;
-            if (prefix === 'style' || prefix === 'texture' || prefix === 'dish' || prefix === 'lineage') return 1.22;
-            if (prefix === 'scene' || prefix === 'mood') return 1.12;
-        }
-        return 1;
-    }
-
-    function buildRecommendationReasons(shared, sourceTags, candidateTags, mode) {
-        const reasonItems = shared
-            .map(item => {
-                const prefix = getRecommendationTagPrefix(item.key);
-                const label = recommendationTagDefinitions[item.key]?.label || item.key;
-                const sourceTag = sourceTags.get(item.key);
-                const candidateTag = candidateTags.get(item.key);
-                const hasExternalSignal = item.sourceHasExternal || item.candidateHasExternal;
-                const isModelOnly = item.sourceSource === 'model_prior' && item.candidateSource === 'model_prior';
-                let displayScore = item.contribution * (RECOMMENDATION_REASON_PRIORITY[prefix] ?? 0.7);
-                if (hasExternalSignal) displayScore *= RECOMMENDATION_EXTERNAL_REASON_BOOST;
-                if (isModelOnly) displayScore *= RECOMMENDATION_MODEL_REASON_PENALTY;
-                const minStrength = Math.min(getRecommendationTagStrength(sourceTag), getRecommendationTagStrength(candidateTag));
-                return { key: item.key, prefix, label, displayScore, minStrength, hasExternalSignal, isModelOnly };
-            })
-            .filter(item => item.prefix !== 'status')
-            .filter(item => item.displayScore > 0)
-            .sort((a, b) => b.displayScore - a.displayScore);
-        const primaryReasons = reasonItems
-            .filter(item => RECOMMENDATION_PRIMARY_REASON_PREFIXES.has(item.prefix))
-            .filter(item => item.minStrength >= (mode === 'expand' ? 0.22 : 0.28))
-            .slice(0, 3);
-        const fallbackReasons = primaryReasons.length ? [] : reasonItems
-            .filter(item => item.prefix === 'selection')
-            .filter(item => item.minStrength >= 0.45)
-            .slice(0, Math.max(0, 3 - primaryReasons.length));
-        return [...primaryReasons, ...fallbackReasons].slice(0, 3).map(item => item.label);
     }
 
     function updateOpenPopupLayout() {
@@ -1459,6 +1343,34 @@
         return true;
     }
 
+    function getTagItemStrength(tag) {
+        const weight = Number(tag?.weight);
+        const confidence = Number(tag?.confidence);
+        if (!Number.isFinite(weight) || !Number.isFinite(confidence)) return 0;
+        const hasExternalEvidence = tag.source === 'external_signal'
+            || (Array.isArray(tag.evidence) && tag.evidence.some(item => String(item || '').startsWith('external')));
+        return Math.max(0, weight) * Math.max(0, confidence) * (hasExternalEvidence ? 1.18 : 1);
+    }
+
+    function getFeatureScore(r) {
+        const feature = getActiveFeatureConfig();
+        if (!feature || !recommendationTagsByUrl.size) return 0;
+        const record = recommendationTagsByUrl.get(r.url);
+        if (!record?.tags?.length) return 0;
+        const tagSet = new Set(feature.tags);
+        return record.tags.reduce((sum, tag) => {
+            const key = String(tag?.key || '');
+            return tagSet.has(key) ? sum + getTagItemStrength(tag) : sum;
+        }, 0);
+    }
+
+    function matchesFeatureFilter(r) {
+        if (activeFeatureFilter === 'all') return true;
+        if (!recommendationTagsByUrl.size) return true;
+        const feature = getActiveFeatureConfig();
+        return getFeatureScore(r) >= (feature?.minScore || 0.2);
+    }
+
     function applyFilters() {
         const src = getCategorySource();
 
@@ -1474,6 +1386,8 @@
             }
             // Selection count
             if (!matchesCountFilter(r, src)) return false;
+            // Feature tags
+            if (!matchesFeatureFilter(r)) return false;
             // Business status
             if (activeStatus === 'open' && r.closed) return false;
             if (activeStatus === 'closed' && !r.closed) return false;
@@ -1504,6 +1418,21 @@
 
     // === Sort ===
     function sortRestaurants() {
+        if (activeFeatureFilter !== 'all' && recommendationTagsByUrl.size) {
+            filteredRestaurants.sort((a, b) => {
+                const diff = getFeatureScore(b) - getFeatureScore(a);
+                if (Math.abs(diff) > 0.0001) return diff;
+                if (sortMode === 'distance') {
+                    const origin = getActiveDistanceOrigin();
+                    if (origin) return calcDistance(origin.lat, origin.lng, a.lat, a.lng) - calcDistance(origin.lat, origin.lng, b.lat, b.lng);
+                }
+                const ca = a.years ? a.years.length : 0;
+                const cb = b.years ? b.years.length : 0;
+                return cb - ca || (a.name || '').localeCompare(b.name || '', 'ja');
+            });
+            return;
+        }
+
         if (searchDistanceSortActive && searchDistanceOrigin && !distanceOrigin) {
             sortByDistance(searchDistanceOrigin);
             return;
@@ -1576,122 +1505,6 @@
 
     function getActiveDistanceOrigin() {
         return distanceOrigin || searchDistanceOrigin;
-    }
-
-    function normalizeSearchText(value) {
-        let text = String(value || '')
-            .normalize('NFKC')
-            .toLowerCase();
-        COMMON_SEARCH_REPLACEMENTS.forEach(([from, to]) => {
-            text = text.replaceAll(from, to);
-        });
-        return toHiragana(text)
-            .replace(/[‐‑‒–—―ー−]/g, '-')
-            .replace(/\s+/g, '');
-    }
-
-    function toHiragana(value) {
-        return String(value || '').replace(/[\u30a1-\u30f6]/g, ch =>
-            String.fromCharCode(ch.charCodeAt(0) - 0x60)
-        );
-    }
-
-    function buildSearchQueries(query) {
-        const normalized = normalizeSearchText(query);
-        const base = normalized.replace(/[市区町村駅]$/g, '');
-        return [...new Set([normalized, base].filter(Boolean))];
-    }
-
-    function buildSearchTarget(r) {
-        const area = r.area || '';
-        const areaBase = area.replace(/駅$/, '').replace(/（.+?）/g, '');
-        return normalizeSearchText([
-            r.name,
-            r.prefecture,
-            area,
-            areaBase,
-            r.address,
-            r.holiday
-        ].filter(Boolean).join(' '));
-    }
-
-    function buildSearchTokens(r) {
-        const area = r.area || '';
-        const areaBase = area.replace(/駅$/, '').replace(/（.+?）/g, '');
-        return [...new Set([
-            r.name,
-            r.prefecture,
-            area,
-            areaBase,
-            r.address,
-            r.holiday
-        ].filter(Boolean).flatMap(value =>
-            String(value).split(/[\s　,、，・/／()（）「」『』【】\[\]-]+/)
-        ).map(normalizeSearchText).filter(token => token.length >= 2))];
-    }
-
-    function buildLocationSearchTarget(r) {
-        const area = r.area || '';
-        const areaBase = area.replace(/駅$/, '').replace(/（.+?）/g, '');
-        return normalizeSearchText([
-            area,
-            areaBase,
-            r.address
-        ].filter(Boolean).join(' '));
-    }
-
-    function isNameSearchMatch(r, queries) {
-        const name = normalizeSearchText(r.name);
-        return queries.some(q => name === q || name.includes(q));
-    }
-
-    function isLocationSearchMatch(r, queries) {
-        const locationTarget = buildLocationSearchTarget(r);
-        return queries.some(q => locationTarget.includes(q));
-    }
-
-    function isSearchMatch(r, queries) {
-        const target = buildSearchTarget(r);
-        if (queries.some(q => target.includes(q))) return true;
-
-        const tokens = buildSearchTokens(r);
-        return queries.some(q =>
-            isFuzzyQuery(q) &&
-            tokens.some(token => isNearSearchToken(q, token))
-        );
-    }
-
-    function isFuzzyQuery(query) {
-        return /^[\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}a-z0-9-]+$/u.test(query) && query.length >= 3;
-    }
-
-    function isNearSearchToken(query, token) {
-        if (!query || !token) return false;
-        if (token.includes(query) || query.includes(token)) return true;
-        const maxDistance = query.length >= 7 ? 2 : 1;
-        if (Math.abs(query.length - token.length) > maxDistance) return false;
-        return editDistanceWithin(query, token, maxDistance);
-    }
-
-    function editDistanceWithin(a, b, maxDistance) {
-        const costs = Array.from({ length: b.length + 1 }, (_, i) => i);
-        for (let i = 1; i <= a.length; i++) {
-            let diagonal = costs[0];
-            costs[0] = i;
-            let rowMin = costs[0];
-            for (let j = 1; j <= b.length; j++) {
-                const before = costs[j];
-                costs[j] = Math.min(
-                    costs[j] + 1,
-                    costs[j - 1] + 1,
-                    diagonal + (a[i - 1] === b[j - 1] ? 0 : 1)
-                );
-                diagonal = before;
-                rowMin = Math.min(rowMin, costs[j]);
-            }
-            if (rowMin > maxDistance) return false;
-        }
-        return costs[b.length] <= maxDistance;
     }
 
     function updateSearchDistanceOrigin() {
@@ -2092,8 +1905,11 @@
     }
 
     // === Focus on Restaurant ===
-    function focusRestaurant(r) {
+    function focusRestaurant(r, options = {}) {
         if (!r.lat || !r.lng) return;
+        if (options.fromRecommendation) {
+            clearDistanceFilterIfRecommendationOutsideRadius(r);
+        }
         map.setView([r.lat, r.lng], 16, { animate: true });
         const marker = markers.get(r.url);
         if (marker) {
@@ -2102,12 +1918,25 @@
         if (window.innerWidth <= 768) togglePanel(false);
     }
 
+    function clearDistanceFilterIfRecommendationOutsideRadius(r) {
+        if (!distanceOrigin || radiusKm === 'none' || !r?.lat || !r?.lng) return false;
+        const distanceKm = calcDistance(distanceOrigin.lat, distanceOrigin.lng, r.lat, r.lng);
+        const activeRadiusKm = Number(radiusKm);
+        if (!Number.isFinite(distanceKm) || !Number.isFinite(activeRadiusKm) || distanceKm <= activeRadiusKm) {
+            return false;
+        }
+        clearRadiusSearch(true);
+        showAppBanner('推薦店舗を表示するため、距離条件を解除しました。', null, null, 'info');
+        return true;
+    }
+
     // === フィルタ全リセット ===
     function resetAllFilters() {
         activeRegion = 'all';
         activePrefecture = 'all';
         activeYear = 'all';
         countFilterMode = 'all';
+        activeFeatureFilter = 'all';
         activeStatus = 'all';
         saveFilter = 'all';
         clearRadiusSearch(false);
@@ -2118,6 +1947,13 @@
         updateSearchClearButton();
         const prefSelect = document.getElementById('pref-select');
         if (prefSelect) prefSelect.value = 'all';
+        const yearSelect = document.getElementById('year-select');
+        if (yearSelect) yearSelect.value = 'all';
+        const countSelect = document.getElementById('count-select');
+        if (countSelect) countSelect.value = 'all';
+        const featureSelect = document.getElementById('feature-select');
+        if (featureSelect) featureSelect.value = 'all';
+        updateFeatureSummary();
 
         document.querySelectorAll('.filter-btn').forEach(btn => {
             const isDefault = btn.dataset.filter === 'all' ||
@@ -2633,6 +2469,7 @@
 
                 rebuildYearButtons();
                 populateFilters();
+                updateFeatureSummary();
                 updateStats();
                 updateLogoForCategory();
 
@@ -2668,7 +2505,7 @@
         }, true);
 
         document.addEventListener('keydown', event => {
-            if (event.key === 'Escape') hideMapLayerPopover();
+            if (event.key === 'Escape') hideMapLayerPopover({ restoreFocus: true });
         });
 
         // フィルタ折りたたみ
@@ -2740,18 +2577,32 @@
             });
         }
 
-        // Count filter
-        document.querySelectorAll('.count-filters .filter-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                document.querySelectorAll('.count-filters .filter-btn').forEach(b => {
-                    b.classList.remove('active'); b.setAttribute('aria-pressed', 'false');
-                });
-                this.classList.add('active');
-                this.setAttribute('aria-pressed', 'true');
-                countFilterMode = this.dataset.countMode || 'all';
+        bindYearFilterEvents();
+
+        const featureSelect = document.getElementById('feature-select');
+        if (featureSelect) {
+            featureSelect.addEventListener('change', async function () {
+                activeFeatureFilter = this.value || 'all';
+                updateFeatureSummary();
+                if (activeFeatureFilter !== 'all') {
+                    try {
+                        await startRecommendationTagLoad();
+                    } catch (error) {
+                        console.warn('Feature filter tag load failed:', error);
+                    }
+                }
+                updateFeatureSummary();
                 applyFilters();
             });
-        });
+        }
+
+        const countSelect = document.getElementById('count-select');
+        if (countSelect) {
+            countSelect.addEventListener('change', function () {
+                countFilterMode = this.value || 'all';
+                applyFilters();
+            });
+        }
 
         // Business status filter
         document.querySelectorAll('.status-filters .filter-btn').forEach(btn => {
@@ -2851,7 +2702,7 @@
             e.stopImmediatePropagation();
             const url = decodeURIComponent(card.dataset.focusUrl || '');
             const restaurant = getRestaurantByUrl(url);
-            if (restaurant) focusRestaurant(restaurant);
+            if (restaurant) focusRestaurant(restaurant, { fromRecommendation: true });
         }, true);
 
         document.addEventListener('click', e => {

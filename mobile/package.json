@@ -1,6 +1,6 @@
 {
   "name": "hyakumeiten-udonsoba-ios",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "iOS wrapper for 百名店MAP",
   "scripts": {
