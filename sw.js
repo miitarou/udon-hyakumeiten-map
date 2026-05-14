@@ -1,15 +1,18 @@
-const CACHE_NAME = 'hyakumeiten-map-v31';
+const CACHE_NAME = 'hyakumeiten-map-v32';
 const APP_SHELL = [
   './',
   './index.html',
-  './style.css?v=7.1',
-  './app.js?v=7.1',
-  './recommendation-engine.js?v=1',
+  './style.css?v=7.2',
+  './search.js?v=1',
+  './app.js?v=7.2',
   './manifest.webmanifest',
   './icon.svg',
+  './icon.png',
+  './icons/icon-192.png',
+  './icons/icon-512.png',
+  './icons/icon-maskable-512.png',
   './privacy.html',
   './data/data-version.json',
-  './data/recommendation_tags.json',
   './data/udon.json',
   './data/soba.json'
 ];
@@ -48,6 +51,23 @@ self.addEventListener('fetch', event => {
         }
         return response;
       }).catch(() => caches.match(request).then(cached => cached || caches.match('./index.html')))
+    );
+    return;
+  }
+
+  if (url.pathname.endsWith('/data/recommendation_tags.json')) {
+    const cachePromise = caches.open(CACHE_NAME);
+    const networkUpdate = cachePromise.then(cache =>
+      fetch(request).then(response => {
+        if (response && response.ok) cache.put(request, response.clone());
+        return response;
+      })
+    );
+    event.waitUntil(networkUpdate.catch(() => {}));
+    event.respondWith(
+      cachePromise.then(cache =>
+        cache.match(request).then(cached => cached || networkUpdate)
+      )
     );
     return;
   }

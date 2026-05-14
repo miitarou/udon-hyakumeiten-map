@@ -21,6 +21,7 @@
     let recommendationTagsByUrl = new Map();
     let recommendationTagLoadFailed = false;
     let recommendationTagLoadPromise = null;
+    let appFetchJson = null;
     let map = null;
     let markerClusterGroup = null;
     let activeBaseLayer = null;
@@ -141,20 +142,15 @@
             tags: ['mood.modern', 'style.regional_specialty', 'dish.curry', 'dish.miso_nikomi', 'style.musashino_udon']
         }
     ];
-    const COMMON_SEARCH_REPLACEMENTS = [
-        ['饂飩', 'うどん'],
-        ['齊', '斉'],
-        ['齋', '斉'],
-        ['斎', '斉'],
-        ['邊', '辺'],
-        ['邉', '辺'],
-        ['廣', '広'],
-        ['國', '国'],
-        ['櫻', '桜'],
-        ['萬', '万'],
-        ['壽', '寿'],
-        ['藪', '薮']
-    ];
+    const SearchUtils = window.HyakumeitenSearch;
+    if (!SearchUtils) throw new Error('search.js must be loaded before app.js');
+    const {
+        normalizeSearchText,
+        buildSearchQueries,
+        isNameSearchMatch,
+        isLocationSearchMatch,
+        isSearchMatch
+    } = SearchUtils;
 
     // === Base Map Layers ===
     const GSI_ATTRIBUTION = '<a href="https://maps.gsi.go.jp/development/ichiran.html">地理院タイル</a>';
@@ -551,16 +547,19 @@
     }
 
     // === Data Loading ===
+    async function fetchJsonWithFallback(url) {
+        try {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            return await res.json();
+        } catch {
+            return await loadDataXHR(url);
+        }
+    }
+
     async function loadData() {
-        const fetchJson = async (url) => {
-            try {
-                const res = await fetch(url);
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                return await res.json();
-            } catch {
-                return await loadDataXHR(url);
-            }
-        };
+        const fetchJson = fetchJsonWithFallback;
+        appFetchJson = fetchJson;
 
         const { udonRaw, sobaRaw } = await loadRestaurantDataSets(fetchJson);
         if (!Array.isArray(udonRaw) || !Array.isArray(sobaRaw)) {
@@ -580,7 +579,6 @@
         allUdon = udonRaw;
         allSoba = sobaRaw;
         allRestaurants = [...udonRaw, ...sobaRaw];
-        startRecommendationTagLoad(fetchJson);
 
         function calcThreshold(src) {
             const counts = src.map(r => r.years ? r.years.length : 0).filter(c => c > 0).sort((a, b) => b - a);
@@ -665,9 +663,14 @@
         });
     }
 
-    function startRecommendationTagLoad(fetchJson) {
+    function startRecommendationTagLoad(fetchJson = appFetchJson || fetchJsonWithFallback) {
+        if (recommendationTagData) return Promise.resolve(true);
         if (!recommendationTagLoadPromise) {
-            recommendationTagLoadPromise = loadRecommendationTags(fetchJson);
+            recommendationTagLoadFailed = false;
+            updateFeatureSummary();
+            recommendationTagLoadPromise = loadRecommendationTags(fetchJson).finally(() => {
+                if (!recommendationTagData) recommendationTagLoadPromise = null;
+            });
         }
         return recommendationTagLoadPromise;
     }
@@ -697,7 +700,7 @@
                 populateFeatureFilter();
                 console.log(`🔎 推薦タグデータ読込完了: ${data.restaurants.length} 店`);
                 if (activeFeatureFilter !== 'all') applyFilters();
-                return;
+                return true;
             } catch (error) {
                 console.warn(`Recommendation tag load failed: ${url}`, error);
             }
@@ -708,6 +711,7 @@
         recommendationTagLoadFailed = true;
         recommendationTagsByUrl = new Map();
         updateFeatureSummary();
+        return false;
     }
 
     async function ensureRecommendationIndex() {
@@ -1064,9 +1068,9 @@
         });
 
         results.innerHTML = '<div class="recommendation-empty">候補を計算中です...</div>';
-        if (!recommendationTagData && recommendationTagLoadPromise) {
+        if (!recommendationTagData) {
             try {
-                await recommendationTagLoadPromise;
+                await startRecommendationTagLoad();
             } catch (error) {
                 console.warn('Recommendation tag load did not complete:', error);
             }
@@ -1433,122 +1437,6 @@
 
     function getActiveDistanceOrigin() {
         return distanceOrigin || searchDistanceOrigin;
-    }
-
-    function normalizeSearchText(value) {
-        let text = String(value || '')
-            .normalize('NFKC')
-            .toLowerCase();
-        COMMON_SEARCH_REPLACEMENTS.forEach(([from, to]) => {
-            text = text.replaceAll(from, to);
-        });
-        return toHiragana(text)
-            .replace(/[‐‑‒–—―ー−]/g, '-')
-            .replace(/\s+/g, '');
-    }
-
-    function toHiragana(value) {
-        return String(value || '').replace(/[\u30a1-\u30f6]/g, ch =>
-            String.fromCharCode(ch.charCodeAt(0) - 0x60)
-        );
-    }
-
-    function buildSearchQueries(query) {
-        const normalized = normalizeSearchText(query);
-        const base = normalized.replace(/[市区町村駅]$/g, '');
-        return [...new Set([normalized, base].filter(Boolean))];
-    }
-
-    function buildSearchTarget(r) {
-        const area = r.area || '';
-        const areaBase = area.replace(/駅$/, '').replace(/（.+?）/g, '');
-        return normalizeSearchText([
-            r.name,
-            r.prefecture,
-            area,
-            areaBase,
-            r.address,
-            r.holiday
-        ].filter(Boolean).join(' '));
-    }
-
-    function buildSearchTokens(r) {
-        const area = r.area || '';
-        const areaBase = area.replace(/駅$/, '').replace(/（.+?）/g, '');
-        return [...new Set([
-            r.name,
-            r.prefecture,
-            area,
-            areaBase,
-            r.address,
-            r.holiday
-        ].filter(Boolean).flatMap(value =>
-            String(value).split(/[\s　,、，・/／()（）「」『』【】\[\]-]+/)
-        ).map(normalizeSearchText).filter(token => token.length >= 2))];
-    }
-
-    function buildLocationSearchTarget(r) {
-        const area = r.area || '';
-        const areaBase = area.replace(/駅$/, '').replace(/（.+?）/g, '');
-        return normalizeSearchText([
-            area,
-            areaBase,
-            r.address
-        ].filter(Boolean).join(' '));
-    }
-
-    function isNameSearchMatch(r, queries) {
-        const name = normalizeSearchText(r.name);
-        return queries.some(q => name === q || name.includes(q));
-    }
-
-    function isLocationSearchMatch(r, queries) {
-        const locationTarget = buildLocationSearchTarget(r);
-        return queries.some(q => locationTarget.includes(q));
-    }
-
-    function isSearchMatch(r, queries) {
-        const target = buildSearchTarget(r);
-        if (queries.some(q => target.includes(q))) return true;
-
-        const tokens = buildSearchTokens(r);
-        return queries.some(q =>
-            isFuzzyQuery(q) &&
-            tokens.some(token => isNearSearchToken(q, token))
-        );
-    }
-
-    function isFuzzyQuery(query) {
-        return /^[\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}a-z0-9-]+$/u.test(query) && query.length >= 3;
-    }
-
-    function isNearSearchToken(query, token) {
-        if (!query || !token) return false;
-        if (token.includes(query) || query.includes(token)) return true;
-        const maxDistance = query.length >= 7 ? 2 : 1;
-        if (Math.abs(query.length - token.length) > maxDistance) return false;
-        return editDistanceWithin(query, token, maxDistance);
-    }
-
-    function editDistanceWithin(a, b, maxDistance) {
-        const costs = Array.from({ length: b.length + 1 }, (_, i) => i);
-        for (let i = 1; i <= a.length; i++) {
-            let diagonal = costs[0];
-            costs[0] = i;
-            let rowMin = costs[0];
-            for (let j = 1; j <= b.length; j++) {
-                const before = costs[j];
-                costs[j] = Math.min(
-                    costs[j] + 1,
-                    costs[j - 1] + 1,
-                    diagonal + (a[i - 1] === b[j - 1] ? 0 : 1)
-                );
-                diagonal = before;
-                rowMin = Math.min(rowMin, costs[j]);
-            }
-            if (rowMin > maxDistance) return false;
-        }
-        return costs[b.length] <= maxDistance;
     }
 
     function updateSearchDistanceOrigin() {
@@ -2613,9 +2501,9 @@
             featureSelect.addEventListener('change', async function () {
                 activeFeatureFilter = this.value || 'all';
                 updateFeatureSummary();
-                if (activeFeatureFilter !== 'all' && recommendationTagLoadPromise) {
+                if (activeFeatureFilter !== 'all') {
                     try {
-                        await recommendationTagLoadPromise;
+                        await startRecommendationTagLoad();
                     } catch (error) {
                         console.warn('Feature filter tag load failed:', error);
                     }

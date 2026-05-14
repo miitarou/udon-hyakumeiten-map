@@ -70,10 +70,13 @@ open http://localhost:8080
 ├── index.html                  # メインHTML
 ├── style.css                   # スタイルシート (ダークモード + グラスモーフィズム)
 ├── app.js                      # アプリケーションロジック
+├── search.js                   # 検索正規化・あいまい検索の小ユーティリティ
 ├── recommendation-engine.js    # 推薦スコア・理由生成のES Module
 ├── manifest.webmanifest        # PWAマニフェスト
 ├── sw.js                       # Service Worker
 ├── icon.svg                    # PWAアイコン
+├── icons/                      # PWA用の複数サイズPNGアイコン
+├── og-image.png                # OGP / SNS共有用画像
 ├── privacy.html                # プライバシーポリシー
 ├── docs/
 │   ├── recommendation-tags.md  # 推薦タグとスコアリング設計
@@ -103,6 +106,7 @@ open http://localhost:8080
 │   ├── evaluate_recommendations.py # 推薦ゴールデンセットの結果レポート
 │   ├── check_size_budget.py    # JS/CSS/JSONサイズ予算のreport-only確認
 │   ├── check_external_signal_age.py # 外部シグナル鮮度のreport-only確認
+│   ├── bump_web_version.py     # Web資産とService Workerの軽量バージョン更新
 │   ├── generate_data_version.py # iPhone版向けデータメタ情報生成
 │   ├── sync_mobile_assets.py   # Web資産を mobile/www へ同期
 │   └── check_data_quality.py   # 公開データ品質チェック
@@ -183,6 +187,7 @@ Leaflet / Leaflet.markercluster / 動的MapLibre読み込みには Subresource I
 3. 以下のコマンドで検証スクリプトを実行する
    ```bash
    python3 scripts/check_data_quality.py
+   node --check search.js
    node --check app.js
    node --input-type=module --check < recommendation-engine.js
    node --check sw.js

@@ -43,6 +43,7 @@ python3 scripts/evaluate_recommendations.py --case udon_tokyo_maruka_similar --t
 
 ```bash
 python3 scripts/check_data_quality.py
+node --check search.js
 node --check app.js
 node --input-type=module --check < recommendation-engine.js
 node --check sw.js
@@ -93,12 +94,20 @@ iPhone版では、HTML/CSS/JSはアプリ同梱です。UIや機能変更はApp 
 
 ## 7. Service Workerとキャッシュを確認する
 
-`app.js`、`style.css`、`index.html`、主要データの読み込みに影響する変更を行った場合は、`sw.js` の `CACHE_NAME` とキャッシュ対象のクエリバージョンも更新します。
+`app.js`、`search.js`、`style.css`、`index.html`、主要データの読み込みに影響する変更を行った場合は、`sw.js` の `CACHE_NAME` とキャッシュ対象のクエリバージョンも更新します。
+
+手動編集のずれを避けるため、通常は以下で更新します。
+
+```bash
+python3 scripts/bump_web_version.py
+```
+
+必要に応じて、`--asset-version`、`--cache-version`、`--search-version`、`--engine-version` を指定できます。
 
 例:
 
 ```js
-const CACHE_NAME = 'hyakumeiten-map-v26';
+const CACHE_NAME = 'hyakumeiten-map-v32';
 ```
 
 古いService Workerが残ると、ユーザーに旧JS/CSSが表示されることがあります。更新通知とリロード導線が動くことも確認します。

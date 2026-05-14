@@ -25,6 +25,7 @@ jobs:
 
       - name: Run JavaScript syntax checks
         run: |
+          node --check search.js
           node --check app.js
           node --input-type=module --check < recommendation-engine.js
           node --check sw.js
