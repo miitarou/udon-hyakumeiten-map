@@ -90,6 +90,9 @@
         region: 0,
         status: 0
     };
+    const RECOMMENDATION_EXTERNAL_SIGNAL_SCORE_BOOST = 1.06;
+    const RECOMMENDATION_EXTERNAL_REASON_BOOST = 1.5;
+    const RECOMMENDATION_MODEL_REASON_PENALTY = 0.72;
     const RECOMMENDATION_PRIMARY_REASON_PREFIXES = new Set(['style', 'texture', 'dish', 'mood', 'scene', 'lineage']);
     const RECOMMENDATION_MODES = {
         similar: { label: '味・雰囲気が近い' },
@@ -1066,20 +1069,34 @@
         let normB = 0;
         const shared = [];
 
-        sourceTags.forEach((aValue, key) => {
+        sourceTags.forEach((aTag, key) => {
             const weight = getRecommendationTagWeight(key, mode);
+            const aValue = getRecommendationTagStrength(aTag);
             normA += (aValue ** 2) * weight;
         });
-        candidateTags.forEach((bValue, key) => {
+        candidateTags.forEach((bTag, key) => {
             const weight = getRecommendationTagWeight(key, mode);
+            const bValue = getRecommendationTagStrength(bTag);
             normB += (bValue ** 2) * weight;
         });
-        sourceTags.forEach((aValue, key) => {
+        sourceTags.forEach((aTag, key) => {
             if (!candidateTags.has(key)) return;
             const weight = getRecommendationTagWeight(key, mode);
-            const contribution = aValue * candidateTags.get(key) * weight;
+            const bTag = candidateTags.get(key);
+            const aValue = getRecommendationTagStrength(aTag);
+            const bValue = getRecommendationTagStrength(bTag);
+            const contribution = aValue * bValue * weight;
             dot += contribution;
-            if (weight > 0) shared.push({ key, contribution });
+            if (weight > 0) {
+                shared.push({
+                    key,
+                    contribution,
+                    sourceSource: getRecommendationTagSource(aTag),
+                    candidateSource: getRecommendationTagSource(bTag),
+                    sourceHasExternal: hasRecommendationExternalEvidence(aTag),
+                    candidateHasExternal: hasRecommendationExternalEvidence(bTag)
+                });
+            }
         });
 
         if (!dot || !normA || !normB) return null;
@@ -1148,10 +1165,10 @@
             if (!record) return;
             const tagMap = buildRecommendationTagMap(record);
             let used = false;
-            tagMap.forEach((value, key) => {
+            tagMap.forEach((tagItem, key) => {
                 const prefix = getRecommendationTagPrefix(key);
                 if (!RECOMMENDATION_PRIMARY_REASON_PREFIXES.has(prefix) && prefix !== 'genre') return;
-                aggregate.set(key, (aggregate.get(key) || 0) + value);
+                aggregate.set(key, (aggregate.get(key) || 0) + getRecommendationTagStrength(tagItem));
                 used = true;
             });
             if (used) count += 1;
@@ -1166,13 +1183,15 @@
         let dot = 0;
         let normA = 0;
         let normB = 0;
-        aTags.forEach((aValue, key) => {
+        aTags.forEach((aTag, key) => {
             const weight = getRecommendationTagWeight(key, mode);
+            const aValue = getRecommendationTagStrength(aTag);
             normA += (aValue ** 2) * weight;
-            if (bTags.has(key)) dot += aValue * bTags.get(key) * weight;
+            if (bTags.has(key)) dot += aValue * getRecommendationTagStrength(bTags.get(key)) * weight;
         });
-        bTags.forEach((bValue, key) => {
+        bTags.forEach((bTag, key) => {
             const weight = getRecommendationTagWeight(key, mode);
+            const bValue = getRecommendationTagStrength(bTag);
             normB += (bValue ** 2) * weight;
         });
         return dot && normA && normB ? dot / Math.sqrt(normA * normB) : 0;
@@ -1212,9 +1231,34 @@
             const weight = Number(tag.weight);
             const confidence = Number(tag.confidence);
             if (!Number.isFinite(weight) || !Number.isFinite(confidence)) return;
-            map.set(key, Math.max(0, weight) * Math.max(0, confidence));
+            const source = String(tag.source || '');
+            const hasExternalEvidence = source === 'external_signal' || (Array.isArray(tag.evidence) && tag.evidence.some(item => String(item || '').startsWith('external')));
+            const baseStrength = Math.max(0, weight) * Math.max(0, confidence);
+            const sourceBoost = hasExternalEvidence && RECOMMENDATION_PRIMARY_REASON_PREFIXES.has(prefix)
+                ? RECOMMENDATION_EXTERNAL_SIGNAL_SCORE_BOOST
+                : 1;
+            map.set(key, {
+                strength: baseStrength * sourceBoost,
+                source,
+                hasExternalEvidence,
+                rawStrength: baseStrength
+            });
         });
         return map;
+    }
+
+    function getRecommendationTagStrength(tagItem) {
+        if (typeof tagItem === 'number') return tagItem;
+        const value = Number(tagItem?.strength);
+        return Number.isFinite(value) ? value : 0;
+    }
+
+    function getRecommendationTagSource(tagItem) {
+        return typeof tagItem === 'object' && tagItem ? String(tagItem.source || '') : '';
+    }
+
+    function hasRecommendationExternalEvidence(tagItem) {
+        return Boolean(typeof tagItem === 'object' && tagItem && tagItem.hasExternalEvidence);
     }
 
     function getRecommendationTagPrefix(key) {
@@ -1250,9 +1294,15 @@
             .map(item => {
                 const prefix = getRecommendationTagPrefix(item.key);
                 const label = recommendationTagDefinitions[item.key]?.label || item.key;
-                const displayScore = item.contribution * (RECOMMENDATION_REASON_PRIORITY[prefix] ?? 0.7);
-                const minStrength = Math.min(sourceTags.get(item.key) || 0, candidateTags.get(item.key) || 0);
-                return { key: item.key, prefix, label, displayScore, minStrength };
+                const sourceTag = sourceTags.get(item.key);
+                const candidateTag = candidateTags.get(item.key);
+                const hasExternalSignal = item.sourceHasExternal || item.candidateHasExternal;
+                const isModelOnly = item.sourceSource === 'model_prior' && item.candidateSource === 'model_prior';
+                let displayScore = item.contribution * (RECOMMENDATION_REASON_PRIORITY[prefix] ?? 0.7);
+                if (hasExternalSignal) displayScore *= RECOMMENDATION_EXTERNAL_REASON_BOOST;
+                if (isModelOnly) displayScore *= RECOMMENDATION_MODEL_REASON_PENALTY;
+                const minStrength = Math.min(getRecommendationTagStrength(sourceTag), getRecommendationTagStrength(candidateTag));
+                return { key: item.key, prefix, label, displayScore, minStrength, hasExternalSignal, isModelOnly };
             })
             .filter(item => item.prefix !== 'status')
             .filter(item => item.displayScore > 0)

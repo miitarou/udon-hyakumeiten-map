@@ -50,6 +50,9 @@ REASON_PRIORITY = {
     "region": 0,
     "status": 0,
 }
+EXTERNAL_SIGNAL_SCORE_BOOST = 1.06
+EXTERNAL_REASON_BOOST = 1.5
+MODEL_REASON_PENALTY = 0.72
 PRIMARY_REASON_PREFIXES = {"style", "texture", "dish", "mood", "scene", "lineage"}
 
 
@@ -98,19 +101,54 @@ def tag_weight(key: str, mode: str) -> float:
     return 0 if base <= 0 else base * mode_factor(prefix, mode)
 
 
-def tag_map(record: dict[str, Any]) -> dict[str, float]:
-    result: dict[str, float] = {}
+def tag_map(record: dict[str, Any], include_external: bool = True) -> dict[str, dict[str, Any]]:
+    result: dict[str, dict[str, Any]] = {}
     for tag in record.get("tags") or []:
         key = str(tag.get("key") or "")
-        if not key or tag_prefix(key) == "status":
+        prefix = tag_prefix(key)
+        if not key or prefix == "status":
+            continue
+        source = str(tag.get("source") or "")
+        has_external_evidence = source == "external_signal" or any(
+            str(item or "").startswith("external") for item in (tag.get("evidence") or [])
+        )
+        if source == "external_signal" and not include_external:
             continue
         try:
             weight = float(tag.get("weight"))
             confidence = float(tag.get("confidence"))
         except (TypeError, ValueError):
             continue
-        result[key] = max(0.0, weight) * max(0.0, confidence)
+        base_strength = max(0.0, weight) * max(0.0, confidence)
+        source_boost = (
+            EXTERNAL_SIGNAL_SCORE_BOOST
+            if include_external and has_external_evidence and prefix in PRIMARY_REASON_PREFIXES
+            else 1.0
+        )
+        result[key] = {
+            "strength": base_strength * source_boost,
+            "rawStrength": base_strength,
+            "source": source,
+            "hasExternalEvidence": has_external_evidence if include_external else False,
+        }
     return result
+
+
+def tag_strength(tag_item: Any) -> float:
+    if isinstance(tag_item, (int, float)):
+        return float(tag_item)
+    try:
+        return float((tag_item or {}).get("strength", 0))
+    except (TypeError, ValueError):
+        return 0.0
+
+
+def tag_source(tag_item: Any) -> str:
+    return str((tag_item or {}).get("source", "")) if isinstance(tag_item, dict) else ""
+
+
+def has_external_evidence(tag_item: Any) -> bool:
+    return bool(isinstance(tag_item, dict) and tag_item.get("hasExternalEvidence"))
 
 
 def distance_km(a: dict[str, Any], b: dict[str, Any]) -> float:
@@ -125,26 +163,28 @@ def distance_km(a: dict[str, Any], b: dict[str, Any]) -> float:
     return radius * 2 * math.atan2(math.sqrt(h), math.sqrt(1 - h))
 
 
-def map_similarity(a_tags: dict[str, float], b_tags: dict[str, float], mode: str) -> float:
+def map_similarity(a_tags: dict[str, Any], b_tags: dict[str, Any], mode: str) -> float:
     if not a_tags or not b_tags:
         return 0.0
     dot = 0.0
     norm_a = 0.0
     norm_b = 0.0
-    for key, value in a_tags.items():
+    for key, item in a_tags.items():
+        value = tag_strength(item)
         weight = tag_weight(key, mode)
         norm_a += (value**2) * weight
         if key in b_tags:
-            dot += value * b_tags[key] * weight
-    for key, value in b_tags.items():
+            dot += value * tag_strength(b_tags[key]) * weight
+    for key, item in b_tags.items():
+        value = tag_strength(item)
         norm_b += (value**2) * tag_weight(key, mode)
     return dot / math.sqrt(norm_a * norm_b) if dot and norm_a and norm_b else 0.0
 
 
 def build_reasons(
     shared: list[dict[str, Any]],
-    source_tags: dict[str, float],
-    candidate_tags: dict[str, float],
+    source_tags: dict[str, Any],
+    candidate_tags: dict[str, Any],
     tag_definitions: dict[str, dict[str, str]],
     mode: str,
 ) -> list[str]:
@@ -153,8 +193,14 @@ def build_reasons(
         key = item["key"]
         prefix = tag_prefix(key)
         label = tag_definitions.get(key, {}).get("label", key)
+        has_external_signal = bool(item.get("sourceHasExternal") or item.get("candidateHasExternal"))
+        is_model_only = item.get("sourceSource") == "model_prior" and item.get("candidateSource") == "model_prior"
         display_score = item["contribution"] * REASON_PRIORITY.get(prefix, 0.7)
-        min_strength = min(source_tags.get(key, 0.0), candidate_tags.get(key, 0.0))
+        if has_external_signal:
+            display_score *= EXTERNAL_REASON_BOOST
+        if is_model_only:
+            display_score *= MODEL_REASON_PENALTY
+        min_strength = min(tag_strength(source_tags.get(key)), tag_strength(candidate_tags.get(key)))
         if prefix != "status" and display_score > 0:
             items.append(
                 {
@@ -162,6 +208,8 @@ def build_reasons(
                     "label": label,
                     "displayScore": display_score,
                     "minStrength": min_strength,
+                    "hasExternalSignal": has_external_signal,
+                    "isModelOnly": is_model_only,
                 }
             )
     items.sort(key=lambda x: x["displayScore"], reverse=True)
@@ -248,11 +296,12 @@ def recommendations(
     tag_definitions: dict[str, dict[str, str]],
     affinity: dict[str, list[dict[str, Any]]],
     limit: int,
+    include_external: bool = True,
 ) -> list[dict[str, Any]]:
     source_record = tag_records.get(source["url"])
     if not source_record:
         return []
-    source_tags = tag_map(source_record)
+    source_tags = tag_map(source_record, include_external=include_external)
     results = []
     for candidate in restaurants:
         if candidate["url"] == source["url"] or candidate.get("closed"):
@@ -260,25 +309,39 @@ def recommendations(
         candidate_record = tag_records.get(candidate["url"])
         if not candidate_record:
             continue
-        candidate_tags = tag_map(candidate_record)
+        candidate_tags = tag_map(candidate_record, include_external=include_external)
         if not source_tags or not candidate_tags:
             continue
 
         dot = norm_a = norm_b = 0.0
         shared = []
-        for key, a_value in source_tags.items():
+        for key, a_item in source_tags.items():
+            a_value = tag_strength(a_item)
             weight = tag_weight(key, mode)
             norm_a += (a_value**2) * weight
-        for key, b_value in candidate_tags.items():
+        for key, b_item in candidate_tags.items():
+            b_value = tag_strength(b_item)
             norm_b += (b_value**2) * tag_weight(key, mode)
-        for key, a_value in source_tags.items():
+        for key, a_item in source_tags.items():
             if key not in candidate_tags:
                 continue
             weight = tag_weight(key, mode)
-            contribution = a_value * candidate_tags[key] * weight
+            b_item = candidate_tags[key]
+            a_value = tag_strength(a_item)
+            b_value = tag_strength(b_item)
+            contribution = a_value * b_value * weight
             dot += contribution
             if weight > 0:
-                shared.append({"key": key, "contribution": contribution})
+                shared.append(
+                    {
+                        "key": key,
+                        "contribution": contribution,
+                        "sourceSource": tag_source(a_item),
+                        "candidateSource": tag_source(b_item),
+                        "sourceHasExternal": has_external_evidence(a_item),
+                        "candidateHasExternal": has_external_evidence(b_item),
+                    }
+                )
         if not dot or not norm_a or not norm_b:
             continue
         similarity = dot / math.sqrt(norm_a * norm_b)
@@ -348,6 +411,7 @@ def print_markdown_report(
     tag_definitions: dict[str, dict[str, str]],
     affinity: dict[str, list[dict[str, Any]]],
     top: int,
+    compare_external: bool = False,
 ) -> None:
     by_url = {r["url"]: r for r in restaurants}
     print("# Recommendation Golden Set Report")
@@ -355,6 +419,7 @@ def print_markdown_report(
     print("This report is informational. Review misses manually before changing scoring rules.")
     print()
     total = top3 = topn = avoid_hits = closed_hits = reason_missing_cases = 0
+    baseline_top3 = baseline_topn = 0
     case_rows = []
     for case in cases:
         source = by_url.get(case["sourceUrl"])
@@ -365,6 +430,21 @@ def print_markdown_report(
             continue
         recs = recommendations(source, case.get("mode", "similar"), restaurants, tag_records, tag_definitions, affinity, top)
         status = case_status(case, recs)
+        baseline_status = None
+        if compare_external:
+            baseline_recs = recommendations(
+                source,
+                case.get("mode", "similar"),
+                restaurants,
+                tag_records,
+                tag_definitions,
+                affinity,
+                top,
+                include_external=False,
+            )
+            baseline_status = case_status(case, baseline_recs)
+            baseline_top3 += 1 if baseline_status["preferredTop3"] else 0
+            baseline_topn += 1 if baseline_status["preferredTopN"] else 0
         total += 1
         top3 += 1 if status["preferredTop3"] else 0
         topn += 1 if status["preferredTopN"] else 0
@@ -381,6 +461,8 @@ def print_markdown_report(
                 "avoid": len(status["avoidCategoryHits"]),
                 "closed": len(status["closedHits"]),
                 "reasonMissing": len(status["reasonMissing"]),
+                "baseTop3": len(baseline_status["preferredTop3"]) if baseline_status else None,
+                f"baseTop{top}": len(baseline_status["preferredTopN"]) if baseline_status else None,
             }
         )
 
@@ -393,6 +475,11 @@ def print_markdown_report(
             print(f"- Preferred hit: top3={len(status['preferredTop3'])}")
         else:
             print(f"- Preferred hit: top3={len(status['preferredTop3'])}, top{top}={len(status['preferredTopN'])}")
+        if baseline_status:
+            print(
+                f"- Without external signals: top3={len(baseline_status['preferredTop3'])}, "
+                f"top{top}={len(baseline_status['preferredTopN'])}"
+            )
         if status["avoidCategoryHits"]:
             print(f"- Avoid-category hits in top3: {', '.join(status['avoidCategoryHits'])}")
         if status["closedHits"]:
@@ -421,22 +508,41 @@ def print_markdown_report(
     print(f"- avoid-category hits in top3: {avoid_hits}")
     print(f"- closed leakage in top3: {closed_hits}")
     print(f"- cases with missing/weak top3 reasons: {reason_missing_cases}/{total}")
+    if compare_external:
+        print(f"- without external signals preferred hit in top3: {baseline_top3}/{total}")
+        print(f"- without external signals preferred hit in top{top}: {baseline_topn}/{total}")
     print()
     print("## Case Metrics")
     print()
-    print(f"| Case | Mode | Source | Hit@3 | Hit@{top} | Avoid | Closed | Weak reasons |")
-    print("| --- | --- | --- | ---: | ---: | ---: | ---: | ---: |")
+    if compare_external:
+        print(f"| Case | Mode | Source | Hit@3 | Hit@{top} | No external Hit@3 | No external Hit@{top} | Avoid | Closed | Weak reasons |")
+        print("| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |")
+    else:
+        print(f"| Case | Mode | Source | Hit@3 | Hit@{top} | Avoid | Closed | Weak reasons |")
+        print("| --- | --- | --- | ---: | ---: | ---: | ---: | ---: |")
     for row in case_rows:
-        print(
-            f"| `{row['id']}` | `{row['mode']}` | {row['source']} | "
-            f"{row['top3']} | {row[f'top{top}']} | {row['avoid']} | {row['closed']} | {row['reasonMissing']} |"
-        )
+        if compare_external:
+            print(
+                f"| `{row['id']}` | `{row['mode']}` | {row['source']} | "
+                f"{row['top3']} | {row[f'top{top}']} | {row['baseTop3']} | {row[f'baseTop{top}']} | "
+                f"{row['avoid']} | {row['closed']} | {row['reasonMissing']} |"
+            )
+        else:
+            print(
+                f"| `{row['id']}` | `{row['mode']}` | {row['source']} | "
+                f"{row['top3']} | {row[f'top{top}']} | {row['avoid']} | {row['closed']} | {row['reasonMissing']} |"
+            )
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Evaluate recommendation golden-set cases.")
     parser.add_argument("--case", help="Only evaluate one case id.")
     parser.add_argument("--top", type=int, default=MAX_LIMIT, help="Number of recommendations to show.")
+    parser.add_argument(
+        "--compare-external",
+        action="store_true",
+        help="Also report hit rates with external_signal tags ignored.",
+    )
     args = parser.parse_args()
 
     restaurants = load_restaurants()
@@ -450,7 +556,15 @@ def main() -> int:
         cases = [case for case in cases if case.get("id") == args.case]
         if not cases:
             raise SystemExit(f"case not found: {args.case}")
-    print_markdown_report(cases, restaurants, tag_records, tag_definitions, affinity, max(1, args.top))
+    print_markdown_report(
+        cases,
+        restaurants,
+        tag_records,
+        tag_definitions,
+        affinity,
+        max(1, args.top),
+        compare_external=args.compare_external,
+    )
     return 0
 
 

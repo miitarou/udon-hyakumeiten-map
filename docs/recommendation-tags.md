@@ -165,6 +165,8 @@ categoryWeight_t = タグ接頭辞ごとの係数
 共通タグ加点_t = A_t × B_t × categoryWeight_t
 ```
 
+`external_signal` 由来、または外部根拠語を evidence に含む体験タグは、公開ソースで文脈を補強できたものとして、スコア上はごく軽く加点します。これは店舗評価ではなく、探索補助として「同じ方向の特徴が確認しやすい」候補を少し前に出すための補正です。
+
 単純合計だけだと、タグ数が多い店舗ほど有利になります。そこで、コサイン類似度に近い正規化を使います。
 
 ```text
@@ -194,6 +196,7 @@ finalScore =
   × saveStateFactor
   × userPreferenceFactor
   × modeFactor
+  × externalSignalFactor
 ```
 
 現行補正:
@@ -205,6 +208,7 @@ finalScore =
 | `saveStateFactor` | 候補自身が「行きたい」の場合は軽く加点。訪問済みは減点しない |
 | `userPreferenceFactor` | 「行きたい」に入れた店舗群の体験タグに近い候補を軽く加点 |
 | `modeFactor` | 味・雰囲気が近い、最寄りで探す、新しい発見で係数を切り替える |
+| `externalSignalFactor` | 外部確認済みの体験タグは、ごく軽く信頼補正する |
 
 UIに表示する相性スコアは、内部スコアをそのまま100点換算したものではありません。候補群内で再正規化し、概ね72〜96の範囲で表示します。これにより、候補が3件並んだときに `99 / 98 / 97` のように差が見えにくくなることを避けています。
 
@@ -270,6 +274,7 @@ UIに表示する相性スコアは、内部スコアをそのまま100点換算
 4. 選出履歴は、体験タグが出せない場合の補助理由に留める。
 5. `confidence` が低すぎるタグを除外する。
 6. `tagDefinitions` の `label` を使って短い理由文にする。
+7. 外部確認済みの体験タグを優先し、`model_prior` だけで共有している弱いタグは理由文に出しすぎない。
 
 理由文に使うタグの目安:
 
@@ -331,6 +336,12 @@ python3 scripts/evaluate_recommendations.py
 
 ```bash
 python3 scripts/evaluate_recommendations.py --case udon_tokyo_maruka_similar --top 9
+```
+
+外部シグナルを使った結果と、外部シグナルを無視した場合を比較する場合:
+
+```bash
+python3 scripts/evaluate_recommendations.py --compare-external > build/recommendation-report.md
 ```
 
 ## AI推定の相性ヒント
