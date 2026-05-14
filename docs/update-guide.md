@@ -68,7 +68,17 @@ python3 scripts/check_web_version_bumps.py
 - 外部シグナルの `lastCheckedAt` 鮮度（report-only）
 - Web配信資産の `?v=` とService Workerキャッシュ名の更新漏れ
 
-## 5. Web版をローカル確認する
+## 5. OGP画像を更新する
+
+アプリアイコンやSNS共有用の見せ方を変えた場合は、以下で `og-image.png` を再生成します。
+
+```bash
+python3 scripts/generate_og_image.py
+```
+
+生成後は、文字が1200x630px内に収まっていること、バッジや本文が背景からはみ出していないことを目視確認します。
+
+## 6. Web版をローカル確認する
 
 ```bash
 python3 -m http.server 8080
@@ -83,7 +93,7 @@ open http://localhost:8080
 - 訪問状況、設定保存、設定復元が動く
 - ブラウザコンソールにCSP違反やJavaScriptエラーが出ていない
 
-## 6. iPhone版へ同期する
+## 7. iPhone版へ同期する
 
 Web版の変更をiPhone同梱資産へ反映する場合は、以下を実行します。
 
@@ -94,7 +104,7 @@ npm run ios:sync
 
 iPhone版では、HTML/CSS/JSはアプリ同梱です。UIや機能変更はApp Storeアップデートで反映します。店舗JSONのみ、起動時にGitHub Pages上の最新版取得を試みます。
 
-## 7. Service Workerとキャッシュを確認する
+## 8. Service Workerとキャッシュを確認する
 
 `app.js`、`search.js`、`style.css`、`index.html`、主要データの読み込みに影響する変更を行った場合は、`sw.js` の `CACHE_NAME` とキャッシュ対象のクエリバージョンも更新します。
 
@@ -109,12 +119,12 @@ python3 scripts/bump_web_version.py
 例:
 
 ```js
-const CACHE_NAME = 'hyakumeiten-map-v33';
+const CACHE_NAME = 'hyakumeiten-map-v34';
 ```
 
 古いService Workerが残ると、ユーザーに旧JS/CSSが表示されることがあります。更新通知とリロード導線が動くことも確認します。
 
-## 8. 公開前チェック
+## 9. 公開前チェック
 
 ```bash
 git status --short

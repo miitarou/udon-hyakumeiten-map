@@ -74,7 +74,7 @@ open http://localhost:8080
 ├── recommendation-engine.js    # 推薦スコア・理由生成のES Module
 ├── manifest.webmanifest        # PWAマニフェスト
 ├── sw.js                       # Service Worker
-├── icon.svg                    # PWAアイコン
+├── icon.png                    # アプリアイコン
 ├── icons/                      # PWA用の複数サイズPNGアイコン
 ├── og-image.png                # OGP / SNS共有用画像
 ├── robots.txt                  # クローラー向け許可設定
@@ -105,6 +105,7 @@ open http://localhost:8080
 │   ├── generate_external_signal_backlog.py # 外部シグナル未登録店舗キュー生成
 │   ├── generate_external_signals.py # 外部シグナルPoC生成
 │   ├── generate_recommendation_tags.py # 推薦タグデータ生成
+│   ├── generate_og_image.py  # OGP / SNS共有用画像生成
 │   ├── evaluate_recommendations.py # 推薦ゴールデンセットの結果レポート
 │   ├── check_size_budget.py    # JS/CSS/JSONサイズ予算のreport-only確認
 │   ├── check_external_signal_age.py # 外部シグナル鮮度のreport-only確認

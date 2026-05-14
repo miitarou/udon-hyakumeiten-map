@@ -18,7 +18,6 @@ ROOT_FILES = (
     "style.css",
     "app.js",
     "manifest.webmanifest",
-    "icon.svg",
     "icon.png",
     "privacy.html",
 )
