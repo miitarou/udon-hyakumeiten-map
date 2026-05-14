@@ -16,6 +16,7 @@
     let udonHallOfFameThreshold = Infinity;
     let sobaHallOfFameThreshold = Infinity;
     let recommendationEngineModule = null;
+    let recommendationTagData = null;
     let recommendationIndex = null;
     let recommendationTagLoadPromise = null;
     let map = null;
@@ -611,16 +612,27 @@
             try {
                 const data = await fetchJson(url);
                 if (!Array.isArray(data?.restaurants)) throw new Error('Recommendation tag data should contain restaurants array');
-                const engine = await loadRecommendationEngineModule();
-                recommendationIndex = engine.createRecommendationIndex(data);
-                console.log(`🔎 推薦タグ読込完了: ${recommendationIndex.tagsByUrl.size} 店 / ${Object.keys(recommendationIndex.tagDefinitions).length} tags`);
+                recommendationTagData = data;
+                recommendationIndex = null;
+                console.log(`🔎 推薦タグデータ読込完了: ${data.restaurants.length} 店`);
                 return;
             } catch (error) {
                 console.warn(`Recommendation tag load failed: ${url}`, error);
             }
         }
 
+        recommendationTagData = null;
         recommendationIndex = null;
+    }
+
+    async function ensureRecommendationIndex() {
+        if (recommendationIndex) return recommendationIndex;
+        if (!recommendationTagData) return null;
+
+        const engine = await loadRecommendationEngineModule();
+        recommendationIndex = engine.createRecommendationIndex(recommendationTagData);
+        console.log(`🔎 推薦エンジン初期化完了: ${recommendationIndex.tagsByUrl.size} 店 / ${Object.keys(recommendationIndex.tagDefinitions).length} tags`);
+        return recommendationIndex;
     }
 
     // === 年度ボタンを動的生成 ===
@@ -945,7 +957,7 @@
         });
 
         results.innerHTML = '<div class="recommendation-empty">候補を計算中です...</div>';
-        if (!recommendationIndex?.tagsByUrl?.has(sourceUrl) && recommendationTagLoadPromise) {
+        if (!recommendationTagData && recommendationTagLoadPromise) {
             try {
                 await recommendationTagLoadPromise;
             } catch (error) {
@@ -953,14 +965,21 @@
             }
         }
 
+        let index = null;
+        try {
+            index = await ensureRecommendationIndex();
+        } catch (error) {
+            console.warn('Recommendation engine initialization failed:', error);
+        }
+
         updateOpenPopupLayout();
 
         const source = getRestaurantByUrl(sourceUrl);
-        const recommendations = source && recommendationEngineModule && recommendationIndex
+        const recommendations = source && recommendationEngineModule && index
             ? recommendationEngineModule.getRecommendations({
                 source,
                 restaurants: allRestaurants,
-                index: recommendationIndex,
+                index,
                 mode,
                 limit: RECOMMENDATION_MAX_LIMIT,
                 savedStates,
