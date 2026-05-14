@@ -1013,7 +1013,7 @@
             event.stopPropagation();
             const url = decodeURIComponent(card.dataset.focusUrl || '');
             const restaurant = getRestaurantByUrl(url);
-            if (restaurant) focusRestaurant(restaurant);
+            if (restaurant) focusRestaurant(restaurant, { fromRecommendation: true });
         });
     }
 
@@ -1052,7 +1052,7 @@
     window.__hyakumeitenFocusRecommendation = function (control) {
         const url = decodeURIComponent(control?.dataset?.focusUrl || '');
         const restaurant = getRestaurantByUrl(url);
-        if (restaurant) focusRestaurant(restaurant);
+        if (restaurant) focusRestaurant(restaurant, { fromRecommendation: true });
     };
 
     function createClusterIcon(cluster) {
@@ -1905,14 +1905,29 @@
     }
 
     // === Focus on Restaurant ===
-    function focusRestaurant(r) {
+    function focusRestaurant(r, options = {}) {
         if (!r.lat || !r.lng) return;
+        if (options.fromRecommendation) {
+            clearDistanceFilterIfRecommendationOutsideRadius(r);
+        }
         map.setView([r.lat, r.lng], 16, { animate: true });
         const marker = markers.get(r.url);
         if (marker) {
             markerClusterGroup.zoomToShowLayer(marker, () => marker.openPopup());
         }
         if (window.innerWidth <= 768) togglePanel(false);
+    }
+
+    function clearDistanceFilterIfRecommendationOutsideRadius(r) {
+        if (!distanceOrigin || radiusKm === 'none' || !r?.lat || !r?.lng) return false;
+        const distanceKm = calcDistance(distanceOrigin.lat, distanceOrigin.lng, r.lat, r.lng);
+        const activeRadiusKm = Number(radiusKm);
+        if (!Number.isFinite(distanceKm) || !Number.isFinite(activeRadiusKm) || distanceKm <= activeRadiusKm) {
+            return false;
+        }
+        clearRadiusSearch(true);
+        showAppBanner('推薦店舗を表示するため、距離条件を解除しました。', null, null, 'info');
+        return true;
     }
 
     // === フィルタ全リセット ===
@@ -2687,7 +2702,7 @@
             e.stopImmediatePropagation();
             const url = decodeURIComponent(card.dataset.focusUrl || '');
             const restaurant = getRestaurantByUrl(url);
-            if (restaurant) focusRestaurant(restaurant);
+            if (restaurant) focusRestaurant(restaurant, { fromRecommendation: true });
         }, true);
 
         document.addEventListener('click', e => {

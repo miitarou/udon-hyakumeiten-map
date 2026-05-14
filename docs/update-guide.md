@@ -119,7 +119,7 @@ python3 scripts/bump_web_version.py
 例:
 
 ```js
-const CACHE_NAME = 'hyakumeiten-map-v34';
+const CACHE_NAME = 'hyakumeiten-map-v35';
 ```
 
 古いService Workerが残ると、ユーザーに旧JS/CSSが表示されることがあります。更新通知とリロード導線が動くことも確認します。
